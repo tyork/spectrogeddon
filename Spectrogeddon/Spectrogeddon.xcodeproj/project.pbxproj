@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1901B82C18FBFBA7002DE52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82B18FBFBA7002DE52F /* Foundation.framework */; };
+		1901B82E18FBFBA7002DE52F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82D18FBFBA7002DE52F /* CoreGraphics.framework */; };
+		1901B83018FBFBA7002DE52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82F18FBFBA7002DE52F /* UIKit.framework */; };
+		1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B83418FBFBA7002DE52F /* InfoPlist.strings */; };
+		1901B83818FBFBA7002DE52F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B83718FBFBA7002DE52F /* main.m */; };
+		1901B83C18FBFBA7002DE52F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B83B18FBFBA7002DE52F /* AppDelegate.m */; };
+		1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */; };
+		1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */; };
+		1901B84518FBFBA7002DE52F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B84418FBFBA7002DE52F /* ViewController.m */; };
+		1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1901B84618FBFBA7002DE52F /* Images.xcassets */; };
+		1901B84E18FBFBA8002DE52F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B84D18FBFBA8002DE52F /* XCTest.framework */; };
+		1901B84F18FBFBA8002DE52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82B18FBFBA7002DE52F /* Foundation.framework */; };
+		1901B85018FBFBA8002DE52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82F18FBFBA7002DE52F /* UIKit.framework */; };
+		1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B85618FBFBA8002DE52F /* InfoPlist.strings */; };
+		1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */; };
+		1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1901B86318FBFCA3002DE52F /* ViewController.xib */; };
+		19541FA318FC2BF800BC94BF /* SpectrumGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FA218FC2BF800BC94BF /* SpectrumGenerator.m */; };
+		19541FA918FC331C00BC94BF /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FA818FC331C00BC94BF /* FastFourierTransform.m */; };
+		19541FAC18FC336300BC94BF /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FAB18FC336300BC94BF /* TimeSequence.m */; };
+		19541FAE18FC343300BC94BF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FAD18FC343300BC94BF /* Accelerate.framework */; };
+		19541FB218FC379300BC94BF /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FB118FC379300BC94BF /* AudioSource.m */; };
+		19541FB418FC37A600BC94BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FB318FC37A600BC94BF /* AVFoundation.framework */; };
+		19541FB718FD301800BC94BF /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FB618FD301800BC94BF /* SampleBuffer.m */; };
+		19541FBA18FD432100BC94BF /* MicAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FB918FD432100BC94BF /* MicAudioSource.m */; };
+		19541FC118FD7A2E00BC94BF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FC018FD7A2E00BC94BF /* OpenGLES.framework */; };
+		19541FC318FD7AAF00BC94BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FC218FD7AAF00BC94BF /* QuartzCore.framework */; };
+		19541FC918FD8B6000BC94BF /* GLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FC818FD8B6000BC94BF /* GLDisplay.m */; };
+		19541FCB18FD8BEB00BC94BF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FCA18FD8BEB00BC94BF /* GLKit.framework */; };
+		19541FCD18FD90F100BC94BF /* ColumnShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19541FCC18FD90F100BC94BF /* ColumnShader.fsh */; };
+		19541FCF18FD918800BC94BF /* ColumnShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19541FCE18FD918800BC94BF /* ColumnShader.vsh */; };
+		19541FD218FFD71B00BC94BF /* ScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FD118FFD71B00BC94BF /* ScrollingRenderer.m */; };
+		19541FD718FFE8AB00BC94BF /* ScrollingShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19541FD618FFE8AB00BC94BF /* ScrollingShader.fsh */; };
+		19541FD918FFE8B500BC94BF /* ScrollingShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19541FD818FFE8B500BC94BF /* ScrollingShader.vsh */; };
+		19541FDC18FFEA3900BC94BF /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FDB18FFEA3900BC94BF /* RendererUtils.m */; };
+		19541FE119066F0F00BC94BF /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FE019066F0F00BC94BF /* ColumnRenderer.m */; };
+		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
+		19541FE61906D8B100BC94BF /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19541FE51906D8B100BC94BF /* ColorMapSet.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1901B85118FBFBA8002DE52F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1901B82718FBFBA7002DE52F;
+			remoteInfo = Spectrogeddon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1901B82818FBFBA7002DE52F /* Spectrogeddon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrogeddon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1901B82B18FBFBA7002DE52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1901B82D18FBFBA7002DE52F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1901B82F18FBFBA7002DE52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1901B83318FBFBA7002DE52F /* Spectrogeddon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spectrogeddon-Info.plist"; sourceTree = "<group>"; };
+		1901B83518FBFBA7002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1901B83718FBFBA7002DE52F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1901B83918FBFBA7002DE52F /* Spectrogeddon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectrogeddon-Prefix.pch"; sourceTree = "<group>"; };
+		1901B83A18FBFBA7002DE52F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1901B83B18FBFBA7002DE52F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1901B83E18FBFBA7002DE52F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		1901B84118FBFBA7002DE52F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		1901B84318FBFBA7002DE52F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1901B84418FBFBA7002DE52F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1901B84618FBFBA7002DE52F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1901B84C18FBFBA8002DE52F /* SpectrogeddonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrogeddonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1901B84D18FBFBA8002DE52F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonTests-Info.plist"; sourceTree = "<group>"; };
+		1901B85718FBFBA8002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonTests.m; sourceTree = "<group>"; };
+		1901B86318FBFCA3002DE52F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		19541FA118FC2BF800BC94BF /* SpectrumGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectrumGenerator.h; sourceTree = "<group>"; };
+		19541FA218FC2BF800BC94BF /* SpectrumGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumGenerator.m; sourceTree = "<group>"; };
+		19541FA718FC331C00BC94BF /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastFourierTransform.h; sourceTree = "<group>"; };
+		19541FA818FC331C00BC94BF /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastFourierTransform.m; sourceTree = "<group>"; };
+		19541FAA18FC336300BC94BF /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSequence.h; sourceTree = "<group>"; };
+		19541FAB18FC336300BC94BF /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSequence.m; sourceTree = "<group>"; };
+		19541FAD18FC343300BC94BF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		19541FB018FC379300BC94BF /* AudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSource.h; sourceTree = "<group>"; };
+		19541FB118FC379300BC94BF /* AudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSource.m; sourceTree = "<group>"; };
+		19541FB318FC37A600BC94BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		19541FB518FD301800BC94BF /* SampleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleBuffer.h; sourceTree = "<group>"; };
+		19541FB618FD301800BC94BF /* SampleBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleBuffer.m; sourceTree = "<group>"; };
+		19541FB818FD432100BC94BF /* MicAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicAudioSource.h; sourceTree = "<group>"; };
+		19541FB918FD432100BC94BF /* MicAudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicAudioSource.m; sourceTree = "<group>"; };
+		19541FC018FD7A2E00BC94BF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		19541FC218FD7AAF00BC94BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		19541FC718FD8B6000BC94BF /* GLDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDisplay.h; sourceTree = "<group>"; };
+		19541FC818FD8B6000BC94BF /* GLDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDisplay.m; sourceTree = "<group>"; };
+		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		19541FCC18FD90F100BC94BF /* ColumnShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.fsh; sourceTree = "<group>"; };
+		19541FCE18FD918800BC94BF /* ColumnShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.vsh; sourceTree = "<group>"; };
+		19541FD018FFD71B00BC94BF /* ScrollingRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingRenderer.h; sourceTree = "<group>"; };
+		19541FD118FFD71B00BC94BF /* ScrollingRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingRenderer.m; sourceTree = "<group>"; };
+		19541FD318FFD9C800BC94BF /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererDefs.h; sourceTree = "<group>"; };
+		19541FD618FFE8AB00BC94BF /* ScrollingShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.fsh; sourceTree = "<group>"; };
+		19541FD818FFE8B500BC94BF /* ScrollingShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.vsh; sourceTree = "<group>"; };
+		19541FDA18FFEA3900BC94BF /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererUtils.h; sourceTree = "<group>"; };
+		19541FDB18FFEA3900BC94BF /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RendererUtils.m; sourceTree = "<group>"; };
+		19541FDF19066F0F00BC94BF /* ColumnRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnRenderer.h; sourceTree = "<group>"; };
+		19541FE019066F0F00BC94BF /* ColumnRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnRenderer.m; sourceTree = "<group>"; };
+		19541FE21906D89900BC94BF /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ColorMaps; sourceTree = "<group>"; };
+		19541FE41906D8B100BC94BF /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
+		19541FE51906D8B100BC94BF /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapSet.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1901B82518FBFBA7002DE52F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19541FCB18FD8BEB00BC94BF /* GLKit.framework in Frameworks */,
+				19541FC318FD7AAF00BC94BF /* QuartzCore.framework in Frameworks */,
+				19541FC118FD7A2E00BC94BF /* OpenGLES.framework in Frameworks */,
+				19541FB418FC37A600BC94BF /* AVFoundation.framework in Frameworks */,
+				19541FAE18FC343300BC94BF /* Accelerate.framework in Frameworks */,
+				1901B82E18FBFBA7002DE52F /* CoreGraphics.framework in Frameworks */,
+				1901B83018FBFBA7002DE52F /* UIKit.framework in Frameworks */,
+				1901B82C18FBFBA7002DE52F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1901B84918FBFBA8002DE52F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1901B84E18FBFBA8002DE52F /* XCTest.framework in Frameworks */,
+				1901B85018FBFBA8002DE52F /* UIKit.framework in Frameworks */,
+				1901B84F18FBFBA8002DE52F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1901B81F18FBFBA7002DE52F = {
+			isa = PBXGroup;
+			children = (
+				1901B83118FBFBA7002DE52F /* Spectrogeddon */,
+				1901B85318FBFBA8002DE52F /* SpectrogeddonTests */,
+				1901B82A18FBFBA7002DE52F /* Frameworks */,
+				1901B82918FBFBA7002DE52F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1901B82918FBFBA7002DE52F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1901B82818FBFBA7002DE52F /* Spectrogeddon.app */,
+				1901B84C18FBFBA8002DE52F /* SpectrogeddonTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1901B82A18FBFBA7002DE52F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19541FCA18FD8BEB00BC94BF /* GLKit.framework */,
+				19541FC218FD7AAF00BC94BF /* QuartzCore.framework */,
+				19541FC018FD7A2E00BC94BF /* OpenGLES.framework */,
+				19541FB318FC37A600BC94BF /* AVFoundation.framework */,
+				19541FAD18FC343300BC94BF /* Accelerate.framework */,
+				1901B82B18FBFBA7002DE52F /* Foundation.framework */,
+				1901B82D18FBFBA7002DE52F /* CoreGraphics.framework */,
+				1901B82F18FBFBA7002DE52F /* UIKit.framework */,
+				1901B84D18FBFBA8002DE52F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1901B83118FBFBA7002DE52F /* Spectrogeddon */ = {
+			isa = PBXGroup;
+			children = (
+				19541FE21906D89900BC94BF /* ColorMaps */,
+				1901B83A18FBFBA7002DE52F /* AppDelegate.h */,
+				1901B83B18FBFBA7002DE52F /* AppDelegate.m */,
+				19541F9F18FC2BA400BC94BF /* Controllers */,
+				1901B84618FBFBA7002DE52F /* Images.xcassets */,
+				19541FA018FC2BD400BC94BF /* Model */,
+				1901B83218FBFBA7002DE52F /* Supporting Files */,
+				19541F9E18FC2B9900BC94BF /* Views */,
+			);
+			path = Spectrogeddon;
+			sourceTree = "<group>";
+		};
+		1901B83218FBFBA7002DE52F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1901B83318FBFBA7002DE52F /* Spectrogeddon-Info.plist */,
+				1901B83418FBFBA7002DE52F /* InfoPlist.strings */,
+				1901B83718FBFBA7002DE52F /* main.m */,
+				1901B83918FBFBA7002DE52F /* Spectrogeddon-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1901B85318FBFBA8002DE52F /* SpectrogeddonTests */ = {
+			isa = PBXGroup;
+			children = (
+				1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */,
+				1901B85418FBFBA8002DE52F /* Supporting Files */,
+			);
+			path = SpectrogeddonTests;
+			sourceTree = "<group>";
+		};
+		1901B85418FBFBA8002DE52F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */,
+				1901B85618FBFBA8002DE52F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19541F9E18FC2B9900BC94BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19541FD618FFE8AB00BC94BF /* ScrollingShader.fsh */,
+				19541FD818FFE8B500BC94BF /* ScrollingShader.vsh */,
+				19541FD018FFD71B00BC94BF /* ScrollingRenderer.h */,
+				19541FD118FFD71B00BC94BF /* ScrollingRenderer.m */,
+				19541FD318FFD9C800BC94BF /* RendererDefs.h */,
+				19541FDA18FFEA3900BC94BF /* RendererUtils.h */,
+				19541FDB18FFEA3900BC94BF /* RendererUtils.m */,
+				19541FDF19066F0F00BC94BF /* ColumnRenderer.h */,
+				19541FE019066F0F00BC94BF /* ColumnRenderer.m */,
+				19541FCC18FD90F100BC94BF /* ColumnShader.fsh */,
+				19541FCE18FD918800BC94BF /* ColumnShader.vsh */,
+				19541FC718FD8B6000BC94BF /* GLDisplay.h */,
+				19541FC818FD8B6000BC94BF /* GLDisplay.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		19541F9F18FC2BA400BC94BF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */,
+				1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */,
+				1901B84318FBFBA7002DE52F /* ViewController.h */,
+				1901B84418FBFBA7002DE52F /* ViewController.m */,
+				1901B86318FBFCA3002DE52F /* ViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		19541FA018FC2BD400BC94BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19541FE41906D8B100BC94BF /* ColorMapSet.h */,
+				19541FE51906D8B100BC94BF /* ColorMapSet.m */,
+				19541FBC18FD433E00BC94BF /* AudioProcessing */,
+				19541FBB18FD432A00BC94BF /* AudioAcquisition */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		19541FBB18FD432A00BC94BF /* AudioAcquisition */ = {
+			isa = PBXGroup;
+			children = (
+				19541FB018FC379300BC94BF /* AudioSource.h */,
+				19541FB118FC379300BC94BF /* AudioSource.m */,
+				19541FB818FD432100BC94BF /* MicAudioSource.h */,
+				19541FB918FD432100BC94BF /* MicAudioSource.m */,
+				19541FB518FD301800BC94BF /* SampleBuffer.h */,
+				19541FB618FD301800BC94BF /* SampleBuffer.m */,
+			);
+			name = AudioAcquisition;
+			sourceTree = "<group>";
+		};
+		19541FBC18FD433E00BC94BF /* AudioProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				19541FA718FC331C00BC94BF /* FastFourierTransform.h */,
+				19541FA818FC331C00BC94BF /* FastFourierTransform.m */,
+				19541FA118FC2BF800BC94BF /* SpectrumGenerator.h */,
+				19541FA218FC2BF800BC94BF /* SpectrumGenerator.m */,
+				19541FAA18FC336300BC94BF /* TimeSequence.h */,
+				19541FAB18FC336300BC94BF /* TimeSequence.m */,
+			);
+			name = AudioProcessing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1901B82718FBFBA7002DE52F /* Spectrogeddon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1901B85D18FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "Spectrogeddon" */;
+			buildPhases = (
+				1901B82418FBFBA7002DE52F /* Sources */,
+				1901B82518FBFBA7002DE52F /* Frameworks */,
+				1901B82618FBFBA7002DE52F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spectrogeddon;
+			productName = Spectrogeddon;
+			productReference = 1901B82818FBFBA7002DE52F /* Spectrogeddon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1901B84B18FBFBA8002DE52F /* SpectrogeddonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1901B86018FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "SpectrogeddonTests" */;
+			buildPhases = (
+				1901B84818FBFBA8002DE52F /* Sources */,
+				1901B84918FBFBA8002DE52F /* Frameworks */,
+				1901B84A18FBFBA8002DE52F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1901B85218FBFBA8002DE52F /* PBXTargetDependency */,
+			);
+			name = SpectrogeddonTests;
+			productName = SpectrogeddonTests;
+			productReference = 1901B84C18FBFBA8002DE52F /* SpectrogeddonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1901B82018FBFBA7002DE52F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Random;
+				TargetAttributes = {
+					1901B84B18FBFBA8002DE52F = {
+						TestTargetID = 1901B82718FBFBA7002DE52F;
+					};
+				};
+			};
+			buildConfigurationList = 1901B82318FBFBA7002DE52F /* Build configuration list for PBXProject "Spectrogeddon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1901B81F18FBFBA7002DE52F;
+			productRefGroup = 1901B82918FBFBA7002DE52F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1901B82718FBFBA7002DE52F /* Spectrogeddon */,
+				1901B84B18FBFBA8002DE52F /* SpectrogeddonTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1901B82618FBFBA7002DE52F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */,
+				19541FE31906D89900BC94BF /* ColorMaps in Resources */,
+				1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */,
+				1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */,
+				1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */,
+				19541FCD18FD90F100BC94BF /* ColumnShader.fsh in Resources */,
+				1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */,
+				19541FD918FFE8B500BC94BF /* ScrollingShader.vsh in Resources */,
+				19541FD718FFE8AB00BC94BF /* ScrollingShader.fsh in Resources */,
+				19541FCF18FD918800BC94BF /* ColumnShader.vsh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1901B84A18FBFBA8002DE52F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1901B82418FBFBA7002DE52F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1901B84518FBFBA7002DE52F /* ViewController.m in Sources */,
+				19541FA318FC2BF800BC94BF /* SpectrumGenerator.m in Sources */,
+				19541FE119066F0F00BC94BF /* ColumnRenderer.m in Sources */,
+				19541FDC18FFEA3900BC94BF /* RendererUtils.m in Sources */,
+				19541FBA18FD432100BC94BF /* MicAudioSource.m in Sources */,
+				19541FD218FFD71B00BC94BF /* ScrollingRenderer.m in Sources */,
+				1901B83C18FBFBA7002DE52F /* AppDelegate.m in Sources */,
+				19541FE61906D8B100BC94BF /* ColorMapSet.m in Sources */,
+				1901B83818FBFBA7002DE52F /* main.m in Sources */,
+				19541FB218FC379300BC94BF /* AudioSource.m in Sources */,
+				19541FB718FD301800BC94BF /* SampleBuffer.m in Sources */,
+				19541FAC18FC336300BC94BF /* TimeSequence.m in Sources */,
+				19541FC918FD8B6000BC94BF /* GLDisplay.m in Sources */,
+				19541FA918FC331C00BC94BF /* FastFourierTransform.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1901B84818FBFBA8002DE52F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1901B85218FBFBA8002DE52F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1901B82718FBFBA7002DE52F /* Spectrogeddon */;
+			targetProxy = 1901B85118FBFBA8002DE52F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1901B83418FBFBA7002DE52F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1901B83518FBFBA7002DE52F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1901B83E18FBFBA7002DE52F /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1901B84118FBFBA7002DE52F /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		1901B85618FBFBA8002DE52F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1901B85718FBFBA8002DE52F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1901B85B18FBFBA8002DE52F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1901B85C18FBFBA8002DE52F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1901B85E18FBFBA8002DE52F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spectrogeddon/Spectrogeddon-Prefix.pch";
+				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1901B85F18FBFBA8002DE52F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spectrogeddon/Spectrogeddon-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1901B86118FBFBA8002DE52F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spectrogeddon/Spectrogeddon-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1901B86218FBFBA8002DE52F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spectrogeddon/Spectrogeddon-Prefix.pch";
+				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1901B82318FBFBA7002DE52F /* Build configuration list for PBXProject "Spectrogeddon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1901B85B18FBFBA8002DE52F /* Debug */,
+				1901B85C18FBFBA8002DE52F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1901B85D18FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "Spectrogeddon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1901B85E18FBFBA8002DE52F /* Debug */,
+				1901B85F18FBFBA8002DE52F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1901B86018FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "SpectrogeddonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1901B86118FBFBA8002DE52F /* Debug */,
+				1901B86218FBFBA8002DE52F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1901B82018FBFBA7002DE52F /* Project object */;
+}
