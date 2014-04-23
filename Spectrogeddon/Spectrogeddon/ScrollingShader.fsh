@@ -1,5 +1,5 @@
 uniform sampler2D uTextureSampler;
-varying lowp vec2 vTexCoord;
+varying highp vec2 vTexCoord;
 
 void main(void)
 {

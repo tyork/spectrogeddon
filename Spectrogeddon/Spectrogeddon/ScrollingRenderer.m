@@ -43,9 +43,6 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
 @property (nonatomic) GLuint vao;
 
 @property (nonatomic) GLuint mesh;
-
-@property (nonatomic) NSTimeInterval lastFrameTime;
-@property (nonatomic) float cumulativeOffset;
 @end
 
 @implementation ScrollingRenderer
@@ -168,23 +165,12 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
         glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, x));
         glVertexAttribPointer(self.texCoordAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, s));
     }
-
-    const NSTimeInterval nowTime = CACurrentMediaTime();
-    if(self.lastFrameTime)
-    {
-        self.cumulativeOffset -= (nowTime - self.lastFrameTime) * self.scrollingSpeed / 2.0f;
-        if(self.cumulativeOffset < -1.0f)
-        {
-            self.cumulativeOffset = 0.0f;
-        }
-    }
-    self.lastFrameTime = nowTime;
     
     glBindTexture(GL_TEXTURE_2D, self.frameTexture);
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
-    const GLKVector2 vectorOffset = GLKVector2Make(self.cumulativeOffset, 0.0f);
+    const GLKVector2 vectorOffset = GLKVector2Make(self.currentPosition, 0.0f);
     glUniform2fv(self.texOffsetUniform, 1, vectorOffset.v);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
@@ -213,10 +199,10 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     glBindBuffer(GL_ARRAY_BUFFER, meshName);
     
     static const TexturedVertexAttribs bufferMesh[NumberOfBufferVertices] = {
-        { +1.0f, +1.0f, 0.0f, 1.0f },
-        { +1.0f, -1.0f, 0.0f, 0.0f },
-        { -1.0f, +1.0f, 1.0f, 1.0f },
-        { -1.0f, -1.0f, 1.0f, 0.0f }
+        { -1.0f, +1.0f, 0.0f, 1.0f },
+        { -1.0f, -1.0f, 0.0f, 0.0f },
+        { +1.0f, +1.0f, 1.0f, 1.0f },
+        { +1.0f, -1.0f, 1.0f, 0.0f }
     };
     
     glBufferData(GL_ARRAY_BUFFER, sizeof(bufferMesh), bufferMesh, GL_STATIC_DRAW);

@@ -23,13 +23,11 @@ typedef struct
 @property (nonatomic,strong) GLKTextureInfo* texture;
 @property (nonatomic) GLuint shader;
 @property (nonatomic) GLint levelTextureSampler;
-@property (nonatomic) GLint levelAttribute;
 @property (nonatomic) GLint transformUniform;
+@property (nonatomic) GLint levelAttribute;
 @property (nonatomic) GLint positionAttribute;
-
 @property (nonatomic) GLuint mesh;
-@property (nonatomic) NSTimeInterval originTime;
-@property (nonatomic) NSTimeInterval lastDisplayedTime;
+
 @property (nonatomic) GLKMatrix4 transform;
 @property (nonatomic) LevelVertexAttribs* vertices;
 @property (nonatomic) GLsizei vertexCount;
@@ -54,7 +52,7 @@ typedef struct
     }
 }
 
-- (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence
+- (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence offset:(float)offset width:(float)width
 {
     if(!timeSequence.numberOfValues)
     {
@@ -68,31 +66,19 @@ typedef struct
         free(self.vertices);
         self.vertexCount = vertexCountForSequence;
         self.vertices = (LevelVertexAttribs*)calloc(self.vertexCount, sizeof(LevelVertexAttribs));
-
+        const float yScale = 2.0f / (float)(timeSequence.numberOfValues - 1);
+        
         for(NSUInteger valueIndex = 0; valueIndex < timeSequence.numberOfValues; valueIndex++)
         {
             const NSUInteger vertexIndex = valueIndex << 1;
-            const float y = (float)valueIndex;
+            const float y = (float)valueIndex * yScale;
             self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
             self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
         }
     }
-    
-    if(!self.originTime)
-    {
-        self.originTime = timeSequence.timeStamp;
-        self.lastDisplayedTime = timeSequence.timeStamp;
-    }
-    
-    float x = 1.0f - self.scrollingSpeed * (self.lastDisplayedTime - self.originTime);
-    if(x < -1.0f)
-    {
-        self.originTime = self.lastDisplayedTime;
-        x = 1.0f;
-    }
-    
-    const GLKMatrix4 translation = GLKMatrix4MakeTranslation(x, -1.0f, 0.0f);
-    self.transform = GLKMatrix4Scale(translation, self.scrollingSpeed * timeSequence.duration, 2.0f/(float)(timeSequence.numberOfValues - 1), 1.0f);
+
+    const GLKMatrix4 translation = GLKMatrix4MakeTranslation(offset, -1.0f, 0.0f);
+    self.transform = GLKMatrix4Scale(translation, width, 1.0f, 1.0f);
     
     for(NSUInteger valueIndex = 0; valueIndex < timeSequence.numberOfValues; valueIndex++)
     {
@@ -101,7 +87,6 @@ typedef struct
         self.vertices[vertexIndex].level = value;
         self.vertices[vertexIndex+1].level = value;
     }
-    self.lastDisplayedTime = self.lastDisplayedTime + timeSequence.duration;
 }
 
 - (void)render

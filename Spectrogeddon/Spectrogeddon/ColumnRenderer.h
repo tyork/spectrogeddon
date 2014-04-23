@@ -10,12 +10,14 @@
 
 @class TimeSequence;
 
+/**
+ Renders a column, a single measurement set.
+ */
 @interface ColumnRenderer : NSObject
 
-@property (nonatomic) float scrollingSpeed;
 @property (nonatomic,strong) UIImage* colorMapImage;
 
-- (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence;
+- (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence offset:(float)offset width:(float)width;
 
 - (void)render;
 

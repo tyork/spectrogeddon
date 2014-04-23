@@ -10,15 +10,20 @@
 #import "RendererDefs.h"
 #import "ScrollingRenderer.h"
 #import "ColumnRenderer.h"
+#import "TimeSequence.h"
 
 static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 
 @interface GLDisplay ()
-@property (nonatomic) BOOL needsRedisplay;
 @property (nonatomic,strong) EAGLContext* context;
 
 @property (nonatomic,strong) ColumnRenderer* columnRenderer;
 @property (nonatomic,strong) ScrollingRenderer* scrollingRenderer;
+
+@property (nonatomic) NSTimeInterval sampleOriginTime;
+///@property (nonatomic) NSTimeInterval frameOriginTime;
+@property (nonatomic) NSTimeInterval lastRenderedSampleTime;
+@property (nonatomic) float scrollingSpeed;
 @end
 
 @implementation GLDisplay
@@ -28,13 +33,95 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     if((self = [super init]))
     {
         _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        _scrollingSpeed = DefaultScrollingSpeed;
         _scrollingRenderer = [[ScrollingRenderer alloc] init];
-        _scrollingRenderer.scrollingSpeed = DefaultScrollingSpeed;
         _columnRenderer = [[ColumnRenderer alloc] init];
-        _columnRenderer.scrollingSpeed = DefaultScrollingSpeed;
     }
     return self;
 }
+
+#pragma mark - Interaction with GLKView -
+
+- (void)setGlView:(GLKView *)glView
+{
+    if(_glView != glView)
+    {
+        _glView = glView;
+        _glView.delegate = self;
+        _glView.context = self.context;
+    }
+}
+
+- (void)redisplay
+{
+    [self.glView display];
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+///    const NSTimeInterval nowTime = CACurrentMediaTime();
+/*    if(!self.frameOriginTime && self.sampleOriginTime)
+    {
+        self.frameOriginTime = nowTime;
+    }
+*/
+    float position = [self widthFromTimeInterval:self.lastRenderedSampleTime - self.sampleOriginTime];
+    if(position > 1.0f)
+    {
+///        self.frameOriginTime = nowTime;
+        position -= floorf(position);
+    }
+    self.scrollingRenderer.currentPosition = position;
+
+    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    [self.scrollingRenderer render];
+
+    GL_DEBUG_GENERAL;
+}
+
+#pragma mark - Sample handling -
+
+- (void)appendTimeSequence:(TimeSequence*)timeSequence
+{
+    [self updateColumnWithSequence:timeSequence];
+    id __weak weakSelf = self;
+    [self.scrollingRenderer drawContentWithWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight commands:^{
+        
+        GLDisplay* strongSelf = weakSelf;
+        if(strongSelf)
+        {
+            [EAGLContext setCurrentContext:strongSelf.context];
+            [strongSelf.columnRenderer render];
+            self.lastRenderedSampleTime = timeSequence.timeStamp;
+        }
+    }];
+}
+
+- (void)updateColumnWithSequence:(TimeSequence*)timeSequence
+{
+    if(!self.sampleOriginTime)
+    {
+        self.sampleOriginTime = timeSequence.timeStamp;
+    }
+    
+    float baseOffset = [self widthFromTimeInterval:(timeSequence.timeStamp - self.sampleOriginTime)];
+    if(baseOffset > 1.0f)
+    {
+        self.sampleOriginTime = timeSequence.timeStamp + timeSequence.duration;
+        baseOffset -= floorf(baseOffset);
+    }
+    
+    const float width = -2.0f*[self widthFromTimeInterval:timeSequence.duration];   // dodgy magic factor - should fill up to previous sample.
+    [self.columnRenderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width];
+}
+
+- (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
+{
+    return self.scrollingSpeed * timeInterval;
+}
+
+#pragma mark - Expose color map property -
 
 + (NSSet*)keyPathsForValuesAffectingColorMapImage
 {
@@ -49,50 +136,6 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 - (UIImage*)colorMapImage
 {
     return self.columnRenderer.colorMapImage;
-}
-
-- (void)setGlView:(GLKView *)glView
-{
-    if(_glView != glView)
-    {
-        _glView = glView;
-        _glView.delegate = self;
-        _glView.context = self.context;
-        self.needsRedisplay = YES;
-    }
-}
-
-- (void)redisplay
-{
-    if(self.needsRedisplay)
-    {
-        [self.glView display];
-    }
-}
-
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
-{
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    [self.scrollingRenderer render];
-
-    GL_DEBUG_GENERAL;
-}
-
-- (void)appendTimeSequence:(TimeSequence*)timeSequence
-{
-    [self.columnRenderer updateVerticesForTimeSequence:timeSequence];
-    id __weak weakSelf = self;
-    [self.scrollingRenderer drawContentWithWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight commands:^{
-        
-        GLDisplay* strongSelf = weakSelf;
-        if(strongSelf)
-        {
-            [EAGLContext setCurrentContext:strongSelf.context];
-            [strongSelf.columnRenderer render];
-        }
-    }];
 }
 
 @end

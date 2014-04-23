@@ -10,6 +10,9 @@
 
 @class TimeSequence;
 
+/**
+ Manages display of a series of samples via OpenGL ES.
+ */
 @interface GLDisplay : NSObject <GLKViewDelegate>
 
 @property (nonatomic,weak) GLKView* glView;
