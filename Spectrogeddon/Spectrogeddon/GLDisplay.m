@@ -20,8 +20,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 @property (nonatomic,strong) ColumnRenderer* columnRenderer;
 @property (nonatomic,strong) ScrollingRenderer* scrollingRenderer;
 
-@property (nonatomic) NSTimeInterval sampleOriginTime;
-///@property (nonatomic) NSTimeInterval frameOriginTime;
+@property (nonatomic) NSTimeInterval frameOriginTime;
 @property (nonatomic) NSTimeInterval lastRenderedSampleTime;
 @property (nonatomic) float scrollingSpeed;
 @end
@@ -59,16 +58,16 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-///    const NSTimeInterval nowTime = CACurrentMediaTime();
-/*    if(!self.frameOriginTime && self.sampleOriginTime)
+    const NSTimeInterval nowTime = CACurrentMediaTime();
+    if(!self.frameOriginTime)
     {
         self.frameOriginTime = nowTime;
     }
-*/
-    float position = [self widthFromTimeInterval:self.lastRenderedSampleTime - self.sampleOriginTime];
+
+    float position = [self widthFromTimeInterval:nowTime - self.frameOriginTime];
     if(position > 1.0f)
     {
-///        self.frameOriginTime = nowTime;
+        self.frameOriginTime = nowTime;
         position -= floorf(position);
     }
     self.scrollingRenderer.currentPosition = position;
@@ -100,20 +99,14 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 
 - (void)updateColumnWithSequence:(TimeSequence*)timeSequence
 {
-    if(!self.sampleOriginTime)
-    {
-        self.sampleOriginTime = timeSequence.timeStamp;
-    }
-    
-    float baseOffset = [self widthFromTimeInterval:(timeSequence.timeStamp - self.sampleOriginTime)];
+    float baseOffset = [self widthFromTimeInterval:(timeSequence.timeStamp - self.frameOriginTime)];
     if(baseOffset > 1.0f)
     {
-        self.sampleOriginTime = timeSequence.timeStamp + timeSequence.duration;
         baseOffset -= floorf(baseOffset);
     }
     
-    const float width = -2.0f*[self widthFromTimeInterval:timeSequence.duration];   // dodgy magic factor - should fill up to previous sample.
-    [self.columnRenderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width];
+    const float width = [self widthFromTimeInterval:timeSequence.duration + timeSequence.timeStamp - self.lastRenderedSampleTime];
+    [self.columnRenderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width]; // dodgy magic factor of 2 applied to width - should fill up to previous sample.
 }
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
