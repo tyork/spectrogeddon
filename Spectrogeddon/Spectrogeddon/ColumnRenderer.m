@@ -72,8 +72,9 @@ typedef struct
         {
             const NSUInteger vertexIndex = valueIndex << 1;
             const float y = (float)valueIndex * yScale;
-            self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
-            self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
+            const float yprime = 4.0f*log2f(0.5f*y+1.0f);
+            self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, yprime, 0.0f };
+            self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, yprime, 0.0f };
         }
     }
 
