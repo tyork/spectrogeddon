@@ -61,9 +61,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     
     // Create a window function.
     _windowFunction = (float*)calloc(_paddedSampleCount, sizeof(float));
-    vDSP_hann_window(_windowFunction, _paddedSampleCount, vDSP_HANN_NORM);
-    const float divisor = 3.0f;
-    vDSP_vsdiv(_windowFunction, 1, &divisor, _windowFunction, 1, _paddedSampleCount/2);
+    vDSP_hann_window(_windowFunction, _paddedSampleCount, vDSP_HANN_DENORM);    // We use a denormalized window as we're interested in having the largest bin be 1.0 (not the total power)
 }
 
 - (void)clearInternalStorage
@@ -85,10 +83,16 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
 
 - (TimeSequence*)transformSequence:(TimeSequence*)sequence
 {
+    if(!sequence.numberOfValues)
+    {
+        return nil;
+    }
     [self configureInternalStorageForNumberOfValues:sequence.numberOfValues];
     
     // Apply window
     const float* rawValues = [sequence rawValues];
+//    const float f = 1.0f;
+//    vDSP_vfill(&f, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
     vDSP_vmul(rawValues, 1, _windowFunction, 1, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
     
     // Compute the out-of-place FFT.
@@ -96,6 +100,28 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     
     // Compute magnitudes for the FFT frequency bins. Note that as the input is real we can effectively ignore the upper half of the output from the FFT because it's the complex conjugate of the lower half and so carries the same magnitude.
     vDSP_zvabs(&_fftOutput, 1, _magnitudeOutput, 1, _paddedSampleCount/2);
+    const float GAIN = 16.0f;
+    const float scale = 2.0f / (float)_paddedSampleCount * GAIN;
+    vDSP_vsmul(_magnitudeOutput, 1, &scale, _magnitudeOutput, 1, _paddedSampleCount/2);
+    
+//    vDSP_zvmags(&_fftOutput, 1, _magnitudeOutput, 1, _paddedSampleCount/2);
+    
+///    const float toffset = 1.0f;
+///    vDSP_vdbcon(_magnitudeOutput, 1, &toffset, _dbOutput, 1, _paddedSampleCount/2, 0);
+///    vDSP_vsmul(_dbOutput, 1, &scale, _magnitudeOutput, 1, _paddedSampleCount/2);
+    
+    float min = 0.0f;
+    vDSP_minv(_magnitudeOutput, 1, &min, _paddedSampleCount/2);
+    float max = 0.0f;
+    vDSP_maxv(_magnitudeOutput, 1, &max, _paddedSampleCount/2);
+    static float minSoFar;
+    static float maxSoFar;
+    if(max > maxSoFar || min < minSoFar)
+    {
+        minSoFar = MIN(min, minSoFar);
+        maxSoFar = MAX(max, maxSoFar);
+        DLOG(@"min: %.2f max: %.2f (%.2f)", minSoFar, maxSoFar, maxSoFar - minSoFar);
+    }
     
     // Create time sequence from magnitudes.
     TimeSequence* transformedSequence = [[TimeSequence alloc] initWithNumberOfValues:_paddedSampleCount/2 values:_magnitudeOutput];
