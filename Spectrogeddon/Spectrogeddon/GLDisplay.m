@@ -106,7 +106,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     }
     
     const float width = [self widthFromTimeInterval:timeSequence.duration + timeSequence.timeStamp - self.lastRenderedSampleTime];
-    [self.columnRenderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width]; // dodgy magic factor of 2 applied to width - should fill up to previous sample.
+    [self.columnRenderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width];
 }
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
