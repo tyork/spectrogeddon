@@ -27,6 +27,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     DSPSplitComplex _normalizedWindowedInput;
     DSPSplitComplex _fftOutput;
     float* _magnitudeOutput;
+    float* _dbOutput;
     NSUInteger _paddedSampleCountAsPowerOfTwo;
     NSUInteger _paddedSampleCount;
 }
@@ -50,7 +51,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     
     // Create storage for the magnitudes of the FFTed data.
     _magnitudeOutput = (float*)calloc(_paddedSampleCount/2, sizeof(float));
-    
+    _dbOutput = (float*)calloc(_paddedSampleCount/2, sizeof(float));
     // Prepare space for the FFT
     _fftOutput.realp = (float*)calloc(_paddedSampleCount, sizeof(float));
     _fftOutput.imagp = (float*)calloc(_paddedSampleCount, sizeof(float));
@@ -61,6 +62,8 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     // Create a window function.
     _windowFunction = (float*)calloc(_paddedSampleCount, sizeof(float));
     vDSP_hann_window(_windowFunction, _paddedSampleCount, vDSP_HANN_NORM);
+    const float divisor = 3.0f;
+    vDSP_vsdiv(_windowFunction, 1, &divisor, _windowFunction, 1, _paddedSampleCount/2);
 }
 
 - (void)clearInternalStorage
@@ -71,6 +74,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     free(_fftOutput.realp);
     free(_fftOutput.imagp);
     free(_magnitudeOutput);
+    free(_dbOutput);
     vDSP_destroy_fftsetup(_fftConfig);
 }
 
@@ -84,7 +88,8 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     [self configureInternalStorageForNumberOfValues:sequence.numberOfValues];
     
     // Apply window
-    vDSP_vmul([sequence rawValues], 1, _windowFunction, 1, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
+    const float* rawValues = [sequence rawValues];
+    vDSP_vmul(rawValues, 1, _windowFunction, 1, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
     
     // Compute the out-of-place FFT.
     vDSP_fft_zop(_fftConfig, &_normalizedWindowedInput, 1, &_fftOutput, 1, _paddedSampleCountAsPowerOfTwo, FFT_FORWARD);
