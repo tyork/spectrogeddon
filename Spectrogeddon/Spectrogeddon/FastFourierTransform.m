@@ -26,8 +26,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     FFTSetup _fftConfig;
     DSPSplitComplex _normalizedWindowedInput;
     DSPSplitComplex _fftOutput;
-    float* _magnitudeOutput;
-    float* _dbOutput;
+    float* _displayOutput;
     NSUInteger _paddedSampleCountAsPowerOfTwo;
     NSUInteger _paddedSampleCount;
 }
@@ -50,8 +49,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     _normalizedWindowedInput.imagp = (float*)calloc(_paddedSampleCount, sizeof(float));       // The imaginary components of the input signal are always zero so we can allocate and forget them with calloc (zeroes content).
     
     // Create storage for the magnitudes of the FFTed data.
-    _magnitudeOutput = (float*)calloc(_paddedSampleCount/2, sizeof(float));
-    _dbOutput = (float*)calloc(_paddedSampleCount/2, sizeof(float));
+    _displayOutput = (float*)calloc(_paddedSampleCount/2, sizeof(float));
     // Prepare space for the FFT
     _fftOutput.realp = (float*)calloc(_paddedSampleCount, sizeof(float));
     _fftOutput.imagp = (float*)calloc(_paddedSampleCount, sizeof(float));
@@ -71,8 +69,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     free(_normalizedWindowedInput.imagp);
     free(_fftOutput.realp);
     free(_fftOutput.imagp);
-    free(_magnitudeOutput);
-    free(_dbOutput);
+    free(_displayOutput);
     vDSP_destroy_fftsetup(_fftConfig);
 }
 
@@ -91,40 +88,38 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     
     // Apply window
     const float* rawValues = [sequence rawValues];
-//    const float f = 1.0f;
-//    vDSP_vfill(&f, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
     vDSP_vmul(rawValues, 1, _windowFunction, 1, _normalizedWindowedInput.realp, 1, sequence.numberOfValues);
     
     // Compute the out-of-place FFT.
     vDSP_fft_zop(_fftConfig, &_normalizedWindowedInput, 1, &_fftOutput, 1, _paddedSampleCountAsPowerOfTwo, FFT_FORWARD);
     
-    // Compute magnitudes for the FFT frequency bins. Note that as the input is real we can effectively ignore the upper half of the output from the FFT because it's the complex conjugate of the lower half and so carries the same magnitude.
-    vDSP_zvabs(&_fftOutput, 1, _magnitudeOutput, 1, _paddedSampleCount/2);
-    const float GAIN = 16.0f;
-    const float scale = 2.0f / (float)_paddedSampleCount * GAIN;
-    vDSP_vsmul(_magnitudeOutput, 1, &scale, _magnitudeOutput, 1, _paddedSampleCount/2);
+    // Compute squares of the absolute values of the FFT frequency bins. This gets us a power spectrum.
+    // Note that as the input is real we ignore the upper half of the output from the FFT because it's the complex conjugate of the lower half and so carries the same magnitude.
+    const NSUInteger numberOfOutputBins = _paddedSampleCount/2;
+    vDSP_zvmags(&_fftOutput, 1, _displayOutput, 1, numberOfOutputBins);
     
-//    vDSP_zvmags(&_fftOutput, 1, _magnitudeOutput, 1, _paddedSampleCount/2);
-    
-///    const float toffset = 1.0f;
-///    vDSP_vdbcon(_magnitudeOutput, 1, &toffset, _dbOutput, 1, _paddedSampleCount/2, 0);
-///    vDSP_vsmul(_dbOutput, 1, &scale, _magnitudeOutput, 1, _paddedSampleCount/2);
-    
-    float min = 0.0f;
-    vDSP_minv(_magnitudeOutput, 1, &min, _paddedSampleCount/2);
-    float max = 0.0f;
-    vDSP_maxv(_magnitudeOutput, 1, &max, _paddedSampleCount/2);
-    static float minSoFar;
-    static float maxSoFar;
-    if(max > maxSoFar || min < minSoFar)
-    {
-        minSoFar = MIN(min, minSoFar);
-        maxSoFar = MAX(max, maxSoFar);
-        DLOG(@"min: %.2f max: %.2f (%.2f)", minSoFar, maxSoFar, maxSoFar - minSoFar);
-    }
+    // Normalize according to Parseval's theorem. After this, the biggest possible power spectrum bin value is 1.0.
+    const float parsevalNorm = powf(1.0f / (float)numberOfOutputBins, 2.0f);
+    vDSP_vsmul(_displayOutput, 1, &parsevalNorm, _displayOutput, 1, numberOfOutputBins);
+
+    // Convert to a decibel scale using 1.0f (no offset), so we range from -inf to 0.0.
+    const float dummyDbOffset = 1.0f;
+    vDSP_vdbcon(_displayOutput, 1, &dummyDbOffset, _displayOutput, 1, numberOfOutputBins, 0);  // 0 = power.
+
+    // Because we fed normalized floats into vdbcon, we'll have some -inf values - clip these and replace with -144db.
+    const float clipMinDb = -144.0f;
+    const float clipMaxDb = 0.0f;
+    vDSP_vclip(_displayOutput, 1, &clipMinDb, &clipMaxDb, _displayOutput, 1, numberOfOutputBins);
+
+    // In future we can drive these off the SNR.
+    // Map -144..0db into the normalized output range 0..1.
+    // We could get rid of this as a separate stage by manipulating earlier stages, but this is clearer.
+    const float brightness = 1.0f;
+    const float contrast = 1.0f/(clipMaxDb - clipMinDb);
+    vDSP_vsmsa(_displayOutput, 1, &contrast, &brightness, _displayOutput, 1, numberOfOutputBins);
     
     // Create time sequence from magnitudes.
-    TimeSequence* transformedSequence = [[TimeSequence alloc] initWithNumberOfValues:_paddedSampleCount/2 values:_magnitudeOutput];
+    TimeSequence* transformedSequence = [[TimeSequence alloc] initWithNumberOfValues:numberOfOutputBins values:_displayOutput];
     transformedSequence.timeStamp = sequence.timeStamp;
     transformedSequence.duration = sequence.duration;
     return transformedSequence;
