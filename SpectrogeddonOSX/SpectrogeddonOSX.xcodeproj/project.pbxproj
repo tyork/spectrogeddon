@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19F66889190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
+		19F66893190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F66891190AA3AF00D2DE77 /* InfoPlist.strings */; };
+		19F66895190AA3AF00D2DE77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66894190AA3AF00D2DE77 /* main.m */; };
+		19F66899190AA3AF00D2DE77 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 19F66897190AA3AF00D2DE77 /* Credits.rtf */; };
+		19F6689C190AA3AF00D2DE77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6689B190AA3AF00D2DE77 /* AppDelegate.m */; };
+		19F6689F190AA3AF00D2DE77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F6689D190AA3AF00D2DE77 /* MainMenu.xib */; };
+		19F668A1190AA3AF00D2DE77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F668A0190AA3AF00D2DE77 /* Images.xcassets */; };
+		19F668A8190AA3AF00D2DE77 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F668A7190AA3AF00D2DE77 /* XCTest.framework */; };
+		19F668A9190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
+		19F668B1190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */; };
+		19F668B3190AA3B000D2DE77 /* SpectrogeddonOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19F668AA190AA3AF00D2DE77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19F6687D190AA3AF00D2DE77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19F66884190AA3AF00D2DE77;
+			remoteInfo = SpectrogeddonOSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		19F6688B190AA3AF00D2DE77 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		19F6688C190AA3AF00D2DE77 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		19F6688D190AA3AF00D2DE77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		19F66890190AA3AF00D2DE77 /* SpectrogeddonOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonOSX-Info.plist"; sourceTree = "<group>"; };
+		19F66892190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		19F66894190AA3AF00D2DE77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		19F66896190AA3AF00D2DE77 /* SpectrogeddonOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonOSX-Prefix.pch"; sourceTree = "<group>"; };
+		19F66898190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		19F6689A190AA3AF00D2DE77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19F6689B190AA3AF00D2DE77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19F6689E190AA3AF00D2DE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		19F668A0190AA3AF00D2DE77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		19F668A6190AA3AF00D2DE77 /* SpectrogeddonOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrogeddonOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F668A7190AA3AF00D2DE77 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		19F668AE190AA3AF00D2DE77 /* SpectrogeddonOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonOSXTests-Info.plist"; sourceTree = "<group>"; };
+		19F668B0190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonOSXTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19F66882190AA3AF00D2DE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F66889190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19F668A3190AA3AF00D2DE77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F668A9190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */,
+				19F668A8190AA3AF00D2DE77 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19F6687C190AA3AF00D2DE77 = {
+			isa = PBXGroup;
+			children = (
+				19F6688E190AA3AF00D2DE77 /* SpectrogeddonOSX */,
+				19F668AC190AA3AF00D2DE77 /* SpectrogeddonOSXTests */,
+				19F66887190AA3AF00D2DE77 /* Frameworks */,
+				19F66886190AA3AF00D2DE77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		19F66886190AA3AF00D2DE77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */,
+				19F668A6190AA3AF00D2DE77 /* SpectrogeddonOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19F66887190AA3AF00D2DE77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19F66888190AA3AF00D2DE77 /* Cocoa.framework */,
+				19F668A7190AA3AF00D2DE77 /* XCTest.framework */,
+				19F6688A190AA3AF00D2DE77 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		19F6688A190AA3AF00D2DE77 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19F6688B190AA3AF00D2DE77 /* AppKit.framework */,
+				19F6688C190AA3AF00D2DE77 /* CoreData.framework */,
+				19F6688D190AA3AF00D2DE77 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19F6688E190AA3AF00D2DE77 /* SpectrogeddonOSX */ = {
+			isa = PBXGroup;
+			children = (
+				19F6689A190AA3AF00D2DE77 /* AppDelegate.h */,
+				19F6689B190AA3AF00D2DE77 /* AppDelegate.m */,
+				19F6689D190AA3AF00D2DE77 /* MainMenu.xib */,
+				19F668A0190AA3AF00D2DE77 /* Images.xcassets */,
+				19F6688F190AA3AF00D2DE77 /* Supporting Files */,
+			);
+			path = SpectrogeddonOSX;
+			sourceTree = "<group>";
+		};
+		19F6688F190AA3AF00D2DE77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19F66890190AA3AF00D2DE77 /* SpectrogeddonOSX-Info.plist */,
+				19F66891190AA3AF00D2DE77 /* InfoPlist.strings */,
+				19F66894190AA3AF00D2DE77 /* main.m */,
+				19F66896190AA3AF00D2DE77 /* SpectrogeddonOSX-Prefix.pch */,
+				19F66897190AA3AF00D2DE77 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19F668AC190AA3AF00D2DE77 /* SpectrogeddonOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */,
+				19F668AD190AA3AF00D2DE77 /* Supporting Files */,
+			);
+			path = SpectrogeddonOSXTests;
+			sourceTree = "<group>";
+		};
+		19F668AD190AA3AF00D2DE77 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19F668AE190AA3AF00D2DE77 /* SpectrogeddonOSXTests-Info.plist */,
+				19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19F66884190AA3AF00D2DE77 /* SpectrogeddonOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19F668B6190AA3B000D2DE77 /* Build configuration list for PBXNativeTarget "SpectrogeddonOSX" */;
+			buildPhases = (
+				19F66881190AA3AF00D2DE77 /* Sources */,
+				19F66882190AA3AF00D2DE77 /* Frameworks */,
+				19F66883190AA3AF00D2DE77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpectrogeddonOSX;
+			productName = SpectrogeddonOSX;
+			productReference = 19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19F668A5190AA3AF00D2DE77 /* SpectrogeddonOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19F668B9190AA3B000D2DE77 /* Build configuration list for PBXNativeTarget "SpectrogeddonOSXTests" */;
+			buildPhases = (
+				19F668A2190AA3AF00D2DE77 /* Sources */,
+				19F668A3190AA3AF00D2DE77 /* Frameworks */,
+				19F668A4190AA3AF00D2DE77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19F668AB190AA3AF00D2DE77 /* PBXTargetDependency */,
+			);
+			name = SpectrogeddonOSXTests;
+			productName = SpectrogeddonOSXTests;
+			productReference = 19F668A6190AA3AF00D2DE77 /* SpectrogeddonOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19F6687D190AA3AF00D2DE77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Spectrogeddon;
+				TargetAttributes = {
+					19F668A5190AA3AF00D2DE77 = {
+						TestTargetID = 19F66884190AA3AF00D2DE77;
+					};
+				};
+			};
+			buildConfigurationList = 19F66880190AA3AF00D2DE77 /* Build configuration list for PBXProject "SpectrogeddonOSX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19F6687C190AA3AF00D2DE77;
+			productRefGroup = 19F66886190AA3AF00D2DE77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19F66884190AA3AF00D2DE77 /* SpectrogeddonOSX */,
+				19F668A5190AA3AF00D2DE77 /* SpectrogeddonOSXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19F66883190AA3AF00D2DE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F66893190AA3AF00D2DE77 /* InfoPlist.strings in Resources */,
+				19F668A1190AA3AF00D2DE77 /* Images.xcassets in Resources */,
+				19F66899190AA3AF00D2DE77 /* Credits.rtf in Resources */,
+				19F6689F190AA3AF00D2DE77 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19F668A4190AA3AF00D2DE77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F668B1190AA3AF00D2DE77 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19F66881190AA3AF00D2DE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F6689C190AA3AF00D2DE77 /* AppDelegate.m in Sources */,
+				19F66895190AA3AF00D2DE77 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19F668A2190AA3AF00D2DE77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F668B3190AA3B000D2DE77 /* SpectrogeddonOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19F668AB190AA3AF00D2DE77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19F66884190AA3AF00D2DE77 /* SpectrogeddonOSX */;
+			targetProxy = 19F668AA190AA3AF00D2DE77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		19F66891190AA3AF00D2DE77 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19F66892190AA3AF00D2DE77 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		19F66897190AA3AF00D2DE77 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19F66898190AA3AF00D2DE77 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		19F6689D190AA3AF00D2DE77 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19F6689E190AA3AF00D2DE77 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19F668B0190AA3AF00D2DE77 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19F668B4190AA3B000D2DE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		19F668B5190AA3B000D2DE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		19F668B7190AA3B000D2DE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
+				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		19F668B8190AA3B000D2DE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
+				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		19F668BA190AA3B000D2DE77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpectrogeddonOSX.app/Contents/MacOS/SpectrogeddonOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SpectrogeddonOSXTests/SpectrogeddonOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		19F668BB190AA3B000D2DE77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpectrogeddonOSX.app/Contents/MacOS/SpectrogeddonOSX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
+				INFOPLIST_FILE = "SpectrogeddonOSXTests/SpectrogeddonOSXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19F66880190AA3AF00D2DE77 /* Build configuration list for PBXProject "SpectrogeddonOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19F668B4190AA3B000D2DE77 /* Debug */,
+				19F668B5190AA3B000D2DE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19F668B6190AA3B000D2DE77 /* Build configuration list for PBXNativeTarget "SpectrogeddonOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19F668B7190AA3B000D2DE77 /* Debug */,
+				19F668B8190AA3B000D2DE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		19F668B9190AA3B000D2DE77 /* Build configuration list for PBXNativeTarget "SpectrogeddonOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19F668BA190AA3B000D2DE77 /* Debug */,
+				19F668BB190AA3B000D2DE77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 19F6687D190AA3AF00D2DE77 /* Project object */;
+}
