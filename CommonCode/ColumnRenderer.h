@@ -15,7 +15,7 @@
  */
 @interface ColumnRenderer : NSObject
 
-@property (nonatomic,strong) UIImage* colorMapImage;
+@property (nonatomic,assign) CGImageRef colorMapImage;
 
 - (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence offset:(float)offset width:(float)width;
 

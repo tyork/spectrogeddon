@@ -23,10 +23,12 @@ static const NSUInteger BufferSize = 1024;
 
 + (void)requestPermissionToUseAudio:(void(^)(BOOL isAllowed))permissionBlock
 {
+#if TARGET_IPHONE_OS
     NSParameterAssert(permissionBlock);
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         permissionBlock(granted);
     }];
+#endif
 }
 
 - (id)initWithNotificationQueue:(dispatch_queue_t)notificationQueue block:(void(^)(TimeSequence* capturedAudio))block
@@ -36,9 +38,17 @@ static const NSUInteger BufferSize = 1024;
         _sampleQueue = dispatch_queue_create("com.spectrogeddon.audio.samples", DISPATCH_QUEUE_SERIAL);
         _ringBuffer = [[SampleBuffer alloc] initWithBufferSize:BufferSize];
         NSError* error = nil;
+#if TARGET_IPHONE_OS
         if(![self prepareAudioSession:[AVAudioSession sharedInstance] withError:&error])
         {
             DLOG(@"Failed to prepare audio session: %@", error);
+            self = nil;
+            return nil;
+        }
+#endif
+        if(![self prepareCaptureSessionWithError:&error])
+        {
+            DLOG(@"Failed to prepare capture session: %@", error);
             self = nil;
             return nil;
         }
@@ -56,6 +66,7 @@ static const NSUInteger BufferSize = 1024;
     [self.captureSession stopRunning];
 }
 
+#if TARGET_IPHONE_OS
 - (BOOL)prepareAudioSession:(AVAudioSession*)session withError:(NSError**)error
 {
     if(!([session setCategory:AVAudioSessionCategoryRecord error:error]))
@@ -67,7 +78,12 @@ static const NSUInteger BufferSize = 1024;
     {
         return NO;
     }
-    
+    return YES;
+}
+#endif
+
+- (BOOL)prepareCaptureSessionWithError:(NSError**)error
+{
     self.captureSession = [[AVCaptureSession alloc] init];
     
     NSArray* mics = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio];

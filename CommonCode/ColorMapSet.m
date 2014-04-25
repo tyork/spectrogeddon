@@ -30,6 +30,8 @@
     return self.imageNames.count;
 }
 
+#if TARGET_OS_IPHONE
+
 - (UIImage*)imageAtIndex:(NSUInteger)imageIndex
 {
     NSString* path = self.imageNames[imageIndex];
@@ -46,5 +48,26 @@
     }
     return nextColorMap;
 }
+
+#else
+
+- (NSImage*)imageAtIndex:(NSUInteger)imageIndex
+{
+    NSString* path = self.imageNames[imageIndex];
+    return [[NSImage alloc] initWithContentsOfFile:path];
+}
+
+- (NSImage*)nextColorMap
+{
+    NSImage* nextColorMap = [self imageAtIndex:self.colorMapIndex];
+    self.colorMapIndex = (self.colorMapIndex + 1);
+    if(self.colorMapIndex >= [self imageCount])
+    {
+        self.colorMapIndex = 0;
+    }
+    return nextColorMap;
+}
+
+#endif
 
 @end

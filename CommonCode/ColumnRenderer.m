@@ -41,13 +41,16 @@ typedef struct
     glDeleteProgram(_shader);
     glDeleteBuffers(1, &_mesh);
     free(_vertices);
+    CGImageRelease(_colorMapImage);
 }
 
-- (void)setColorMapImage:(UIImage *)colorMapImage
+- (void)setColorMapImage:(CGImageRef)colorMapImage
 {
     if(_colorMapImage != colorMapImage)
     {
+        CGImageRelease(_colorMapImage);
         _colorMapImage = colorMapImage;
+        CGImageRetain(colorMapImage);
         self.texture = nil;
     }
 }
@@ -94,7 +97,7 @@ typedef struct
 {
     if(!self.texture && self.colorMapImage)
     {
-        self.texture = [GLKTextureLoader textureWithCGImage:self.colorMapImage.CGImage options:nil error:nil];
+        self.texture = [GLKTextureLoader textureWithCGImage:self.colorMapImage options:nil error:nil];
     }
     if(!self.shader)
     {

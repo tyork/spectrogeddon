@@ -180,12 +180,12 @@
 		1901B83118FBFBA7002DE52F /* Spectrogeddon */ = {
 			isa = PBXGroup;
 			children = (
-				19F668E6190AA61100D2DE77 /* Model */,
-				19541FE21906D89900BC94BF /* ColorMaps */,
 				1901B83A18FBFBA7002DE52F /* AppDelegate.h */,
 				1901B83B18FBFBA7002DE52F /* AppDelegate.m */,
+				19541FE21906D89900BC94BF /* ColorMaps */,
 				19541F9F18FC2BA400BC94BF /* Controllers */,
 				1901B84618FBFBA7002DE52F /* Images.xcassets */,
+				19F668E6190AA61100D2DE77 /* Model */,
 				1901B83218FBFBA7002DE52F /* Supporting Files */,
 			);
 			path = Spectrogeddon;

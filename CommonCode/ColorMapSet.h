@@ -10,10 +10,10 @@
 
 @interface ColorMapSet : NSObject
 
-- (NSUInteger)imageCount;
-
-- (UIImage*)imageAtIndex:(NSUInteger)imageIndex;
-
-- (UIImage*)nextColorMap;
+#if TARGET_OS_IPHONE
+    - (UIImage*)nextColorMap;
+#else
+    - (NSImage*)nextColorMap;
+#endif
 
 @end
