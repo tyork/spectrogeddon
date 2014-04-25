@@ -27,6 +27,7 @@ typedef struct
 @property (nonatomic) GLint levelAttribute;
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLuint mesh;
+@property (nonatomic) GLuint vao;
 
 @property (nonatomic) GLKMatrix4 transform;
 @property (nonatomic) LevelVertexAttribs* vertices;
@@ -38,6 +39,11 @@ typedef struct
 
 - (void)dealloc
 {
+#if TARGET_OS_IPHONE
+    glDeleteVertexArraysOES(1, &_vao);
+#else
+    glDeleteVertexArrays(1, &_vao);
+#endif
     glDeleteProgram(_shader);
     glDeleteBuffers(1, &_mesh);
     free(_vertices);
@@ -108,7 +114,29 @@ typedef struct
         self.transformUniform = glGetUniformLocation(self.shader, "uTransform");
     }
     
+    const BOOL hasVAO = (self.vao != 0);
+    if(!hasVAO)
+    {
+        self.vao = [self generateVAO];
+    }
+    else
+    {
+#if TARGET_OS_IPHONE
+        glBindVertexArrayOES(self.vao);
+#else
+        glBindVertexArray(self.vao);
+#endif
+    }
+
     self.mesh = [self generateMeshUsingBufferName:self.mesh];
+
+    if(!hasVAO)
+    {
+        glEnableVertexAttribArray(self.positionAttribute);
+        glEnableVertexAttribArray(self.levelAttribute);
+        glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, x));
+        glVertexAttribPointer(self.levelAttribute, 1, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, level));
+    }
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, self.texture.name);
@@ -117,11 +145,18 @@ typedef struct
     glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
     
     glBindBuffer(GL_ARRAY_BUFFER, self.mesh);
-    glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, x));
-    glVertexAttribPointer(self.levelAttribute, 1, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, level));
-    glEnableVertexAttribArray(self.positionAttribute);
-    glEnableVertexAttribArray(self.levelAttribute);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, self.vertexCount);
+
+#if TARGET_OS_IPHONE
+    glBindVertexArrayOES(0);
+#else
+    glBindVertexArray(0);
+#endif
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    GL_DEBUG_GENERAL;
+
 }
 
 - (GLuint)generateMeshUsingBufferName:(GLuint)bufferName
@@ -141,6 +176,22 @@ typedef struct
     GL_DEBUG_GENERAL;
     
     return bufferName;
+}
+
+- (GLuint)generateVAO
+{
+    GLuint vaoIndex = 0;
+#if TARGET_OS_IPHONE
+    glGenVertexArraysOES(1, &vaoIndex);
+    glBindVertexArrayOES(vaoIndex);
+#else
+    glGenVertexArrays(1, &vaoIndex);
+    glBindVertexArray(vaoIndex);
+#endif
+    
+    GL_DEBUG_GENERAL;
+    
+    return vaoIndex;
 }
 
 @end
