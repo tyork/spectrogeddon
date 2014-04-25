@@ -24,7 +24,6 @@
 		19F66935190AA86C00D2DE77 /* ColumnShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F6691D190AA86C00D2DE77 /* ColumnShader.fsh */; };
 		19F66936190AA86C00D2DE77 /* ColumnShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F6691E190AA86C00D2DE77 /* ColumnShader.vsh */; };
 		19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66920190AA86C00D2DE77 /* FastFourierTransform.m */; };
-		19F66938190AA86C00D2DE77 /* GLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66922190AA86C00D2DE77 /* GLDisplay.m */; };
 		19F66939190AA86C00D2DE77 /* MicAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66924190AA86C00D2DE77 /* MicAudioSource.m */; };
 		19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66927190AA86C00D2DE77 /* RendererUtils.m */; };
 		19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66929190AA86C00D2DE77 /* SampleBuffer.m */; };
@@ -38,6 +37,7 @@
 		19F66949190AA90000D2DE77 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66947190AA90000D2DE77 /* OpenGL.framework */; };
 		19F6694B190AA91000D2DE77 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694A190AA91000D2DE77 /* AVFoundation.framework */; };
 		19F6694D190AA92300D2DE77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694C190AA92300D2DE77 /* QuartzCore.framework */; };
+		19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66954190AB25F00D2DE77 /* GLRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,6 @@
 		19F6691E190AA86C00D2DE77 /* ColumnShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ColumnShader.vsh; path = ../../CommonCode/ColumnShader.vsh; sourceTree = "<group>"; };
 		19F6691F190AA86C00D2DE77 /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastFourierTransform.h; path = ../../CommonCode/FastFourierTransform.h; sourceTree = "<group>"; };
 		19F66920190AA86C00D2DE77 /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastFourierTransform.m; path = ../../CommonCode/FastFourierTransform.m; sourceTree = "<group>"; };
-		19F66921190AA86C00D2DE77 /* GLDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLDisplay.h; path = ../../CommonCode/GLDisplay.h; sourceTree = "<group>"; };
-		19F66922190AA86C00D2DE77 /* GLDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLDisplay.m; path = ../../CommonCode/GLDisplay.m; sourceTree = "<group>"; };
 		19F66923190AA86C00D2DE77 /* MicAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MicAudioSource.h; path = ../../CommonCode/MicAudioSource.h; sourceTree = "<group>"; };
 		19F66924190AA86C00D2DE77 /* MicAudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MicAudioSource.m; path = ../../CommonCode/MicAudioSource.m; sourceTree = "<group>"; };
 		19F66925190AA86C00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererDefs.h; path = ../../CommonCode/RendererDefs.h; sourceTree = "<group>"; };
@@ -102,6 +100,8 @@
 		19F66947190AA90000D2DE77 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		19F6694A190AA91000D2DE77 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19F6694C190AA92300D2DE77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		19F66954190AB25F00D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLRenderer.m; path = ../../CommonCode/GLRenderer.m; sourceTree = "<group>"; };
+		19F66955190AB25F00D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLRenderer.h; path = ../../CommonCode/GLRenderer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +180,7 @@
 				19F66944190AA8C400D2DE77 /* ColorMaps */,
 				19F668A0190AA3AF00D2DE77 /* Images.xcassets */,
 				19F6689D190AA3AF00D2DE77 /* MainMenu.xib */,
-				19F668EA190AA70400D2DE77 /* Model */,
+				19F668EA190AA70400D2DE77 /* CommonModel */,
 				19F6688F190AA3AF00D2DE77 /* Supporting Files */,
 			);
 			path = SpectrogeddonOSX;
@@ -216,14 +216,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		19F668EA190AA70400D2DE77 /* Model */ = {
+		19F668EA190AA70400D2DE77 /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
 				19F66943190AA89300D2DE77 /* Display */,
 				19F66942190AA88300D2DE77 /* AudioProcessing */,
 				19F66941190AA86F00D2DE77 /* AudioAcquisition */,
 			);
-			name = Model;
+			name = CommonModel;
 			sourceTree = "<group>";
 		};
 		19F66941190AA86F00D2DE77 /* AudioAcquisition */ = {
@@ -261,8 +261,8 @@
 				19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */,
 				19F6691D190AA86C00D2DE77 /* ColumnShader.fsh */,
 				19F6691E190AA86C00D2DE77 /* ColumnShader.vsh */,
-				19F66921190AA86C00D2DE77 /* GLDisplay.h */,
-				19F66922190AA86C00D2DE77 /* GLDisplay.m */,
+				19F66955190AB25F00D2DE77 /* GLRenderer.h */,
+				19F66954190AB25F00D2DE77 /* GLRenderer.m */,
 				19F66925190AA86C00D2DE77 /* RendererDefs.h */,
 				19F66926190AA86C00D2DE77 /* RendererUtils.h */,
 				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
@@ -382,12 +382,12 @@
 				19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */,
 				19F66895190AA3AF00D2DE77 /* main.m in Sources */,
 				19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */,
+				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,
 				19F6693F190AA86C00D2DE77 /* SpectrumGenerator.m in Sources */,
-				19F66938190AA86C00D2DE77 /* GLDisplay.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* ScrollingRenderer.m in Sources */,
 				19F66939190AA86C00D2DE77 /* MicAudioSource.m in Sources */,
 			);

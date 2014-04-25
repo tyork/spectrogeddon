@@ -1,12 +1,12 @@
 //
-//  SpectrumRenderer.m
-//  Spectrogeddon
+//  GLRenderer.m
+//  SpectrogeddonOSX
 //
-//  Created by Tom York on 15/04/2014.
-//  
+//  Created by Tom York on 25/04/2014.
+//  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import "GLDisplay.h"
+#import "GLRenderer.h"
 #import "RendererDefs.h"
 #import "ScrollingRenderer.h"
 #import "ColumnRenderer.h"
@@ -14,9 +14,7 @@
 
 static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 
-@interface GLDisplay ()
-@property (nonatomic,strong) EAGLContext* context;
-
+@interface GLRenderer ()
 @property (nonatomic,strong) ColumnRenderer* columnRenderer;
 @property (nonatomic,strong) ScrollingRenderer* scrollingRenderer;
 
@@ -25,13 +23,12 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 @property (nonatomic) float scrollingSpeed;
 @end
 
-@implementation GLDisplay
+@implementation GLRenderer
 
 - (instancetype)init
 {
     if((self = [super init]))
     {
-        _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
         _scrollingSpeed = DefaultScrollingSpeed;
         _scrollingRenderer = [[ScrollingRenderer alloc] init];
         _columnRenderer = [[ColumnRenderer alloc] init];
@@ -39,31 +36,14 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     return self;
 }
 
-#pragma mark - Interaction with GLKView -
-
-- (void)setGlView:(GLKView *)glView
-{
-    if(_glView != glView)
-    {
-        _glView = glView;
-        _glView.delegate = self;
-        _glView.context = self.context;
-    }
-}
-
-- (void)redisplay
-{
-    [self.glView display];
-}
-
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+- (void)renderFrame
 {
     const NSTimeInterval nowTime = CACurrentMediaTime();
     if(!self.frameOriginTime)
     {
         self.frameOriginTime = nowTime;
     }
-
+    
     float position = [self widthFromTimeInterval:nowTime - self.frameOriginTime];
     if(position > 1.0f)
     {
@@ -71,30 +51,32 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
         position -= floorf(position);
     }
     self.scrollingRenderer.currentPosition = position;
-
+    
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     [self.scrollingRenderer render];
-
+    
     GL_DEBUG_GENERAL;
 }
 
-#pragma mark - Sample handling -
-
-- (void)appendTimeSequence:(TimeSequence*)timeSequence
+- (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence viewportWidth:(GLint)width height:(GLint)height
 {
     [self updateColumnWithSequence:timeSequence];
     id __weak weakSelf = self;
-    [self.scrollingRenderer drawContentWithWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight commands:^{
+    [self.scrollingRenderer drawContentWithWidth:width height:height commands:^{
         
-        GLDisplay* strongSelf = weakSelf;
+        GLRenderer* strongSelf = weakSelf;
         if(strongSelf)
         {
-            [EAGLContext setCurrentContext:strongSelf.context];
             [strongSelf.columnRenderer render];
             self.lastRenderedSampleTime = timeSequence.timeStamp;
         }
     }];
+}
+
+- (void)useColorMap:(CGImageRef)colorMap
+{
+    self.columnRenderer.colorMapImage = colorMap;
 }
 
 - (void)updateColumnWithSequence:(TimeSequence*)timeSequence
@@ -112,23 +94,6 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
     return self.scrollingSpeed * timeInterval;
-}
-
-#pragma mark - Expose color map property -
-
-+ (NSSet*)keyPathsForValuesAffectingColorMapImage
-{
-    return [NSSet setWithObject:@"sampleMesh.colorMapImage"];
-}
-
-- (void)setColorMapImage:(UIImage *)colorMapImage
-{
-    self.columnRenderer.colorMapImage = colorMapImage;
-}
-
-- (UIImage*)colorMapImage
-{
-    return self.columnRenderer.colorMapImage;
 }
 
 @end

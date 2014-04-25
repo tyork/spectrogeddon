@@ -10,12 +10,12 @@
 #import "SpectrumGenerator.h"
 #import "MicAudioSource.h"
 #import "TimeSequence.h"
-#import "GLDisplay.h"
+#import "MobileGLDisplay.h"
 #import "ColorMapSet.h"
 
 @interface ViewController () <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
-@property (nonatomic,strong) GLDisplay* renderer;
+@property (nonatomic,strong) MobileGLDisplay* renderer;
 @property (nonatomic,strong) ColorMapSet* colorMaps;
 @property (nonatomic,strong) CADisplayLink* displayLink;
 @end
@@ -44,7 +44,7 @@
     }
     if(!self.renderer)
     {
-        self.renderer = [[GLDisplay alloc] init];
+        self.renderer = [[MobileGLDisplay alloc] init];
     }
     if(!self.colorMaps)
     {
@@ -94,7 +94,7 @@
 
 - (void)spectrumGenerator:(SpectrumGenerator *)generator didGenerateSpectrum:(TimeSequence *)levels
 {
-    [self.renderer appendTimeSequence:levels];
+    [self.renderer addMeasurementToDisplayQueue:levels];
 }
 
 #pragma mark - Interactions - 
