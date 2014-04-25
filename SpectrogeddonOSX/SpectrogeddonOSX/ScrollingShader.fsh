@@ -1,7 +1,10 @@
+#version 150
+
 uniform sampler2D uTextureSampler;
-varying highp vec2 vTexCoord;
+in vec2 vTexCoord;
+out vec4 color;
 
 void main(void)
 {
-    gl_FragColor = texture2D(uTextureSampler, vTexCoord);
+    color = texture(uTextureSampler, vTexCoord);
 }

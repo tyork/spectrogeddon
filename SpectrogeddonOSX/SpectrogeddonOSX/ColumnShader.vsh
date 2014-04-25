@@ -1,8 +1,10 @@
-attribute vec4 aPosition;
-attribute float aLevel;
+#version 150
+
+in vec4 aPosition;
+in float aLevel;
 uniform mat4 uTransform;
 
-varying lowp vec2 vLevel;
+out vec2 vLevel;
 
 void main(void)
 {

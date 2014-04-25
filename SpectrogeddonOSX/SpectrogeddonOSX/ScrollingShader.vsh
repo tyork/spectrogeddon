@@ -1,8 +1,10 @@
-attribute vec4 aPosition;
-attribute vec2 aTexCoord;
-uniform highp vec2 uTexOffset;
+#version 150
 
-varying highp vec2 vTexCoord;
+in vec4 aPosition;
+in vec2 aTexCoord;
+uniform vec2 uTexOffset;
+
+out vec2 vTexCoord;
 
 void main(void)
 {
