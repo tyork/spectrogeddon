@@ -15,6 +15,23 @@
 
 @implementation DesktopOpenGLView
 
+- (void)awakeFromNib
+{
+    NSOpenGLPixelFormatAttribute attributes[] = {
+        NSOpenGLPFADoubleBuffer,
+        NSOpenGLPFAColorSize, 24,
+        NSOpenGLPFAAlphaSize, 8,
+        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+        0
+    };
+    
+    NSOpenGLPixelFormat* pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
+    
+    NSOpenGLContext* context = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:nil];
+    [self setPixelFormat:pixelFormat];
+    [self setOpenGLContext:context];
+}
+
 - (GLRenderer*)renderer
 {
     if(!_renderer)
@@ -49,9 +66,9 @@
 
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence
 {
-    // TODO: these always come back zero, fix.
-    GLint backingSize[2] = { 0, 0 };
-    [[self openGLContext] getValues:backingSize forParameter:NSOpenGLCPSurfaceBackingSize];
+    [[self openGLContext] makeCurrentContext];
+    // TODO: ignores retina
+    const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
     [self.renderer addMeasurementToDisplayQueue:timeSequence viewportWidth:backingSize[0] height:backingSize[1]];
 }
 
