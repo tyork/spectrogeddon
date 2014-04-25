@@ -1,1 +1,12 @@
 A rough-and-pseudoready spectrograph using OpenGLES.
+Uses the microphone on iOS.
+
+
+Outstanding issues:
+- Visual artifact due to lazy math when computing width of display.
+- Mac OSX project does not yet work; shaders are incorrect, and there are a couple of noted TODOs.
+
+Missing features:
+- Use noise estimate to adjust the floor for the signal display.
+- Make SampleBuffer a proper ring buffer to permit longer FFTs and overlaps.
+
