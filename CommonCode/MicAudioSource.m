@@ -23,7 +23,7 @@ static const NSUInteger BufferSize = 1024;
 
 + (void)requestPermissionToUseAudio:(void(^)(BOOL isAllowed))permissionBlock
 {
-#if TARGET_IPHONE_OS
+#if TARGET_OS_IPHONE
     NSParameterAssert(permissionBlock);
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
         permissionBlock(granted);
@@ -38,7 +38,7 @@ static const NSUInteger BufferSize = 1024;
         _sampleQueue = dispatch_queue_create("com.spectrogeddon.audio.samples", DISPATCH_QUEUE_SERIAL);
         _ringBuffer = [[SampleBuffer alloc] initWithBufferSize:BufferSize];
         NSError* error = nil;
-#if TARGET_IPHONE_OS
+#if TARGET_OS_IPHONE
         if(![self prepareAudioSession:[AVAudioSession sharedInstance] withError:&error])
         {
             DLOG(@"Failed to prepare audio session: %@", error);
@@ -66,7 +66,7 @@ static const NSUInteger BufferSize = 1024;
     [self.captureSession stopRunning];
 }
 
-#if TARGET_IPHONE_OS
+#if TARGET_OS_IPHONE
 - (BOOL)prepareAudioSession:(AVAudioSession*)session withError:(NSError**)error
 {
     if(!([session setCategory:AVAudioSessionCategoryRecord error:error]))
