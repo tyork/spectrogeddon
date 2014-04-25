@@ -182,7 +182,6 @@
 		19F6688E190AA3AF00D2DE77 /* SpectrogeddonOSX */ = {
 			isa = PBXGroup;
 			children = (
-				EEF830B4190AE20F00E8B2F2 /* Views */,
 				19F6689A190AA3AF00D2DE77 /* AppDelegate.h */,
 				19F6689B190AA3AF00D2DE77 /* AppDelegate.m */,
 				19F66944190AA8C400D2DE77 /* ColorMaps */,
@@ -190,6 +189,7 @@
 				19F668A0190AA3AF00D2DE77 /* Images.xcassets */,
 				19F6689D190AA3AF00D2DE77 /* MainMenu.xib */,
 				19F6688F190AA3AF00D2DE77 /* Supporting Files */,
+				EEF830B4190AE20F00E8B2F2 /* Views */,
 			);
 			path = SpectrogeddonOSX;
 			sourceTree = "<group>";

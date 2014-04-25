@@ -131,7 +131,6 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     }
     
     glViewport(0, 0, widthAsPOT, heightAsPOT);
-
     glCommands();
 }
 
@@ -190,7 +189,6 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     glBindVertexArray(0);
 #endif
     glBindTexture(GL_TEXTURE_2D, 0);
-
 }
 
 - (GLuint)generateVAO
