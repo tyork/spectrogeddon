@@ -115,6 +115,7 @@
 		19F6688E190AA3AF00D2DE77 /* SpectrogeddonOSX */ = {
 			isa = PBXGroup;
 			children = (
+				19F668EA190AA70400D2DE77 /* Model */,
 				19F6689A190AA3AF00D2DE77 /* AppDelegate.h */,
 				19F6689B190AA3AF00D2DE77 /* AppDelegate.m */,
 				19F6689D190AA3AF00D2DE77 /* MainMenu.xib */,
@@ -152,6 +153,21 @@
 				19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19F668EA190AA70400D2DE77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19F668EB190AA70A00D2DE77 /* Display */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		19F668EB190AA70A00D2DE77 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Display;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
