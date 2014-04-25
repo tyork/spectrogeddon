@@ -63,7 +63,11 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     
     if(self.vao)
     {
+#if TARGET_IPHONE_OS
         glDeleteVertexArraysOES(1, &_vao);
+#else
+        glDeleteVertexArrays(1, &_vao);
+#endif
         self.vao = 0;
     }
     
@@ -153,7 +157,11 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     }
     else
     {
+#if TARGET_IPHONE_OS
         glBindVertexArrayOES(self.vao);
+#else
+        glBindVertexArray(self.vao);
+#endif
     }
     
     if(!self.mesh)
@@ -176,7 +184,11 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+#if TARGET_IPHONE_OS
     glBindVertexArrayOES(0);
+#else
+    glBindVertexArray(0);
+#endif
     glBindTexture(GL_TEXTURE_2D, 0);
 
 }
@@ -184,8 +196,13 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
 - (GLuint)generateVAO
 {
     GLuint vaoIndex = 0;
+#if TARGET_IPHONE_OS
     glGenVertexArraysOES(1, &vaoIndex);
     glBindVertexArrayOES(vaoIndex);
+#else
+    glGenVertexArrays(1, &vaoIndex);
+    glBindVertexArray(vaoIndex);
+#endif
     
     GL_DEBUG_GENERAL;
 

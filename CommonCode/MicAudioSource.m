@@ -86,6 +86,7 @@ static const NSUInteger BufferSize = 1024;
 {
     self.captureSession = [[AVCaptureSession alloc] init];
     
+    // TODO: picks the wrong audio device on Mac OS X (line in rather than mic).
     NSArray* mics = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio];
     AVCaptureDevice* preferredMic = [mics lastObject];
     

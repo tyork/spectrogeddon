@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="glView" destination="wXy-ZW-lve" id="caL-Zl-vc7"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -667,14 +668,26 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="SpectrogeddonOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="SpectrogeddonOSX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="512" height="327"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <openGLView colorSize="5bit_RGB_8bit_Alpha" useAuxiliaryDepthBufferStencil="NO" useDoubleBufferingEnabled="YES" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-ZW-lve" customClass="DesktopOpenGLView">
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </openGLView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="wXy-ZW-lve" secondAttribute="bottom" id="TOm-U1-WfA"/>
+                    <constraint firstAttribute="trailing" secondItem="wXy-ZW-lve" secondAttribute="trailing" id="Ux6-tn-spM"/>
+                    <constraint firstItem="wXy-ZW-lve" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="c4S-Z0-TZY"/>
+                    <constraint firstItem="wXy-ZW-lve" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="cXO-Ld-PCz"/>
+                </constraints>
             </view>
         </window>
     </objects>

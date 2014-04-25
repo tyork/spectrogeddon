@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DesktopOpenGLView;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong) IBOutlet DesktopOpenGLView *glView;
 
 @end

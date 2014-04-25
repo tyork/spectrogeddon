@@ -38,6 +38,8 @@
 		19F6694B190AA91000D2DE77 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694A190AA91000D2DE77 /* AVFoundation.framework */; };
 		19F6694D190AA92300D2DE77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694C190AA92300D2DE77 /* QuartzCore.framework */; };
 		19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66954190AB25F00D2DE77 /* GLRenderer.m */; };
+		19F6695E190ABB8000D2DE77 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6695D190ABB8000D2DE77 /* CoreVideo.framework */; };
+		19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,9 @@
 		19F6694C190AA92300D2DE77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19F66954190AB25F00D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLRenderer.m; path = ../../CommonCode/GLRenderer.m; sourceTree = "<group>"; };
 		19F66955190AB25F00D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLRenderer.h; path = ../../CommonCode/GLRenderer.h; sourceTree = "<group>"; };
+		19F6695D190ABB8000D2DE77 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		19F6695F190AC30400D2DE77 /* DesktopOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopOpenGLView.h; sourceTree = "<group>"; };
+		19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopOpenGLView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F6695E190ABB8000D2DE77 /* CoreVideo.framework in Frameworks */,
 				19F6694D190AA92300D2DE77 /* QuartzCore.framework in Frameworks */,
 				19F6694B190AA91000D2DE77 /* AVFoundation.framework in Frameworks */,
 				19F66948190AA90000D2DE77 /* GLKit.framework in Frameworks */,
@@ -151,6 +157,7 @@
 		19F66887190AA3AF00D2DE77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19F6695D190ABB8000D2DE77 /* CoreVideo.framework */,
 				19F6694C190AA92300D2DE77 /* QuartzCore.framework */,
 				19F6694A190AA91000D2DE77 /* AVFoundation.framework */,
 				19F66946190AA90000D2DE77 /* GLKit.framework */,
@@ -178,9 +185,11 @@
 				19F6689A190AA3AF00D2DE77 /* AppDelegate.h */,
 				19F6689B190AA3AF00D2DE77 /* AppDelegate.m */,
 				19F66944190AA8C400D2DE77 /* ColorMaps */,
+				19F668EA190AA70400D2DE77 /* CommonModel */,
+				19F6695F190AC30400D2DE77 /* DesktopOpenGLView.h */,
+				19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */,
 				19F668A0190AA3AF00D2DE77 /* Images.xcassets */,
 				19F6689D190AA3AF00D2DE77 /* MainMenu.xib */,
-				19F668EA190AA70400D2DE77 /* CommonModel */,
 				19F6688F190AA3AF00D2DE77 /* Supporting Files */,
 			);
 			path = SpectrogeddonOSX;
@@ -390,6 +399,7 @@
 				19F6693F190AA86C00D2DE77 /* SpectrumGenerator.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* ScrollingRenderer.m in Sources */,
 				19F66939190AA86C00D2DE77 /* MicAudioSource.m in Sources */,
+				19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
