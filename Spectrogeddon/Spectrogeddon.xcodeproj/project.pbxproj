@@ -32,19 +32,19 @@
 		19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668EE190AA78B00D2DE77 /* AudioSource.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
 		19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */; };
-		19F6690B190AA78B00D2DE77 /* ColumnShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F668F3190AA78B00D2DE77 /* ColumnShader.fsh */; };
-		19F6690C190AA78B00D2DE77 /* ColumnShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F668F4190AA78B00D2DE77 /* ColumnShader.vsh */; };
 		19F6690D190AA78B00D2DE77 /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */; };
 		19F6690F190AA78B00D2DE77 /* MicAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FA190AA78B00D2DE77 /* MicAudioSource.m */; };
 		19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FD190AA78B00D2DE77 /* RendererUtils.m */; };
 		19F66911190AA78B00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FF190AA78B00D2DE77 /* SampleBuffer.m */; };
 		19F66912190AA78B00D2DE77 /* ScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66901190AA78B00D2DE77 /* ScrollingRenderer.m */; };
-		19F66913190AA78B00D2DE77 /* ScrollingShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F66902190AA78B00D2DE77 /* ScrollingShader.fsh */; };
-		19F66914190AA78B00D2DE77 /* ScrollingShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F66903190AA78B00D2DE77 /* ScrollingShader.vsh */; };
 		19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */; };
 		19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66907190AA78B00D2DE77 /* TimeSequence.m */; };
 		19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */; };
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
+		EEF830C2190AE2BA00E8B2F2 /* ColumnShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */; };
+		EEF830C3190AE2BA00E8B2F2 /* ColumnShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */; };
+		EEF830C4190AE2BA00E8B2F2 /* ScrollingShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */; };
+		EEF830C5190AE2BA00E8B2F2 /* ScrollingShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +91,6 @@
 		19F668F0190AA78B00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapSet.m; sourceTree = "<group>"; };
 		19F668F1190AA78B00D2DE77 /* ColumnRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnRenderer.h; sourceTree = "<group>"; };
 		19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnRenderer.m; sourceTree = "<group>"; };
-		19F668F3190AA78B00D2DE77 /* ColumnShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.fsh; sourceTree = "<group>"; };
-		19F668F4190AA78B00D2DE77 /* ColumnShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.vsh; sourceTree = "<group>"; };
 		19F668F5190AA78B00D2DE77 /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastFourierTransform.h; sourceTree = "<group>"; };
 		19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastFourierTransform.m; sourceTree = "<group>"; };
 		19F668F9190AA78B00D2DE77 /* MicAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicAudioSource.h; sourceTree = "<group>"; };
@@ -104,8 +102,6 @@
 		19F668FF190AA78B00D2DE77 /* SampleBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleBuffer.m; sourceTree = "<group>"; };
 		19F66900190AA78B00D2DE77 /* ScrollingRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingRenderer.h; sourceTree = "<group>"; };
 		19F66901190AA78B00D2DE77 /* ScrollingRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingRenderer.m; sourceTree = "<group>"; };
-		19F66902190AA78B00D2DE77 /* ScrollingShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.fsh; sourceTree = "<group>"; };
-		19F66903190AA78B00D2DE77 /* ScrollingShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.vsh; sourceTree = "<group>"; };
 		19F66904190AA78B00D2DE77 /* SpectrumGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectrumGenerator.h; sourceTree = "<group>"; };
 		19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumGenerator.m; sourceTree = "<group>"; };
 		19F66906190AA78B00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSequence.h; sourceTree = "<group>"; };
@@ -114,6 +110,10 @@
 		19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileGLDisplay.m; sourceTree = "<group>"; };
 		19F66957190AB26800D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRenderer.m; sourceTree = "<group>"; };
 		19F66958190AB26800D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
+		EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.fsh; sourceTree = "<group>"; };
+		EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.vsh; sourceTree = "<group>"; };
+		EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.fsh; sourceTree = "<group>"; };
+		EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,12 +186,11 @@
 				1901B83A18FBFBA7002DE52F /* AppDelegate.h */,
 				1901B83B18FBFBA7002DE52F /* AppDelegate.m */,
 				19541FE21906D89900BC94BF /* ColorMaps */,
+				19F668E6190AA61100D2DE77 /* CommonModel */,
 				19541F9F18FC2BA400BC94BF /* Controllers */,
 				1901B84618FBFBA7002DE52F /* Images.xcassets */,
-				19F668E6190AA61100D2DE77 /* CommonModel */,
 				1901B83218FBFBA7002DE52F /* Supporting Files */,
-				19F6694E190AB09100D2DE77 /* MobileGLDisplay.h */,
-				19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */,
+				EEF830BD190AE2A400E8B2F2 /* View */,
 			);
 			path = Spectrogeddon;
 			sourceTree = "<group>";
@@ -281,8 +280,6 @@
 				19F668F0190AA78B00D2DE77 /* ColorMapSet.m */,
 				19F668F1190AA78B00D2DE77 /* ColumnRenderer.h */,
 				19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */,
-				19F668F3190AA78B00D2DE77 /* ColumnShader.fsh */,
-				19F668F4190AA78B00D2DE77 /* ColumnShader.vsh */,
 				19F66958190AB26800D2DE77 /* GLRenderer.h */,
 				19F66957190AB26800D2DE77 /* GLRenderer.m */,
 				19F668FB190AA78B00D2DE77 /* RendererDefs.h */,
@@ -290,10 +287,21 @@
 				19F668FD190AA78B00D2DE77 /* RendererUtils.m */,
 				19F66900190AA78B00D2DE77 /* ScrollingRenderer.h */,
 				19F66901190AA78B00D2DE77 /* ScrollingRenderer.m */,
-				19F66902190AA78B00D2DE77 /* ScrollingShader.fsh */,
-				19F66903190AA78B00D2DE77 /* ScrollingShader.vsh */,
 			);
 			name = Display;
+			sourceTree = "<group>";
+		};
+		EEF830BD190AE2A400E8B2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */,
+				EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */,
+				EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */,
+				EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */,
+				19F6694E190AB09100D2DE77 /* MobileGLDisplay.h */,
+				19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,13 +380,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F66914190AA78B00D2DE77 /* ScrollingShader.vsh in Resources */,
 				1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */,
-				19F6690B190AA78B00D2DE77 /* ColumnShader.fsh in Resources */,
-				19F66913190AA78B00D2DE77 /* ScrollingShader.fsh in Resources */,
 				19541FE31906D89900BC94BF /* ColorMaps in Resources */,
-				19F6690C190AA78B00D2DE77 /* ColumnShader.vsh in Resources */,
+				EEF830C4190AE2BA00E8B2F2 /* ScrollingShader.fsh in Resources */,
 				1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */,
+				EEF830C2190AE2BA00E8B2F2 /* ColumnShader.fsh in Resources */,
+				EEF830C3190AE2BA00E8B2F2 /* ColumnShader.vsh in Resources */,
+				EEF830C5190AE2BA00E8B2F2 /* ScrollingShader.vsh in Resources */,
 				1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */,
 				1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */,
 				1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */,
