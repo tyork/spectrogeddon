@@ -30,8 +30,8 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
 
 
 @interface ScrollingRenderer ()
-@property (nonatomic) NSUInteger frameWidth;
-@property (nonatomic) NSUInteger frameHeight;
+@property (nonatomic) GLint frameWidth;
+@property (nonatomic) GLint frameHeight;
 @property (nonatomic) GLuint framebuffer;
 
 @property (nonatomic) GLuint frameTexture;
@@ -130,7 +130,7 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
         glBindFramebuffer(GL_FRAMEBUFFER, self.framebuffer);
     }
     
-    glViewport(0, 0, widthAsPOT, heightAsPOT);
+    glViewport(0, 0, self.frameWidth, self.frameHeight);
     glCommands();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
