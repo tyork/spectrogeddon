@@ -132,6 +132,7 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     
     glViewport(0, 0, widthAsPOT, heightAsPOT);
     glCommands();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 - (void)render
