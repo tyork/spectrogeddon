@@ -66,8 +66,8 @@
     
     // Convert the raw sample data into a normalized float array, normedSamples.
     vDSP_vflt16(self.sampleBuffer, 1, self.outputBuffer, 1, self.bufferSize); // Convert SInt16 into float
-    const float divisor = 32767.f;
-    vDSP_vsdiv(self.outputBuffer, 1, &divisor, self.outputBuffer, 1, self.bufferSize); // In-place normalization
+    const float scale = 1.0f/32768.0f;
+    vDSP_vsmul(self.outputBuffer, 1, &scale, self.outputBuffer, 1, self.bufferSize);
     
     TimeSequence* sequence = [[TimeSequence alloc] initWithNumberOfValues:self.bufferSize values:self.outputBuffer];
     sequence.timeStamp = self.timeStamp;
