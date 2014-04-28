@@ -61,6 +61,12 @@
     [self.spectrumGenerator stopGenerating];
 }
 
+- (IBAction)nextColorMap:(id)sender
+{
+    NSImage* image = [self.colorMaps nextColorMap];
+    [self.glView setColorMapImage:image];
+}
+
 - (void)render
 {
     [self.glView redisplay];

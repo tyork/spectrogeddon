@@ -36,7 +36,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     return self;
 }
 
-- (void)renderFrame
+- (void)renderFrameViewportWidth:(GLint)width height:(GLint)height
 {
     const NSTimeInterval nowTime = CACurrentMediaTime();
     if(!self.frameOriginTime)
@@ -52,6 +52,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     }
     self.scrollingRenderer.currentPosition = position;
     
+    glViewport(0, 0, width, height);
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     [self.scrollingRenderer render];

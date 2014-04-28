@@ -15,4 +15,6 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (strong) IBOutlet DesktopOpenGLView *glView;
 
+- (IBAction)nextColorMap:(id)sender;
+
 @end

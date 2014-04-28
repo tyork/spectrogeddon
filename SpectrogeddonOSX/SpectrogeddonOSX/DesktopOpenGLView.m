@@ -60,7 +60,8 @@
 {
     [super drawRect:dirtyRect];
     
-    [self.renderer renderFrame];
+    const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
+    [self.renderer renderFrameViewportWidth:backingSize[0] height:backingSize[1]];
     [[self openGLContext] flushBuffer];
 }
 

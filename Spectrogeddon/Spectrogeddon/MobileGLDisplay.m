@@ -52,7 +52,7 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    [self.renderer renderFrame];
+    [self.renderer renderFrameViewportWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight];
 }
 
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence

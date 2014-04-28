@@ -14,7 +14,7 @@
 
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence viewportWidth:(GLint)width height:(GLint)height;
 
-- (void)renderFrame;
+- (void)renderFrameViewportWidth:(GLint)width height:(GLint)height;
 
 - (void)useColorMap:(CGImageRef)colorMap;
 
