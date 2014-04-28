@@ -6,9 +6,9 @@ into the app. You can pick the input source in the spectrogram app using its Sou
 
 Outstanding issues:
 - Visual artifact due to lazy math when computing width of display.
+- Needs refactor
 
 Missing features:
 - Use noise estimate to adjust the floor for the signal display.
 - Make SampleBuffer a proper ring buffer to permit longer FFTs and overlaps.
-- Stereo channel support
 - Pause
