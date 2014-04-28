@@ -122,9 +122,9 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 #pragma mark - Spectrum generator -
 
-- (void)spectrumGenerator:(SpectrumGenerator *)generator didGenerateSpectrum:(TimeSequence *)levels
+- (void)spectrumGenerator:(SpectrumGenerator *)generator didGenerateSpectrums:(NSArray *)spectrums
 {
-    [self.glView addMeasurementToDisplayQueue:levels];
+    [self.glView addMeasurementsToDisplayQueue:spectrums];
 }
 
 @end

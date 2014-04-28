@@ -65,11 +65,11 @@
     [[self openGLContext] flushBuffer];
 }
 
-- (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence
+- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums
 {
     // TODO: ignores retina
     const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
-    [self.renderer addMeasurementToDisplayQueue:timeSequence viewportWidth:backingSize[0] height:backingSize[1]];
+    [self.renderer addMeasurementsToDisplayQueue:spectrums viewportWidth:backingSize[0] height:backingSize[1]];
 }
 
 

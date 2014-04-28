@@ -12,7 +12,7 @@
 @class TimeSequence;
 
 @protocol SpectrumGeneratorDelegate
-- (void)spectrumGenerator:(SpectrumGenerator*)generator didGenerateSpectrum:(TimeSequence*)levels;
+- (void)spectrumGenerator:(SpectrumGenerator*)generator didGenerateSpectrums:(NSArray*)spectrumsPerChannel;
 @end
 
 @interface SpectrumGenerator : NSObject

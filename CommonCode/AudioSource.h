@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class TimeSequence;
-
-typedef void(^AudioSourceNotificationBlock)(TimeSequence* capturedAudio);
+/**
+ @param capturedChannels An array of @ref TimeSequence objects.
+ */
+typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
 
 /**
  A source of audio.

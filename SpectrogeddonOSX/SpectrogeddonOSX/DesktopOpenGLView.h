@@ -16,6 +16,6 @@
 
 - (void)redisplay;
 
-- (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence;
+- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums;
 
 @end

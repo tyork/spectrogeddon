@@ -164,6 +164,7 @@ static const NSUInteger BufferSize = 1024;
         return;
     }
     
+    // Configure buffers
     // TODO: very basic format decoding, really the minimum.
     BOOL isNormalizedFloatBuffer = NO;
     CMFormatDescriptionRef formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer);
@@ -194,6 +195,7 @@ static const NSUInteger BufferSize = 1024;
     const NSTimeInterval duration = CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer));
     const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));
 
+    BOOL readyForDispatch = YES;
     NSUInteger activeChannel = 0;
     size_t offset = 0;
 	size_t totalLength = 0;
@@ -209,17 +211,26 @@ static const NSUInteger BufferSize = 1024;
         {
             [self.channelBuffers[activeChannel] writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
+        readyForDispatch = (readyForDispatch && [self.channelBuffers[activeChannel] hasOutput]);
         offset += lengthAtOffset;
         activeChannel++;
+        
     } while(offset < totalLength);
-    
-    if([self.channelBuffers[0] hasOutput])
+
+    // Dispatch
+    if(!readyForDispatch)
     {
-        TimeSequence* sequence = [self.channelBuffers[0] readOutputSamples];
-        dispatch_async(self.notificationQueue, ^{
-            self.notificationBlock(sequence);
-        });
+        return;
     }
+
+    NSMutableArray* outputs = [[NSMutableArray alloc] init];
+    for(SampleBuffer* oneBuffer in self.channelBuffers)
+    {
+        [outputs addObject:[oneBuffer readOutputSamples]];
+    }
+    dispatch_async(self.notificationQueue, ^{
+        self.notificationBlock(outputs);
+    });
 }
 
 @end

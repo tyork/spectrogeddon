@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class TimeSequence;
-
 @interface GLRenderer : NSObject
 
-- (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence viewportWidth:(GLint)width height:(GLint)height;
+- (void)addMeasurementsToDisplayQueue:(NSArray*)channels viewportWidth:(GLint)width height:(GLint)height;
 
 - (void)renderFrameViewportWidth:(GLint)width height:(GLint)height;
 

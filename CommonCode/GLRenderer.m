@@ -60,9 +60,9 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     GL_DEBUG_GENERAL;
 }
 
-- (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence viewportWidth:(GLint)width height:(GLint)height
+- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums viewportWidth:(GLint)width height:(GLint)height
 {
-    [self updateColumnWithSequence:timeSequence];
+    [self updateColumnWithSequence:[spectrums firstObject]];
     id __weak weakSelf = self;
     [self.scrollingRenderer drawContentWithWidth:width height:height commands:^{
         
@@ -70,7 +70,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
         if(strongSelf)
         {
             [strongSelf.columnRenderer render];
-            self.lastRenderedSampleTime = timeSequence.timeStamp;
+            self.lastRenderedSampleTime = [[spectrums firstObject] timeStamp];
         }
     }];
 }
