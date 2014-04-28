@@ -351,9 +351,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Random;
 				TargetAttributes = {
-					1901B82718FBFBA7002DE52F = {
-						DevelopmentTeam = VBS9CNK6L3;
-					};
 					1901B84B18FBFBA8002DE52F = {
 						TestTargetID = 1901B82718FBFBA7002DE52F;
 					};
