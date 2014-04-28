@@ -13,12 +13,17 @@
 typedef void(^AudioSourceNotificationBlock)(TimeSequence* capturedAudio);
 
 /**
- Abstract class representing a source of audio.
+ A source of audio.
  */
 @interface AudioSource : NSObject
 
 @property (nonatomic,strong,readonly) dispatch_queue_t notificationQueue;
 @property (nonatomic,copy,readonly) AudioSourceNotificationBlock notificationBlock;
+@property (nonatomic,copy) NSString* preferredAudioSourceID;
+
++ (void)requestPermissionToUseAudio:(void(^)(BOOL isAllowed))permissionBlock;
+
++ (NSDictionary*)availableAudioSources; // Localized name -> audio source ID pairs
 
 - (id)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block;
 

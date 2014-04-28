@@ -19,8 +19,6 @@
 
 @property (nonatomic,weak) IBOutlet id <SpectrumGeneratorDelegate> delegate;
 
-- (instancetype)initWithAudioSourceClass:(Class)audioSourceClass;
-
 - (void)startGenerating;
 
 - (void)stopGenerating;

@@ -22,7 +22,6 @@
 		19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6691A190AA86C00D2DE77 /* ColorMapSet.m */; };
 		19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */; };
 		19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66920190AA86C00D2DE77 /* FastFourierTransform.m */; };
-		19F66939190AA86C00D2DE77 /* MicAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66924190AA86C00D2DE77 /* MicAudioSource.m */; };
 		19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66927190AA86C00D2DE77 /* RendererUtils.m */; };
 		19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66929190AA86C00D2DE77 /* SampleBuffer.m */; };
 		19F6693C190AA86C00D2DE77 /* ScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6692B190AA86C00D2DE77 /* ScrollingRenderer.m */; };
@@ -80,8 +79,6 @@
 		19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColumnRenderer.m; path = ../../CommonCode/ColumnRenderer.m; sourceTree = "<group>"; };
 		19F6691F190AA86C00D2DE77 /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastFourierTransform.h; path = ../../CommonCode/FastFourierTransform.h; sourceTree = "<group>"; };
 		19F66920190AA86C00D2DE77 /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastFourierTransform.m; path = ../../CommonCode/FastFourierTransform.m; sourceTree = "<group>"; };
-		19F66923190AA86C00D2DE77 /* MicAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MicAudioSource.h; path = ../../CommonCode/MicAudioSource.h; sourceTree = "<group>"; };
-		19F66924190AA86C00D2DE77 /* MicAudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MicAudioSource.m; path = ../../CommonCode/MicAudioSource.m; sourceTree = "<group>"; };
 		19F66925190AA86C00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererDefs.h; path = ../../CommonCode/RendererDefs.h; sourceTree = "<group>"; };
 		19F66926190AA86C00D2DE77 /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererUtils.h; path = ../../CommonCode/RendererUtils.h; sourceTree = "<group>"; };
 		19F66927190AA86C00D2DE77 /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RendererUtils.m; path = ../../CommonCode/RendererUtils.m; sourceTree = "<group>"; };
@@ -239,8 +236,6 @@
 			children = (
 				19F66917190AA86C00D2DE77 /* AudioSource.h */,
 				19F66918190AA86C00D2DE77 /* AudioSource.m */,
-				19F66923190AA86C00D2DE77 /* MicAudioSource.h */,
-				19F66924190AA86C00D2DE77 /* MicAudioSource.m */,
 				19F66928190AA86C00D2DE77 /* SampleBuffer.h */,
 				19F66929190AA86C00D2DE77 /* SampleBuffer.m */,
 			);
@@ -406,7 +401,6 @@
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,
 				19F6693F190AA86C00D2DE77 /* SpectrumGenerator.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* ScrollingRenderer.m in Sources */,
-				19F66939190AA86C00D2DE77 /* MicAudioSource.m in Sources */,
 				19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

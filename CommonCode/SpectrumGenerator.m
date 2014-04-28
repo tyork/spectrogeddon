@@ -19,16 +19,15 @@
 
 @implementation SpectrumGenerator
 
-- (instancetype)initWithAudioSourceClass:(Class)audioSourceClass
+- (instancetype)init
 {
-    NSParameterAssert([audioSourceClass isSubclassOfClass:[AudioSource class]]);
     if((self = [super init]))
     {
         _transformer = [[FastFourierTransform alloc] init];
         _transformQueue = dispatch_queue_create("com.spectrogeddon.fft", DISPATCH_QUEUE_SERIAL);
         
         id __weak weakSelf = self;
-        _audioSource = [[audioSourceClass alloc] initWithNotificationQueue:_transformQueue block:^(TimeSequence *capturedAudio) {
+        _audioSource = [[AudioSource alloc] initWithNotificationQueue:_transformQueue block:^(TimeSequence *capturedAudio) {
             SpectrumGenerator* strongSelf = weakSelf;
             if(!strongSelf)
             {

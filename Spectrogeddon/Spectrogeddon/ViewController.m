@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "SpectrumGenerator.h"
-#import "MicAudioSource.h"
 #import "TimeSequence.h"
 #import "MobileGLDisplay.h"
 #import "ColorMapSet.h"
@@ -39,7 +38,7 @@
     
     if(!self.spectrumGenerator)
     {
-        self.spectrumGenerator = [[SpectrumGenerator alloc] initWithAudioSourceClass:[MicAudioSource class]];
+        self.spectrumGenerator = [[SpectrumGenerator alloc] init];
         self.spectrumGenerator.delegate = self;
     }
     if(!self.renderer)

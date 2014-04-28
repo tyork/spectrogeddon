@@ -10,7 +10,6 @@
 #import "DesktopOpenGLView.h"
 #import "SpectrumGenerator.h"
 #import "ColorMapSet.h"
-#import "MicAudioSource.h"
 
 @interface AppDelegate ()  <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
@@ -26,7 +25,7 @@
 {
     if(!self.spectrumGenerator)
     {
-        self.spectrumGenerator = [[SpectrumGenerator alloc] initWithAudioSourceClass:[MicAudioSource class]];
+        self.spectrumGenerator = [[SpectrumGenerator alloc] init];
         self.spectrumGenerator.delegate = self;
     }
     if(!self.colorMaps)
