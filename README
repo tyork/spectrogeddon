@@ -6,8 +6,6 @@ into the app, but at the moment you have to adjust the input source code to pick
 
 Outstanding issues:
 - Visual artifact due to lazy math when computing width of display.
-- Mac OS X project does not render very well (brightness range is very compressed).
-- Mac OS X project does not allow you to pick from a list of input sources.
 
 Missing features:
 - Use noise estimate to adjust the floor for the signal display.
