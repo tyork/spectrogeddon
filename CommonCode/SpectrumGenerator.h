@@ -17,6 +17,9 @@
 
 @interface SpectrumGenerator : NSObject
 
++ (NSDictionary*)availableSources;  // Key: localized name, value: unique ID
+
+@property (nonatomic,strong) NSString* preferredSourceID;
 @property (nonatomic,weak) IBOutlet id <SpectrumGeneratorDelegate> delegate;
 
 - (void)startGenerating;

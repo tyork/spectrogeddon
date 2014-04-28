@@ -99,13 +99,12 @@ static const NSUInteger BufferSize = 1024;
     {
         self.captureSession = [[AVCaptureSession alloc] init];
     }
-    else
+
+    [self.captureSession beginConfiguration];
+    NSArray* existingInputs = self.captureSession.inputs;
+    for(AVCaptureInput* oneInput in existingInputs)
     {
-        NSArray* existingInputs = self.captureSession.inputs;
-        for(AVCaptureInput* oneInput in existingInputs)
-        {
-            [self.captureSession removeInput:oneInput];
-        }
+        [self.captureSession removeInput:oneInput];
     }
     
     AVCaptureDevice* preferredDevice = [AVCaptureDevice deviceWithUniqueID:self.preferredAudioSourceID];
@@ -121,13 +120,17 @@ static const NSUInteger BufferSize = 1024;
     }
     [self.captureSession addInput:micInput];
     
-    AVCaptureAudioDataOutput* dataOutput = [[AVCaptureAudioDataOutput alloc] init];
-    [dataOutput setSampleBufferDelegate:self queue:self.sampleQueue];
-    if(![self.captureSession canAddOutput:dataOutput])
+    if(!self.captureSession.outputs.count)
     {
-        return NO;
+        AVCaptureAudioDataOutput* dataOutput = [[AVCaptureAudioDataOutput alloc] init];
+        [dataOutput setSampleBufferDelegate:self queue:self.sampleQueue];
+        if(![self.captureSession canAddOutput:dataOutput])
+        {
+            return NO;
+        }
+        [self.captureSession addOutput:dataOutput];
     }
-    [self.captureSession addOutput:dataOutput];
+    [self.captureSession commitConfiguration];
     return YES;
 }
 
@@ -135,7 +138,7 @@ static const NSUInteger BufferSize = 1024;
 {
     if(_preferredAudioSourceID != preferredAudioSourceID)
     {
-        _preferredAudioSourceID = preferredAudioSourceID;
+        _preferredAudioSourceID = [preferredAudioSourceID copy];
         [self prepareCaptureSessionWithError:nil];
     }
 }

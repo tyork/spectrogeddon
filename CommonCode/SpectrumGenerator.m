@@ -19,6 +19,11 @@
 
 @implementation SpectrumGenerator
 
++ (NSDictionary*)availableSources
+{
+    return [AudioSource availableAudioSources];
+}
+
 - (instancetype)init
 {
     if((self = [super init]))
@@ -56,6 +61,21 @@
 - (void)stopGenerating
 {
     [self.audioSource stopCapturing];
+}
+
+- (void)setPreferredSourceID:(NSString *)preferredSourceID
+{
+    self.audioSource.preferredAudioSourceID = preferredSourceID;
+}
+
+- (NSString*)preferredSourceID
+{
+    return self.audioSource.preferredAudioSourceID;
+}
+
++ (NSSet*)keyPathsForValuesAffectingAudioSource
+{
+    return [NSSet setWithObject:@"audioSource.preferredAudioSourceID"];
 }
 
 @end
