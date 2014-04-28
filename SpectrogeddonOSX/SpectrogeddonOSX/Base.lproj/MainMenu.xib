@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="glView" destination="wXy-ZW-lve" id="caL-Zl-vc7"/>
+                <outlet property="sourceMenu" destination="UKI-Uf-ug6" id="JEc-cZ-rR5"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -65,9 +66,9 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="ChChChanges" id="dMs-cI-mzQ" userLabel="Menu Item - ChChChanges">
+                <menuItem title="Colors" id="dMs-cI-mzQ" userLabel="Menu Item - ChChChanges">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="ChChChanges" id="bib-Uj-vzu">
+                    <menu key="submenu" title="Colors" id="bib-Uj-vzu">
                         <items>
                             <menuItem title="Next colors" keyEquivalent="n" id="aTl-1u-JFS" userLabel="Menu Item - Next colors">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -77,6 +78,10 @@
                             </menuItem>
                         </items>
                     </menu>
+                </menuItem>
+                <menuItem title="Source" id="quw-6l-RGq" userLabel="Menu Item - Source ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Source" id="UKI-Uf-ug6" userLabel="Menu - Source"/>
                 </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -121,7 +126,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="512" height="327"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
                 <autoresizingMask key="autoresizingMask"/>
