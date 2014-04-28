@@ -10,6 +10,7 @@
 #import "TimeSequence.h"
 #import "SampleBuffer.h"
 #import <AVFoundation/AVFoundation.h>
+#import <Accelerate/Accelerate.h>
 
 static const NSUInteger BufferSize = 1024;
 
@@ -17,6 +18,7 @@ static const NSUInteger BufferSize = 1024;
 @property (nonatomic,strong) dispatch_queue_t sampleQueue;
 @property (nonatomic,strong) AVCaptureSession* captureSession;
 @property (nonatomic,strong) SampleBuffer* ringBuffer;
+@property (nonatomic) float* normalizationBuffer;
 @end
 
 @implementation AudioSource
@@ -75,6 +77,11 @@ static const NSUInteger BufferSize = 1024;
         }
     }
     return self;
+}
+
+- (void)dealloc
+{
+    free(_normalizationBuffer);
 }
 
 #if TARGET_OS_IPHONE
@@ -163,14 +170,37 @@ static const NSUInteger BufferSize = 1024;
         return;
     }
     
+    // TODO: very basic format decoding, really the minimum.
+    BOOL isNormalizedFloatBuffer = NO;
+    CMFormatDescriptionRef formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer);
+    size_t formatListSize = 0;
+    const AudioFormatListItem* bufferFormat = CMAudioFormatDescriptionGetFormatList(formatInfo, &formatListSize);
+    if(formatListSize > 0 && bufferFormat)
+    {
+        isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
+    }
+    
 	const CMBlockBufferRef audioBlockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);
     const NSTimeInterval duration = CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer));
     const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));
+
+    size_t offset = 0;
 	size_t totalLength = 0;
-	SInt16* rawSamples = NULL;
-	CMBlockBufferGetDataPointer(audioBlockBuffer, 0, NULL, &totalLength, (char**)(&rawSamples));
+    size_t lengthAtOffset = 0;
+	char* rawSamples = NULL;
+    do {
+        CMBlockBufferGetDataPointer(audioBlockBuffer, offset, &lengthAtOffset, &totalLength, &rawSamples);
+        if(isNormalizedFloatBuffer)
+        {
+            [self writeNormalizedFloatSamples:(float*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
+        }
+        else
+        {
+            [self writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
+        }
+        offset += lengthAtOffset;
+    } while(NO);///offset < totalLength); // TODO: multichannel
     
-    [self.ringBuffer writeSamples:rawSamples count:numSamples timeStamp:timeStamp duration:duration];
     if(self.ringBuffer.hasOutput)
     {
         TimeSequence* sequence = [self.ringBuffer readOutputSamples];
@@ -178,6 +208,25 @@ static const NSUInteger BufferSize = 1024;
             self.notificationBlock(sequence);
         });
     }
+}
+
+- (void)writeNormalizedFloatSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
+{
+    [self.ringBuffer writeSamples:samples count:count timeStamp:timeStamp duration:duration];
+}
+
+- (void)writeSInt16Samples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
+{
+    if(!self.normalizationBuffer)
+    {
+        self.normalizationBuffer = calloc(BufferSize, sizeof(float));
+    }
+    
+    // Convert the raw sample data into a normalized float array, normedSamples.
+    vDSP_vflt16(samples, 1, _normalizationBuffer, 1, count); // Convert SInt16 into float
+    const float scale = 1.0f/32768.0f;
+    vDSP_vsmul(_normalizationBuffer, 1, &scale, _normalizationBuffer, 1, count);
+    [self.ringBuffer writeSamples:_normalizationBuffer count:count timeStamp:timeStamp duration:duration];
 }
 
 @end

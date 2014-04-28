@@ -8,13 +8,11 @@
 
 #import "SampleBuffer.h"
 #import "TimeSequence.h"
-#import <Accelerate/Accelerate.h>
 
 @interface SampleBuffer ()
 @property (nonatomic,readonly) NSUInteger bufferSize;
 @property (nonatomic) NSUInteger writerIndex;
-@property (nonatomic) SInt16* sampleBuffer;
-@property (nonatomic) float* outputBuffer;
+@property (nonatomic) float* sampleBuffer;
 @property (nonatomic) NSTimeInterval timeStamp;
 @property (nonatomic) NSTimeInterval duration;
 @end
@@ -27,8 +25,7 @@
     if((self = [super init]))
     {
         _bufferSize = bufferSize;
-        _sampleBuffer = (SInt16*)calloc(bufferSize, sizeof(SInt16));
-        _outputBuffer = (float*)calloc(bufferSize, sizeof(float));
+        _sampleBuffer = (float*)calloc(bufferSize, sizeof(float));
     }
     return self;
 }
@@ -36,23 +33,22 @@
 - (void)dealloc
 {
     free(_sampleBuffer);
-    free(_outputBuffer);
 }
 
-- (void)writeSamples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
+- (void)writeSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
 {
     NSParameterAssert(count <= self.bufferSize);
     if(self.writerIndex >= self.bufferSize)
     {
         self.writerIndex = 0;
-        bcopy(self.sampleBuffer, self.sampleBuffer + count, self.bufferSize - count);
+        bcopy(self.sampleBuffer, self.sampleBuffer + count, (self.bufferSize - count)*sizeof(float));
     }
     if(self.writerIndex == 0)
     {
         self.timeStamp = timeStamp;
     }
 
-    bcopy(samples, self.sampleBuffer + self.writerIndex, count);
+    bcopy(samples, self.sampleBuffer + self.writerIndex, count*sizeof(float));
     self.writerIndex = self.writerIndex + count;
     self.duration = timeStamp + duration - self.timeStamp;
 }
@@ -64,12 +60,7 @@
         return nil;
     }
     
-    // Convert the raw sample data into a normalized float array, normedSamples.
-    vDSP_vflt16(self.sampleBuffer, 1, self.outputBuffer, 1, self.bufferSize); // Convert SInt16 into float
-    const float scale = 1.0f/32768.0f;
-    vDSP_vsmul(self.outputBuffer, 1, &scale, self.outputBuffer, 1, self.bufferSize);
-    
-    TimeSequence* sequence = [[TimeSequence alloc] initWithNumberOfValues:self.bufferSize values:self.outputBuffer];
+    TimeSequence* sequence = [[TimeSequence alloc] initWithNumberOfValues:self.bufferSize values:self.sampleBuffer];
     sequence.timeStamp = self.timeStamp;
     sequence.duration = self.duration;
     return sequence;

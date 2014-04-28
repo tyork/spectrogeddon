@@ -20,7 +20,7 @@
 
 - (id)initWithBufferSize:(NSUInteger)sampleCount;   // TODO: enforce power of two.
 
-- (void)writeSamples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration;  //!< Note that samples are passed in as SInt16.
+- (void)writeSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration;  //!< Note that samples are passed in as SInt16.
 
 - (TimeSequence*)readOutputSamples; //!< Note that samples are retrieved as a float array wrapped by TimeSequence.
 
