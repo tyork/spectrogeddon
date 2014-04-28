@@ -10,4 +10,5 @@ Outstanding issues:
 Missing features:
 - Use noise estimate to adjust the floor for the signal display.
 - Make SampleBuffer a proper ring buffer to permit longer FFTs and overlaps.
-
+- Stereo channel support
+- Pause
