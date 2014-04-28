@@ -37,6 +37,15 @@ typedef struct
 
 @implementation ColumnRenderer
 
+- (instancetype)init
+{
+    if((self = [super init]))
+    {
+        _positioning = GLKMatrix4Identity;
+    }
+    return self;
+}
+
 - (void)dealloc
 {
 #if TARGET_OS_IPHONE
@@ -88,7 +97,7 @@ typedef struct
     }
 
     const GLKMatrix4 translation = GLKMatrix4MakeTranslation(offset, -1.0f, 0.0f);
-    self.transform = GLKMatrix4Scale(translation, width, 1.0f, 1.0f);
+    self.transform = GLKMatrix4Multiply(GLKMatrix4Scale(translation, width, 1.0f, 1.0f),self.positioning);
     
     for(NSUInteger valueIndex = 0; valueIndex < timeSequence.numberOfValues; valueIndex++)
     {

@@ -15,7 +15,8 @@
  */
 @interface ColumnRenderer : NSObject
 
-@property (nonatomic,assign) CGImageRef colorMapImage;
+@property (nonatomic) CGImageRef colorMapImage;
+@property (nonatomic) GLKMatrix4 positioning;
 
 - (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence offset:(float)offset width:(float)width;
 
