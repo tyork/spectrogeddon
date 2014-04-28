@@ -119,8 +119,7 @@ static const NSUInteger BufferSize = 1024;
     
 	const CMBlockBufferRef audioBlockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);
     const NSTimeInterval duration = CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer));
-    const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));/// - CACurrentMediaTime();
-    
+    const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));
 	size_t totalLength = 0;
 	SInt16* rawSamples = NULL;
 	CMBlockBufferGetDataPointer(audioBlockBuffer, 0, NULL, &totalLength, (char**)(&rawSamples));
