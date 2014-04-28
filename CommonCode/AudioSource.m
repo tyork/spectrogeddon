@@ -10,15 +10,14 @@
 #import "TimeSequence.h"
 #import "SampleBuffer.h"
 #import <AVFoundation/AVFoundation.h>
-#import <Accelerate/Accelerate.h>
 
 static const NSUInteger BufferSize = 1024;
 
 @interface AudioSource ()  <AVCaptureAudioDataOutputSampleBufferDelegate>
 @property (nonatomic,strong) dispatch_queue_t sampleQueue;
 @property (nonatomic,strong) AVCaptureSession* captureSession;
-@property (nonatomic,strong) SampleBuffer* ringBuffer;
-@property (nonatomic) float* normalizationBuffer;
+@property (nonatomic,strong) NSMutableArray* channelBuffers;
+@property (nonatomic) NSUInteger channels;
 @end
 
 @implementation AudioSource
@@ -59,7 +58,7 @@ static const NSUInteger BufferSize = 1024;
         _notificationBlock = [block copy];
         
         _sampleQueue = dispatch_queue_create("com.spectrogeddon.audio.samples", DISPATCH_QUEUE_SERIAL);
-        _ringBuffer = [[SampleBuffer alloc] initWithBufferSize:BufferSize];
+        _channelBuffers = [[NSMutableArray alloc] init];
         NSError* error = nil;
 #if TARGET_OS_IPHONE
         if(![self prepareAudioSession:[AVAudioSession sharedInstance] withError:&error])
@@ -77,11 +76,6 @@ static const NSUInteger BufferSize = 1024;
         }
     }
     return self;
-}
-
-- (void)dealloc
-{
-    free(_normalizationBuffer);
 }
 
 #if TARGET_OS_IPHONE
@@ -179,11 +173,28 @@ static const NSUInteger BufferSize = 1024;
     {
         isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
     }
-    
+
+    const NSUInteger channelsInBuffer = bufferFormat[0].mASBD.mChannelsPerFrame;
+    if(channelsInBuffer != self.channels)
+    {
+        for(NSUInteger channelIndex = channelsInBuffer; channelIndex < self.channels; channelIndex++)
+        {
+            [self.channelBuffers removeObjectAtIndex:0];
+        }
+        
+        for(NSUInteger channelIndex = self.channels; channelIndex < channelsInBuffer; channelIndex++)
+        {
+            [self.channelBuffers addObject:[[SampleBuffer alloc] initWithBufferSize:BufferSize]];
+        }
+        self.channels = channelsInBuffer;
+    }
+
+    // Extract data
 	const CMBlockBufferRef audioBlockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);
     const NSTimeInterval duration = CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer));
     const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));
 
+    NSUInteger activeChannel = 0;
     size_t offset = 0;
 	size_t totalLength = 0;
     size_t lengthAtOffset = 0;
@@ -192,41 +203,23 @@ static const NSUInteger BufferSize = 1024;
         CMBlockBufferGetDataPointer(audioBlockBuffer, offset, &lengthAtOffset, &totalLength, &rawSamples);
         if(isNormalizedFloatBuffer)
         {
-            [self writeNormalizedFloatSamples:(float*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
+            [self.channelBuffers[activeChannel] writeNormalizedFloatSamples:(float*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
         else
         {
-            [self writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
+            [self.channelBuffers[activeChannel] writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
         offset += lengthAtOffset;
-    } while(NO);///offset < totalLength); // TODO: multichannel
+        activeChannel++;
+    } while(offset < totalLength);
     
-    if(self.ringBuffer.hasOutput)
+    if([self.channelBuffers[0] hasOutput])
     {
-        TimeSequence* sequence = [self.ringBuffer readOutputSamples];
+        TimeSequence* sequence = [self.channelBuffers[0] readOutputSamples];
         dispatch_async(self.notificationQueue, ^{
             self.notificationBlock(sequence);
         });
     }
-}
-
-- (void)writeNormalizedFloatSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
-{
-    [self.ringBuffer writeSamples:samples count:count timeStamp:timeStamp duration:duration];
-}
-
-- (void)writeSInt16Samples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
-{
-    if(!self.normalizationBuffer)
-    {
-        self.normalizationBuffer = calloc(BufferSize, sizeof(float));
-    }
-    
-    // Convert the raw sample data into a normalized float array, normedSamples.
-    vDSP_vflt16(samples, 1, _normalizationBuffer, 1, count); // Convert SInt16 into float
-    const float scale = 1.0f/32768.0f;
-    vDSP_vsmul(_normalizationBuffer, 1, &scale, _normalizationBuffer, 1, count);
-    [self.ringBuffer writeSamples:_normalizationBuffer count:count timeStamp:timeStamp duration:duration];
 }
 
 @end

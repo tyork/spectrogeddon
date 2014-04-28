@@ -8,10 +8,12 @@
 
 #import "SampleBuffer.h"
 #import "TimeSequence.h"
+#import <Accelerate/Accelerate.h>
 
 @interface SampleBuffer ()
 @property (nonatomic,readonly) NSUInteger bufferSize;
 @property (nonatomic) NSUInteger writerIndex;
+@property (nonatomic) float* normalizationBuffer;
 @property (nonatomic) float* sampleBuffer;
 @property (nonatomic) NSTimeInterval timeStamp;
 @property (nonatomic) NSTimeInterval duration;
@@ -26,6 +28,7 @@
     {
         _bufferSize = bufferSize;
         _sampleBuffer = (float*)calloc(bufferSize, sizeof(float));
+        _normalizationBuffer = (float*)calloc(bufferSize, sizeof(float));
     }
     return self;
 }
@@ -33,6 +36,21 @@
 - (void)dealloc
 {
     free(_sampleBuffer);
+    free(_normalizationBuffer);
+}
+
+- (void)writeNormalizedFloatSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
+{
+    [self writeSamples:samples count:count timeStamp:timeStamp duration:duration];
+}
+
+- (void)writeSInt16Samples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
+{
+    // Convert the raw sample data into a normalized float array, normedSamples.
+    vDSP_vflt16(samples, 1, _normalizationBuffer, 1, count); // Convert SInt16 into float
+    const float scale = 1.0f/32768.0f;
+    vDSP_vsmul(_normalizationBuffer, 1, &scale, _normalizationBuffer, 1, count);
+    [self writeSamples:_normalizationBuffer count:count timeStamp:timeStamp duration:duration];
 }
 
 - (void)writeSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
