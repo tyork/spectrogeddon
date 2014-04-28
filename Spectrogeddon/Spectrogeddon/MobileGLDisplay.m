@@ -57,7 +57,7 @@
 
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence
 {
-    [self.renderer addMeasurementToDisplayQueue:timeSequence viewportWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight];
+    [self.renderer addMeasurementsToDisplayQueue:@[ timeSequence ] viewportWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight];
 }
 
 @end
