@@ -8,7 +8,6 @@
 
 #import "DesktopOpenGLView.h"
 #import "GLRenderer.h"
-#import <OpenGL/gl3ext.h>
 
 @interface DesktopOpenGLView ()
 @property (nonatomic,strong) GLRenderer* renderer;
@@ -55,7 +54,6 @@
 - (void)redisplay
 {
     [self setNeedsDisplay:YES];
-    [self displayIfNeeded];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -64,7 +62,7 @@
     
     const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
     [self.renderer renderFrameViewportWidth:backingSize[0] height:backingSize[1]];
-    glSwapAPPLE();
+    [[self openGLContext] flushBuffer];
 }
 
 - (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums
