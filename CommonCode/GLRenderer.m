@@ -38,8 +38,22 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     return self;
 }
 
-- (void)renderFrameViewportWidth:(GLint)width height:(GLint)height
+- (void)setRenderSize:(RenderSize)renderSize
 {
+    if(!RenderSizeEqualToSize(renderSize, _renderSize))
+    {
+        _renderSize = renderSize;
+        self.frameOriginTime = 0;
+    }
+}
+
+- (void)render
+{
+    if(RenderSizeIsEmpty(self.renderSize))
+    {
+        return;
+    }
+    
     const NSTimeInterval nowTime = CACurrentMediaTime();
     if(!self.frameOriginTime)
     {
@@ -54,7 +68,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     }
     self.scrollingRenderer.currentPosition = position;
     
-    glViewport(0, 0, width, height);
+    glViewport(0, 0, self.renderSize.width, self.renderSize.height);
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     [self.scrollingRenderer render];
@@ -62,7 +76,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     GL_DEBUG_GENERAL;
 }
 
-- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums viewportWidth:(GLint)width height:(GLint)height
+- (void)addMeasurementsForDisplay:(NSArray*)spectrums
 {
     const BOOL showStereo = spectrums.count > 1;
     if(showStereo)
@@ -78,7 +92,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
     }
     id __weak weakSelf = self;
-    [self.scrollingRenderer drawContentWithWidth:width height:height commands:^{
+    [self.scrollingRenderer drawContentWithSize:self.renderSize commands:^{
         
         GLRenderer* strongSelf = weakSelf;
         if(strongSelf)

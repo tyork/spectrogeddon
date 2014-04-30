@@ -47,17 +47,18 @@
 
 - (void)redisplay
 {
+    self.renderer.renderSize = (RenderSize) { (GLint)self.glView.bounds.size.width, (GLint)self.glView.bounds.size.height };
     [self.glView display];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    [self.renderer renderFrameViewportWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight];
+    [self.renderer render];
 }
 
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence
 {
-    [self.renderer addMeasurementsToDisplayQueue:@[ timeSequence ] viewportWidth:(GLint)self.glView.drawableWidth height:(GLint)self.glView.drawableHeight];
+    [self.renderer addMeasurementsForDisplay:@[ timeSequence ]];
 }
 
 @end

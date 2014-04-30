@@ -98,16 +98,16 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     }
 }
 
-- (void)drawContentWithWidth:(GLint)width height:(GLint)height commands:(void(^)(void))glCommands
+- (void)drawContentWithSize:(RenderSize)renderSize commands:(void (^)(void))glCommands
 {
     NSParameterAssert(glCommands);
-    if(!width || !height)
+    if(RenderSizeIsEmpty(renderSize))
     {
         return;
     }
     
-    const GLint widthAsPOT = NextPowerOfTwoClosestToValue(width);
-    const GLint heightAsPOT = NextPowerOfTwoClosestToValue(height);
+    const GLint widthAsPOT = NextPowerOfTwoClosestToValue(renderSize.width);
+    const GLint heightAsPOT = NextPowerOfTwoClosestToValue(renderSize.height);
     
     if(widthAsPOT != self.frameWidth || heightAsPOT != self.frameHeight)
     {

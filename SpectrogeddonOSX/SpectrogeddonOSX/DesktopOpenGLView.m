@@ -8,6 +8,7 @@
 
 #import "DesktopOpenGLView.h"
 #import "GLRenderer.h"
+#import <OpenGL/gl3ext.h>
 
 @interface DesktopOpenGLView ()
 @property (nonatomic,strong) GLRenderer* renderer;
@@ -51,6 +52,13 @@
     }
 }
 
+- (void)update
+{
+    [super update];
+    // TODO: ignores retina
+    self.renderer.renderSize = (RenderSize) { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
+}
+
 - (void)redisplay
 {
     [self setNeedsDisplay:YES];
@@ -59,17 +67,13 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
-    
-    const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
-    [self.renderer renderFrameViewportWidth:backingSize[0] height:backingSize[1]];
+    [self.renderer render];
     [[self openGLContext] flushBuffer];
 }
 
 - (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums
 {
-    // TODO: ignores retina
-    const GLint backingSize[2] = { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
-    [self.renderer addMeasurementsToDisplayQueue:spectrums viewportWidth:backingSize[0] height:backingSize[1]];
+    [self.renderer addMeasurementsForDisplay:spectrums];
 }
 
 

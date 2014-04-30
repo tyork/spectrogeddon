@@ -7,6 +7,7 @@
 //
 
 #import <GLKit/GLKit.h>
+#import "RendererTypes.h"
 
 /**
  Displays a GL texture that can be drawn into and scrolled to a preferred position.
@@ -15,7 +16,7 @@
 
 @property (nonatomic) float currentPosition;
 
-- (void)drawContentWithWidth:(GLint)width height:(GLint)height commands:(void(^)(void))glCommands;
+- (void)drawContentWithSize:(RenderSize)renderSize commands:(void(^)(void))glCommands;
 
 - (void)render;
 

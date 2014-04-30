@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RendererTypes.h"
 
 @interface GLRenderer : NSObject
 
-- (void)addMeasurementsToDisplayQueue:(NSArray*)channels viewportWidth:(GLint)width height:(GLint)height;
+@property (nonatomic) RenderSize renderSize;
 
-- (void)renderFrameViewportWidth:(GLint)width height:(GLint)height;
+- (void)addMeasurementsForDisplay:(NSArray*)channels;
+
+- (void)render;
 
 - (void)useColorMap:(CGImageRef)colorMap;
 

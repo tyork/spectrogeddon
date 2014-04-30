@@ -52,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19BEF367191119FF0013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererTypes.h; path = ../../CommonCode/RendererTypes.h; sourceTree = "<group>"; };
 		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		19F6688B190AA3AF00D2DE77 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -265,6 +266,7 @@
 				19F66955190AB25F00D2DE77 /* GLRenderer.h */,
 				19F66954190AB25F00D2DE77 /* GLRenderer.m */,
 				19F66925190AA86C00D2DE77 /* RendererDefs.h */,
+				19BEF367191119FF0013DD0A /* RendererTypes.h */,
 				19F66926190AA86C00D2DE77 /* RendererUtils.h */,
 				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
 				19F6692A190AA86C00D2DE77 /* ScrollingRenderer.h */,
