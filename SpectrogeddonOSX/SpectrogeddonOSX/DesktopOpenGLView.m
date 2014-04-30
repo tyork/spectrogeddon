@@ -55,7 +55,6 @@
 - (void)update
 {
     [super update];
-    // TODO: ignores retina
     self.renderer.renderSize = (RenderSize) { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
 }
 

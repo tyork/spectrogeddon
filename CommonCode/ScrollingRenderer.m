@@ -108,8 +108,8 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     
     const GLint widthAsPOT = NextPowerOfTwoClosestToValue(renderSize.width);
     const GLint heightAsPOT = NextPowerOfTwoClosestToValue(renderSize.height);
-    
-    if(widthAsPOT != self.frameWidth || heightAsPOT != self.frameHeight)
+    const BOOL shouldRegenerate = widthAsPOT != self.frameWidth || heightAsPOT != self.frameHeight;
+    if(shouldRegenerate)
     {
         [self destroyFrameResources];
     }
@@ -131,6 +131,11 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     }
     
     glViewport(0, 0, self.frameWidth, self.frameHeight);
+    if(shouldRegenerate)
+    {
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
     glCommands();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
