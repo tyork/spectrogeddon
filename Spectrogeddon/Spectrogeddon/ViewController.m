@@ -91,9 +91,9 @@
 
 #pragma mark - Spectrum generator -
 
-- (void)spectrumGenerator:(SpectrumGenerator *)generator didGenerateSpectrum:(TimeSequence *)levels
+- (void)spectrumGenerator:(SpectrumGenerator *)generator didGenerateSpectrums:(NSArray *)spectrumsPerChannel
 {
-    [self.renderer addMeasurementToDisplayQueue:levels];
+    [self.renderer addMeasurementToDisplayQueue:[spectrumsPerChannel firstObject]];
 }
 
 #pragma mark - Interactions - 
