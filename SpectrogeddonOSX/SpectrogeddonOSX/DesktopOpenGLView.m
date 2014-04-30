@@ -62,13 +62,14 @@
 - (void)redisplay
 {
     [self setNeedsDisplay:YES];
+    [self displayIfNeeded];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
     [self.renderer render];
-    [[self openGLContext] flushBuffer];
+    glSwapAPPLE();
 }
 
 - (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums
