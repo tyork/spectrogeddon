@@ -18,4 +18,8 @@
 
 - (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums;
 
+- (void)pauseRendering;
+
+- (void)resumeRendering;
+
 @end

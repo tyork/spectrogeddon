@@ -19,9 +19,6 @@
 @end
 
 @implementation AppDelegate
-{
-    CVDisplayLinkRef _displayLink;
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -38,14 +35,6 @@
     
     [self updateSourceMenu];
     
-    const CVReturn error = CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
-    if(error != kCVReturnSuccess)
-    {
-        DLOG(@"Failed to init display link with error %d", error);
-    }
-    CVDisplayLinkSetOutputCallback(_displayLink, DisplayLinkCallback, (__bridge void*)self);
-    CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(_displayLink, self.glView.openGLContext.CGLContextObj, self.glView.pixelFormat.CGLPixelFormatObj);
-
     [self resume];
 }
 
@@ -63,11 +52,6 @@
     }];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)notification
-{
-    CVDisplayLinkRelease(_displayLink);
-}
-
 - (void)applicationDidUnhide:(NSNotification *)notification
 {
     [self resume];
@@ -80,14 +64,14 @@
 
 - (void)pause
 {
-    CVDisplayLinkStop(_displayLink);
+    [self.glView pauseRendering];
     [self.spectrumGenerator stopGenerating];
 }
 
 - (void)resume
 {
+    [self.glView resumeRendering];
     [self.spectrumGenerator startGenerating];
-    CVDisplayLinkStart(_displayLink);
 }
 
 - (IBAction)nextColorMap:(id)sender
@@ -96,29 +80,12 @@
     [self.glView setColorMapImage:image];
 }
 
-- (void)render
-{
-    [self.glView redisplay];
-}
-
 - (void)didPickSource:(NSMenuItem*)sender
 {
     NSString* sourceID = [sender representedObject];
     self.spectrumGenerator.preferredSourceID = sourceID;
     [self updateSourceMenu];
 }
-
-static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext)
-{
-    @autoreleasepool {
-        id target = (__bridge id)displayLinkContext;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [target render];
-        });
-    }
-    return kCVReturnSuccess;
-}
-
 
 #pragma mark - Spectrum generator -
 
