@@ -25,7 +25,7 @@ typedef struct
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
-@property (nonatomic) GLint texOffsetUniform;
+@property (nonatomic) GLint offsetUniform;
 @property (nonatomic) GLuint shader;
 @property (nonatomic) GLuint vao;
 
@@ -36,10 +36,9 @@ typedef struct
 
 - (void)setRenderSize:(RenderSize)renderSize
 {
-    RenderSize asPowersOfTwo = RenderSizeForNearestPowersOfTwo(renderSize);
-    if(!RenderSizeEqualToSize(asPowersOfTwo, _renderSize))
+    if(!RenderSizeEqualToSize(renderSize, _renderSize))
     {
-        _renderSize = asPowersOfTwo;
+        _renderSize = renderSize;
         [self destroyFrameResources];
     }
 }
@@ -135,7 +134,7 @@ typedef struct
         self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
         self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");
-        self.texOffsetUniform = glGetUniformLocation(self.shader, "uTexOffset");
+        self.offsetUniform = glGetUniformLocation(self.shader, "uOffset");
     }
     
     if(!self.vao)
@@ -165,11 +164,13 @@ typedef struct
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
-    const GLKVector2 vectorOffset = GLKVector2Make(self.currentPosition, 0.0f);
-    glUniform2fv(self.texOffsetUniform, 1, vectorOffset.v);
     
+    const float translation = 2.0f-self.currentPosition*2.0f;
+    glUniform1f(self.offsetUniform, translation);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
-
+    glUniform1f(self.offsetUniform, translation - 2.0f);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
+    
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 #if TARGET_OS_IPHONE
     glBindVertexArrayOES(0);
@@ -234,7 +235,7 @@ typedef struct
     glGenTextures(1, &textureName);
     glBindTexture(GL_TEXTURE_2D, textureName);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, self.renderSize.width, self.renderSize.height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
