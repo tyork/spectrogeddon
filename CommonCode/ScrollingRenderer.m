@@ -18,20 +18,7 @@ typedef struct
     GLfloat s,t;
 } TexturedVertexAttribs;
 
-static inline GLint NextPowerOfTwoClosestToValue(GLint value)
-{
-    GLint power = 1;
-    while(power < value)
-    {
-        power <<= 1;
-    }
-    return power;
-}
-
-
 @interface ScrollingRenderer ()
-@property (nonatomic) GLint frameWidth;
-@property (nonatomic) GLint frameHeight;
 @property (nonatomic) GLuint framebuffer;
 
 @property (nonatomic) GLuint frameTexture;
@@ -46,6 +33,16 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
 @end
 
 @implementation ScrollingRenderer
+
+- (void)setRenderSize:(RenderSize)renderSize
+{
+    RenderSize asPowersOfTwo = RenderSizeForNearestPowersOfTwo(renderSize);
+    if(!RenderSizeEqualToSize(asPowersOfTwo, _renderSize))
+    {
+        _renderSize = asPowersOfTwo;
+        [self destroyFrameResources];
+    }
+}
 
 - (void)dealloc
 {
@@ -87,8 +84,6 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     {
         glDeleteFramebuffers(1, &_framebuffer);
         self.framebuffer = 0;
-        self.frameWidth = 0;
-        self.frameHeight = 0;
     }
     
     if(self.frameTexture)
@@ -98,44 +93,31 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     }
 }
 
-- (void)drawContentWithSize:(RenderSize)renderSize commands:(void (^)(void))glCommands
+- (void)drawWithCommands:(void (^)(void))glCommands
 {
     NSParameterAssert(glCommands);
-    if(RenderSizeIsEmpty(renderSize))
+    if(RenderSizeIsEmpty(self.renderSize))
     {
         return;
     }
     
-    const GLint widthAsPOT = NextPowerOfTwoClosestToValue(renderSize.width);
-    const GLint heightAsPOT = NextPowerOfTwoClosestToValue(renderSize.height);
-    const BOOL shouldRegenerate = widthAsPOT != self.frameWidth || heightAsPOT != self.frameHeight;
-    if(shouldRegenerate)
-    {
-        [self destroyFrameResources];
-    }
-    
     if(!self.frameTexture)
     {
-        self.frameTexture = [self generateTextureWithWidth:widthAsPOT height:heightAsPOT];
-        self.frameWidth = widthAsPOT;
-        self.frameHeight = heightAsPOT;
+        self.frameTexture = [self generateTexture];
     }
     
     if(!self.framebuffer)
     {
         self.framebuffer = [self generateFrameBufferForTexture:self.frameTexture];
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
     else
     {
         glBindFramebuffer(GL_FRAMEBUFFER, self.framebuffer);
     }
     
-    glViewport(0, 0, self.frameWidth, self.frameHeight);
-    if(shouldRegenerate)
-    {
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-    }
+    glViewport(0, 0, self.renderSize.width, self.renderSize.height);
     glCommands();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
@@ -246,12 +228,12 @@ static inline GLint NextPowerOfTwoClosestToValue(GLint value)
     return framebufferName;
 }
 
-- (GLuint)generateTextureWithWidth:(GLint)width height:(GLint)height
+- (GLuint)generateTexture
 {
     GLuint textureName = 0;
     glGenTextures(1, &textureName);
     glBindTexture(GL_TEXTURE_2D, textureName);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,  width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, self.renderSize.width, self.renderSize.height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );

@@ -12,7 +12,7 @@
 #import "ColumnRenderer.h"
 #import "TimeSequence.h"
 
-static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
+static const float DefaultScrollingSpeed = 1.0f;  // Multiples of 1px/sample.
 
 @interface GLRenderer ()
 @property (nonatomic,strong) ColumnRenderer* channel1Renderer;
@@ -44,6 +44,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     {
         _renderSize = renderSize;
         self.frameOriginTime = 0;
+        self.scrollingRenderer.renderSize = renderSize;
     }
 }
 
@@ -64,7 +65,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     if(position > 1.0f)
     {
         self.frameOriginTime = nowTime;
-        position -= floorf(position);
+        position = 0.0f;
     }
     self.scrollingRenderer.currentPosition = position;
     
@@ -92,7 +93,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
     }
     id __weak weakSelf = self;
-    [self.scrollingRenderer drawContentWithSize:self.renderSize commands:^{
+    [self.scrollingRenderer drawWithCommands:^{
         
         GLRenderer* strongSelf = weakSelf;
         if(strongSelf)
@@ -118,7 +119,7 @@ static const float DefaultScrollingSpeed = 0.35f;  // Screen fraction per second
     float baseOffset = [self widthFromTimeInterval:(timeSequence.timeStamp - self.frameOriginTime)];
     if(baseOffset > 1.0f)
     {
-        baseOffset -= floorf(baseOffset);
+        baseOffset = 0.0f;
     }
     
     const float width = [self widthFromTimeInterval:timeSequence.duration + timeSequence.timeStamp - self.lastRenderedSampleTime];

@@ -15,8 +15,9 @@
 @interface ScrollingRenderer : NSObject
 
 @property (nonatomic) float currentPosition;
+@property (nonatomic) RenderSize renderSize;
 
-- (void)drawContentWithSize:(RenderSize)renderSize commands:(void(^)(void))glCommands;
+- (void)drawWithCommands:(void(^)(void))glCommands;
 
 - (void)render;
 
