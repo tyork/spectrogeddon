@@ -11,6 +11,7 @@
 
 @interface GLRenderer : NSObject
 
+@property (nonatomic) float scrollingSpeed;
 @property (nonatomic) RenderSize renderSize;
 
 - (void)addMeasurementsForDisplay:(NSArray*)channels;

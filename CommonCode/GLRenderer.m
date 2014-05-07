@@ -14,6 +14,10 @@
 
 static const float DefaultScrollingSpeed = 1.0f;  // Multiples of 1px/sample.
 
+static const float SamplingRate = 44100.0f;
+static const float SamplesPerBuffer = 1024.0f;
+static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
+
 @interface GLRenderer ()
 @property (nonatomic,strong) ColumnRenderer* channel1Renderer;
 @property (nonatomic,strong) ColumnRenderer* channel2Renderer;
@@ -21,7 +25,6 @@ static const float DefaultScrollingSpeed = 1.0f;  // Multiples of 1px/sample.
 
 @property (nonatomic) NSTimeInterval frameOriginTime;
 @property (nonatomic) NSTimeInterval lastRenderedSampleTime;
-@property (nonatomic) float scrollingSpeed;
 @end
 
 @implementation GLRenderer
@@ -128,7 +131,8 @@ static const float DefaultScrollingSpeed = 1.0f;  // Multiples of 1px/sample.
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
-    return self.scrollingSpeed * timeInterval;
+    const float screenFractionPerSecond = self.scrollingSpeed*ScrollingConversionFactor/(float)self.renderSize.width;
+    return screenFractionPerSecond * timeInterval;
 }
 
 @end

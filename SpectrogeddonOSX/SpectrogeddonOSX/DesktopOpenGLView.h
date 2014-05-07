@@ -13,6 +13,7 @@
 @interface DesktopOpenGLView : NSOpenGLView
 
 @property (nonatomic,strong) NSImage* colorMapImage;
+@property (nonatomic,copy) NSNumber* scrollingSpeed;
 
 - (void)redisplay;
 

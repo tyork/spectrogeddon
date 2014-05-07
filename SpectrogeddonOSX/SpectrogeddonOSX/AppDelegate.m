@@ -34,8 +34,23 @@
     }
     
     [self updateSourceMenu];
+    [self updateSpeedMenu];
     
     [self resume];
+}
+
+- (void)updateSpeedMenu
+{
+    [self.speedMenu removeAllItems];
+    
+    NSNumber* currentSpeed = self.glView.scrollingSpeed;
+    NSArray* speeds = @[ @1, @2, @4 ];
+    [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:@""];
+        [item setState:[obj isEqualToNumber:currentSpeed]];
+        [item setRepresentedObject:obj];
+        [self.speedMenu addItem:item];
+    }];
 }
 
 - (void)updateSourceMenu
@@ -78,6 +93,13 @@
 {
     NSImage* image = [self.colorMaps nextColorMap];
     [self.glView setColorMapImage:image];
+}
+
+- (void)didTapSpeed:(id)sender
+{
+    NSNumber* speed = [sender representedObject];
+    self.glView.scrollingSpeed = speed;
+    [self updateSpeedMenu];
 }
 
 - (void)didPickSource:(NSMenuItem*)sender

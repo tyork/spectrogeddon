@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="glView" destination="wXy-ZW-lve" id="caL-Zl-vc7"/>
                 <outlet property="sourceMenu" destination="UKI-Uf-ug6" id="JEc-cZ-rR5"/>
+                <outlet property="speedMenu" destination="31j-cB-yKC" id="Q53-SV-Img"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -66,7 +67,7 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Colors" id="dMs-cI-mzQ" userLabel="Menu Item - ChChChanges">
+                <menuItem title="Colors" id="dMs-cI-mzQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Colors" id="bib-Uj-vzu">
                         <items>
@@ -78,6 +79,10 @@
                             </menuItem>
                         </items>
                     </menu>
+                </menuItem>
+                <menuItem title="Speed" id="PiB-kt-V45">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Speed" id="31j-cB-yKC"/>
                 </menuItem>
                 <menuItem title="Source" id="quw-6l-RGq" userLabel="Menu Item - Source ">
                     <modifierMask key="keyEquivalentModifierMask"/>

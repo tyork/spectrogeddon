@@ -15,6 +15,7 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (strong) IBOutlet DesktopOpenGLView *glView;
 @property (strong) IBOutlet NSMenu *sourceMenu;
+@property (strong) IBOutlet NSMenu *speedMenu;
 
 - (IBAction)nextColorMap:(id)sender;
 
