@@ -11,7 +11,7 @@
 #import <OpenGL/gl3ext.h>
 
 @interface DesktopOpenGLView ()
-@property (nonatomic) CVDisplayLinkRef displayLink;
+@property (nonatomic,strong) NSTimer* displayTimer;
 @property (nonatomic,strong) GLRenderer* renderer;
 @end
 
@@ -34,45 +34,29 @@
     [self setOpenGLContext:context];
 }
 
-- (void)dealloc
-{
-    CVDisplayLinkRelease(_displayLink);
-}
-
 - (void)prepareOpenGL
 {
     // Ensure we sync buffer swapping
     const GLint swapInterval = 1;
     [self.openGLContext setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
-
-    // Create the display link
-    const CVReturn error = CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
-    if(error != kCVReturnSuccess)
-    {
-        DLOG(@"Failed to init display link with error %d", error);
-    }
-    CVDisplayLinkSetOutputCallback(self.displayLink, DisplayLinkCallback, (__bridge void*)self);
-    CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(self.displayLink, self.openGLContext.CGLContextObj, self.pixelFormat.CGLPixelFormatObj);
 }
-
-static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext)
-{
-    @autoreleasepool {
-        id target = (__bridge id)displayLinkContext;
-        [target redisplay];
-    }
-    return kCVReturnSuccess;
-}
-
 
 - (void)resumeRendering
 {
-    CVDisplayLinkStart(self.displayLink);
+    if(!self.displayTimer)
+    {
+        // Create the display timer
+        self.displayTimer = [NSTimer timerWithTimeInterval:0.001 target:self selector:@selector(redisplay:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSEventTrackingRunLoopMode];
+        [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSModalPanelRunLoopMode];
+    }
 }
 
 - (void)pauseRendering
 {
-    CVDisplayLinkStop(self.displayLink);
+    [self.displayTimer invalidate];
+    self.displayTimer = nil;
 }
 
 - (GLRenderer*)renderer
@@ -90,7 +74,7 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     self.renderer.renderSize = (RenderSize) { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
 }
 
-- (void)redisplay
+- (void)redisplay:(NSTimer*)timer
 {
     [self executeGL:^() {
         

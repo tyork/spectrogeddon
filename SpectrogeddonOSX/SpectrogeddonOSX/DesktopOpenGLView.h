@@ -15,8 +15,6 @@
 
 - (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
-- (void)redisplay;
-
 - (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums;
 
 - (void)pauseRendering;
