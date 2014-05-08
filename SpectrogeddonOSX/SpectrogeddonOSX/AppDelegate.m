@@ -54,7 +54,7 @@
     [self.speedMenu removeAllItems];
     
     NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
-    NSArray* speeds = @[ @1, @2, @4 ];
+    NSArray* speeds = @[ @1, @2, @4, @8 ];
     [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:@""];
         [item setState:[obj isEqualToNumber:currentSpeed]];
