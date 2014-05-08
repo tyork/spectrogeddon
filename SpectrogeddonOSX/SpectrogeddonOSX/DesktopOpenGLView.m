@@ -17,8 +17,6 @@
 
 @implementation DesktopOpenGLView
 
-@synthesize scrollingSpeed = _scrollingSpeed;
-
 - (void)awakeFromNib
 {
     NSOpenGLPixelFormatAttribute attributes[] = {
@@ -86,34 +84,6 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
     return _renderer;
 }
 
-- (void)setColorMapImage:(NSImage *)colorMapImage
-{
-    if(_colorMapImage != colorMapImage)
-    {
-        _colorMapImage = colorMapImage;
-        CGImageRef imageRef = [_colorMapImage CGImageForProposedRect:NULL context:NULL hints:NULL];
-        [self.renderer useColorMap:imageRef];
-    }
-}
-
-- (void)setScrollingSpeed:(NSNumber *)scrollingSpeed
-{
-    if(_scrollingSpeed != scrollingSpeed)
-    {
-        _scrollingSpeed = [scrollingSpeed copy];
-        [self.renderer setScrollingSpeed:scrollingSpeed ? scrollingSpeed.floatValue : 1.0f];
-    }
-}
-
-- (NSNumber*)scrollingSpeed
-{
-    if(!_scrollingSpeed)
-    {
-        _scrollingSpeed = @(ceilf(self.renderer.scrollingSpeed));
-    }
-    return _scrollingSpeed;
-}
-
 - (void)update
 {
     [super update];
@@ -148,6 +118,11 @@ static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         [currentContext flushBuffer];
     }
     CGLUnlockContext((CGLContextObj)[currentContext CGLContextObj]);
+}
+
+- (void)useDisplaySettings:(DisplaySettings*)displaySettings
+{
+    [self.renderer useDisplaySettings:displaySettings];
 }
 
 @end

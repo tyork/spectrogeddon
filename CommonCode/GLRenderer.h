@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "RendererTypes.h"
 
+@class DisplaySettings;
+
 @interface GLRenderer : NSObject
 
-@property (nonatomic) float scrollingSpeed;
 @property (nonatomic) RenderSize renderSize;
 
 - (void)addMeasurementsForDisplay:(NSArray*)channels;
 
 - (void)render;
 
-- (void)useColorMap:(CGImageRef)colorMap;
+- (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
 @end

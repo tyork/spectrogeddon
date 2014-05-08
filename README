@@ -5,10 +5,11 @@ On OS X, you can install Soundflower (https://github.com/Cycling74/Soundflower) 
 into the app. You can pick the input source in the spectrogram app using its Source menu.
 
 Outstanding issues:
-- Visual artifact due to lazy math when computing width of display.
-- Needs refactor
+- Occasional overlap drawing produces bad column, need to simplify column sizing.
+- Some properties in GLRenderer should be made atomic.
+- Sample rate is needed but not supplied to GLRenderer.
 
 Missing features:
 - Use noise estimate to adjust the floor for the signal display.
 - Make SampleBuffer a proper ring buffer to permit longer FFTs and overlaps.
-- Pause
+- 3D mode

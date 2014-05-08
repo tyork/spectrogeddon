@@ -11,11 +11,14 @@
 #import "TimeSequence.h"
 #import "MobileGLDisplay.h"
 #import "ColorMapSet.h"
+#import "SettingsStore.h"
+#import "DisplaySettings.h"
 
 @interface ViewController () <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
 @property (nonatomic,strong) MobileGLDisplay* renderer;
 @property (nonatomic,strong) ColorMapSet* colorMaps;
+@property (nonatomic,strong) SettingsStore* settingsStore;
 @property (nonatomic,strong) CADisplayLink* displayLink;
 @end
 
@@ -48,8 +51,20 @@
     if(!self.colorMaps)
     {
         self.colorMaps = [[ColorMapSet alloc] init];
-        self.renderer.colorMapImage = [self.colorMaps nextColorMap];
     }
+    if(!self.settingsStore)
+    {
+        self.settingsStore = [[SettingsStore alloc] init];
+        if(![self.settingsStore displaySettings].colorMap)
+        {
+            [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+                settings.colorMap = [self.colorMaps currentColorMap];
+                return settings;
+            }];
+        }
+    }
+
+    [self.renderer useDisplaySettings:[self.settingsStore displaySettings]];
     
     self.renderer.glView = self.spectrumView;
 }
@@ -100,7 +115,12 @@
 
 - (IBAction)didTapScreen:(id)sender
 {
-    self.renderer.colorMapImage = [self.colorMaps nextColorMap];
+    ColorMap* newColorMap = [self.colorMaps nextColorMap];
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+        settings.colorMap = newColorMap;
+        return settings;
+    }];
+    [self.renderer useDisplaySettings:[self.settingsStore displaySettings]];
 }
 
 

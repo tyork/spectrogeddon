@@ -10,12 +10,13 @@
 #import "DesktopOpenGLView.h"
 #import "SpectrumGenerator.h"
 #import "ColorMapSet.h"
-
-// TODO: refactor
+#import "SettingsStore.h"
+#import "DisplaySettings.h"
 
 @interface AppDelegate ()  <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
 @property (nonatomic,strong) ColorMapSet* colorMaps;
+@property (nonatomic,strong) SettingsStore* settingsStore;
 @end
 
 @implementation AppDelegate
@@ -30,12 +31,21 @@
     if(!self.colorMaps)
     {
         self.colorMaps = [[ColorMapSet alloc] init];
-        self.glView.colorMapImage = [self.colorMaps nextColorMap];
+    }
+    
+    self.settingsStore = [[SettingsStore alloc] init];
+    if(![self.settingsStore displaySettings].colorMap)
+    {
+        [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+            settings.colorMap = [self.colorMaps currentColorMap];
+            return settings;
+        }];
     }
     
     [self updateSourceMenu];
     [self updateSpeedMenu];
-    
+
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
     [self resume];
 }
 
@@ -43,7 +53,7 @@
 {
     [self.speedMenu removeAllItems];
     
-    NSNumber* currentSpeed = self.glView.scrollingSpeed;
+    NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
     NSArray* speeds = @[ @1, @2, @4 ];
     [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:@""];
@@ -91,14 +101,21 @@
 
 - (IBAction)nextColorMap:(id)sender
 {
-    NSImage* image = [self.colorMaps nextColorMap];
-    [self.glView setColorMapImage:image];
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
+        settings.colorMap = [self.colorMaps nextColorMap];
+        return settings;
+    }];
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
 }
 
 - (void)didTapSpeed:(id)sender
 {
     NSNumber* speed = [sender representedObject];
-    self.glView.scrollingSpeed = speed;
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+        settings.scrollingSpeed = [speed integerValue];
+        return settings;
+    }];
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
     [self updateSpeedMenu];
 }
 

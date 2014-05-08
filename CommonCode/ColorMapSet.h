@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ColorMapSet : NSObject
+@class ColorMap;
 
-#if TARGET_OS_IPHONE
-    - (UIImage*)nextColorMap;
-#else
-    - (NSImage*)nextColorMap;
-#endif
+@interface ColorMapSet : NSObject <NSCoding>
+
+- (ColorMap*)currentColorMap;
+- (ColorMap*)nextColorMap;
 
 @end

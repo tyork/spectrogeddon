@@ -9,11 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 @class TimeSequence;
+@class DisplaySettings;
 
 @interface DesktopOpenGLView : NSOpenGLView
 
-@property (nonatomic,strong) NSImage* colorMapImage;
-@property (nonatomic,copy) NSNumber* scrollingSpeed;
+- (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
 - (void)redisplay;
 

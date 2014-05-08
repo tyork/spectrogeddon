@@ -11,8 +11,8 @@
 #import "ScrollingRenderer.h"
 #import "ColumnRenderer.h"
 #import "TimeSequence.h"
-
-static const float DefaultScrollingSpeed = 1.0f;  // Multiples of 1px/sample.
+#import "DisplaySettings.h"
+#import "ColorMap.h"
 
 static const float SamplingRate = 44100.0f;
 static const float SamplesPerBuffer = 1024.0f;
@@ -25,6 +25,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
 
 @property (nonatomic) NSTimeInterval frameOriginTime;
 @property (nonatomic) NSTimeInterval lastRenderedSampleTime;
+@property (nonatomic,strong) DisplaySettings* displaySettings;
 @end
 
 @implementation GLRenderer
@@ -33,7 +34,6 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
 {
     if((self = [super init]))
     {
-        _scrollingSpeed = DefaultScrollingSpeed;
         _scrollingRenderer = [[ScrollingRenderer alloc] init];
         _channel1Renderer = [[ColumnRenderer alloc] init];
         _channel2Renderer = [[ColumnRenderer alloc] init];
@@ -53,7 +53,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
 
 - (void)render
 {
-    if(RenderSizeIsEmpty(self.renderSize))
+    if(RenderSizeIsEmpty(self.renderSize) || !self.displaySettings)
     {
         return;
     }
@@ -111,10 +111,11 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     }];
 }
 
-- (void)useColorMap:(CGImageRef)colorMap
+- (void)useDisplaySettings:(DisplaySettings *)displaySettings
 {
-    self.channel1Renderer.colorMapImage = colorMap;
-    self.channel2Renderer.colorMapImage = colorMap;
+    self.displaySettings = displaySettings;
+    self.channel1Renderer.colorMapImage = [displaySettings.colorMap imageRef];
+    self.channel2Renderer.colorMapImage = [displaySettings.colorMap imageRef];
 }
 
 - (void)updateChannelRenderer:(ColumnRenderer*)renderer withSequence:(TimeSequence*)timeSequence
@@ -131,7 +132,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
-    const float screenFractionPerSecond = self.scrollingSpeed*ScrollingConversionFactor/(float)self.renderSize.width;
+    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed*ScrollingConversionFactor/(float)self.renderSize.width;
     return screenFractionPerSecond * timeInterval;
 }
 

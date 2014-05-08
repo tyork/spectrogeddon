@@ -23,12 +23,15 @@
 		1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B85618FBFBA8002DE52F /* InfoPlist.strings */; };
 		1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */; };
 		1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1901B86318FBFCA3002DE52F /* ViewController.xib */; };
+		194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F1191B878400FC152F /* DisplaySettings.m */; };
+		194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F8191B9D4600FC152F /* ColorMap.m */; };
 		19541FAE18FC343300BC94BF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FAD18FC343300BC94BF /* Accelerate.framework */; };
 		19541FB418FC37A600BC94BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FB318FC37A600BC94BF /* AVFoundation.framework */; };
 		19541FC118FD7A2E00BC94BF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FC018FD7A2E00BC94BF /* OpenGLES.framework */; };
 		19541FC318FD7AAF00BC94BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FC218FD7AAF00BC94BF /* QuartzCore.framework */; };
 		19541FCB18FD8BEB00BC94BF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FCA18FD8BEB00BC94BF /* GLKit.framework */; };
 		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
+		19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC51191BADDA00AEA0AA /* SettingsStore.m */; };
 		19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668EE190AA78B00D2DE77 /* AudioSource.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
 		19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */; };
@@ -78,6 +81,10 @@
 		1901B85718FBFBA8002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonTests.m; sourceTree = "<group>"; };
 		1901B86318FBFCA3002DE52F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		194EA9F1191B878400FC152F /* DisplaySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySettings.m; sourceTree = "<group>"; };
+		194EA9F2191B878400FC152F /* DisplaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySettings.h; sourceTree = "<group>"; };
+		194EA9F7191B9D4600FC152F /* ColorMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMap.h; sourceTree = "<group>"; };
+		194EA9F8191B9D4600FC152F /* ColorMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMap.m; sourceTree = "<group>"; };
 		19541FAD18FC343300BC94BF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		19541FB318FC37A600BC94BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19541FC018FD7A2E00BC94BF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -85,6 +92,8 @@
 		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		19541FE21906D89900BC94BF /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
 		19BEF36819111A140013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererTypes.h; sourceTree = "<group>"; };
+		19CEAC51191BADDA00AEA0AA /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStore.m; sourceTree = "<group>"; };
+		19CEAC52191BADDA00AEA0AA /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsStore.h; sourceTree = "<group>"; };
 		19F668ED190AA78B00D2DE77 /* AudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSource.h; sourceTree = "<group>"; };
 		19F668EE190AA78B00D2DE77 /* AudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSource.m; sourceTree = "<group>"; };
 		19F668EF190AA78B00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
@@ -234,9 +243,23 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		19CEAC50191BAD9600AEA0AA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19F668EF190AA78B00D2DE77 /* ColorMapSet.h */,
+				19F668F0190AA78B00D2DE77 /* ColorMapSet.m */,
+				194EA9F2191B878400FC152F /* DisplaySettings.h */,
+				194EA9F1191B878400FC152F /* DisplaySettings.m */,
+				19CEAC52191BADDA00AEA0AA /* SettingsStore.h */,
+				19CEAC51191BADDA00AEA0AA /* SettingsStore.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		19F668E6190AA61100D2DE77 /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
+				19CEAC50191BAD9600AEA0AA /* Settings */,
 				19F668E9190AA67D00D2DE77 /* Display */,
 				19F668E8190AA63900D2DE77 /* AudioAcquisition */,
 				19F668E7190AA61D00D2DE77 /* AudioProcessing */,
@@ -272,8 +295,8 @@
 		19F668E9190AA67D00D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				19F668EF190AA78B00D2DE77 /* ColorMapSet.h */,
-				19F668F0190AA78B00D2DE77 /* ColorMapSet.m */,
+				194EA9F7191B9D4600FC152F /* ColorMap.h */,
+				194EA9F8191B9D4600FC152F /* ColorMap.m */,
 				19F668F1190AA78B00D2DE77 /* ColumnRenderer.h */,
 				19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */,
 				19F66958190AB26800D2DE77 /* GLRenderer.h */,
@@ -407,6 +430,8 @@
 			files = (
 				1901B84518FBFBA7002DE52F /* ViewController.m in Sources */,
 				19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */,
+				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
+				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
 				19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
@@ -418,6 +443,7 @@
 				19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
 				1901B83818FBFBA7002DE52F /* main.m in Sources */,
+				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
 				19F66912190AA78B00D2DE77 /* ScrollingRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

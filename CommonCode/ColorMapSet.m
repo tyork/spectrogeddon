@@ -7,6 +7,9 @@
 //
 
 #import "ColorMapSet.h"
+#import "ColorMap.h"
+
+static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
 
 @interface ColorMapSet ()
 @property (nonatomic,strong) NSArray* imageNames;
@@ -20,9 +23,26 @@
     if((self = [super init]))
     {
         _imageNames = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:@"ColorMaps"];
-        NSParameterAssert(_imageNames);
+        NSParameterAssert(_imageNames.count > 0);
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [self init]))
+    {
+        NSString* colorMapPath = [aDecoder decodeObjectForKey:KeyActiveColorMapPath];
+        const NSUInteger selectedIndex = [self.imageNames indexOfObject:colorMapPath];
+        _colorMapIndex = (selectedIndex == NSNotFound) ? 0 : selectedIndex;
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    NSString* activePath = _imageNames[_colorMapIndex];
+    [aCoder encodeObject:activePath forKey:KeyActiveColorMapPath];
 }
 
 - (NSUInteger)imageCount
@@ -30,44 +50,20 @@
     return self.imageNames.count;
 }
 
-#if TARGET_OS_IPHONE
-
-- (UIImage*)imageAtIndex:(NSUInteger)imageIndex
+- (ColorMap*)currentColorMap
 {
-    NSString* path = self.imageNames[imageIndex];
-    return [[UIImage alloc] initWithContentsOfFile:path];
+    return [[ColorMap alloc] initWithImagePath:self.imageNames[self.colorMapIndex]];
 }
 
-- (UIImage*)nextColorMap
+- (ColorMap*)nextColorMap
 {
-    UIImage* nextColorMap = [self imageAtIndex:self.colorMapIndex];
+    const NSUInteger currentIndex = self.colorMapIndex;
     self.colorMapIndex = (self.colorMapIndex + 1);
     if(self.colorMapIndex >= [self imageCount])
     {
         self.colorMapIndex = 0;
     }
-    return nextColorMap;
+    return [[ColorMap alloc] initWithImagePath:self.imageNames[currentIndex]];
 }
-
-#else
-
-- (NSImage*)imageAtIndex:(NSUInteger)imageIndex
-{
-    NSString* path = self.imageNames[imageIndex];
-    return [[NSImage alloc] initWithContentsOfFile:path];
-}
-
-- (NSImage*)nextColorMap
-{
-    NSImage* nextColorMap = [self imageAtIndex:self.colorMapIndex];
-    self.colorMapIndex = (self.colorMapIndex + 1);
-    if(self.colorMapIndex >= [self imageCount])
-    {
-        self.colorMapIndex = 0;
-    }
-    return nextColorMap;
-}
-
-#endif
 
 @end

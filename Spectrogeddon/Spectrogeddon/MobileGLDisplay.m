@@ -36,13 +36,9 @@
     }
 }
 
-- (void)setColorMapImage:(UIImage *)colorMapImage
+- (void)useDisplaySettings:(DisplaySettings *)displaySettings
 {
-    if(_colorMapImage != colorMapImage)
-    {
-        _colorMapImage = colorMapImage;
-        [self.renderer useColorMap:_colorMapImage.CGImage];
-    }
+    [self.renderer useDisplaySettings:displaySettings];
 }
 
 - (void)redisplay

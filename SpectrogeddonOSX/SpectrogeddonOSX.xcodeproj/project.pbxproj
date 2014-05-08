@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9EE191B876E00FC152F /* DisplaySettings.m */; };
+		194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F5191B9D3900FC152F /* ColorMap.m */; };
+		194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9FC191BA2B200FC152F /* SettingsStore.m */; };
 		19F66889190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
 		19F66893190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F66891190AA3AF00D2DE77 /* InfoPlist.strings */; };
 		19F66895190AA3AF00D2DE77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66894190AA3AF00D2DE77 /* main.m */; };
@@ -52,6 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		194EA9EE191B876E00FC152F /* DisplaySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplaySettings.m; path = ../../CommonCode/DisplaySettings.m; sourceTree = "<group>"; };
+		194EA9EF191B876E00FC152F /* DisplaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplaySettings.h; path = ../../CommonCode/DisplaySettings.h; sourceTree = "<group>"; };
+		194EA9F4191B9D3900FC152F /* ColorMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorMap.h; path = ../../CommonCode/ColorMap.h; sourceTree = "<group>"; };
+		194EA9F5191B9D3900FC152F /* ColorMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorMap.m; path = ../../CommonCode/ColorMap.m; sourceTree = "<group>"; };
+		194EA9FB191BA2B200FC152F /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsStore.h; path = ../../CommonCode/SettingsStore.h; sourceTree = "<group>"; };
+		194EA9FC191BA2B200FC152F /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsStore.m; path = ../../CommonCode/SettingsStore.m; sourceTree = "<group>"; };
 		19BEF367191119FF0013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererTypes.h; path = ../../CommonCode/RendererTypes.h; sourceTree = "<group>"; };
 		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -133,6 +142,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		194EA9FA191BA26500FC152F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19F66919190AA86C00D2DE77 /* ColorMapSet.h */,
+				19F6691A190AA86C00D2DE77 /* ColorMapSet.m */,
+				194EA9EF191B876E00FC152F /* DisplaySettings.h */,
+				194EA9EE191B876E00FC152F /* DisplaySettings.m */,
+				194EA9FB191BA2B200FC152F /* SettingsStore.h */,
+				194EA9FC191BA2B200FC152F /* SettingsStore.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		19F6687C190AA3AF00D2DE77 = {
 			isa = PBXGroup;
 			children = (
@@ -225,9 +247,10 @@
 		19F668EA190AA70400D2DE77 /* CommonModel */ = {
 			isa = PBXGroup;
 			children = (
-				19F66943190AA89300D2DE77 /* Display */,
-				19F66942190AA88300D2DE77 /* AudioProcessing */,
 				19F66941190AA86F00D2DE77 /* AudioAcquisition */,
+				19F66942190AA88300D2DE77 /* AudioProcessing */,
+				19F66943190AA89300D2DE77 /* Display */,
+				194EA9FA191BA26500FC152F /* Settings */,
 			);
 			name = CommonModel;
 			sourceTree = "<group>";
@@ -259,8 +282,8 @@
 		19F66943190AA89300D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				19F66919190AA86C00D2DE77 /* ColorMapSet.h */,
-				19F6691A190AA86C00D2DE77 /* ColorMapSet.m */,
+				194EA9F4191B9D3900FC152F /* ColorMap.h */,
+				194EA9F5191B9D3900FC152F /* ColorMap.m */,
 				19F6691B190AA86C00D2DE77 /* ColumnRenderer.h */,
 				19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */,
 				19F66955190AB25F00D2DE77 /* GLRenderer.h */,
@@ -399,10 +422,13 @@
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
+				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
 				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,
 				19F6693F190AA86C00D2DE77 /* SpectrumGenerator.m in Sources */,
+				194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* ScrollingRenderer.m in Sources */,
+				194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */,
 				19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

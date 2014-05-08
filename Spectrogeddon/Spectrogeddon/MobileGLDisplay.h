@@ -9,12 +9,13 @@
 #import <GLKit/GLKit.h>
 
 @class TimeSequence;
+@class DisplaySettings;
 
 @interface MobileGLDisplay : NSObject <GLKViewDelegate>
 
 @property (nonatomic,weak) GLKView* glView;
 
-@property (nonatomic,strong) UIImage* colorMapImage;
+- (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
 - (void)redisplay;
 
