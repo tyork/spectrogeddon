@@ -56,7 +56,8 @@
     NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
     NSArray* speeds = @[ @1, @2, @4, @8 ];
     [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:@""];
+        // TODO: this conversion of the number directly into a keyEquivalent is hacky and will break beyond 9x (e.g. 16x -> "16" which is not a valid key
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:[obj stringValue]];
         [item setState:[obj isEqualToNumber:currentSpeed]];
         [item setRepresentedObject:obj];
         [self.speedMenu addItem:item];
