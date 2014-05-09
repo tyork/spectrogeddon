@@ -14,6 +14,7 @@
  */
 @interface ScrollingRenderer : NSObject
 
+@property (nonatomic) BOOL vertical;
 @property (nonatomic) float currentPosition;
 @property (nonatomic) RenderSize renderSize;
 

@@ -32,6 +32,7 @@ typedef struct
 @property (nonatomic) GLKMatrix4 transform;
 @property (nonatomic) LevelVertexAttribs* vertices;
 @property (nonatomic) GLsizei vertexCount;
+@property (nonatomic) BOOL invalidatedVertices;
 @end
 
 
@@ -70,6 +71,33 @@ typedef struct
     }
 }
 
+- (void)setUseLogFrequencyScale:(BOOL)useLogFrequencyScale
+{
+    if(_useLogFrequencyScale != useLogFrequencyScale)
+    {
+        _useLogFrequencyScale = useLogFrequencyScale;
+        self.invalidatedVertices = YES;
+    }
+}
+
+- (void)generateVertexPositions
+{
+    const float logOffset = 0.001f; // Safety margin to ensure we don't try taking log2(0)
+    const float logNormalization = 1.0f/log2f(logOffset);
+    const float yScale = 2.0f / (float)(self.vertexCount/2 - 1);
+    for(NSUInteger valueIndex = 0; valueIndex < self.vertexCount/2; valueIndex++)
+    {
+        const NSUInteger vertexIndex = valueIndex << 1;
+        float y = (float)valueIndex * yScale;
+        if(self.useLogFrequencyScale)
+        {
+            y = 2.0f*(1.0f-logNormalization*log2f(y*0.5f+logOffset));
+        }
+        self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
+        self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
+    }
+}
+
 - (void)updateVerticesForTimeSequence:(TimeSequence*)timeSequence offset:(float)offset width:(float)width
 {
     if(!timeSequence.numberOfValues)
@@ -78,22 +106,18 @@ typedef struct
     }
     
     const GLsizei vertexCountForSequence = (GLsizei)(timeSequence.numberOfValues * 2);
-    const BOOL isFirstUse = self.vertexCount != vertexCountForSequence;
-    if(isFirstUse)
+    const BOOL needsVertexes = (self.vertexCount != vertexCountForSequence) || self.invalidatedVertices;
+    if(needsVertexes)
     {
-        free(self.vertices);
+        if(self.vertices != NULL)
+        {
+            free(self.vertices);
+            self.vertices = NULL;
+        }
         self.vertexCount = vertexCountForSequence;
         self.vertices = (LevelVertexAttribs*)calloc(self.vertexCount, sizeof(LevelVertexAttribs));
-        const float yScale = 2.0f / (float)(timeSequence.numberOfValues - 1);
-        
-        for(NSUInteger valueIndex = 0; valueIndex < timeSequence.numberOfValues; valueIndex++)
-        {
-            const NSUInteger vertexIndex = valueIndex << 1;
-            const float y = (float)valueIndex * yScale;
-//            const float yprime = 10.0f*log10f(0.5f*y+1.0f);
-            self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
-            self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
-        }
+        [self generateVertexPositions];
+        self.invalidatedVertices = NO;
     }
 
     const GLKMatrix4 translation = GLKMatrix4MakeTranslation(offset, -1.0f, 0.0f);
@@ -110,6 +134,11 @@ typedef struct
 
 - (void)render
 {
+    if(!self.vertices || !self.colorMapImage)
+    {
+        return;
+    }
+    
     if(!self.texture && self.colorMapImage)
     {
         self.texture = [GLKTextureLoader textureWithCGImage:self.colorMapImage options:nil error:nil];

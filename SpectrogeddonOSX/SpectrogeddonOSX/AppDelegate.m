@@ -109,6 +109,24 @@
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
 }
 
+- (IBAction)changeScrollDirection:(id)sender
+{
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
+        settings.scrollVertically = !settings.scrollVertically;
+        return settings;
+    }];
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+}
+
+- (IBAction)changeFrequencyScale:(id)sender
+{
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
+        settings.useLogFrequencyScale = !settings.useLogFrequencyScale;
+        return settings;
+    }];
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+}
+
 - (void)didTapSpeed:(id)sender
 {
     NSNumber* speed = [sender representedObject];

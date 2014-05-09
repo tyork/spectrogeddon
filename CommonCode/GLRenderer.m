@@ -116,6 +116,8 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     self.displaySettings = displaySettings;
     self.channel1Renderer.colorMapImage = [displaySettings.colorMap imageRef];
     self.channel2Renderer.colorMapImage = [displaySettings.colorMap imageRef];
+    self.channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
+    self.channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
 }
 
 - (void)updateChannelRenderer:(ColumnRenderer*)renderer withSequence:(TimeSequence*)timeSequence

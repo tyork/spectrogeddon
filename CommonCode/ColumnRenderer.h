@@ -15,6 +15,7 @@
  */
 @interface ColumnRenderer : NSObject
 
+@property (nonatomic) BOOL useLogFrequencyScale;
 @property (nonatomic) CGImageRef colorMapImage;
 @property (nonatomic) GLKMatrix4 positioning;
 

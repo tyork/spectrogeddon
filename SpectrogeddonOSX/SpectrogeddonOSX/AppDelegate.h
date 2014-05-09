@@ -19,4 +19,8 @@
 
 - (IBAction)nextColorMap:(id)sender;
 
+- (IBAction)changeScrollDirection:(id)sender;
+
+- (IBAction)changeFrequencyScale:(id)sender;
+
 @end

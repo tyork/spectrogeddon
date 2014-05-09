@@ -67,14 +67,26 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Colors" id="dMs-cI-mzQ">
+                <menuItem title="Display" id="dMs-cI-mzQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Colors" id="bib-Uj-vzu">
+                    <menu key="submenu" title="Display" id="bib-Uj-vzu">
                         <items>
                             <menuItem title="Next colors" keyEquivalent="n" id="aTl-1u-JFS" userLabel="Menu Item - Next colors">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="nextColorMap:" target="Voe-Tx-rLC" id="YvO-vn-vpp"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Scroll vertically" id="YkU-Dh-tcR" userLabel="Menu Item - Scroll vertically">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="changeScrollDirection:" target="Voe-Tx-rLC" id="ttH-qF-gFM"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stretch low frequencies" id="E7M-iX-Ohc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="changeFrequencyScale:" target="Voe-Tx-rLC" id="aKa-LJ-S1B"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -84,9 +96,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Speed" id="31j-cB-yKC"/>
                 </menuItem>
-                <menuItem title="Source" id="quw-6l-RGq" userLabel="Menu Item - Source ">
+                <menuItem title="Audio Source" id="quw-6l-RGq">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Source" id="UKI-Uf-ug6" userLabel="Menu - Source"/>
+                    <menu key="submenu" title="Audio Source" id="UKI-Uf-ug6" userLabel="Menu - Source"/>
                 </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
