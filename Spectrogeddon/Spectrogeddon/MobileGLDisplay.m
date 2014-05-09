@@ -43,7 +43,8 @@
 
 - (void)redisplay
 {
-    self.renderer.renderSize = (RenderSize) { (GLint)self.glView.bounds.size.width, (GLint)self.glView.bounds.size.height };
+    const float scaleFactor = self.glView.contentScaleFactor;
+    self.renderer.renderSize = (RenderSize) { (GLint)self.glView.bounds.size.width*scaleFactor, (GLint)self.glView.bounds.size.height*scaleFactor };
     [self.glView display];
 }
 

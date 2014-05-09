@@ -92,7 +92,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     }
     else
     {
-        _channel1Renderer.positioning = GLKMatrix4Identity;
+        self.channel1Renderer.positioning = GLKMatrix4Identity;
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
     }
     id __weak weakSelf = self;
