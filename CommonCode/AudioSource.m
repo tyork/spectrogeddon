@@ -195,7 +195,6 @@ static const NSUInteger BufferSize = 1024;
     const NSTimeInterval duration = CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer));
     const NSTimeInterval timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer));
 
-    BOOL readyForDispatch = YES;
     NSUInteger activeChannel = 0;
     size_t offset = 0;
 	size_t totalLength = 0;
@@ -211,16 +210,18 @@ static const NSUInteger BufferSize = 1024;
         {
             [self.channelBuffers[activeChannel] writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
-        readyForDispatch = (readyForDispatch && [self.channelBuffers[activeChannel] hasOutput]);
         offset += lengthAtOffset;
         activeChannel++;
         
     } while(offset < totalLength);
 
     // Dispatch
-    if(!readyForDispatch)
+    for(SampleBuffer* oneBuffer in self.channelBuffers)
     {
-        return;
+        if(!oneBuffer.hasOutput)
+        {
+            return;
+        }
     }
 
     NSMutableArray* outputs = [[NSMutableArray alloc] init];
