@@ -1,12 +1,13 @@
 #version 150
 
-uniform float uOffset;
 in vec4 aPosition;
 in vec2 aTexCoord;
+uniform mat4 uTransform;
+
 out vec2 vTexCoord;
 
 void main(void)
 {
-    gl_Position = aPosition + vec4(uOffset, 0.0, 0.0, 0.0);
+    gl_Position = uTransform * aPosition;
     vTexCoord = aTexCoord;
 }

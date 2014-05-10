@@ -84,14 +84,14 @@ typedef struct
 {
     const float logOffset = 0.001f; // Safety margin to ensure we don't try taking log2(0)
     const float logNormalization = 1.0f/log2f(logOffset);
-    const float yScale = 2.0f / (float)(self.vertexCount/2 - 1);
+    const float yScale = 1.0f / (float)(self.vertexCount/2 - 1);
     for(NSUInteger valueIndex = 0; valueIndex < self.vertexCount/2; valueIndex++)
     {
         const NSUInteger vertexIndex = valueIndex << 1;
         float y = (float)valueIndex * yScale;
         if(self.useLogFrequencyScale)
         {
-            y = 2.0f*(1.0f-logNormalization*log2f(y*0.5f+logOffset));
+            y = (1.0f-logNormalization*log2f(y+logOffset));
         }
         self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
         self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
@@ -120,9 +120,8 @@ typedef struct
         self.invalidatedVertices = NO;
     }
 
-    const GLKMatrix4 translation = GLKMatrix4MakeTranslation(offset, -1.0f, 0.0f);
-    self.transform = GLKMatrix4Multiply(GLKMatrix4Scale(translation, width, 1.0f, 1.0f),self.positioning);
-    
+    const GLKMatrix4 translation = GLKMatrix4MakeTranslation(offset, 0.0f, 0.0f);
+    self.transform = GLKMatrix4Multiply(GLKMatrix4Scale(translation, width, 1.0f, 1.0f), self.positioning);
     for(NSUInteger valueIndex = 0; valueIndex < timeSequence.numberOfValues; valueIndex++)
     {
         const NSUInteger vertexIndex = valueIndex << 1;

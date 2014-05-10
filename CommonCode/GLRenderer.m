@@ -47,7 +47,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     {
         _renderSize = renderSize;
         self.frameOriginTime = 0;
-        self.scrollingRenderer.renderSize = renderSize;
+        self.scrollingRenderer.renderSize = [self transformedRenderSize];
     }
 }
 
@@ -70,7 +70,9 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
         self.frameOriginTime = nowTime;
         position = 0.0f;
     }
-    self.scrollingRenderer.currentPosition = position;
+    const float translation = 2.0f*(1.0f-position);
+    const GLKMatrix4 rotation = self.displaySettings.scrollVertically ? GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f) : GLKMatrix4Identity;
+    self.scrollingRenderer.transform = GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
     
     glViewport(0, 0, self.renderSize.width, self.renderSize.height);
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
@@ -85,14 +87,14 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     const BOOL showStereo = spectrums.count > 1;
     if(showStereo)
     {
-        self.channel1Renderer.positioning = GLKMatrix4Scale(GLKMatrix4MakeTranslation(0.0f, 1.0f, 0.0f), 1.0f, 0.5f, 1.0f);
-        self.channel2Renderer.positioning = GLKMatrix4Scale(GLKMatrix4MakeTranslation(0.0f, 1.0f, 0.0f), 1.0f, -0.5f, 1.0f);
+        self.channel1Renderer.positioning = [self positionForChannelAtIndex:0 totalChannels:2];
+        self.channel2Renderer.positioning = [self positionForChannelAtIndex:1 totalChannels:2];
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
         [self updateChannelRenderer:self.channel2Renderer withSequence:[spectrums lastObject]];
     }
     else
     {
-        self.channel1Renderer.positioning = GLKMatrix4Identity;
+        self.channel1Renderer.positioning = [self positionForChannelAtIndex:0 totalChannels:1];
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
     }
     id __weak weakSelf = self;
@@ -118,6 +120,26 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     self.channel2Renderer.colorMapImage = [displaySettings.colorMap imageRef];
     self.channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
     self.channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
+    self.scrollingRenderer.renderSize = [self transformedRenderSize];
+}
+
+- (RenderSize)transformedRenderSize
+{
+    return self.displaySettings.scrollVertically ? (RenderSize) { self.renderSize.height, self.renderSize.width } : self.renderSize;
+}
+
+- (GLKMatrix4)positionForChannelAtIndex:(NSUInteger)channelIndex totalChannels:(NSUInteger)totalChannels
+{
+    if(totalChannels == 0)
+    {
+        return GLKMatrix4Identity;
+    }
+    const float channelHeight = 2.0f/(float)(totalChannels);
+    const float channelFlip = (channelIndex & 1) ? -1.0f : 1.0f;
+    const float channelPairCenter = 1.0f - (1 + channelIndex/2)*channelHeight;
+    GLKMatrix4 positioning = GLKMatrix4MakeScale(1.0f, channelHeight*channelFlip, 1.0f);
+    positioning = GLKMatrix4Translate(positioning, 0.0f, channelPairCenter, 0.0f);
+    return positioning;
 }
 
 - (void)updateChannelRenderer:(ColumnRenderer*)renderer withSequence:(TimeSequence*)timeSequence
@@ -134,7 +156,7 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
-    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed*ScrollingConversionFactor/(float)self.renderSize.width;
+    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed*ScrollingConversionFactor/(float)([self transformedRenderSize].width);
     return screenFractionPerSecond * timeInterval;
 }
 

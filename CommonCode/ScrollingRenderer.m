@@ -10,7 +10,7 @@
 #import "RendererDefs.h"
 #import "RendererUtils.h"
 
-#define NumberOfBufferVertices 4
+#define NumberOfBufferVertices 8
 
 typedef struct
 {
@@ -25,7 +25,7 @@ typedef struct
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
-@property (nonatomic) GLint offsetUniform;
+@property (nonatomic) GLint transformUniform;
 @property (nonatomic) GLuint shader;
 @property (nonatomic) GLuint vao;
 
@@ -134,7 +134,7 @@ typedef struct
         self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
         self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");
-        self.offsetUniform = glGetUniformLocation(self.shader, "uOffset");
+        self.transformUniform = glGetUniformLocation(self.shader, "uTransform");
     }
     
     if(!self.vao)
@@ -165,10 +165,7 @@ typedef struct
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
     
-    const float translation = 2.0f-self.currentPosition*2.0f;
-    glUniform1f(self.offsetUniform, translation);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
-    glUniform1f(self.offsetUniform, translation - 2.0f);
+    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -203,6 +200,10 @@ typedef struct
     glBindBuffer(GL_ARRAY_BUFFER, meshName);
     
     static const TexturedVertexAttribs bufferMesh[NumberOfBufferVertices] = {
+        { -3.0f, +1.0f, 0.0f, 1.0f },
+        { -3.0f, -1.0f, 0.0f, 0.0f },
+        { -1.0f, +1.0f, 1.0f, 1.0f },
+        { -1.0f, -1.0f, 1.0f, 0.0f },
         { -1.0f, +1.0f, 0.0f, 1.0f },
         { -1.0f, -1.0f, 0.0f, 0.0f },
         { +1.0f, +1.0f, 1.0f, 1.0f },

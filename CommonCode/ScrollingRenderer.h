@@ -14,8 +14,7 @@
  */
 @interface ScrollingRenderer : NSObject
 
-@property (nonatomic) BOOL vertical;
-@property (nonatomic) float currentPosition;
+@property (nonatomic) GLKMatrix4 transform;
 @property (nonatomic) RenderSize renderSize;
 
 - (void)drawWithCommands:(void(^)(void))glCommands;
