@@ -44,6 +44,7 @@
     
     [self updateSourceMenu];
     [self updateSpeedMenu];
+    [self updateDisplayMenu];
 
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
     [self resume];
@@ -76,6 +77,12 @@
         [item setRepresentedObject:obj];
         [self.sourceMenu addItem:item];
     }];
+}
+
+- (void)updateDisplayMenu
+{
+    self.stretchFrequenciesMenuItem.state = self.settingsStore.displaySettings.useLogFrequencyScale ? NSOnState : NSOffState;
+    self.scrollVerticallyMenuItem.state = self.settingsStore.displaySettings.scrollVertically ? NSOnState : NSOffState;
 }
 
 - (void)applicationDidUnhide:(NSNotification *)notification
@@ -116,6 +123,7 @@
         return settings;
     }];
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+    [self updateDisplayMenu];
 }
 
 - (IBAction)changeFrequencyScale:(id)sender
@@ -125,6 +133,7 @@
         return settings;
     }];
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+    [self updateDisplayMenu];
 }
 
 - (void)didTapSpeed:(id)sender
