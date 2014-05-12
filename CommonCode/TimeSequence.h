@@ -25,4 +25,6 @@
 
 - (float*)rawValues;
 
+- (void)appendTimeSequence:(TimeSequence*)timeSequence;
+
 @end

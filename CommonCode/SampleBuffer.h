@@ -18,7 +18,7 @@
 
 @property (nonatomic,readonly) BOOL hasOutput;
 
-- (id)initWithBufferSize:(NSUInteger)sampleCount;   // TODO: enforce power of two.
+- (id)initWithBufferSize:(NSUInteger)sampleCount readInterval:(NSUInteger)readInterval;   // TODO: enforce power of two.
 
 - (void)writeNormalizedFloatSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration;
 
