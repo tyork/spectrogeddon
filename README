@@ -1,15 +1,21 @@
 A rough-and-pseudoready spectrograph using OpenGLES.
 Uses the microphone on iOS and Mac OS X.
 
+Some (most) code is shared between the supported platforms, except for the system <-> openGL interface
+and the OpenGL shaders. There are some syntax differences between the desktop (GLSL 1.5) and 
+iOS (GLSL-ES 1.0) shader implementations but they work in the same way. 
+
 On OS X, you can install Soundflower (https://github.com/Cycling74/Soundflower) to reroute audio
-into the app. You can pick the input source in the spectrogram app using its Source menu.
+into the app, particularly the system audio output. 
+In the spectrogram app you need to pick Soundflower as the audio source using the Audio source menu.
 
-Outstanding issues:
+*Outstanding issues:*
 - Occasional overlap drawing produces bad column, need to simplify column sizing.
-- Some properties in GLRenderer should be made atomic.
 - Sample rate is needed but not supplied to GLRenderer.
+- Store/manipulate audio settings via a settings object.
 
-Missing features:
+*Missing features:*
 - Use noise estimate to adjust the floor for the signal display.
-- Make SampleBuffer a proper ring buffer to permit longer FFTs and overlaps.
 - 3D mode
+
+
