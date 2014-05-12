@@ -11,7 +11,13 @@
 #import "SampleBuffer.h"
 #import <AVFoundation/AVFoundation.h>
 
+#if TARGET_OS_IPHONE
 static const NSUInteger BufferSize = 1024;
+static const NSUInteger ReadInterval = 1;
+#else
+static const NSUInteger BufferSize = 4096;
+static const NSUInteger ReadInterval = 4;
+#endif
 
 @interface AudioSource ()  <AVCaptureAudioDataOutputSampleBufferDelegate>
 @property (nonatomic,strong) dispatch_queue_t sampleQueue;
@@ -185,7 +191,7 @@ static const NSUInteger BufferSize = 1024;
         
         for(NSUInteger channelIndex = self.channels; channelIndex < channelsInBuffer; channelIndex++)
         {
-            [self.channelBuffers addObject:[[SampleBuffer alloc] initWithBufferSize:BufferSize]];
+            [self.channelBuffers addObject:[[SampleBuffer alloc] initWithBufferSize:BufferSize readInterval:ReadInterval]];
         }
         self.channels = channelsInBuffer;
     }
