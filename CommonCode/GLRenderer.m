@@ -14,11 +14,8 @@
 #import "DisplaySettings.h"
 #import "ColorMap.h"
 
-static const float SamplingRate = 44100.0f;
-static const float SamplesPerBuffer = 1024.0f;
-static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
-
 @interface GLRenderer ()
+@property (nonatomic) NSTimeInterval lastDuration;
 @property (nonatomic,strong) ColumnRenderer* channel1Renderer;
 @property (nonatomic,strong) ColumnRenderer* channel2Renderer;
 @property (nonatomic,strong) ScrollingRenderer* scrollingRenderer;
@@ -149,15 +146,16 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
     {
         baseOffset = 0.0f;
     }
-    
+    self.lastDuration = timeSequence.duration;
     const float width = [self widthFromTimeInterval:timeSequence.duration + timeSequence.timeStamp - self.lastRenderedSampleTime];
     [renderer updateVerticesForTimeSequence:timeSequence offset:(2.0f * baseOffset - 1.0f) width:width];
 }
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
-    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed*ScrollingConversionFactor/(float)([self transformedRenderSize].width);
+    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed/(self.lastDuration * (float)([self transformedRenderSize].width));
     return screenFractionPerSecond * timeInterval;
 }
 
 @end
+
