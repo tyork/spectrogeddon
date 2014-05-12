@@ -32,6 +32,7 @@
 		19541FCB18FD8BEB00BC94BF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FCA18FD8BEB00BC94BF /* GLKit.framework */; };
 		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
 		19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC51191BADDA00AEA0AA /* SettingsStore.m */; };
+		19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC5819212F7900AEA0AA /* RenderTexture.m */; };
 		19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668EE190AA78B00D2DE77 /* AudioSource.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
 		19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */; };
@@ -94,6 +95,8 @@
 		19BEF36819111A140013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererTypes.h; sourceTree = "<group>"; };
 		19CEAC51191BADDA00AEA0AA /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStore.m; sourceTree = "<group>"; };
 		19CEAC52191BADDA00AEA0AA /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsStore.h; sourceTree = "<group>"; };
+		19CEAC5819212F7900AEA0AA /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTexture.m; sourceTree = "<group>"; };
+		19CEAC5919212F7900AEA0AA /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTexture.h; sourceTree = "<group>"; };
 		19F668ED190AA78B00D2DE77 /* AudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSource.h; sourceTree = "<group>"; };
 		19F668EE190AA78B00D2DE77 /* AudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSource.m; sourceTree = "<group>"; };
 		19F668EF190AA78B00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				19BEF36819111A140013DD0A /* RendererTypes.h */,
 				19F668FC190AA78B00D2DE77 /* RendererUtils.h */,
 				19F668FD190AA78B00D2DE77 /* RendererUtils.m */,
+				19CEAC5919212F7900AEA0AA /* RenderTexture.h */,
+				19CEAC5819212F7900AEA0AA /* RenderTexture.m */,
 				19F66900190AA78B00D2DE77 /* ScrollingRenderer.h */,
 				19F66901190AA78B00D2DE77 /* ScrollingRenderer.m */,
 			);
@@ -433,6 +438,7 @@
 				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
 				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
+				19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */,
 				19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
 				19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */,

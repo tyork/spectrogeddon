@@ -10,6 +10,7 @@
 #import "RendererDefs.h"
 #import "ScrollingRenderer.h"
 #import "ColumnRenderer.h"
+#import "RenderTexture.h"
 #import "TimeSequence.h"
 #import "DisplaySettings.h"
 #import "ColorMap.h"
@@ -19,6 +20,7 @@
 @property (nonatomic,strong) ColumnRenderer* channel1Renderer;
 @property (nonatomic,strong) ColumnRenderer* channel2Renderer;
 @property (nonatomic,strong) ScrollingRenderer* scrollingRenderer;
+@property (nonatomic,strong) RenderTexture* renderTexture;
 
 @property (nonatomic) NSTimeInterval frameOriginTime;
 @property (nonatomic) NSTimeInterval lastRenderedSampleTime;
@@ -32,6 +34,7 @@
     if((self = [super init]))
     {
         _scrollingRenderer = [[ScrollingRenderer alloc] init];
+        _renderTexture = [[RenderTexture alloc] init];
         _channel1Renderer = [[ColumnRenderer alloc] init];
         _channel2Renderer = [[ColumnRenderer alloc] init];
     }
@@ -44,7 +47,7 @@
     {
         _renderSize = renderSize;
         self.frameOriginTime = 0;
-        self.scrollingRenderer.renderSize = [self transformedRenderSize];
+        self.renderTexture.renderSize = [self transformedRenderSize];
     }
 }
 
@@ -74,7 +77,9 @@
     glViewport(0, 0, self.renderSize.width, self.renderSize.height);
     glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    [self.scrollingRenderer render];
+    [self.renderTexture renderTextureWithCommands:^{
+        [self.scrollingRenderer render];
+    }];
     
     GL_DEBUG_GENERAL;
 }
@@ -95,7 +100,7 @@
         [self updateChannelRenderer:self.channel1Renderer withSequence:[spectrums firstObject]];
     }
     id __weak weakSelf = self;
-    [self.scrollingRenderer drawWithCommands:^{
+    [self.renderTexture drawWithCommands:^{
         
         GLRenderer* strongSelf = weakSelf;
         if(strongSelf)
@@ -117,7 +122,7 @@
     self.channel2Renderer.colorMapImage = [displaySettings.colorMap imageRef];
     self.channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
     self.channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
-    self.scrollingRenderer.renderSize = [self transformedRenderSize];
+    self.renderTexture.renderSize = [self transformedRenderSize];
 }
 
 - (RenderSize)transformedRenderSize

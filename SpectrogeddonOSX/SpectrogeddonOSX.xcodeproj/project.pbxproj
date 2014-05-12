@@ -10,6 +10,7 @@
 		194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9EE191B876E00FC152F /* DisplaySettings.m */; };
 		194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F5191B9D3900FC152F /* ColorMap.m */; };
 		194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9FC191BA2B200FC152F /* SettingsStore.m */; };
+		19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC5519212CCD00AEA0AA /* RenderTexture.m */; };
 		19F66889190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
 		19F66893190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F66891190AA3AF00D2DE77 /* InfoPlist.strings */; };
 		19F66895190AA3AF00D2DE77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66894190AA3AF00D2DE77 /* main.m */; };
@@ -62,6 +63,8 @@
 		194EA9FB191BA2B200FC152F /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsStore.h; path = ../../CommonCode/SettingsStore.h; sourceTree = "<group>"; };
 		194EA9FC191BA2B200FC152F /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsStore.m; path = ../../CommonCode/SettingsStore.m; sourceTree = "<group>"; };
 		19BEF367191119FF0013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererTypes.h; path = ../../CommonCode/RendererTypes.h; sourceTree = "<group>"; };
+		19CEAC5419212CCD00AEA0AA /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderTexture.h; path = ../../CommonCode/RenderTexture.h; sourceTree = "<group>"; };
+		19CEAC5519212CCD00AEA0AA /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderTexture.m; path = ../../CommonCode/RenderTexture.m; sourceTree = "<group>"; };
 		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		19F6688B190AA3AF00D2DE77 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -292,6 +295,8 @@
 				19BEF367191119FF0013DD0A /* RendererTypes.h */,
 				19F66926190AA86C00D2DE77 /* RendererUtils.h */,
 				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
+				19CEAC5419212CCD00AEA0AA /* RenderTexture.h */,
+				19CEAC5519212CCD00AEA0AA /* RenderTexture.m */,
 				19F6692A190AA86C00D2DE77 /* ScrollingRenderer.h */,
 				19F6692B190AA86C00D2DE77 /* ScrollingRenderer.m */,
 			);
@@ -422,6 +427,7 @@
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
+				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
 				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,

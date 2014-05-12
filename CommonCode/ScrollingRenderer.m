@@ -19,9 +19,6 @@ typedef struct
 } TexturedVertexAttribs;
 
 @interface ScrollingRenderer ()
-@property (nonatomic) GLuint framebuffer;
-
-@property (nonatomic) GLuint frameTexture;
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
@@ -34,19 +31,9 @@ typedef struct
 
 @implementation ScrollingRenderer
 
-- (void)setRenderSize:(RenderSize)renderSize
-{
-    if(!RenderSizeEqualToSize(renderSize, _renderSize))
-    {
-        _renderSize = renderSize;
-        [self destroyFrameResources];
-    }
-}
-
 - (void)dealloc
 {
     [self destroyMeshResources];
-    [self destroyFrameResources];
 }
 
 - (void)destroyMeshResources
@@ -77,57 +64,8 @@ typedef struct
     }
 }
 
-- (void)destroyFrameResources
-{
-    if(self.framebuffer)
-    {
-        glDeleteFramebuffers(1, &_framebuffer);
-        self.framebuffer = 0;
-    }
-    
-    if(self.frameTexture)
-    {
-        glDeleteTextures(1, &_frameTexture);
-        self.frameTexture = 0;
-    }
-}
-
-- (void)drawWithCommands:(void (^)(void))glCommands
-{
-    NSParameterAssert(glCommands);
-    if(RenderSizeIsEmpty(self.renderSize))
-    {
-        return;
-    }
-    
-    if(!self.frameTexture)
-    {
-        self.frameTexture = [self generateTexture];
-    }
-    
-    if(!self.framebuffer)
-    {
-        self.framebuffer = [self generateFrameBufferForTexture:self.frameTexture];
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-    }
-    else
-    {
-        glBindFramebuffer(GL_FRAMEBUFFER, self.framebuffer);
-    }
-    
-    glViewport(0, 0, self.renderSize.width, self.renderSize.height);
-    glCommands();
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
 - (void)render
 {
-    if(!self.frameTexture)
-    {
-       return;
-    }
-    
     if(!self.shader)
     {
         self.shader = [RendererUtils loadShaderProgramNamed:@"ScrollingShader"];
@@ -160,7 +98,6 @@ typedef struct
         glVertexAttribPointer(self.texCoordAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, s));
     }
     
-    glBindTexture(GL_TEXTURE_2D, self.frameTexture);
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
@@ -174,7 +111,6 @@ typedef struct
 #else
     glBindVertexArray(0);
 #endif
-    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 - (GLuint)generateVAO
@@ -215,36 +151,6 @@ typedef struct
     GL_DEBUG_GENERAL;
     
     return meshName;
-}
-
-- (GLuint)generateFrameBufferForTexture:(GLuint)textureName
-{
-    NSParameterAssert(textureName);
-    GLuint framebufferName = 0;
-    glGenFramebuffers(1, &framebufferName);
-    glBindFramebuffer(GL_FRAMEBUFFER, framebufferName);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureName, 0);
-    
-    const GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-    NSAssert1(status == GL_FRAMEBUFFER_COMPLETE, @"Failed to make framebuffer: %d", status);
-    return framebufferName;
-}
-
-- (GLuint)generateTexture
-{
-    GLuint textureName = 0;
-    glGenTextures(1, &textureName);
-    glBindTexture(GL_TEXTURE_2D, textureName);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, self.renderSize.width, self.renderSize.height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-    glBindTexture(GL_TEXTURE_2D, 0);
-    
-    GL_DEBUG_GENERAL;
-    
-    return textureName;
 }
 
 @end

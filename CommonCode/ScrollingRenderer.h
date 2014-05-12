@@ -7,17 +7,13 @@
 //
 
 #import <GLKit/GLKit.h>
-#import "RendererTypes.h"
 
 /**
- Displays a GL texture that can be drawn into and scrolled to a preferred position.
+ Displays a transformed GL texture using a repeating mesh.
  */
 @interface ScrollingRenderer : NSObject
 
 @property (nonatomic) GLKMatrix4 transform;
-@property (nonatomic) RenderSize renderSize;
-
-- (void)drawWithCommands:(void(^)(void))glCommands;
 
 - (void)render;
 
