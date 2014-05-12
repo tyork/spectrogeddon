@@ -19,7 +19,7 @@
 @property (nonatomic) float* sampleBuffer;
 @property (nonatomic) NSTimeInterval timeStamp;
 @property (nonatomic) NSTimeInterval duration;
-@property (nonatomic,readwrite) BOOL hasOutput;
+@property (nonatomic) NSUInteger availableSize;
 @end
 
 @implementation SampleBuffer
@@ -77,10 +77,10 @@
     if(self.writerIndex >= self.bufferSize)
     {
         // We've filled the buffer and must wrap around.
-        self.hasOutput = YES;
         self.writerIndex = self.writerIndex % self.bufferSize;
         self.readerIndex = self.writerIndex;
     }
+    self.availableSize = self.availableSize + count;
 
     // If we don't have a timestamp, use this one.
     if(self.timeStamp == 0.0)
@@ -105,12 +105,17 @@
         TimeSequence* second = [[TimeSequence alloc] initWithNumberOfValues:self.readerIndex values:self.sampleBuffer];
         [sequence appendTimeSequence:second];
     }
-    
     sequence.timeStamp = self.timeStamp;
     sequence.duration = self.duration;
     self.timeStamp = 0.0;
     self.readerIndex = (self.readerIndex + self.bufferSize/self.readInterval) % self.bufferSize;
+    self.availableSize = self.availableSize - (self.bufferSize/self.readInterval);
     return sequence;
+}
+
+- (BOOL)hasOutput
+{
+    return self.availableSize >= (self.bufferSize/self.readInterval);
 }
 
 @end
