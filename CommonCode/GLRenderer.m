@@ -135,10 +135,10 @@ static const float ScrollingConversionFactor = SamplingRate/SamplesPerBuffer;
         return GLKMatrix4Identity;
     }
     const float channelHeight = 2.0f/(float)(totalChannels);
-    const float channelFlip = (channelIndex & 1) ? -1.0f : 1.0f;
-    const float channelPairCenter = 1.0f - (1 + channelIndex/2)*channelHeight;
-    GLKMatrix4 positioning = GLKMatrix4MakeScale(1.0f, channelHeight*channelFlip, 1.0f);
-    positioning = GLKMatrix4Translate(positioning, 0.0f, channelPairCenter, 0.0f);
+    const BOOL flipChannel = (channelIndex & 1);    // Flip odd numbered channels.
+    const float center = 1.0f - channelHeight*(float)(channelIndex + 1 - (flipChannel ? 1 : 0));
+    GLKMatrix4 positioning = GLKMatrix4MakeTranslation(0.0f, center, 0.0f);
+    positioning = GLKMatrix4Scale(positioning, 1.0f, channelHeight*(flipChannel ? -1.0f : 1.0f), 1.0f);
     return positioning;
 }
 
