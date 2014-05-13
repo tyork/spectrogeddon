@@ -6,7 +6,7 @@
 //  
 //
 
-#import "ScrollingRenderer.h"
+#import "LinearScrollingRenderer.h"
 #import "RendererDefs.h"
 #import "RendererUtils.h"
 
@@ -18,7 +18,7 @@ typedef struct
     GLfloat s,t;
 } TexturedVertexAttribs;
 
-@interface ScrollingRenderer ()
+@interface LinearScrollingRenderer ()
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
@@ -27,9 +27,19 @@ typedef struct
 @property (nonatomic) GLuint vao;
 
 @property (nonatomic) GLuint mesh;
+
 @end
 
-@implementation ScrollingRenderer
+@implementation LinearScrollingRenderer
+
+@synthesize scrollingPosition = _scrollingPosition;
+
+- (GLKMatrix4)transform
+{
+    const float translation = 2.0f * (1.0f - self.scrollingPosition);
+    const GLKMatrix4 rotation = self.scrollVertically ? GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f) : GLKMatrix4Identity;
+    return GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
+}
 
 - (void)dealloc
 {
@@ -102,7 +112,8 @@ typedef struct
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
     
-    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
+    const GLKMatrix4 transform = [self transform];
+    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, transform.m);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -1,20 +1,15 @@
 //
 //  ScrollingRenderer.h
-//  Spectrogeddon
+//  SpectrogeddonOSX
 //
-//  Created by Tom York on 17/04/2014.
-//  
+//  Created by Tom York on 13/05/2014.
+//  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import <GLKit/GLKit.h>
+#import <Foundation/Foundation.h>
 
-/**
- Displays a transformed GL texture using a repeating mesh.
- */
-@interface ScrollingRenderer : NSObject
+@protocol ScrollingRenderer <NSObject>
 
-@property (nonatomic) GLKMatrix4 transform;
-
-- (void)render;
+@property (nonatomic) float scrollingPosition;
 
 @end
