@@ -15,7 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="glView" destination="wXy-ZW-lve" id="caL-Zl-vc7"/>
-                <outlet property="scrollVerticallyMenuItem" destination="YkU-Dh-tcR" id="iLv-cz-Cf0"/>
+                <outlet property="scrollingDirectionsMenu" destination="9ch-dI-OwD" id="WiD-cJ-yWt"/>
                 <outlet property="sourceMenu" destination="UKI-Uf-ug6" id="JEc-cZ-rR5"/>
                 <outlet property="speedMenu" destination="31j-cB-yKC" id="Q53-SV-Img"/>
                 <outlet property="stretchFrequenciesMenuItem" destination="E7M-iX-Ohc" id="TCB-Gt-SZ0"/>
@@ -79,12 +79,6 @@
                                     <action selector="nextColorMap:" target="Voe-Tx-rLC" id="YvO-vn-vpp"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Scroll vertically" keyEquivalent="v" id="YkU-Dh-tcR" userLabel="Menu Item - Scroll vertically">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="changeScrollDirection:" target="Voe-Tx-rLC" id="ttH-qF-gFM"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Stretch low frequencies" keyEquivalent="s" id="E7M-iX-Ohc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -93,6 +87,10 @@
                             </menuItem>
                         </items>
                     </menu>
+                </menuItem>
+                <menuItem title="Scrolling" id="uLU-78-WUM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Scrolling" id="9ch-dI-OwD"/>
                 </menuItem>
                 <menuItem title="Speed" id="PiB-kt-V45">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -146,7 +144,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="512" height="327"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
                 <autoresizingMask key="autoresizingMask"/>

@@ -27,51 +27,33 @@ typedef struct
 @property (nonatomic) GLuint vao;
 
 @property (nonatomic) GLuint mesh;
-
 @end
 
 @implementation LinearScrollingRenderer
 
 @synthesize scrollingPosition = _scrollingPosition;
+@synthesize activeScrollingDirectionIndex = _activeScrollingDirectionIndex;
 
-- (GLKMatrix4)transform
+- (NSArray*)namesForScrollingDirections;
 {
-    const float translation = 2.0f * (1.0f - self.scrollingPosition);
-    const GLKMatrix4 rotation = self.scrollVertically ? GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f) : GLKMatrix4Identity;
-    return GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
+    return @[ NSLocalizedString(@"Horizontal", @""), NSLocalizedString(@"Vertical", @"") ];
 }
 
 - (void)dealloc
 {
-    [self destroyMeshResources];
+    [self destroyResources];
 }
 
-- (void)destroyMeshResources
+- (GLKMatrix4)transform
 {
-    if(self.mesh)
-    {
-        glDeleteBuffers(1, &_mesh);
-        self.mesh = 0;
-    }
-    
-    if(self.vao)
-    {
-#if TARGET_OS_IPHONE
-        glDeleteVertexArraysOES(1, &_vao);
-#else
-        glDeleteVertexArrays(1, &_vao);
-#endif
-        self.vao = 0;
-    }
-    
-    if(self.shader)
-    {
-        glDeleteProgram(self.shader);
-        self.shader = 0;
-        self.positionAttribute = 0;
-        self.texCoordAttribute = 0;
-        self.textureUniform = 0;
-    }
+    const float translation = 2.0f * (1.0f - self.scrollingPosition);
+    const GLKMatrix4 rotation = (self.activeScrollingDirectionIndex == 0) ? GLKMatrix4Identity : GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f);
+    return GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
+}
+
+- (RenderSize)bestRenderSizeFromSize:(RenderSize)size
+{
+    return (self.activeScrollingDirectionIndex == 0) ? size : (RenderSize) { size.height, size.width } ;
 }
 
 - (void)render
@@ -162,6 +144,34 @@ typedef struct
     GL_DEBUG_GENERAL;
     
     return meshName;
+}
+
+- (void)destroyResources
+{
+    if(self.mesh)
+    {
+        glDeleteBuffers(1, &_mesh);
+        self.mesh = 0;
+    }
+    
+    if(self.vao)
+    {
+#if TARGET_OS_IPHONE
+        glDeleteVertexArraysOES(1, &_vao);
+#else
+        glDeleteVertexArrays(1, &_vao);
+#endif
+        self.vao = 0;
+    }
+    
+    if(self.shader)
+    {
+        glDeleteProgram(self.shader);
+        self.shader = 0;
+        self.positionAttribute = 0;
+        self.texCoordAttribute = 0;
+        self.textureUniform = 0;
+    }
 }
 
 @end

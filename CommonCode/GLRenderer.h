@@ -21,4 +21,6 @@
 
 - (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
+- (NSArray*)namesForScrollingDirections;
+
 @end

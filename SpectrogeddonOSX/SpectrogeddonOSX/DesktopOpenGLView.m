@@ -109,4 +109,10 @@
     [self.renderer useDisplaySettings:displaySettings];
 }
 
+- (NSArray*)namesForSupportedScrollingDirections
+{
+    return [self.renderer namesForScrollingDirections];
+}
+
+
 @end

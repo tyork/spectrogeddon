@@ -12,4 +12,9 @@
 
 @property (nonatomic) float scrollingPosition;
 
+@optional
+@property (nonatomic) NSUInteger activeScrollingDirectionIndex;
+
+- (NSArray*)namesForScrollingDirections;
+
 @end

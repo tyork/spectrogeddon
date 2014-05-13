@@ -13,7 +13,7 @@
 @interface DisplaySettings : NSObject <NSCoding>
 
 @property (nonatomic) NSInteger scrollingSpeed;
-@property (nonatomic) BOOL scrollVertically;
+@property (nonatomic) NSUInteger scrollingDirectionIndex;
 @property (nonatomic) BOOL useLogFrequencyScale;
 @property (nonatomic,strong) ColorMap* colorMap;
 

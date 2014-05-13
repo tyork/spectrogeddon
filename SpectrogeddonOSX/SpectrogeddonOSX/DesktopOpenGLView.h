@@ -21,4 +21,6 @@
 
 - (void)resumeRendering;
 
+- (NSArray*)namesForSupportedScrollingDirections;
+
 @end

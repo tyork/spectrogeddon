@@ -12,7 +12,7 @@
 static NSInteger DefaultScrollingSpeed = 1;
 
 static NSString* const KeyScrollingSpeed = @"scrollingSpeed";
-static NSString* const KeyScrollVertically = @"scrollVertically";
+static NSString* const KeyScrollingDirectionIndex = @"scrollingDirectionIndex";
 static NSString* const KeyUseLogFrequencyScale = @"useLogFrequencyScale";
 static NSString* const KeyColorMap = @"colorMap";
 
@@ -35,7 +35,7 @@ static NSString* const KeyColorMap = @"colorMap";
     if((self = [super init]))
     {
         _scrollingSpeed = [aDecoder decodeIntegerForKey:KeyScrollingSpeed];
-        _scrollVertically = [aDecoder decodeBoolForKey:KeyScrollVertically];
+        _scrollingDirectionIndex = [aDecoder decodeBoolForKey:KeyScrollingDirectionIndex];
         _useLogFrequencyScale = [aDecoder decodeBoolForKey:KeyUseLogFrequencyScale];
         _colorMap = [aDecoder decodeObjectForKey:KeyColorMap];
     }
@@ -45,7 +45,7 @@ static NSString* const KeyColorMap = @"colorMap";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeInteger:self.scrollingSpeed forKey:KeyScrollingSpeed];
-    [aCoder encodeBool:self.scrollVertically forKey:KeyScrollVertically];
+    [aCoder encodeBool:self.scrollingDirectionIndex forKey:KeyScrollingDirectionIndex];
     [aCoder encodeBool:self.useLogFrequencyScale forKey:KeyUseLogFrequencyScale];
     [aCoder encodeObject:self.colorMap forKey:KeyColorMap];
 }

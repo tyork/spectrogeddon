@@ -45,44 +45,10 @@
     [self updateSourceMenu];
     [self updateSpeedMenu];
     [self updateDisplayMenu];
+    [self updateScrollingDirectionsMenu];
 
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
     [self resume];
-}
-
-- (void)updateSpeedMenu
-{
-    [self.speedMenu removeAllItems];
-    
-    NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
-    NSArray* speeds = @[ @1, @2, @4, @8 ];
-    [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        // TODO: this conversion of the number directly into a keyEquivalent is hacky and will break beyond 9x (e.g. 16x -> "16" which is not a valid key
-        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didTapSpeed:) keyEquivalent:[obj stringValue]];
-        [item setState:[obj isEqualToNumber:currentSpeed]];
-        [item setRepresentedObject:obj];
-        [self.speedMenu addItem:item];
-    }];
-}
-
-- (void)updateSourceMenu
-{
-    [self.sourceMenu removeAllItems];
-    
-    NSDictionary* sources = [SpectrumGenerator availableSources];
-    NSString* currentSourceID = self.spectrumGenerator.preferredSourceID;
-    [sources enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:key action:@selector(didPickSource:) keyEquivalent:@""];
-        [item setState:([currentSourceID isEqualToString:obj] ? NSOnState : NSOffState)];
-        [item setRepresentedObject:obj];
-        [self.sourceMenu addItem:item];
-    }];
-}
-
-- (void)updateDisplayMenu
-{
-    self.stretchFrequenciesMenuItem.state = self.settingsStore.displaySettings.useLogFrequencyScale ? NSOnState : NSOffState;
-    self.scrollVerticallyMenuItem.state = self.settingsStore.displaySettings.scrollVertically ? NSOnState : NSOffState;
 }
 
 - (void)applicationDidUnhide:(NSNotification *)notification
@@ -107,6 +73,8 @@
     [self.spectrumGenerator startGenerating];
 }
 
+#pragma - Actions -
+
 - (IBAction)nextColorMap:(id)sender
 {
     [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
@@ -114,16 +82,6 @@
         return settings;
     }];
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
-}
-
-- (IBAction)changeScrollDirection:(id)sender
-{
-    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
-        settings.scrollVertically = !settings.scrollVertically;
-        return settings;
-    }];
-    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
-    [self updateDisplayMenu];
 }
 
 - (IBAction)changeFrequencyScale:(id)sender
@@ -136,7 +94,18 @@
     [self updateDisplayMenu];
 }
 
-- (void)didTapSpeed:(id)sender
+- (void)didPickScrollDirection:(id)sender
+{
+    NSNumber* scrollingDirection = [sender representedObject];
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings* settings) {
+        settings.scrollingDirectionIndex = [scrollingDirection unsignedIntegerValue];
+        return settings;
+    }];
+    [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+    [self updateScrollingDirectionsMenu];
+}
+
+- (void)didPickSpeed:(id)sender
 {
     NSNumber* speed = [sender representedObject];
     [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
@@ -152,6 +121,57 @@
     NSString* sourceID = [sender representedObject];
     self.spectrumGenerator.preferredSourceID = sourceID;
     [self updateSourceMenu];
+}
+
+#pragma mark - Menu updates -
+
+- (void)updateSpeedMenu
+{
+    [self.speedMenu removeAllItems];
+    
+    NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
+    NSArray* speeds = @[ @1, @2, @4, @8 ];
+    [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        // TODO: this conversion of the number directly into a keyEquivalent is hacky and will break beyond 9x (e.g. 16x -> "16" which is not a valid key
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didPickSpeed:) keyEquivalent:[obj stringValue]];
+        [item setState:[obj isEqualToNumber:currentSpeed]];
+        [item setRepresentedObject:obj];
+        [self.speedMenu addItem:item];
+    }];
+}
+
+- (void)updateSourceMenu
+{
+    [self.sourceMenu removeAllItems];
+    
+    NSDictionary* sources = [SpectrumGenerator availableSources];
+    NSString* currentSourceID = self.spectrumGenerator.preferredSourceID;
+    [sources enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:key action:@selector(didPickSource:) keyEquivalent:@""];
+        [item setState:([currentSourceID isEqualToString:obj] ? NSOnState : NSOffState)];
+        [item setRepresentedObject:obj];
+        [self.sourceMenu addItem:item];
+    }];
+}
+
+- (void)updateScrollingDirectionsMenu
+{
+    [self.scrollingDirectionsMenu removeAllItems];
+    
+    NSArray* names = [self.glView namesForSupportedScrollingDirections];
+    [names enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString* charCode = [obj length] > 0 ? [[obj substringToIndex:1] lowercaseString] : @"";
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:obj action:@selector(didPickScrollDirection:) keyEquivalent:charCode];
+        [item setKeyEquivalentModifierMask:0];
+        [item setState:(self.settingsStore.displaySettings.scrollingDirectionIndex == idx) ? NSOnState : NSOffState];
+        [item setRepresentedObject:@(idx)];
+        [self.scrollingDirectionsMenu addItem:item];
+    }];
+}
+
+- (void)updateDisplayMenu
+{
+    self.stretchFrequenciesMenuItem.state = self.settingsStore.displaySettings.useLogFrequencyScale ? NSOnState : NSOffState;
 }
 
 #pragma mark - Spectrum generator -

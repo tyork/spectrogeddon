@@ -47,7 +47,7 @@
     {
         _renderSize = renderSize;
         self.frameOriginTime = 0;
-        self.renderTexture.renderSize = [self transformedRenderSize];
+        self.renderTexture.renderSize = [self.scrollingRenderer bestRenderSizeFromSize:self.renderSize];
     }
 }
 
@@ -58,6 +58,19 @@
         return;
     }
     
+    self.scrollingRenderer.scrollingPosition = [self scrollingPositionNow];
+    glViewport(0, 0, self.renderSize.width, self.renderSize.height);
+    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    [self.renderTexture renderTextureWithCommands:^{
+        [self.scrollingRenderer render];
+    }];
+    
+    GL_DEBUG_GENERAL;
+}
+
+- (float)scrollingPositionNow
+{
     const NSTimeInterval nowTime = CACurrentMediaTime();
     if(!self.frameOriginTime)
     {
@@ -70,16 +83,7 @@
         self.frameOriginTime = nowTime;
         position = 0.0f;
     }
-    self.scrollingRenderer.scrollingPosition = position;
-    
-    glViewport(0, 0, self.renderSize.width, self.renderSize.height);
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    [self.renderTexture renderTextureWithCommands:^{
-        [self.scrollingRenderer render];
-    }];
-    
-    GL_DEBUG_GENERAL;
+    return position;
 }
 
 - (void)addMeasurementsForDisplay:(NSArray*)spectrums
@@ -120,13 +124,13 @@
     self.channel2Renderer.colorMapImage = [displaySettings.colorMap imageRef];
     self.channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
     self.channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale;
-    self.renderTexture.renderSize = [self transformedRenderSize];
-    self.scrollingRenderer.scrollVertically = self.displaySettings.scrollVertically;
+    self.scrollingRenderer.activeScrollingDirectionIndex = displaySettings.scrollingDirectionIndex;
+    self.renderTexture.renderSize = [self.scrollingRenderer bestRenderSizeFromSize:self.renderSize];
 }
 
-- (RenderSize)transformedRenderSize
+- (NSArray*)namesForScrollingDirections
 {
-    return self.displaySettings.scrollVertically ? (RenderSize) { self.renderSize.height, self.renderSize.width } : self.renderSize;
+    return [self.scrollingRenderer namesForScrollingDirections];
 }
 
 - (GLKMatrix4)positionForChannelAtIndex:(NSUInteger)channelIndex totalChannels:(NSUInteger)totalChannels
@@ -157,7 +161,7 @@
 
 - (float)widthFromTimeInterval:(NSTimeInterval)timeInterval
 {
-    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed/(self.lastDuration * (float)([self transformedRenderSize].width));
+    const float screenFractionPerSecond = self.displaySettings.scrollingSpeed/(self.lastDuration * (float)(self.renderTexture.renderSize.width));
     return screenFractionPerSecond * timeInterval;
 }
 

@@ -8,13 +8,14 @@
 
 #import <GLKit/GLKit.h>
 #import "ScrollingRenderer.h"
+#import "RendererTypes.h"
 
 /**
  Displays a transformed GL texture using a repeating mesh.
  */
 @interface LinearScrollingRenderer : NSObject <ScrollingRenderer>
 
-@property (nonatomic) BOOL scrollVertically;
+- (RenderSize)bestRenderSizeFromSize:(RenderSize)size;
 
 - (void)render;
 
