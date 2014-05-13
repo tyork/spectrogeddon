@@ -1,9 +1,7 @@
 A rough-and-pseudoready spectrograph using OpenGLES.
 Uses the microphone on iOS and Mac OS X.
 
-Some (most) code is shared between the supported platforms, except for the system <-> openGL interface
-and the OpenGL shaders. There are some syntax differences between the desktop (GLSL 1.5) and 
-iOS (GLSL-ES 1.0) shader implementations but they work in the same way. 
+Most code is shared between the supported platforms, except for the EGL aspects and UI.
 
 On OS X, you can install Soundflower (https://github.com/Cycling74/Soundflower) to reroute audio
 into the app, particularly the system audio output. 

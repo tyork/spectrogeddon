@@ -8,8 +8,19 @@
 
 #import "RendererUtils.h"
 
-
 @implementation RendererUtils
+
++ (int)shadingLanguageVersion
+{
+	float glLanguageVersion;
+    const char* glVersionString = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+#if TARGET_OS_IPHONE
+	sscanf(glVersionString, "OpenGL ES GLSL ES %f", &glLanguageVersion);
+#else
+	sscanf(glVersionString, "%f", &glLanguageVersion);
+#endif
+    return (int)(glLanguageVersion * 100.0f);
+}
 
 + (GLuint)compiledShaderOfType:(GLenum)shaderType sourceName:(NSString*)sourceName
 {
@@ -17,9 +28,14 @@
     NSString* shaderSource = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     NSAssert1(shaderSource, @"Unable to load source for %@", sourceName);
     
+    /*
+     The #version directive must be the first directive in the shader source, and must be used on some GL platforms (Mac core).
+     We therefore always prepend it to the loaded shader source.
+     */
+    NSString* versionatedShaderSource = [NSString stringWithFormat:@"#version %d\n%@", [self shadingLanguageVersion], shaderSource];
+    const char* source = [versionatedShaderSource UTF8String];
     GLuint shaderName = glCreateShader(shaderType);
-    const char* glSource = [shaderSource UTF8String];
-    glShaderSource(shaderName, 1, &glSource, NULL);
+    glShaderSource(shaderName, 1, (const GLchar* const*)&source, NULL);
     glCompileShader(shaderName);
 
 #ifndef NDEBUG
