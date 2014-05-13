@@ -46,8 +46,8 @@
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
 		EEF830C2190AE2BA00E8B2F2 /* ColumnShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */; };
 		EEF830C3190AE2BA00E8B2F2 /* ColumnShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */; };
-		EEF830C4190AE2BA00E8B2F2 /* ScrollingShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */; };
-		EEF830C5190AE2BA00E8B2F2 /* ScrollingShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */; };
+		EEF830C4190AE2BA00E8B2F2 /* LinearScrollingShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C0190AE2BA00E8B2F2 /* LinearScrollingShader.fsh */; };
+		EEF830C5190AE2BA00E8B2F2 /* LinearScrollingShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF830C1190AE2BA00E8B2F2 /* LinearScrollingShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +123,8 @@
 		19F66958190AB26800D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
 		EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.fsh; sourceTree = "<group>"; };
 		EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColumnShader.vsh; sourceTree = "<group>"; };
-		EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.fsh; sourceTree = "<group>"; };
-		EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScrollingShader.vsh; sourceTree = "<group>"; };
+		EEF830C0190AE2BA00E8B2F2 /* LinearScrollingShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LinearScrollingShader.fsh; sourceTree = "<group>"; };
+		EEF830C1190AE2BA00E8B2F2 /* LinearScrollingShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LinearScrollingShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,8 +323,8 @@
 			children = (
 				EEF830BE190AE2BA00E8B2F2 /* ColumnShader.fsh */,
 				EEF830BF190AE2BA00E8B2F2 /* ColumnShader.vsh */,
-				EEF830C0190AE2BA00E8B2F2 /* ScrollingShader.fsh */,
-				EEF830C1190AE2BA00E8B2F2 /* ScrollingShader.vsh */,
+				EEF830C0190AE2BA00E8B2F2 /* LinearScrollingShader.fsh */,
+				EEF830C1190AE2BA00E8B2F2 /* LinearScrollingShader.vsh */,
 				19F6694E190AB09100D2DE77 /* MobileGLDisplay.h */,
 				19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */,
 			);
@@ -409,11 +409,11 @@
 			files = (
 				1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */,
 				19541FE31906D89900BC94BF /* ColorMaps in Resources */,
-				EEF830C4190AE2BA00E8B2F2 /* ScrollingShader.fsh in Resources */,
+				EEF830C4190AE2BA00E8B2F2 /* LinearScrollingShader.fsh in Resources */,
 				1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */,
 				EEF830C2190AE2BA00E8B2F2 /* ColumnShader.fsh in Resources */,
 				EEF830C3190AE2BA00E8B2F2 /* ColumnShader.vsh in Resources */,
-				EEF830C5190AE2BA00E8B2F2 /* ScrollingShader.vsh in Resources */,
+				EEF830C5190AE2BA00E8B2F2 /* LinearScrollingShader.vsh in Resources */,
 				1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */,
 				1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */,
 				1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */,

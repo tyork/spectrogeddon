@@ -25,4 +25,10 @@ static inline BOOL RenderSizeEqualToSize(RenderSize a, RenderSize b)
     return a.width == b.width && a.height == b.height;
 }
 
+typedef struct
+{
+    GLfloat x,y;
+    GLfloat s,t;
+} TexturedVertexAttribs;
+
 #endif

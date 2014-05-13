@@ -67,4 +67,40 @@
     return programName;
 }
 
++ (GLuint)generateVAO
+{
+    GLuint vaoName = 0;
+#if TARGET_OS_IPHONE
+    glGenVertexArraysOES(1, &vaoName);
+    glBindVertexArrayOES(vaoName);
+#else
+    glGenVertexArrays(1, &vaoName);
+    glBindVertexArray(vaoName);
+#endif
+    return vaoName;
+}
+
++ (void)bindVAO:(GLuint)vaoName
+{
+#if TARGET_OS_IPHONE
+    glBindVertexArrayOES(vaoName);
+#else
+    glBindVertexArray(vaoName);
+#endif
+}
+
++ (void)destroyVAO:(GLuint)vaoName
+{
+    if(!vaoName)
+    {
+        return;
+    }
+    
+#if TARGET_OS_IPHONE
+    glDeleteVertexArraysOES(1, &vaoName);
+#else
+    glDeleteVertexArrays(1, &vaoName);
+#endif
+}
+
 @end

@@ -8,15 +8,10 @@
 
 #import <GLKit/GLKit.h>
 #import "ScrollingRenderer.h"
-#import "RendererTypes.h"
 
 /**
- Displays a transformed GL texture using a repeating mesh.
+ Displays a texture on a linear repeating mesh.
  */
 @interface LinearScrollingRenderer : NSObject <ScrollingRenderer>
-
-- (RenderSize)bestRenderSizeFromSize:(RenderSize)size;
-
-- (void)render;
 
 @end

@@ -23,4 +23,12 @@
  */
 + (GLuint)loadShaderProgramNamed:(NSString*)shaderName;
 
+// VAO (candidate for extraction)
+
++ (GLuint)generateVAO;
+
++ (void)bindVAO:(GLuint)vaoName;
+
++ (void)destroyVAO:(GLuint)vaoName;
+
 @end

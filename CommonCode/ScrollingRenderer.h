@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RendererTypes.h"
 
 @protocol ScrollingRenderer <NSObject>
 
 @property (nonatomic) float scrollingPosition;
-
-@optional
 @property (nonatomic) NSUInteger activeScrollingDirectionIndex;
 
+- (RenderSize)bestRenderSizeFromSize:(RenderSize)size;
+
 - (NSArray*)namesForScrollingDirections;
+
+- (void)render;
 
 @end

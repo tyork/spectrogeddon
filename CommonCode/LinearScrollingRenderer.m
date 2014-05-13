@@ -12,12 +12,6 @@
 
 #define NumberOfBufferVertices 8
 
-typedef struct
-{
-    GLfloat x,y;
-    GLfloat s,t;
-} TexturedVertexAttribs;
-
 @interface LinearScrollingRenderer ()
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
@@ -31,24 +25,14 @@ typedef struct
 
 @implementation LinearScrollingRenderer
 
+#pragma mark - ScrollingRenderer -
+
 @synthesize scrollingPosition = _scrollingPosition;
 @synthesize activeScrollingDirectionIndex = _activeScrollingDirectionIndex;
 
 - (NSArray*)namesForScrollingDirections;
 {
     return @[ NSLocalizedString(@"Horizontal", @""), NSLocalizedString(@"Vertical", @"") ];
-}
-
-- (void)dealloc
-{
-    [self destroyResources];
-}
-
-- (GLKMatrix4)transform
-{
-    const float translation = 2.0f * (1.0f - self.scrollingPosition);
-    const GLKMatrix4 rotation = (self.activeScrollingDirectionIndex == 0) ? GLKMatrix4Identity : GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f);
-    return GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
 }
 
 - (RenderSize)bestRenderSizeFromSize:(RenderSize)size
@@ -60,7 +44,7 @@ typedef struct
 {
     if(!self.shader)
     {
-        self.shader = [RendererUtils loadShaderProgramNamed:@"ScrollingShader"];
+        self.shader = [RendererUtils loadShaderProgramNamed:@"LinearScrollingShader"];
         self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
         self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");
@@ -69,21 +53,16 @@ typedef struct
     
     if(!self.vao)
     {
-        self.vao = [self generateVAO];
+        self.vao = [RendererUtils generateVAO];
     }
     else
     {
-#if TARGET_OS_IPHONE
-        glBindVertexArrayOES(self.vao);
-#else
-        glBindVertexArray(self.vao);
-#endif
+        [RendererUtils bindVAO:self.vao];
     }
     
     if(!self.mesh)
     {
         self.mesh = [self generateMesh];
-        
         glEnableVertexAttribArray(self.positionAttribute);
         glEnableVertexAttribArray(self.texCoordAttribute);
         glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, x));
@@ -97,29 +76,34 @@ typedef struct
     const GLKMatrix4 transform = [self transform];
     glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, transform.m);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
-    
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-#if TARGET_OS_IPHONE
-    glBindVertexArrayOES(0);
-#else
-    glBindVertexArray(0);
-#endif
+    [RendererUtils bindVAO:0];
 }
 
-- (GLuint)generateVAO
-{
-    GLuint vaoIndex = 0;
-#if TARGET_OS_IPHONE
-    glGenVertexArraysOES(1, &vaoIndex);
-    glBindVertexArrayOES(vaoIndex);
-#else
-    glGenVertexArrays(1, &vaoIndex);
-    glBindVertexArray(vaoIndex);
-#endif
-    
-    GL_DEBUG_GENERAL;
+#pragma mark - Lifecycle - 
 
-    return vaoIndex;
+- (void)dealloc
+{
+    [RendererUtils destroyVAO:_vao];
+    
+    if(_mesh)
+    {
+        glDeleteBuffers(1, &_mesh);
+    }
+    
+    if(_shader)
+    {
+        glDeleteProgram(_shader);
+    }
+}
+
+#pragma mark - Helpers -
+
+- (GLKMatrix4)transform
+{
+    const float translation = 2.0f * (1.0f - self.scrollingPosition);
+    const GLKMatrix4 rotation = (self.activeScrollingDirectionIndex == 0) ? GLKMatrix4Identity : GLKMatrix4MakeRotation(-M_PI_2, 0.0f, 0.0f, 1.0f);
+    return GLKMatrix4Multiply(rotation, GLKMatrix4MakeTranslation(translation, 0.0f, 0.0f));
 }
 
 - (GLuint)generateMesh
@@ -146,32 +130,5 @@ typedef struct
     return meshName;
 }
 
-- (void)destroyResources
-{
-    if(self.mesh)
-    {
-        glDeleteBuffers(1, &_mesh);
-        self.mesh = 0;
-    }
-    
-    if(self.vao)
-    {
-#if TARGET_OS_IPHONE
-        glDeleteVertexArraysOES(1, &_vao);
-#else
-        glDeleteVertexArrays(1, &_vao);
-#endif
-        self.vao = 0;
-    }
-    
-    if(self.shader)
-    {
-        glDeleteProgram(self.shader);
-        self.shader = 0;
-        self.positionAttribute = 0;
-        self.texCoordAttribute = 0;
-        self.textureUniform = 0;
-    }
-}
 
 @end

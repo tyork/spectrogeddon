@@ -9,6 +9,7 @@
 #import "GLRenderer.h"
 #import "RendererDefs.h"
 #import "LinearScrollingRenderer.h"
+#import "RadialScrollingRenderer.h"
 #import "ColumnRenderer.h"
 #import "RenderTexture.h"
 #import "TimeSequence.h"
@@ -19,7 +20,7 @@
 @property (nonatomic) NSTimeInterval lastDuration;
 @property (nonatomic,strong) ColumnRenderer* channel1Renderer;
 @property (nonatomic,strong) ColumnRenderer* channel2Renderer;
-@property (nonatomic,strong) LinearScrollingRenderer* scrollingRenderer;
+@property (nonatomic,strong) id <ScrollingRenderer> scrollingRenderer;
 @property (nonatomic,strong) RenderTexture* renderTexture;
 
 @property (nonatomic) NSTimeInterval frameOriginTime;
@@ -33,7 +34,7 @@
 {
     if((self = [super init]))
     {
-        _scrollingRenderer = [[LinearScrollingRenderer alloc] init];
+        _scrollingRenderer = [[RadialScrollingRenderer alloc] init];
         _renderTexture = [[RenderTexture alloc] init];
         _channel1Renderer = [[ColumnRenderer alloc] init];
         _channel2Renderer = [[ColumnRenderer alloc] init];
