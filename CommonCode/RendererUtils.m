@@ -30,7 +30,7 @@
         {
             GLchar* log = (GLchar*)calloc(logLen, sizeof(GLchar));
             glGetShaderInfoLog(shaderName, logLen, &logLen, log);
-            NSAssert4(NO, @"%s/%s:%d -> Got error %s", __FILE__, __func__, __LINE__, log);
+            NSAssert2(NO, @"%@ -> Got error %s", [filePath lastPathComponent], log);
             free(log);
         }
     }
@@ -60,7 +60,7 @@
         {
             GLchar* log = (GLchar*)calloc(logLen, sizeof(GLchar));
             glGetProgramInfoLog(programName, logLen, &logLen, log);
-            NSAssert4(NO, @"%s/%s:%d -> Got error %s", __FILE__, __func__, __LINE__, log);
+            NSAssert2(NO, @"%@ -> Got error %s", shaderName, log);
             free(log);
         }
     }
