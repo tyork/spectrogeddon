@@ -15,6 +15,7 @@
 {
     NSString* filePath = [[NSBundle mainBundle] pathForResource:sourceName ofType:(shaderType == GL_VERTEX_SHADER) ? @"vsh" : @"fsh"];
     NSString* shaderSource = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSAssert1(shaderSource, @"Unable to load source for %@", sourceName);
     
     GLuint shaderName = glCreateShader(shaderType);
     const char* glSource = [shaderSource UTF8String];
