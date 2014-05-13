@@ -24,6 +24,35 @@
 
 @implementation ViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [super initWithCoder:aDecoder]))
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resume) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -67,6 +96,13 @@
     [self.renderer useDisplaySettings:[self.settingsStore displaySettings]];
     
     self.renderer.glView = self.spectrumView;
+
+    if(!self.displayLink)
+    {
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateDisplay)];
+        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+        self.displayLink.paused = YES;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -77,20 +113,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.spectrumGenerator startGenerating];
-    if(!self.displayLink)
-    {
-        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateDisplay)];
-        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    }
-    self.displayLink.paused = NO;
+    [self resume];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.spectrumGenerator stopGenerating];
-    self.displayLink.paused = YES;
+    [self pause];
 }
 
 - (void)viewDidLayoutSubviews
@@ -102,6 +131,18 @@
 - (void)updateDisplay
 {
     [self.renderer redisplay];
+}
+
+- (void)pause
+{
+    [self.spectrumGenerator stopGenerating];
+    self.displayLink.paused = YES;
+}
+
+- (void)resume
+{
+    [self.spectrumGenerator startGenerating];
+    self.displayLink.paused = NO;
 }
 
 #pragma mark - Spectrum generator -
