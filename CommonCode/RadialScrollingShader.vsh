@@ -17,5 +17,5 @@ uniform vec2 uTexOffset;
 void main(void)
 {
     gl_Position = aPosition;
-    vTexCoord = mod(aTexCoord + uTexOffset, 1.0);
+    vTexCoord = aTexCoord;
 }
