@@ -16,7 +16,7 @@ static const NSUInteger BufferSize = 1024;
 static const NSUInteger ReadInterval = 1;
 #else
 static const NSUInteger BufferSize = 4096;
-static const NSUInteger ReadInterval = 4;
+static const NSUInteger ReadInterval = 8;
 #endif
 
 @interface AudioSource ()  <AVCaptureAudioDataOutputSampleBufferDelegate>
