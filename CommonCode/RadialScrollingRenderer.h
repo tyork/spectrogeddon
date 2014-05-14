@@ -10,6 +10,7 @@
 
 /**
  Displays a texture by scrolling it radially through a ring mesh.
+ Probably would do better as a projected cylinder.
  */
 @interface RadialScrollingRenderer : NSObject <ScrollingRenderer>
 
