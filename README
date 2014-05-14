@@ -9,7 +9,6 @@ In the spectrogram app you need to pick Soundflower as the audio source using th
 
 *Outstanding issues:*
 - Occasional overlap drawing produces bad column, need to simplify column sizing.
-- Sample rate is needed but not supplied to GLRenderer.
 - Store/manipulate audio settings via a settings object.
 
 *Missing features:*
