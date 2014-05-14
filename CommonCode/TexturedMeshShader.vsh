@@ -6,7 +6,7 @@
     attribute vec4 aPosition;
     attribute vec2 aTexCoord;
     #ifdef GL_ES
-        varying highp vec2 vTexCoord;
+        varying mediump vec2 vTexCoord;
     #else  
         varying vec2 vTexCoord;
     #endif

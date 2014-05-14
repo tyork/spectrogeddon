@@ -10,27 +10,20 @@
 #import "TimeSequence.h"
 #import "RendererDefs.h"
 #import "RendererUtils.h"
-
-typedef struct
-{
-    GLfloat x,y;
-    GLfloat level;
-} LevelVertexAttribs;
-
-
+#import "RendererTypes.h"
 
 @interface ColumnRenderer ()
 @property (nonatomic,strong) GLKTextureInfo* texture;
 @property (nonatomic) GLuint shader;
-@property (nonatomic) GLint levelTextureSampler;
-@property (nonatomic) GLint transformUniform;
-@property (nonatomic) GLint levelAttribute;
 @property (nonatomic) GLint positionAttribute;
+@property (nonatomic) GLint texCoordAttribute;
+@property (nonatomic) GLint textureUniform;
+@property (nonatomic) GLint transformUniform;
 @property (nonatomic) GLuint mesh;
 @property (nonatomic) GLuint vao;
 
 @property (nonatomic) GLKMatrix4 transform;
-@property (nonatomic) LevelVertexAttribs* vertices;
+@property (nonatomic) TexturedVertexAttribs* vertices;
 @property (nonatomic) GLsizei vertexCount;
 @property (nonatomic) BOOL invalidatedVertices;
 @end
@@ -89,8 +82,8 @@ typedef struct
         {
             y = (1.0f-logNormalization*log2f(y+logOffset));
         }
-        self.vertices[vertexIndex] = (LevelVertexAttribs){ 0.0f, y, 0.0f };
-        self.vertices[vertexIndex+1] = (LevelVertexAttribs){ 1.0f, y, 0.0f };
+        self.vertices[vertexIndex] = (TexturedVertexAttribs){ 0.0f, y, 0.0f, 0.0f };
+        self.vertices[vertexIndex+1] = (TexturedVertexAttribs){ 1.0f, y, 0.0f, 0.0f };
     }
 }
 
@@ -111,7 +104,7 @@ typedef struct
             self.vertices = NULL;
         }
         self.vertexCount = vertexCountForSequence;
-        self.vertices = (LevelVertexAttribs*)calloc(self.vertexCount, sizeof(LevelVertexAttribs));
+        self.vertices = (TexturedVertexAttribs*)calloc(self.vertexCount, sizeof(TexturedVertexAttribs));
         [self generateVertexPositions];
         self.invalidatedVertices = NO;
     }
@@ -122,8 +115,8 @@ typedef struct
     {
         const NSUInteger vertexIndex = valueIndex << 1;
         const float value = [timeSequence valueAtIndex:valueIndex];
-        self.vertices[vertexIndex].level = value;
-        self.vertices[vertexIndex+1].level = value;
+        self.vertices[vertexIndex].t = value;
+        self.vertices[vertexIndex+1].t = value;
     }
 }
 
@@ -140,10 +133,10 @@ typedef struct
     }
     if(!self.shader)
     {
-        self.shader = [RendererUtils loadShaderProgramNamed:@"ColumnShader"];
-        self.levelTextureSampler = glGetUniformLocation(self.shader, "uLevelSampler");
+        self.shader = [RendererUtils loadShaderProgramNamed:@"TexturedMeshShader"];
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
-        self.levelAttribute = glGetAttribLocation(self.shader, "aLevel");
+        self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");
+        self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.transformUniform = glGetUniformLocation(self.shader, "uTransform");
     }
     
@@ -162,15 +155,15 @@ typedef struct
     if(!hasVAO)
     {
         glEnableVertexAttribArray(self.positionAttribute);
-        glEnableVertexAttribArray(self.levelAttribute);
-        glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, x));
-        glVertexAttribPointer(self.levelAttribute, 1, GL_FLOAT, GL_FALSE, sizeof(LevelVertexAttribs), (void *)offsetof(LevelVertexAttribs, level));
+        glEnableVertexAttribArray(self.texCoordAttribute);
+        glVertexAttribPointer(self.positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, x));
+        glVertexAttribPointer(self.texCoordAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, s));
     }
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, self.texture.name);
     glUseProgram(self.shader);
-    glUniform1i(self.levelTextureSampler, 0);
+    glUniform1i(self.textureUniform, 0);
     glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
     
     glBindBuffer(GL_ARRAY_BUFFER, self.mesh);
@@ -196,7 +189,7 @@ typedef struct
         glGenBuffers(1, &bufferName);
     }
     glBindBuffer(GL_ARRAY_BUFFER, bufferName);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(LevelVertexAttribs)*self.vertexCount, self.vertices, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(TexturedVertexAttribs)*self.vertexCount, self.vertices, GL_STREAM_DRAW);
     
     GL_DEBUG_GENERAL;
     
