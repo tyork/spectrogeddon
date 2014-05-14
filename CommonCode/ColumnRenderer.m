@@ -49,11 +49,7 @@ typedef struct
 
 - (void)dealloc
 {
-#if TARGET_OS_IPHONE
-    glDeleteVertexArraysOES(1, &_vao);
-#else
-    glDeleteVertexArrays(1, &_vao);
-#endif
+    [RendererUtils destroyVAO:_vao];
     glDeleteProgram(_shader);
     glDeleteBuffers(1, &_mesh);
     free(_vertices);
@@ -154,15 +150,11 @@ typedef struct
     const BOOL hasVAO = (self.vao != 0);
     if(!hasVAO)
     {
-        self.vao = [self generateVAO];
+        self.vao = [RendererUtils generateVAO];
     }
     else
     {
-#if TARGET_OS_IPHONE
-        glBindVertexArrayOES(self.vao);
-#else
-        glBindVertexArray(self.vao);
-#endif
+        [RendererUtils bindVAO:self.vao];
     }
 
     self.mesh = [self generateMeshUsingBufferName:self.mesh];
@@ -184,11 +176,7 @@ typedef struct
     glBindBuffer(GL_ARRAY_BUFFER, self.mesh);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, self.vertexCount);
 
-#if TARGET_OS_IPHONE
-    glBindVertexArrayOES(0);
-#else
-    glBindVertexArray(0);
-#endif
+    [RendererUtils bindVAO:0];
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -213,22 +201,6 @@ typedef struct
     GL_DEBUG_GENERAL;
     
     return bufferName;
-}
-
-- (GLuint)generateVAO
-{
-    GLuint vaoIndex = 0;
-#if TARGET_OS_IPHONE
-    glGenVertexArraysOES(1, &vaoIndex);
-    glBindVertexArrayOES(vaoIndex);
-#else
-    glGenVertexArrays(1, &vaoIndex);
-    glBindVertexArray(vaoIndex);
-#endif
-    
-    GL_DEBUG_GENERAL;
-    
-    return vaoIndex;
 }
 
 @end
