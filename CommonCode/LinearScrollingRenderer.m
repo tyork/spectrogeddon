@@ -44,7 +44,7 @@
 {
     if(!self.shader)
     {
-        self.shader = [RendererUtils loadShaderProgramNamed:@"LinearScrollingShader"];
+        self.shader = [RendererUtils loadShaderProgramNamed:@"TexturedMeshShader"];
         self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
         self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");

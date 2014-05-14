@@ -19,7 +19,7 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
-@property (nonatomic) GLint texOffsetUniform;
+@property (nonatomic) GLint transformUniform;
 @property (nonatomic) GLuint shader;
 @property (nonatomic) GLuint vao;
 @property (nonatomic) GLuint mesh;
@@ -62,11 +62,11 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
     
     if(!self.shader)
     {
-        self.shader = [RendererUtils loadShaderProgramNamed:@"RadialScrollingShader"];
+        self.shader = [RendererUtils loadShaderProgramNamed:@"TexturedMeshShader"];
         self.textureUniform = glGetUniformLocation(self.shader, "uTextureSampler");
         self.positionAttribute = glGetAttribLocation(self.shader, "aPosition");
         self.texCoordAttribute = glGetAttribLocation(self.shader, "aTexCoord");
-        self.texOffsetUniform = glGetUniformLocation(self.shader, "uTexOffset");
+        self.transformUniform = glGetUniformLocation(self.shader, "uTransform");
     }
     
     const BOOL hasVAO = (self.vao != 0);
@@ -92,6 +92,8 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
 
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
+    const GLKMatrix4 transform = GLKMatrix4Identity;
+    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, transform.m);
     glUniform1i(self.textureUniform, 0);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
@@ -149,7 +151,6 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
     const float innerRadius = 0.0f;
     const float outerRadius = sqrtf(2.0f);
     const float edgeV = (self.activeScrollingDirectionIndex == 0) ? 0.0f : 1.0f;
-    const float separatorRadius = (1.0f - edgeV) * innerRadius + edgeV * outerRadius;
     for(NSUInteger spokeIndex = 0; spokeIndex <= NumberOfSpokes; spokeIndex++)
     {
         const float fractionOfEdges = (float)spokeIndex/(float)NumberOfSpokes;
@@ -159,27 +160,23 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
         const NSUInteger innerVertexIndex = spokeIndex * 2; // 2 points per strip
         const NSUInteger outerVertexIndex = innerVertexIndex + stripOffset + 1;
         self.vertices[innerVertexIndex] = (TexturedVertexAttribs) { position.x*innerRadius, position.y*innerRadius, edgeV, fractionOfEdges };
-        self.vertices[innerVertexIndex+1] = (TexturedVertexAttribs) { position.x*separatorRadius, position.y*separatorRadius, 1.0f - edgeV, fractionOfEdges };
-        self.vertices[outerVertexIndex-1] = (TexturedVertexAttribs) { position.x*separatorRadius, position.y*separatorRadius, edgeV, fractionOfEdges };
+        self.vertices[innerVertexIndex+1] = (TexturedVertexAttribs) { position.x*outerRadius, position.y*outerRadius, 1.0f - edgeV, fractionOfEdges };
+        self.vertices[outerVertexIndex-1] = (TexturedVertexAttribs) { position.x*outerRadius, position.y*outerRadius, edgeV, fractionOfEdges };
         self.vertices[outerVertexIndex] = (TexturedVertexAttribs) { position.x*outerRadius, position.y*outerRadius, edgeV, fractionOfEdges };
     }
 }
 
-- (float)directionalScrollingOffset
-{
-    return (self.activeScrollingDirectionIndex == 0) ? self.scrollingPosition : (1.0f - self.scrollingPosition);
-}
-
 - (void)updateVerticesForScrollingPosition
 {
-    const float offset = [self directionalScrollingOffset];
+    const float offset = (self.activeScrollingDirectionIndex == 0) ? self.scrollingPosition : (1.0f - self.scrollingPosition);
     const float contraOffset = 1.0f - offset;
+    const float edgeV = self.scrollingPosition;
     const NSUInteger stripOffset = NumberOfBufferVertices/2;
     for(NSUInteger spokeIndex = 0; spokeIndex <= NumberOfSpokes; spokeIndex++)
     {
         const NSUInteger innerVertexIndex = spokeIndex * 2; // 2 points per strip
         const NSUInteger outerVertexIndex = innerVertexIndex + stripOffset + 1;
-        self.vertices[innerVertexIndex].s = self.vertices[outerVertexIndex].s = offset;
+        self.vertices[innerVertexIndex].s = self.vertices[outerVertexIndex].s = edgeV;
         self.vertices[innerVertexIndex+1].x = self.vertices[outerVertexIndex-1].x = offset * self.vertices[innerVertexIndex].x + contraOffset * self.vertices[outerVertexIndex].x;
         self.vertices[innerVertexIndex+1].y = self.vertices[outerVertexIndex-1].y = offset * self.vertices[innerVertexIndex].y + contraOffset * self.vertices[outerVertexIndex].y;
     }
