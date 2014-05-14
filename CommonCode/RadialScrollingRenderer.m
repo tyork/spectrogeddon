@@ -41,14 +41,23 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
 
 - (NSArray*)namesForScrollingDirections
 {
-    return @[ NSLocalizedString(@"Outwards", @""), NSLocalizedString(@"Inwards", @"") ];
+    return @[ NSLocalizedString(@"Inwards", @""), NSLocalizedString(@"Outwards", @"") ];
+}
+
+- (void)setActiveScrollingDirectionIndex:(NSUInteger)activeScrollingDirectionIndex
+{
+    if(_activeScrollingDirectionIndex != activeScrollingDirectionIndex)
+    {
+        _activeScrollingDirectionIndex = activeScrollingDirectionIndex;
+        [self initializeVertices];
+    }
 }
 
 - (void)render
 {
     if(!self.vertices)
     {
-        [self initializeMeshForScrollingPosition];
+        [self initializeVertices];
     }
     
     if(!self.shader)
@@ -79,14 +88,12 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
         glVertexAttribPointer(self.texCoordAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(TexturedVertexAttribs), (void *)offsetof(TexturedVertexAttribs, s));
     }
 
-    [self updateMeshForScrollingPosition];
+    [self updateVerticesForScrollingPosition];
 
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
     glUniform1i(self.textureUniform, 0);
     
-//    const GLKVector2 offset = GLKVector2Make(self.scrollingPosition, 0.0f);
-///    glUniform2fv(self.texOffsetUniform, 1, offset.v);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, NumberOfBufferVertices);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     [RendererUtils bindVAO:0];
@@ -132,52 +139,50 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
     return bufferName;
 }
 
-- (void)initializeMeshForScrollingPosition
+- (void)initializeVertices
 {
-    NSParameterAssert(!self.vertices);
-    self.vertices = (TexturedVertexAttribs*)calloc(NumberOfBufferVertices, sizeof(TexturedVertexAttribs));
+    if(!self.vertices)
+    {
+        self.vertices = (TexturedVertexAttribs*)calloc(NumberOfBufferVertices, sizeof(TexturedVertexAttribs));
+    }
     const NSUInteger stripOffset = NumberOfBufferVertices/2;
+    const float innerRadius = 0.0f;
+    const float outerRadius = sqrtf(2.0f);
+    const float edgeV = (self.activeScrollingDirectionIndex == 0) ? 0.0f : 1.0f;
+    const float separatorRadius = (1.0f - edgeV) * innerRadius + edgeV * outerRadius;
     for(NSUInteger spokeIndex = 0; spokeIndex <= NumberOfSpokes; spokeIndex++)
     {
         const float fractionOfEdges = (float)spokeIndex/(float)NumberOfSpokes;
         const float angle = 2.0f*M_PI*fractionOfEdges;
-        const float innerRadius = 0.0f;
-        const float outerRadius = 1.0f;
         const GLKVector2 position = GLKVector2Make(sinf(angle), cosf(angle));
         
         const NSUInteger innerVertexIndex = spokeIndex * 2; // 2 points per strip
         const NSUInteger outerVertexIndex = innerVertexIndex + stripOffset + 1;
-        self.vertices[innerVertexIndex] = (TexturedVertexAttribs) { position.x*innerRadius, position.y*innerRadius, 0.0f, fractionOfEdges };
-        self.vertices[innerVertexIndex+1] = (TexturedVertexAttribs) { position.x*innerRadius, position.y*innerRadius, 1.0f, fractionOfEdges };
-        self.vertices[outerVertexIndex-1] = (TexturedVertexAttribs) { position.x*innerRadius, position.y*innerRadius, 0.0f, fractionOfEdges };
-        self.vertices[outerVertexIndex] = (TexturedVertexAttribs) { position.x*outerRadius, position.y*outerRadius, 0.0f, fractionOfEdges };
+        self.vertices[innerVertexIndex] = (TexturedVertexAttribs) { position.x*innerRadius, position.y*innerRadius, edgeV, fractionOfEdges };
+        self.vertices[innerVertexIndex+1] = (TexturedVertexAttribs) { position.x*separatorRadius, position.y*separatorRadius, 1.0f - edgeV, fractionOfEdges };
+        self.vertices[outerVertexIndex-1] = (TexturedVertexAttribs) { position.x*separatorRadius, position.y*separatorRadius, edgeV, fractionOfEdges };
+        self.vertices[outerVertexIndex] = (TexturedVertexAttribs) { position.x*outerRadius, position.y*outerRadius, edgeV, fractionOfEdges };
     }
-    
-    GL_DEBUG_GENERAL;
 }
 
-- (void)updateMeshForScrollingPosition
+- (float)directionalScrollingOffset
 {
-    const float discontinuityRadius = self.scrollingPosition;
-    const float edgeV = 1.0f - self.scrollingPosition;
+    return (self.activeScrollingDirectionIndex == 0) ? self.scrollingPosition : (1.0f - self.scrollingPosition);
+}
+
+- (void)updateVerticesForScrollingPosition
+{
+    const float offset = [self directionalScrollingOffset];
+    const float contraOffset = 1.0f - offset;
     const NSUInteger stripOffset = NumberOfBufferVertices/2;
     for(NSUInteger spokeIndex = 0; spokeIndex <= NumberOfSpokes; spokeIndex++)
     {
         const NSUInteger innerVertexIndex = spokeIndex * 2; // 2 points per strip
         const NSUInteger outerVertexIndex = innerVertexIndex + stripOffset + 1;
-/*        self.vertices[innerVertexIndex].s = edgeV;
-        self.vertices[outerVertexIndex].s = edgeV;
-        self.vertices[innerVertexIndex+1].x = self.vertices[outerVertexIndex-1].x = edgeV * self.vertices[innerVertexIndex].x + discontinuityRadius * self.vertices[outerVertexIndex].x;
-        self.vertices[innerVertexIndex+1].y = self.vertices[outerVertexIndex-1].y = edgeV * self.vertices[innerVertexIndex].y + discontinuityRadius * self.vertices[outerVertexIndex].y;
- */
-        self.vertices[innerVertexIndex].s = discontinuityRadius;
-        self.vertices[outerVertexIndex].s = discontinuityRadius;
-        self.vertices[innerVertexIndex+1].x = self.vertices[outerVertexIndex-1].x = discontinuityRadius * self.vertices[innerVertexIndex].x + edgeV * self.vertices[outerVertexIndex].x;
-        self.vertices[innerVertexIndex+1].y = self.vertices[outerVertexIndex-1].y = discontinuityRadius * self.vertices[innerVertexIndex].y + edgeV * self.vertices[outerVertexIndex].y;
-
+        self.vertices[innerVertexIndex].s = self.vertices[outerVertexIndex].s = offset;
+        self.vertices[innerVertexIndex+1].x = self.vertices[outerVertexIndex-1].x = offset * self.vertices[innerVertexIndex].x + contraOffset * self.vertices[outerVertexIndex].x;
+        self.vertices[innerVertexIndex+1].y = self.vertices[outerVertexIndex-1].y = offset * self.vertices[innerVertexIndex].y + contraOffset * self.vertices[outerVertexIndex].y;
     }
-    
-    GL_DEBUG_GENERAL;
 }
 
 @end
