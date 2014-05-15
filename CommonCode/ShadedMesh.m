@@ -12,6 +12,7 @@
 #import "RendererDefs.h"
 
 @interface ShadedMesh ()
+@property (nonatomic) BOOL didInvalidateMeshData;
 @property (nonatomic) GLint positionAttribute;
 @property (nonatomic) GLint texCoordAttribute;
 @property (nonatomic) GLint textureUniform;
@@ -34,6 +35,7 @@
     {
         _numberOfVertices = vertexCount;
         _vertices = (TexturedVertexAttribs*)calloc(vertexCount, sizeof(TexturedVertexAttribs));
+        _transform = GLKMatrix4Identity;
         [self updateVertices:generator];
     }
     return self;
@@ -74,6 +76,7 @@
 {
     NSParameterAssert(generator);
     generator(self.vertices);
+    self.didInvalidateMeshData = YES;
 }
 
 #pragma mark - Rendering
@@ -110,8 +113,8 @@
     
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
-    const GLKMatrix4 transform = GLKMatrix4Identity;
-    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, transform.m);
+    //const GLKMatrix4 transformRef = [self transform];
+    glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
     glUniform1i(self.textureUniform, 0);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, (GLsizei)self.numberOfVertices);
@@ -133,7 +136,11 @@
         glGenBuffers(1, &arrayBufferName);
     }
     glBindBuffer(GL_ARRAY_BUFFER, arrayBufferName);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(TexturedVertexAttribs)*self.numberOfVertices, self.vertices, GL_STREAM_DRAW);
+    if(self.didInvalidateMeshData)
+    {
+        glBufferData(GL_ARRAY_BUFFER, sizeof(TexturedVertexAttribs)*self.numberOfVertices, self.vertices, GL_STREAM_DRAW);
+        self.didInvalidateMeshData = NO;
+    }
     
     GL_DEBUG_GENERAL;
     

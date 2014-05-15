@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "RendererTypes.h"
-
+#import <GLKit/GLKit.h>
 
 typedef void(^VertexGenerator)(TexturedVertexAttribs* const vertices);
 
 @interface ShadedMesh : NSObject
+
+@property (nonatomic) GLKMatrix4 transform;
 
 - (instancetype)initWithNumberOfVertices:(NSUInteger)vertexCount vertexGenerator:(VertexGenerator)generator;
 

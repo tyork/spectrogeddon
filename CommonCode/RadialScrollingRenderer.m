@@ -8,8 +8,6 @@
 
 #import "RadialScrollingRenderer.h"
 #import <GLKit/GLKit.h>
-#import "RendererUtils.h"
-#import "RendererDefs.h"
 #import "ShadedMesh.h"
 
 static NSUInteger const NumberOfSpokes = 48;
@@ -17,7 +15,7 @@ static NSUInteger const NumberOfVerticesPerSpoke = 4;
 static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOfVerticesPerSpoke;
 
 @interface RadialScrollingRenderer ()
-@property (nonatomic) ShadedMesh* shadedMesh;
+@property (nonatomic,strong) ShadedMesh* shadedMesh;
 @end
 
 @implementation RadialScrollingRenderer
@@ -26,17 +24,6 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
 
 @synthesize scrollingPosition = _scrollingPosition;
 @synthesize activeScrollingDirectionIndex = _activeScrollingDirectionIndex;
-
-- (id)init
-{
-    if((self = [super init]))
-    {
-        _shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices vertexGenerator:^(TexturedVertexAttribs *const vertices) {
-            [self initializeVertices:vertices];
-        }];
-    }
-    return self;
-}
 
 - (RenderSize)bestRenderSizeFromSize:(RenderSize)size
 {
@@ -61,6 +48,13 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
 
 - (void)render
 {
+    if(!self.shadedMesh)
+    {
+        self.shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices vertexGenerator:^(TexturedVertexAttribs *const vertices) {
+            [self initializeVertices:vertices];
+        }];
+    }
+    
     [self.shadedMesh updateVertices:^(TexturedVertexAttribs *const vertices) {
         
         const float offset = (self.activeScrollingDirectionIndex == 0) ? self.scrollingPosition : (1.0f - self.scrollingPosition);
@@ -75,7 +69,6 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
             vertices[innerVertexIndex+1].x = vertices[outerVertexIndex-1].x = offset * vertices[innerVertexIndex].x + contraOffset * vertices[outerVertexIndex].x;
             vertices[innerVertexIndex+1].y = vertices[outerVertexIndex-1].y = offset * vertices[innerVertexIndex].y + contraOffset * vertices[outerVertexIndex].y;
         }
-
     }];
     [self.shadedMesh render];
 }
