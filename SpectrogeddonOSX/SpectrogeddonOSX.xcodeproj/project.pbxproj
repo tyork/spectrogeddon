@@ -42,6 +42,7 @@
 		19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */; };
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
+		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopOpenGLView.m; sourceTree = "<group>"; };
 		19F73F831923C415001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.fsh; path = ../../CommonCode/TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
+		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
+		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +315,8 @@
 				19CEAC5419212CCD00AEA0AA /* RenderTexture.h */,
 				19CEAC5519212CCD00AEA0AA /* RenderTexture.m */,
 				19CEAC5B1922009700AEA0AA /* ScrollingRenderer.h */,
+				EEF7FE9619251F7A003241DF /* ShadedMesh.h */,
+				EEF7FE9519251F7A003241DF /* ShadedMesh.m */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */,
 				19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */,
 				19F66895190AA3AF00D2DE77 /* main.m in Sources */,
+				EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */,
 				19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */,
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,

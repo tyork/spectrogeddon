@@ -34,7 +34,7 @@
 {
     if((self = [super init]))
     {
-        _scrollingRenderer = [[LinearScrollingRenderer alloc] init];
+        _scrollingRenderer = [[RadialScrollingRenderer alloc] init];
         _renderTexture = [[RenderTexture alloc] init];
         _channel1Renderer = [[ColumnRenderer alloc] init];
         _channel2Renderer = [[ColumnRenderer alloc] init];

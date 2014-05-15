@@ -47,6 +47,7 @@
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
+		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		19F66958190AB26800D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
 		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F881923C578001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.vsh; sourceTree = "<group>"; };
+		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
+		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,8 @@
 				19CEAC5919212F7900AEA0AA /* RenderTexture.h */,
 				19CEAC5819212F7900AEA0AA /* RenderTexture.m */,
 				19CEAC5C192200A800AEA0AA /* ScrollingRenderer.h */,
+				EEF7FE9919251F85003241DF /* ShadedMesh.h */,
+				EEF7FE9819251F85003241DF /* ShadedMesh.m */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
 				19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */,
+				EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */,
 				19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */,
 				1901B83C18FBFBA7002DE52F /* AppDelegate.m in Sources */,
 				19F6690D190AA78B00D2DE77 /* FastFourierTransform.m in Sources */,
