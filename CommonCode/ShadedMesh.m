@@ -21,7 +21,7 @@
 @property (nonatomic) GLuint vao;
 @property (nonatomic) GLuint mesh;
 
-@property (nonatomic) NSUInteger numberOfVertices;
+@property (nonatomic,readwrite) NSUInteger numberOfVertices;
 @property (nonatomic) TexturedVertexAttribs* vertices;
 @end
 
@@ -36,12 +36,15 @@
         _numberOfVertices = vertexCount;
         _vertices = (TexturedVertexAttribs*)calloc(vertexCount, sizeof(TexturedVertexAttribs));
         _transform = GLKMatrix4Identity;
-        [self updateVertices:generator];
+        if(generator)
+        {
+            [self updateVertices:generator];
+        }
     }
     return self;
 }
 
-- (void)resizeMesh:(NSUInteger)changedVertexCount
+- (void)resizeMesh:(NSUInteger)changedVertexCount vertexGenerator:(VertexGenerator)generator
 {
     if(changedVertexCount != self.numberOfVertices)
     {
@@ -51,6 +54,10 @@
             self.vertices = attribs;
             self.numberOfVertices = changedVertexCount;
         }
+    }
+    if(generator)
+    {
+        [self updateVertices:generator];
     }
 }
 
@@ -113,7 +120,6 @@
     
     glActiveTexture(GL_TEXTURE0);
     glUseProgram(self.shader);
-    //const GLKMatrix4 transformRef = [self transform];
     glUniformMatrix4fv(self.transformUniform, 1, GL_FALSE, self.transform.m);
     glUniform1i(self.textureUniform, 0);
     
