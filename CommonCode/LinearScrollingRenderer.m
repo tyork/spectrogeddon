@@ -7,8 +7,6 @@
 //
 
 #import "LinearScrollingRenderer.h"
-#import "RendererDefs.h"
-#import "RendererUtils.h"
 #import "ShadedMesh.h"
 
 #define NumberOfBufferVertices 8
@@ -34,11 +32,12 @@
     return (self.activeScrollingDirectionIndex == 0) ? size : (RenderSize) { size.height, size.width } ;
 }
 
-- (void)render
+- (ShadedMesh*)shadedMesh
 {
-    if(!self.shadedMesh)
+    if(!_shadedMesh)
     {
-        self.shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices vertexGenerator:^(TexturedVertexAttribs *const vertices) {
+        _shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices];
+        [_shadedMesh updateVertices:^(TexturedVertexAttribs *const vertices) {
             TexturedVertexAttribs bufferMesh[NumberOfBufferVertices] = {
                 { -3.0f, +1.0f, 0.0f, 1.0f },
                 { -3.0f, -1.0f, 0.0f, 0.0f },
@@ -52,7 +51,11 @@
             memcpy(vertices, bufferMesh, sizeof(TexturedVertexAttribs)*NumberOfBufferVertices);
         }];
     }
-    
+    return _shadedMesh;
+}
+
+- (void)render
+{
     self.shadedMesh.transform = [self transform];
     [self.shadedMesh render];
 }

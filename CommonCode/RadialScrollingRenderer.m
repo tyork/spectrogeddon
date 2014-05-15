@@ -46,15 +46,20 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
     }
 }
 
-- (void)render
+- (ShadedMesh*)shadedMesh
 {
-    if(!self.shadedMesh)
+    if(!_shadedMesh)
     {
-        self.shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices vertexGenerator:^(TexturedVertexAttribs *const vertices) {
+        _shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:NumberOfBufferVertices];
+        [_shadedMesh updateVertices:^(TexturedVertexAttribs *const vertices) {
             [self initializeVertices:vertices];
         }];
     }
-    
+    return _shadedMesh;
+}
+
+- (void)render
+{
     [self.shadedMesh updateVertices:^(TexturedVertexAttribs *const vertices) {
         
         const float offset = (self.activeScrollingDirectionIndex == 0) ? self.scrollingPosition : (1.0f - self.scrollingPosition);

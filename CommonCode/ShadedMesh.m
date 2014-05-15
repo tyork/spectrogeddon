@@ -29,22 +29,18 @@
 
 #pragma mark - Lifecycle -
 
-- (instancetype)initWithNumberOfVertices:(NSUInteger)vertexCount vertexGenerator:(VertexGenerator)generator
+- (instancetype)initWithNumberOfVertices:(NSUInteger)vertexCount
 {
     if((self = [super init]))
     {
         _numberOfVertices = vertexCount;
         _vertices = (TexturedVertexAttribs*)calloc(vertexCount, sizeof(TexturedVertexAttribs));
         _transform = GLKMatrix4Identity;
-        if(generator)
-        {
-            [self updateVertices:generator];
-        }
     }
     return self;
 }
 
-- (void)resizeMesh:(NSUInteger)changedVertexCount vertexGenerator:(VertexGenerator)generator
+- (void)resizeMesh:(NSUInteger)changedVertexCount
 {
     if(changedVertexCount != self.numberOfVertices)
     {
@@ -54,10 +50,6 @@
             self.vertices = attribs;
             self.numberOfVertices = changedVertexCount;
         }
-    }
-    if(generator)
-    {
-        [self updateVertices:generator];
     }
 }
 

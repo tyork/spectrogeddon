@@ -17,9 +17,9 @@ typedef void(^VertexGenerator)(TexturedVertexAttribs* const vertices);
 @property (nonatomic,readonly) NSUInteger numberOfVertices;
 @property (nonatomic) GLKMatrix4 transform;
 
-- (instancetype)initWithNumberOfVertices:(NSUInteger)vertexCount vertexGenerator:(VertexGenerator)generator;
+- (instancetype)initWithNumberOfVertices:(NSUInteger)vertexCount;
 
-- (void)resizeMesh:(NSUInteger)changedVertexCount vertexGenerator:(VertexGenerator)generator;
+- (void)resizeMesh:(NSUInteger)changedVertexCount;
 
 - (void)updateVertices:(VertexGenerator)generator;
 

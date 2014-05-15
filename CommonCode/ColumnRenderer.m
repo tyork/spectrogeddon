@@ -44,12 +44,12 @@
     }
 }
 
-- (void)generateVertexPositions:(TexturedVertexAttribs* const)vertices count:(NSUInteger)vertexCount
+- (void)generateVertexPositions:(TexturedVertexAttribs* const)vertices
 {
     const float logOffset = 0.001f; // Safety margin to ensure we don't try taking log2(0)
     const float logNormalization = 1.0f/log2f(logOffset);
-    const float yScale = 1.0f / (float)(vertexCount/2 - 1);
-    for(NSUInteger valueIndex = 0; valueIndex < vertexCount/2; valueIndex++)
+    const float yScale = 1.0f / (float)(self.shadedMesh.numberOfVertices/2 - 1);
+    for(NSUInteger valueIndex = 0; valueIndex < self.shadedMesh.numberOfVertices/2; valueIndex++)
     {
         const NSUInteger vertexIndex = valueIndex << 1;
         float y = (float)valueIndex * yScale;
@@ -72,20 +72,19 @@
     const GLsizei vertexCountForSequence = (GLsizei)(timeSequence.numberOfValues * 2);
     if(!self.shadedMesh)
     {
-        self.shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:vertexCountForSequence vertexGenerator:^(TexturedVertexAttribs *const vertices) {
-            [self generateVertexPositions:vertices count:vertexCountForSequence];
-        }];
+        self.shadedMesh = [[ShadedMesh alloc] initWithNumberOfVertices:vertexCountForSequence];
+        self.invalidatedVertices = YES;
     }
     else if(self.shadedMesh.numberOfVertices != vertexCountForSequence)
     {
-        [self.shadedMesh resizeMesh:vertexCountForSequence vertexGenerator:^(TexturedVertexAttribs *const vertices) {
-            [self generateVertexPositions:vertices count:vertexCountForSequence];
-        }];
+        [self.shadedMesh resizeMesh:vertexCountForSequence];
+        self.invalidatedVertices = YES;
     }
-    else if(self.invalidatedVertices)
+    
+    if(self.invalidatedVertices)
     {
         [self.shadedMesh updateVertices:^(TexturedVertexAttribs *const vertices) {
-            [self generateVertexPositions:vertices count:vertexCountForSequence];
+            [self generateVertexPositions:vertices];
         }];
         self.invalidatedVertices = NO;
     }
