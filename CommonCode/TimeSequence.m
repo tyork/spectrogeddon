@@ -11,6 +11,7 @@
 @implementation TimeSequence {
     float* _values;
     NSUInteger _count;
+    BOOL _didCopy;
 }
 
 - (id)initWithValues:(NSArray*)values
@@ -21,6 +22,7 @@
         return nil;
     }
     
+    _didCopy = YES;
     _count = values.count;
     _values = (float*)calloc(values.count, sizeof(float));
     [values enumerateObjectsUsingBlock:^(NSNumber* oneNumber, NSUInteger idx, BOOL *stop) {
@@ -32,6 +34,11 @@
 
 - (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values
 {
+    return [self initWithNumberOfValues:count values:values copy:YES];
+}
+
+- (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values copy:(BOOL)copy
+{
     NSParameterAssert(count);
     NSParameterAssert(values);
     if(!(self = [super init]))
@@ -40,15 +47,26 @@
     }
     
     _count = count;
-    _values = calloc(count, sizeof(float));
-    bcopy(values, _values, _count*sizeof(float));
+    if(copy)
+    {
+        _didCopy = YES;
+        _values = calloc(count, sizeof(float));
+        memcpy(_values, values, _count*sizeof(float));
+    }
+    else
+    {
+        _values = values;
+    }
     
     return self;
 }
 
 - (void)dealloc
 {
-    free(_values);
+    if(_didCopy)
+    {
+        free(_values);
+    }
 }
 
 - (NSArray*)values

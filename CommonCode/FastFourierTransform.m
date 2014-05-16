@@ -9,6 +9,7 @@
 #import "FastFourierTransform.h"
 #import "TimeSequence.h"
 #import <Accelerate/Accelerate.h>
+#import "PowerSpectrumNoise.h"
 
 static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
 {
@@ -19,6 +20,10 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     }
     return power;
 }
+
+@interface FastFourierTransform ()
+@property (nonatomic,strong) PowerSpectrumNoise* noise;
+@end
 
 @implementation FastFourierTransform
 {
@@ -102,6 +107,14 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     const float parsevalNorm = powf(1.0f / (float)numberOfOutputBins, 2.0f);
     vDSP_vsmul(_displayOutput, 1, &parsevalNorm, _displayOutput, 1, numberOfOutputBins);
 
+    // Update noise
+    TimeSequence* powerSpectrum = [[TimeSequence alloc] initWithNumberOfValues:numberOfOutputBins values:_displayOutput copy:NO];
+    if(!self.noise)
+    {
+        self.noise = [[PowerSpectrumNoise alloc] init];
+    }
+    [self.noise addPowerSpectrumMeasurement:powerSpectrum];
+
     // Convert to a decibel scale using 1.0f (no offset), so we range from -inf to 0.0.
     const float dummyDbOffset = 1.0f;
     vDSP_vdbcon(_displayOutput, 1, &dummyDbOffset, _displayOutput, 1, numberOfOutputBins, 0);  // 0 = power.
@@ -124,6 +137,5 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     transformedSequence.duration = sequence.duration;
     return transformedSequence;
 }
-
 
 @end

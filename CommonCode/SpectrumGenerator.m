@@ -10,12 +10,10 @@
 #import "FastFourierTransform.h"
 #import "AudioSource.h"
 #import "TimeSequence.h"
-#import "PowerSpectrumNoise.h"
 
 @interface SpectrumGenerator ()
 @property (nonatomic,strong) FastFourierTransform* transformer;
 @property (nonatomic,strong) AudioSource* audioSource;
-@property (nonatomic,strong) PowerSpectrumNoise* noise;
 @property (nonatomic,strong) dispatch_queue_t transformQueue;
 @end
 
@@ -32,7 +30,6 @@
     {
         return nil;
     }
-    _noise = [[PowerSpectrumNoise alloc] init];
     _transformer = [[FastFourierTransform alloc] init];
     _transformQueue = dispatch_queue_create("com.spectrogeddon.fft", DISPATCH_QUEUE_SERIAL);
     
@@ -53,12 +50,6 @@
                 return;
             }
             [spectrums addObject:fft];
-            [strongSelf.noise addPowerSpectrumMeasurement:fft];
-            const float noisePower = [strongSelf.noise calculatedNoise];
-            if(noisePower != 0.0f)
-            {
-                DLOG(@"noise: %.3f", noisePower);
-            }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             

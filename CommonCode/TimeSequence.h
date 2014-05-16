@@ -17,6 +17,8 @@
 
 - (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values;
 
+- (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values copy:(BOOL)copy;
+
 - (NSArray*)values;
 
 - (NSUInteger)numberOfValues;
