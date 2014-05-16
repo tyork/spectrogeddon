@@ -15,7 +15,7 @@ static float const one = 1.0f;
 static float const MaxSmoothingParameter = 1.0f;
 
 @interface PowerSpectrumNoise ()
-@property (nonatomic,readwrite) float calculatedNoise;
+@property (nonatomic,readwrite) float calculatedVariance;
 
 @property (nonatomic) NSUInteger bufferSize;
 @property (nonatomic) float smoothingCorrection;
@@ -36,7 +36,7 @@ static float const MaxSmoothingParameter = 1.0f;
   
     const float alpha = 0.1f;
     const float noise = [self calculateNoise:measurement];
-    self.calculatedNoise = (1.0f - alpha)*self.calculatedNoise + alpha*noise;
+    self.calculatedVariance = (1.0f - alpha)*self.calculatedVariance + alpha*noise;
     
 //    [self updateSmoothingCorrection:measurement];
 //    [self updateSmoothingParameters:measurement];

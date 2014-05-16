@@ -12,7 +12,7 @@
 
 @interface PowerSpectrumNoise : NSObject
 
-@property (nonatomic,readonly) float calculatedNoise;
+@property (nonatomic,readonly) float calculatedVariance;
 
 - (void)addPowerSpectrumMeasurement:(TimeSequence*)measurement;
 

@@ -114,13 +114,14 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
         self.noise = [[PowerSpectrumNoise alloc] init];
     }
     [self.noise addPowerSpectrumMeasurement:powerSpectrum];
-
+    const float noiseFloor = self.noise.calculatedVariance;
+    
     // Convert to a decibel scale using 1.0f (no offset), so we range from -inf to 0.0.
     const float dummyDbOffset = 1.0f;
     vDSP_vdbcon(_displayOutput, 1, &dummyDbOffset, _displayOutput, 1, numberOfOutputBins, 0);  // 0 = power.
 
     // Because we fed normalized floats into vdbcon, we'll have some -inf values - clip these and replace with -144db.
-    const float clipMinDb = -144.0f;
+    const float clipMinDb = noiseFloor > 0.0f ? 10.0f*log10f(noiseFloor) : -144.0f;
     const float clipMaxDb = 0.0f;
     vDSP_vclip(_displayOutput, 1, &clipMinDb, &clipMaxDb, _displayOutput, 1, numberOfOutputBins);
 
