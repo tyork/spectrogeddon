@@ -43,6 +43,7 @@
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
+		EEF7FE9D19261791003241DF /* PowerSpectrumNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9C19261791003241DF /* PowerSpectrumNoise.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,8 @@
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
+		EEF7FE9B19261791003241DF /* PowerSpectrumNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerSpectrumNoise.h; path = ../../CommonCode/PowerSpectrumNoise.h; sourceTree = "<group>"; };
+		EEF7FE9C19261791003241DF /* PowerSpectrumNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerSpectrumNoise.m; path = ../../CommonCode/PowerSpectrumNoise.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +290,8 @@
 			children = (
 				19F6691F190AA86C00D2DE77 /* FastFourierTransform.h */,
 				19F66920190AA86C00D2DE77 /* FastFourierTransform.m */,
+				EEF7FE9B19261791003241DF /* PowerSpectrumNoise.h */,
+				EEF7FE9C19261791003241DF /* PowerSpectrumNoise.m */,
 				19F6692E190AA86C00D2DE77 /* SpectrumGenerator.h */,
 				19F6692F190AA86C00D2DE77 /* SpectrumGenerator.m */,
 				19F66930190AA86C00D2DE77 /* TimeSequence.h */,
@@ -440,6 +445,7 @@
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
+				EEF7FE9D19261791003241DF /* PowerSpectrumNoise.m in Sources */,
 				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
 				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
