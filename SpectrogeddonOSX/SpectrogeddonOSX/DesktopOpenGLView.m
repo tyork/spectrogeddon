@@ -31,6 +31,7 @@
     
     NSOpenGLContext* context = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:nil];
     [self setPixelFormat:pixelFormat];
+    [self setWantsBestResolutionOpenGLSurface:YES]; // TODO: allow this to be turned off
     [self setOpenGLContext:context];
 }
 
@@ -71,7 +72,8 @@
 - (void)update
 {
     [super update];
-    self.renderer.renderSize = (RenderSize) { (GLint)self.bounds.size.width, (GLint)self.bounds.size.height };
+    const CGSize renderSize = [self convertRectToBacking:self.bounds].size;
+    self.renderer.renderSize = (RenderSize) { (GLint)renderSize.width, (GLint)renderSize.height };
 }
 
 - (void)redisplay:(NSTimer*)timer
