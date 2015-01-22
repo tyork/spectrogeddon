@@ -7,6 +7,7 @@
 //
 
 #import "RendererUtils.h"
+#import <OpenGLES/ES1/glext.h>
 
 @implementation RendererUtils
 
