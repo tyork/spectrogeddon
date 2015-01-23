@@ -7,7 +7,9 @@
 //
 
 #import "RendererUtils.h"
+#if TARGET_OS_IPHONE
 #import <OpenGLES/ES1/glext.h>
+#endif
 
 @implementation RendererUtils
 
