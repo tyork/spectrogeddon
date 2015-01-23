@@ -10,9 +10,9 @@
 
 @interface ColorMap : NSObject <NSCoding>
 
-@property (nonatomic,copy,readonly) NSString* imagePath;
+@property (nonatomic,copy,readonly) NSString* imageName;
 
-- (instancetype)initWithImagePath:(NSString*)imagePath;
+- (instancetype)initWithImageName:(NSString*)imageName;
 
 - (CGImageRef)imageRef;
 

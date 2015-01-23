@@ -8,29 +8,29 @@
 
 #import "ColorMap.h"
 
-static NSString* const KeyImagePath = @"imagePath";
+static NSString* const KeyImageName = @"imageName";
 
 @implementation ColorMap
 
-- (instancetype)initWithImagePath:(NSString*)imagePath
+- (instancetype)initWithImageName:(NSString*)imageName
 {
-    NSParameterAssert(imagePath);
+    NSParameterAssert(imageName);
     if((self = [super init]))
     {
-        _imagePath = [imagePath copy];
+        _imageName = [imageName copy];
     }
     return self;
 }
 
 - (CGImageRef)imageRef
 {
+    NSString* fullPath = [[NSBundle mainBundle] pathForResource:self.imageName ofType:nil];
     CGImageRef imageRef = NULL;
-    
 #if TARGET_OS_IPHONE
-    UIImage* image = [[UIImage alloc] initWithContentsOfFile:self.imagePath];
+    UIImage* image = [[UIImage alloc] initWithContentsOfFile:fullPath];
     imageRef = image.CGImage;
 #else
-    NSImage* image = [[NSImage alloc] initWithContentsOfFile:self.imagePath];
+    NSImage* image = [[NSImage alloc] initWithContentsOfFile:fullPath];
     imageRef = [image CGImageForProposedRect:NULL context:NULL hints:NULL];
 #endif
     return imageRef;
@@ -40,15 +40,19 @@ static NSString* const KeyImagePath = @"imagePath";
 {
     if((self = [super init]))
     {
-        _imagePath = [aDecoder decodeObjectForKey:KeyImagePath];
-        NSParameterAssert(_imagePath);
+        _imageName = [aDecoder decodeObjectForKey:KeyImageName];
+        if(_imageName == nil) {
+            self = nil;
+            return self;
+        }
+        NSParameterAssert(_imageName);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.imagePath forKey:KeyImagePath];
+    [aCoder encodeObject:self.imageName forKey:KeyImageName];
 }
 
 @end

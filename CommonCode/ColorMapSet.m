@@ -8,8 +8,10 @@
 
 #import "ColorMapSet.h"
 #import "ColorMap.h"
+#import "NSArray+Functional.h"
 
-static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
+static NSString* const KeyActiveColorMapName = @"activeColorMapName";
+static NSString* const kContainerDirectory  = @"ColorMaps";
 
 @interface ColorMapSet ()
 @property (nonatomic,strong) NSArray* imageNames;
@@ -22,7 +24,10 @@ static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
 {
     if((self = [super init]))
     {
-        _imageNames = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:@"ColorMaps"];
+        NSArray* paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:kContainerDirectory];
+        _imageNames = [paths spe_arrayByApplyingMap:^NSString*(NSString* onePath) {
+            return [kContainerDirectory stringByAppendingPathComponent:[onePath lastPathComponent]];
+        }];
         NSParameterAssert(_imageNames.count > 0);
     }
     return self;
@@ -32,8 +37,8 @@ static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
 {
     if((self = [self init]))
     {
-        NSString* colorMapPath = [aDecoder decodeObjectForKey:KeyActiveColorMapPath];
-        const NSUInteger selectedIndex = [self.imageNames indexOfObject:colorMapPath];
+        NSString* colorMapName = [aDecoder decodeObjectForKey:KeyActiveColorMapName];
+        const NSUInteger selectedIndex = [self.imageNames indexOfObject:colorMapName];
         _colorMapIndex = (selectedIndex == NSNotFound) ? 0 : selectedIndex;
     }
     return self;
@@ -41,8 +46,8 @@ static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    NSString* activePath = _imageNames[_colorMapIndex];
-    [aCoder encodeObject:activePath forKey:KeyActiveColorMapPath];
+    NSString* activeName = _imageNames[_colorMapIndex];
+    [aCoder encodeObject:activeName forKey:KeyActiveColorMapName];
 }
 
 - (NSUInteger)imageCount
@@ -52,18 +57,18 @@ static NSString* const KeyActiveColorMapPath = @"activeColorMapPath";
 
 - (ColorMap*)currentColorMap
 {
-    return [[ColorMap alloc] initWithImagePath:self.imageNames[self.colorMapIndex]];
+    NSParameterAssert(self.colorMapIndex != NSNotFound && self.colorMapIndex < self.imageNames.count);
+    return [[ColorMap alloc] initWithImageName:self.imageNames[self.colorMapIndex]];
 }
 
 - (ColorMap*)nextColorMap
 {
-    const NSUInteger currentIndex = self.colorMapIndex;
     self.colorMapIndex = (self.colorMapIndex + 1);
     if(self.colorMapIndex >= [self imageCount])
     {
         self.colorMapIndex = 0;
     }
-    return [[ColorMap alloc] initWithImagePath:self.imageNames[currentIndex]];
+    return [self currentColorMap];
 }
 
 @end

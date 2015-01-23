@@ -42,6 +42,7 @@
 		19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */; };
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
+		EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A731A721E4800F4A232 /* NSArray+Functional.m */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,8 @@
 		19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopOpenGLView.m; sourceTree = "<group>"; };
 		19F73F831923C415001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.fsh; path = ../../CommonCode/TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
+		EE624A721A721E4800F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Functional.h"; path = "../../CommonCode/NSArray+Functional.h"; sourceTree = "<group>"; };
+		EE624A731A721E4800F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Functional.m"; path = "../../CommonCode/NSArray+Functional.m"; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,6 +270,7 @@
 				19F66943190AA89300D2DE77 /* Display */,
 				194EA9FA191BA26500FC152F /* Settings */,
 				19CEAC6F19227D7800AEA0AA /* Shaders */,
+				EE624A711A721E0600F4A232 /* Utilities */,
 			);
 			name = CommonModel;
 			sourceTree = "<group>";
@@ -319,6 +323,15 @@
 				EEF7FE9519251F7A003241DF /* ShadedMesh.m */,
 			);
 			name = Display;
+			sourceTree = "<group>";
+		};
+		EE624A711A721E0600F4A232 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EE624A721A721E4800F4A232 /* NSArray+Functional.h */,
+				EE624A731A721E4800F4A232 /* NSArray+Functional.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		EEF830B4190AE20F00E8B2F2 /* Views */ = {
@@ -432,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F6689C190AA3AF00D2DE77 /* AppDelegate.m in Sources */,
+				EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */,
 				19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */,
 				19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */,
 				19F66895190AA3AF00D2DE77 /* main.m in Sources */,
