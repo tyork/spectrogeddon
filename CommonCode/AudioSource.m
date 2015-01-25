@@ -67,7 +67,7 @@ static const NSUInteger ReadInterval = 8;
         _channelBuffers = [[NSMutableArray alloc] init];
         NSError* error = nil;
 #if TARGET_OS_IPHONE
-        if(![self prepareAudioSession:[AVAudioSession sharedInstance] withError:&error])
+        if(![self prepareAudioSessionWithError:&error])
         {
             DLOG(@"Failed to prepare audio session: %@", error);
             self = nil;
@@ -84,10 +84,30 @@ static const NSUInteger ReadInterval = 8;
     return self;
 }
 
-#if TARGET_OS_IPHONE
-- (BOOL)prepareAudioSession:(AVAudioSession*)session withError:(NSError**)error
+- (void)dealloc
 {
-    if(!([session setCategory:AVAudioSessionCategoryRecord error:error]))
+#if TARGET_OS_IPHONE
+    NSError* error = nil;
+    if([self closeAudioSessionWithError:&error]) {
+        DLOG(@"Failed to close audio session: %@", error);
+    }
+#endif
+}
+
+#if TARGET_OS_IPHONE
+- (BOOL)closeAudioSessionWithError:(NSError**)error
+{
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:session];
+    return [session setActive:NO withOptions:0 error:error];
+}
+#endif
+
+#if TARGET_OS_IPHONE
+- (BOOL)prepareAudioSessionWithError:(NSError**)error
+{
+    AVAudioSession* session = [AVAudioSession sharedInstance];
+    if(![session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:error])
     {
         return NO;
     }
@@ -96,7 +116,27 @@ static const NSUInteger ReadInterval = 8;
     {
         return NO;
     }
-    return YES;
+    
+    const BOOL success = [session setActive:YES withOptions:0 error:error];
+    if(success) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveAudioInterruption:) name:AVAudioSessionInterruptionNotification object:session];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioServicesDidReset:) name:AVAudioSessionMediaServicesWereResetNotification object:session];
+    }
+    return success;
+}
+#endif
+
+#if TARGET_OS_IPHONE
+- (void)didReceiveAudioInterruption:(NSNotification*)note
+{
+    DLOG(@"%@", note);
+}
+#endif
+
+#if TARGET_OS_IPHONE
+- (void)audioServicesDidReset:(NSNotification*)note
+{
+    DLOG(@"%@", note);
 }
 #endif
 
@@ -105,6 +145,7 @@ static const NSUInteger ReadInterval = 8;
     if(!self.captureSession)
     {
         self.captureSession = [[AVCaptureSession alloc] init];
+        self.captureSession.automaticallyConfiguresApplicationAudioSession = NO;
     }
 
     [self.captureSession beginConfiguration];
@@ -154,7 +195,9 @@ static const NSUInteger ReadInterval = 8;
 
 - (void)startCapturing
 {
-    [self.captureSession startRunning];
+    if(!self.captureSession.isRunning) {
+        [self.captureSession startRunning];        
+    }
 }
 
 - (void)stopCapturing
