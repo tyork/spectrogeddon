@@ -145,7 +145,9 @@ static const NSUInteger ReadInterval = 8;
     if(!self.captureSession)
     {
         self.captureSession = [[AVCaptureSession alloc] init];
+#if TARGET_OS_IPHONE
         self.captureSession.automaticallyConfiguresApplicationAudioSession = NO;
+#endif
     }
 
     [self.captureSession beginConfiguration];
