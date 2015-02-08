@@ -13,8 +13,6 @@
 		1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B83418FBFBA7002DE52F /* InfoPlist.strings */; };
 		1901B83818FBFBA7002DE52F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B83718FBFBA7002DE52F /* main.m */; };
 		1901B83C18FBFBA7002DE52F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B83B18FBFBA7002DE52F /* AppDelegate.m */; };
-		1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */; };
-		1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */; };
 		1901B84518FBFBA7002DE52F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B84418FBFBA7002DE52F /* ViewController.m */; };
 		1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1901B84618FBFBA7002DE52F /* Images.xcassets */; };
 		1901B84E18FBFBA8002DE52F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B84D18FBFBA8002DE52F /* XCTest.framework */; };
@@ -22,7 +20,6 @@
 		1901B85018FBFBA8002DE52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82F18FBFBA7002DE52F /* UIKit.framework */; };
 		1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B85618FBFBA8002DE52F /* InfoPlist.strings */; };
 		1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */; };
-		1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1901B86318FBFCA3002DE52F /* ViewController.xib */; };
 		194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F1191B878400FC152F /* DisplaySettings.m */; };
 		194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F8191B9D4600FC152F /* ColorMap.m */; };
 		19541FAE18FC343300BC94BF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FAD18FC343300BC94BF /* Accelerate.framework */; };
@@ -47,6 +44,9 @@
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
+		EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE03A1241A82BE15005BE0DB /* Main.storyboard */; };
+		EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */; };
+		EE03A12C1A82D6DC005BE0DB /* SettingsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */; };
 		EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
@@ -72,8 +72,6 @@
 		1901B83918FBFBA7002DE52F /* Spectrogeddon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectrogeddon-Prefix.pch"; sourceTree = "<group>"; };
 		1901B83A18FBFBA7002DE52F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1901B83B18FBFBA7002DE52F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1901B83E18FBFBA7002DE52F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		1901B84118FBFBA7002DE52F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		1901B84318FBFBA7002DE52F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1901B84418FBFBA7002DE52F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1901B84618FBFBA7002DE52F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonTests-Info.plist"; sourceTree = "<group>"; };
 		1901B85718FBFBA8002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonTests.m; sourceTree = "<group>"; };
-		1901B86318FBFCA3002DE52F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		194EA9F1191B878400FC152F /* DisplaySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySettings.m; sourceTree = "<group>"; };
 		194EA9F2191B878400FC152F /* DisplaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySettings.h; sourceTree = "<group>"; };
 		194EA9F7191B9D4600FC152F /* ColorMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMap.h; sourceTree = "<group>"; };
@@ -126,6 +123,11 @@
 		19F66958190AB26800D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
 		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F881923C578001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.vsh; sourceTree = "<group>"; };
+		EE03A1251A82BE15005BE0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE03A1271A82D1ED005BE0DB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWrapper.h; sourceTree = "<group>"; };
+		EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWrapper.m; sourceTree = "<group>"; };
 		EE624A6D1A721DD600F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
 		EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
@@ -243,11 +245,13 @@
 		19541F9F18FC2BA400BC94BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */,
-				1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */,
+				EE03A1241A82BE15005BE0DB /* Main.storyboard */,
 				1901B84318FBFBA7002DE52F /* ViewController.h */,
 				1901B84418FBFBA7002DE52F /* ViewController.m */,
-				1901B86318FBFCA3002DE52F /* ViewController.xib */,
+				EE03A1271A82D1ED005BE0DB /* SettingsViewController.h */,
+				EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */,
+				EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */,
+				EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -433,12 +437,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */,
-				1901B84218FBFBA7002DE52F /* Main_iPad.storyboard in Resources */,
 				19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */,
 				19541FE31906D89900BC94BF /* ColorMaps in Resources */,
-				1901B86418FBFCA3002DE52F /* ViewController.xib in Resources */,
 				1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */,
-				1901B83F18FBFBA7002DE52F /* Main_iPhone.storyboard in Resources */,
+				EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */,
 				1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +465,7 @@
 				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
 				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
+				EE03A12C1A82D6DC005BE0DB /* SettingsWrapper.m in Sources */,
 				19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */,
 				19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
@@ -477,6 +480,7 @@
 				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
 				1901B83818FBFBA7002DE52F /* main.m in Sources */,
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
+				EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */,
 				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */,
 			);
@@ -509,28 +513,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		1901B83D18FBFBA7002DE52F /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1901B83E18FBFBA7002DE52F /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		1901B84018FBFBA7002DE52F /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1901B84118FBFBA7002DE52F /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		1901B85618FBFBA8002DE52F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1901B85718FBFBA8002DE52F /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EE03A1241A82BE15005BE0DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE03A1251A82BE15005BE0DB /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

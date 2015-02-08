@@ -14,6 +14,6 @@
 
 @property (nonatomic,weak) IBOutlet GLKView* spectrumView;
 
-- (IBAction)didTapScreen:(id)sender;
+- (IBAction)unwindSegue:(UIStoryboardSegue*)sender;
 
 @end

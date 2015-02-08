@@ -10,15 +10,11 @@
 #import "SpectrumGenerator.h"
 #import "TimeSequence.h"
 #import "MobileGLDisplay.h"
-#import "ColorMapSet.h"
-#import "SettingsStore.h"
-#import "DisplaySettings.h"
+#import "SettingsWrapper.h"
 
 @interface ViewController () <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
 @property (nonatomic,strong) MobileGLDisplay* renderer;
-@property (nonatomic,strong) ColorMapSet* colorMaps;
-@property (nonatomic,strong) SettingsStore* settingsStore;
 @property (nonatomic,strong) CADisplayLink* displayLink;
 @end
 
@@ -46,6 +42,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resume) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeSettings:) name:kSpectroSettingsDidChangeNotification object:nil];
 }
 
 - (void)dealloc
@@ -77,23 +74,8 @@
     {
         self.renderer = [[MobileGLDisplay alloc] init];
     }
-    if(!self.colorMaps)
-    {
-        self.colorMaps = [[ColorMapSet alloc] init];
-    }
-    if(!self.settingsStore)
-    {
-        self.settingsStore = [[SettingsStore alloc] init];
-        if(![self.settingsStore displaySettings].colorMap)
-        {
-            [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
-                settings.colorMap = [self.colorMaps currentColorMap];
-                return settings;
-            }];
-        }
-    }
 
-    [self.renderer useDisplaySettings:[self.settingsStore displaySettings]];
+    [self.renderer useDisplaySettings:[[SettingsWrapper sharedWrapper] displaySettings]];
     
     self.renderer.glView = self.spectrumView;
 
@@ -133,6 +115,11 @@
     [self.renderer redisplay];
 }
 
+- (void)didChangeSettings:(NSNotification*)note
+{
+    [self.renderer useDisplaySettings:[[SettingsWrapper sharedWrapper] displaySettings]];
+}
+
 - (void)pause
 {
     [self.spectrumGenerator stopGenerating];
@@ -154,15 +141,17 @@
 
 #pragma mark - Interactions - 
 
-- (IBAction)didTapScreen:(id)sender
+- (IBAction)unwindSegue:(UIStoryboardSegue*)sender
 {
-    ColorMap* newColorMap = [self.colorMaps nextColorMap];
-    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
-        settings.colorMap = newColorMap;
-        return settings;
-    }];
-    [self.renderer useDisplaySettings:[self.settingsStore displaySettings]];
+    // Do nothing
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"showControls"]) {
+        UIViewController* vc = segue.destinationViewController;
+        vc.modalPresentationCapturesStatusBarAppearance = YES;
+    }
+}
 
 @end
