@@ -84,4 +84,19 @@
     return [NSSet setWithObject:@"audioSource.preferredAudioSourceID"];
 }
 
+- (void)setBufferSizeDivider:(NSUInteger)bufferSizeDivider
+{
+    self.audioSource.bufferSizeDivider = bufferSizeDivider;
+}
+
+- (NSUInteger)bufferSizeDivider
+{
+    return self.audioSource.bufferSizeDivider;
+}
+
++ (NSSet*)keyPathsForValuesAffectingBufferSizeDivider
+{
+    return [NSSet setWithObject:@"audioSource.bufferSizeDivider"];
+}
+
 @end

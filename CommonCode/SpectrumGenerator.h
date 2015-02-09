@@ -19,6 +19,7 @@
 
 + (NSDictionary*)availableSources;  // Key: localized name, value: unique ID
 
+@property (nonatomic) NSUInteger bufferSizeDivider;
 @property (nonatomic,strong) NSString* preferredSourceID;
 @property (nonatomic,weak) IBOutlet id <SpectrumGeneratorDelegate> delegate;
 

@@ -20,7 +20,9 @@ typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
 
 @property (nonatomic,strong,readonly) dispatch_queue_t notificationQueue;
 @property (nonatomic,copy,readonly) AudioSourceNotificationBlock notificationBlock;
+
 @property (nonatomic,copy) NSString* preferredAudioSourceID;
+@property (nonatomic) NSUInteger bufferSizeDivider;
 
 + (void)requestPermissionToUseAudio:(void(^)(BOOL isAllowed))permissionBlock;
 
