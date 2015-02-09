@@ -121,6 +121,7 @@ static const NSUInteger ReadInterval = 8;
     if(success) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveAudioInterruption:) name:AVAudioSessionInterruptionNotification object:session];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioServicesDidReset:) name:AVAudioSessionMediaServicesWereResetNotification object:session];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioRouteDidChange:) name:AVAudioSessionRouteChangeNotification object:session];
     }
     return success;
 }
@@ -135,6 +136,13 @@ static const NSUInteger ReadInterval = 8;
 
 #if TARGET_OS_IPHONE
 - (void)audioServicesDidReset:(NSNotification*)note
+{
+    DLOG(@"%@", note);
+}
+#endif
+
+#if TARGET_OS_IPHONE
+- (void)audioRouteDidChange:(NSNotification*)note
 {
     DLOG(@"%@", note);
 }
