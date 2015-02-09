@@ -59,6 +59,13 @@
 
 - (void)writeSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
 {
+    // Drop samples if necessary
+    if(count > self.bufferSize) {
+        const NSUInteger excess = count - self.bufferSize;
+        samples = samples + excess;
+        count = self.bufferSize;
+    }
+    
     // We need to store our new samples by wrapping them into the circular buffer.
     NSParameterAssert(count <= self.bufferSize);
     const NSUInteger headroom = self.bufferSize - self.writerIndex;
