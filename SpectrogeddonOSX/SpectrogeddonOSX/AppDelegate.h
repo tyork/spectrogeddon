@@ -16,6 +16,7 @@
 @property (strong) IBOutlet DesktopOpenGLView *glView;
 @property (strong) IBOutlet NSMenuItem* stretchFrequenciesMenuItem;
 @property (strong) IBOutlet NSMenu *sourceMenu;
+@property (strong) IBOutlet NSMenu *sharpnessMenu;
 @property (strong) IBOutlet NSMenu *scrollingDirectionsMenu;
 @property (strong) IBOutlet NSMenu *speedMenu;
 

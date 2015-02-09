@@ -44,6 +44,7 @@
     
     [self updateSourceMenu];
     [self updateSpeedMenu];
+    [self updateSharpnessMenu];
     [self updateDisplayMenu];
     [self updateScrollingDirectionsMenu];
 
@@ -116,6 +117,13 @@
     [self updateSpeedMenu];
 }
 
+- (void)didPickSharpness:(id)sender
+{
+    NSNumber* sharpness = [sender representedObject];
+    self.spectrumGenerator.bufferSizeDivider = [sharpness integerValue];
+    [self updateSharpnessMenu];
+}
+
 - (void)didPickSource:(NSMenuItem*)sender
 {
     NSString* sourceID = [sender representedObject];
@@ -172,6 +180,20 @@
 - (void)updateDisplayMenu
 {
     self.stretchFrequenciesMenuItem.state = self.settingsStore.displaySettings.useLogFrequencyScale ? NSOnState : NSOffState;
+}
+
+- (void)updateSharpnessMenu
+{
+    [self.sharpnessMenu removeAllItems];
+    
+    NSNumber* currentSharpness = @(self.spectrumGenerator.bufferSizeDivider);
+    NSArray* sharpnessValues = @[ @4, @2, @1 ];
+    [sharpnessValues enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didPickSharpness:) keyEquivalent:@""];
+        [item setState:[obj isEqualToNumber:currentSharpness]];
+        [item setRepresentedObject:obj];
+        [self.sharpnessMenu addItem:item];
+    }];
 }
 
 #pragma mark - Spectrum generator -
