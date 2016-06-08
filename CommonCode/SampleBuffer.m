@@ -24,7 +24,7 @@
 
 @implementation SampleBuffer
 
-- (id)initWithBufferSize:(NSUInteger)bufferSize readInterval:(NSUInteger)readInterval
+- (instancetype)initWithBufferSize:(NSUInteger)bufferSize readInterval:(NSUInteger)readInterval
 {
     NSParameterAssert(bufferSize);
     if((self = [super init]))
@@ -50,19 +50,22 @@
 
 - (void)writeSInt16Samples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
 {
+    // Temporary hack to avoid a bounds busting bug.
+    // TODO: this should be part of the writeSamples function's circular buffer.
+    const NSUInteger lastSamplesOffset = (count > self.bufferSize) ? count - self.bufferSize : 0;
     // Convert the raw sample data into a normalized float array, normedSamples.
-    vDSP_vflt16(samples, 1, _normalizationBuffer, 1, count); // Convert SInt16 into float
+    vDSP_vflt16(samples + lastSamplesOffset, 1, _normalizationBuffer, 1, MIN(self.bufferSize, count)); // Convert SInt16 into float
     const float scale = 1.0f/32768.0f;
-    vDSP_vsmul(_normalizationBuffer, 1, &scale, _normalizationBuffer, 1, count);
-    [self writeSamples:_normalizationBuffer count:count timeStamp:timeStamp duration:duration];
+    vDSP_vsmul(_normalizationBuffer, 1, &scale, _normalizationBuffer, 1, MIN(self.bufferSize, count));
+    [self writeSamples:_normalizationBuffer count:MIN(self.bufferSize, count) timeStamp:timeStamp duration:duration];
 }
 
 - (void)writeSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration
 {
     // Drop samples if necessary
     if(count > self.bufferSize) {
-        const NSUInteger excess = count - self.bufferSize;
-        samples = samples + excess;
+        const NSUInteger lastSamplesOffset = count - self.bufferSize;
+        samples = samples + lastSamplesOffset;
         count = self.bufferSize;
     }
     
@@ -71,12 +74,12 @@
     const NSUInteger headroom = self.bufferSize - self.writerIndex;
     if(count > headroom)
     {
-        bcopy(samples, self.sampleBuffer + self.writerIndex, headroom*sizeof(float));
-        bcopy(samples + headroom, self.sampleBuffer, (count - headroom)*sizeof(float));
+        memcpy(_sampleBuffer + self.writerIndex, samples, headroom*sizeof(float));
+        memcpy(_sampleBuffer, samples + headroom, (count - headroom)*sizeof(float));
     }
     else
     {
-        bcopy(samples, self.sampleBuffer + self.writerIndex, count*sizeof(float));
+        memcpy(_sampleBuffer + self.writerIndex, samples, count*sizeof(float));
     }
 
     // Increment the writer index to show where to store next.
@@ -85,7 +88,7 @@
     {
         // We've filled the buffer and must wrap around.
         self.writerIndex = self.writerIndex % self.bufferSize;
-        self.readerIndex = self.writerIndex;
+        self.readerIndex = self.writerIndex; // TODO:
     }
     self.availableSize = self.availableSize + count;
 
@@ -103,7 +106,6 @@
     {
         return nil;
     }
- 
     // Extract the (potentially wrapped) data from the circular buffer.
     TimeSequence* sequence = [[TimeSequence alloc] initWithNumberOfValues:(self.bufferSize - self.readerIndex) values:self.sampleBuffer + self.readerIndex];
     if(self.readerIndex > 0)
