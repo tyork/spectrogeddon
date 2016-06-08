@@ -7,6 +7,7 @@
 //
 
 #import "AudioDebugUtils.h"
+#import <mach/mach_time.h>
 
 void DLOGTime()
 {
