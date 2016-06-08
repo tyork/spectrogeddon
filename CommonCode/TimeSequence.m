@@ -82,7 +82,7 @@
     float* newStorage = (float*)realloc(_values, (_count + timeSequence->_count)*sizeof(float));
     if(newStorage)
     {
-        bcopy(timeSequence->_values, newStorage + _count, (timeSequence->_count)*sizeof(float));
+        memcpy(newStorage + _count, timeSequence->_values, (timeSequence->_count)*sizeof(float));
         _values = newStorage;
         _count = _count + timeSequence->_count;
     }
