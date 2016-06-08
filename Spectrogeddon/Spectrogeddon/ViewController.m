@@ -11,11 +11,13 @@
 #import "TimeSequence.h"
 #import "MobileGLDisplay.h"
 #import "SettingsWrapper.h"
+#import "SettingsModelClient.h"
 
 @interface ViewController () <SpectrumGeneratorDelegate>
 @property (nonatomic,strong) SpectrumGenerator* spectrumGenerator;
 @property (nonatomic,strong) MobileGLDisplay* renderer;
 @property (nonatomic,strong) CADisplayLink* displayLink;
+@property (nonatomic,strong) SettingsWrapper* settingsModel;
 @end
 
 @implementation ViewController
@@ -40,6 +42,8 @@
 
 - (void)commonInit
 {
+    _settingsModel = [[SettingsWrapper alloc] init];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pause) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resume) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeSettings:) name:kSpectroSettingsDidChangeNotification object:nil];
@@ -75,7 +79,7 @@
         self.renderer = [[MobileGLDisplay alloc] init];
     }
 
-    [self.renderer useDisplaySettings:[[SettingsWrapper sharedWrapper] displaySettings]];
+    [self.renderer useDisplaySettings:[self.settingsModel displaySettings]];
     
     self.renderer.glView = self.spectrumView;
 
@@ -117,7 +121,8 @@
 
 - (void)didChangeSettings:(NSNotification*)note
 {
-    [self.renderer useDisplaySettings:[[SettingsWrapper sharedWrapper] displaySettings]];
+    [self.renderer useDisplaySettings:[self.settingsModel displaySettings]];
+    self.spectrumGenerator.bufferSizeDivider = self.settingsModel.sharpness;
 }
 
 - (void)pause
@@ -151,6 +156,16 @@
     if([segue.identifier isEqualToString:@"showControls"]) {
         UIViewController* vc = segue.destinationViewController;
         vc.modalPresentationCapturesStatusBarAppearance = YES;
+        if([vc conformsToProtocol:@protocol(SettingsModelClient)]) {
+            [(id <SettingsModelClient>)vc setSettingsModel:self.settingsModel];
+        }
+        else {
+            for(UIViewController* oneVC in vc.childViewControllers) {
+                if([oneVC conformsToProtocol:@protocol(SettingsModelClient)]) {
+                    [(id <SettingsModelClient>)oneVC setSettingsModel:self.settingsModel];
+                }
+            }
+        }
     }
 }
 

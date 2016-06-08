@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsModelClient.h"
 
-@class DisplaySettings;
-@class ColorMapSet;
-
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <SettingsModelClient>
 
 @end

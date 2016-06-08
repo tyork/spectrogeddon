@@ -47,6 +47,7 @@
 		EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE03A1241A82BE15005BE0DB /* Main.storyboard */; };
 		EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */; };
 		EE03A12C1A82D6DC005BE0DB /* SettingsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */; };
+		EE5972471D08D0B7005EE551 /* AudioDebugUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972461D08D0B7005EE551 /* AudioDebugUtils.m */; };
 		EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
@@ -128,8 +129,11 @@
 		EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWrapper.h; sourceTree = "<group>"; };
 		EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWrapper.m; sourceTree = "<group>"; };
+		EE5972451D08D0B7005EE551 /* AudioDebugUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDebugUtils.h; sourceTree = "<group>"; };
+		EE5972461D08D0B7005EE551 /* AudioDebugUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDebugUtils.m; sourceTree = "<group>"; };
 		EE624A6D1A721DD600F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
 		EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
+		EEE02F6B1A896C1100F7901D /* SettingsModelClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModelClient.h; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +256,7 @@
 				EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */,
 				EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */,
 				EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */,
+				EEE02F6B1A896C1100F7901D /* SettingsModelClient.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +313,8 @@
 		19F668E8190AA63900D2DE77 /* AudioAcquisition */ = {
 			isa = PBXGroup;
 			children = (
+				EE5972451D08D0B7005EE551 /* AudioDebugUtils.h */,
+				EE5972461D08D0B7005EE551 /* AudioDebugUtils.m */,
 				19F668ED190AA78B00D2DE77 /* AudioSource.h */,
 				19F668EE190AA78B00D2DE77 /* AudioSource.m */,
 				19F668FE190AA78B00D2DE77 /* SampleBuffer.h */,
@@ -482,6 +489,7 @@
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
 				EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */,
 				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
+				EE5972471D08D0B7005EE551 /* AudioDebugUtils.m in Sources */,
 				19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

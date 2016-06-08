@@ -13,11 +13,11 @@ extern NSString* const kSpectroSettingsDidChangeNotification;
 @class DisplaySettings;
 
 // TODO: fold this into settings store, eventually.
+// TODO: audio settings
 @interface SettingsWrapper : NSObject
 
 @property (nonatomic,strong) DisplaySettings* displaySettings;
-
-+ (instancetype)sharedWrapper;
+@property (nonatomic,readonly) NSUInteger sharpness;
 
 - (void)nextColorMap;
 
@@ -26,5 +26,7 @@ extern NSString* const kSpectroSettingsDidChangeNotification;
 - (BOOL)isStretchingFrequency;
 
 - (void)nextScrollingSpeed;
+
+- (void)nextSharpness;
 
 @end

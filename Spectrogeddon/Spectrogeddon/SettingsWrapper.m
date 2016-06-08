@@ -16,23 +16,15 @@ NSString* const kSpectroSettingsDidChangeNotification = @"SpectroSettingsDidChan
 @interface SettingsWrapper ()
 @property (nonatomic,strong) SettingsStore* settingsStore;
 @property (nonatomic,strong) ColorMapSet* colorMaps;
+@property (nonatomic,readwrite) NSUInteger sharpness;
 @end
 
 @implementation SettingsWrapper
 
-+ (instancetype)sharedWrapper
-{
-    static id instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-    });
-    return instance;
-}
-
 - (instancetype)init
 {
     if((self = [super init])) {
+        _sharpness = 1;
         _colorMaps = [[ColorMapSet alloc] init];
         _settingsStore = [[SettingsStore alloc] init];
         if([_settingsStore displaySettings].colorMap == nil) {
@@ -93,6 +85,18 @@ NSString* const kSpectroSettingsDidChangeNotification = @"SpectroSettingsDidChan
         settings.scrollingSpeed = nextSpeed;
         return settings;
     }];
+    [self postNote];
+}
+
+- (void)nextSharpness
+{
+    NSInteger nextSharpness = 1;
+    NSArray* availableValues = @[ @1, @2, @4 ];
+    NSUInteger existingSharpnessIndex = [availableValues indexOfObject:@(self.sharpness)];
+    if(existingSharpnessIndex != NSNotFound) {
+        nextSharpness = [availableValues[(existingSharpnessIndex+1)%availableValues.count] integerValue];
+    }
+    self.sharpness = nextSharpness;
     [self postNote];
 }
 

@@ -14,6 +14,8 @@
 
 @implementation SettingsViewController
 
+@synthesize settingsModel = _settingsModel;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,19 +28,25 @@
 
 - (IBAction)changeColors:(id)sender
 {
-    [[SettingsWrapper sharedWrapper] nextColorMap];
+    [self.settingsModel nextColorMap];
     [self scheduleDismissal];
 }
 
 - (IBAction)toggleFrequencyStretch:(id)sender
 {
-    [[SettingsWrapper sharedWrapper] toggleFrequencyStretch];
+    [self.settingsModel toggleFrequencyStretch];
     [self scheduleDismissal];
 }
 
 - (IBAction)changeScrollingSpeed:(id)sender
 {
-    [[SettingsWrapper sharedWrapper] nextScrollingSpeed];
+    [self.settingsModel nextScrollingSpeed];
+    [self scheduleDismissal];
+}
+
+- (IBAction)changeSharpness:(id)sender
+{
+    [self.settingsModel nextSharpness];
     [self scheduleDismissal];
 }
 
