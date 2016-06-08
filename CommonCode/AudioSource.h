@@ -28,7 +28,7 @@ typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
 
 + (NSDictionary*)availableAudioSources; // Localized name -> audio source ID pairs
 
-- (id)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block;
+- (instancetype)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block;
 
 - (void)startCapturing;
 
