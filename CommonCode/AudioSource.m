@@ -12,7 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #if TARGET_OS_IPHONE
-static const NSUInteger kMaxBufferSize = 1024;
+static const NSUInteger kMaxBufferSize = 2048;
 static const NSUInteger ReadInterval = 1;
 #else
 static const NSUInteger kMaxBufferSize = 4096;
@@ -58,7 +58,7 @@ static const NSUInteger ReadInterval = 8;
 
 #pragma mark - Lifecycle - 
 
-- (id)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block
+- (instancetype)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block
 {
     NSParameterAssert(block);
     if((self = [super init]))
@@ -258,6 +258,10 @@ static const NSUInteger ReadInterval = 8;
     if(formatListSize > 0 && bufferFormat)
     {
         isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
+    }
+    else
+    {
+        return;
     }
 
     const NSUInteger channelsInBuffer = bufferFormat[0].mASBD.mChannelsPerFrame;
