@@ -31,7 +31,7 @@
         _transformer = [[FastFourierTransform alloc] init];
         _transformQueue = dispatch_queue_create("com.spectrogeddon.fft", DISPATCH_QUEUE_SERIAL);
         
-        id __weak weakSelf = self;
+        typeof(self) __weak weakSelf = self;
         _audioSource = [[AudioSource alloc] initWithNotificationQueue:_transformQueue block:^(NSArray* channels) {
             SpectrumGenerator* strongSelf = weakSelf;
             if(!strongSelf)
