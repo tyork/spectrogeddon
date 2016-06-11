@@ -9,7 +9,8 @@
 #import "AudioSource.h"
 #import "TimeSequence.h"
 #import "SampleBuffer.h"
-#import <AVFoundation/AVFoundation.h>
+#import "AudioDebugUtils.h"
+@import AVFoundation;
 
 #if TARGET_OS_IPHONE
 static const NSUInteger kMaxBufferSize = 2048;
@@ -238,8 +239,18 @@ static const NSUInteger ReadInterval = 8;
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
     const CMItemCount numSamples = CMSampleBufferGetNumSamples(sampleBuffer);
-    if(numSamples <= 0)
-    {
+    if(numSamples <= 0) {
+        // No samples, no processing.
+        return;
+    }
+    
+    // Configure buffers
+    // TODO: very basic format decoding, really the minimum.
+    CMFormatDescriptionRef formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer);
+    size_t formatListSize = 0;
+    const AudioFormatListItem* bufferFormat = CMAudioFormatDescriptionGetFormatList(formatInfo, &formatListSize);
+    if(formatListSize <= 0 || bufferFormat == NULL) {
+        // Invalid format info.
         return;
     }
     
@@ -249,31 +260,14 @@ static const NSUInteger ReadInterval = 8;
         self.pendingBufferSizeChange = NO;
     }
     
-    // Configure buffers
-    // TODO: very basic format decoding, really the minimum.
-    BOOL isNormalizedFloatBuffer = NO;
-    CMFormatDescriptionRef formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer);
-    size_t formatListSize = 0;
-    const AudioFormatListItem* bufferFormat = CMAudioFormatDescriptionGetFormatList(formatInfo, &formatListSize);
-    if(formatListSize > 0 && bufferFormat)
-    {
-        isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
-    }
-    else
-    {
-        return;
-    }
-
+    BOOL isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
     const NSUInteger channelsInBuffer = bufferFormat[0].mASBD.mChannelsPerFrame;
-    if(channelsInBuffer != self.channels)
-    {
-        for(NSUInteger channelIndex = channelsInBuffer; channelIndex < self.channels; channelIndex++)
-        {
+    if(channelsInBuffer != self.channels) {
+        for(NSUInteger channelIndex = channelsInBuffer; channelIndex < self.channels; channelIndex++) {
             [self.channelBuffers removeObjectAtIndex:0];
         }
         
-        for(NSUInteger channelIndex = self.channels; channelIndex < channelsInBuffer; channelIndex++)
-        {
+        for(NSUInteger channelIndex = self.channels; channelIndex < channelsInBuffer; channelIndex++) {
             [self.channelBuffers addObject:[[SampleBuffer alloc] initWithBufferSize:self.currentBufferSize readInterval:ReadInterval]];
         }
         self.channels = channelsInBuffer;

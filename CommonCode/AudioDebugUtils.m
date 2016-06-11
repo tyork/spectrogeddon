@@ -11,13 +11,17 @@
 
 void DLOGTime()
 {
+    DLOGEventTime(nil);
+}
+
+void DLOGEventTime(NSString* event)
+{
 #ifndef NDEBUG
     mach_timebase_info_data_t timebaseInfo = {0, 0};
     mach_timebase_info(&timebaseInfo);
     const uint64_t timeInAbs = mach_absolute_time();
     const uint64_t timeInNanoseconds = (timebaseInfo.numer == 1 && timebaseInfo.denom == 1) ? timeInAbs : (timebaseInfo.numer * timeInAbs / timebaseInfo.denom);
-    NSLog(@"%@", @(timeInNanoseconds));
-
+    NSLog(@"%@: %@", event, @(timeInNanoseconds));
 #endif
 }
 

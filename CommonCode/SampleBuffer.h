@@ -6,7 +6,7 @@
 //  
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class TimeSequence;
 
@@ -18,11 +18,18 @@
 
 @property (nonatomic,readonly) BOOL hasOutput;
 
-- (instancetype)initWithBufferSize:(NSUInteger)sampleCount readInterval:(NSUInteger)readInterval;   // TODO: enforce power of two.
+- (instancetype)initWithBufferSize:(NSUInteger)sampleCount
+                      readInterval:(NSUInteger)readInterval;   // TODO: enforce power of two.
 
-- (void)writeNormalizedFloatSamples:(float*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration;
+- (void)writeNormalizedFloatSamples:(float*)samples
+                              count:(NSUInteger)count
+                          timeStamp:(NSTimeInterval)timeStamp
+                           duration:(NSTimeInterval)duration;
 
-- (void)writeSInt16Samples:(SInt16*)samples count:(NSUInteger)count timeStamp:(NSTimeInterval)timeStamp duration:(NSTimeInterval)duration;
+- (void)writeSInt16Samples:(SInt16*)samples
+                     count:(NSUInteger)count
+                 timeStamp:(NSTimeInterval)timeStamp
+                  duration:(NSTimeInterval)duration;
 
 - (TimeSequence*)readOutputSamples; //!< Note that samples are retrieved as a float array wrapped by TimeSequence.
 

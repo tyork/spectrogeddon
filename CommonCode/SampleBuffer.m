@@ -6,9 +6,9 @@
 //  
 //
 
+@import Accelerate;
 #import "SampleBuffer.h"
 #import "TimeSequence.h"
-#import <Accelerate/Accelerate.h>
 
 @interface SampleBuffer ()
 @property (nonatomic,readonly) NSUInteger readInterval;

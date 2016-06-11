@@ -10,4 +10,6 @@
 
 void DLOGTime();
 
+void DLOGEventTime(NSString* event);
+
 void DLOGEventOnThread(NSString* event);

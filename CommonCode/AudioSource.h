@@ -6,7 +6,7 @@
 //  
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 /**
  @param capturedChannels An array of @ref TimeSequence objects.
