@@ -16,6 +16,11 @@
 
 @synthesize settingsModel = _settingsModel;
 
+- (void)dealloc
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(dismiss) object:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
