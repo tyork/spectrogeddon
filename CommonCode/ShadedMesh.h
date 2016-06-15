@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import GLKit;
 #import "RendererTypes.h"
-#import <GLKit/GLKit.h>
 
 typedef void(^VertexGenerator)(TexturedVertexAttribs* const vertices);
 

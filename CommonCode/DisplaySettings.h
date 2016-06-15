@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class ColorMap;
 
 @interface DisplaySettings : NSObject <NSCoding>
 
+@property (nonatomic) NSUInteger sharpness;
 @property (nonatomic) NSInteger scrollingSpeed;
 @property (nonatomic) NSUInteger scrollingDirectionIndex;
 @property (nonatomic) BOOL useLogFrequencyScale;

@@ -52,11 +52,7 @@
     for(NSUInteger valueIndex = 0; valueIndex < self.shadedMesh.numberOfVertices/2; valueIndex++)
     {
         const NSUInteger vertexIndex = valueIndex << 1;
-        float y = (float)valueIndex * yScale;
-        if(self.useLogFrequencyScale)
-        {
-            y = (1.0f-logNormalization*log2f(y+logOffset));
-        }
+        const float y = self.useLogFrequencyScale ? (1.0f-logNormalization*log2f((float)valueIndex*yScale+logOffset)) : (float)valueIndex * yScale;
         vertices[vertexIndex] = (TexturedVertexAttribs){ 0.0f, y, 0.0f, 0.0f };
         vertices[vertexIndex+1] = (TexturedVertexAttribs){ 1.0f, y, 0.0f, 0.0f };
     }

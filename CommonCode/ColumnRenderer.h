@@ -6,7 +6,7 @@
 //  
 //
 
-#import <GLKit/GLKit.h>
+@import GLKit;
 
 @class TimeSequence;
 

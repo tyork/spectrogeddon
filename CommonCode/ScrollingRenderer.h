@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "RendererTypes.h"
 
 @protocol ScrollingRenderer <NSObject>

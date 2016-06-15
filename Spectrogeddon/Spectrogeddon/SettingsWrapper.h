@@ -17,7 +17,6 @@ extern NSString* const kSpectroSettingsDidChangeNotification;
 @interface SettingsWrapper : NSObject
 
 @property (nonatomic,strong) DisplaySettings* displaySettings;
-@property (nonatomic,readonly) NSUInteger sharpness;
 
 - (void)nextColorMap;
 

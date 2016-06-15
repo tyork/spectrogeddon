@@ -120,6 +120,10 @@
 - (void)didPickSharpness:(id)sender
 {
     NSNumber* sharpness = [sender representedObject];
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+        settings.sharpness = [sharpness integerValue];
+        return settings;
+    }];
     self.spectrumGenerator.bufferSizeDivider = [sharpness integerValue];
     [self updateSharpnessMenu];
 }
@@ -186,7 +190,7 @@
 {
     [self.sharpnessMenu removeAllItems];
     
-    NSNumber* currentSharpness = @(self.spectrumGenerator.bufferSizeDivider);
+    NSNumber* currentSharpness = @(self.settingsStore.displaySettings.sharpness);
     NSArray* sharpnessValues = @[ @4, @2, @1 ];
     [sharpnessValues enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didPickSharpness:) keyEquivalent:@""];
