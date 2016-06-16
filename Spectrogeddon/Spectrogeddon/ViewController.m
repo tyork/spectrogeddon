@@ -11,6 +11,7 @@
 #import "TimeSequence.h"
 #import "MobileGLDisplay.h"
 #import "SettingsWrapper.h"
+#import "DisplaySettings.h"
 #import "SettingsModelClient.h"
 
 @interface ViewController () <SpectrumGeneratorDelegate>
@@ -122,7 +123,7 @@
 - (void)didChangeSettings:(NSNotification*)note
 {
     [self.renderer useDisplaySettings:[self.settingsModel displaySettings]];
-    self.spectrumGenerator.bufferSizeDivider = self.settingsModel.sharpness;
+    [self.spectrumGenerator useSettings:[self.settingsModel displaySettings]];
 }
 
 - (void)pause

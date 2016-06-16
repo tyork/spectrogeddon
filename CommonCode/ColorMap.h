@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import CoreGraphics;
 
 @interface ColorMap : NSObject <NSCoding>
 

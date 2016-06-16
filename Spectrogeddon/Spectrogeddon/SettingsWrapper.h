@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Random. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 extern NSString* const kSpectroSettingsDidChangeNotification;
 
@@ -21,8 +21,6 @@ extern NSString* const kSpectroSettingsDidChangeNotification;
 - (void)nextColorMap;
 
 - (void)toggleFrequencyStretch;
-
-- (BOOL)isStretchingFrequency;
 
 - (void)nextScrollingSpeed;
 

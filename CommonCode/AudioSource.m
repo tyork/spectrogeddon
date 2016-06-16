@@ -9,7 +9,8 @@
 #import "AudioSource.h"
 #import "TimeSequence.h"
 #import "SampleBuffer.h"
-#import "AudioDebugUtils.h"
+#import "LoggingUtilities.h"
+
 @import AVFoundation;
 
 #if TARGET_OS_IPHONE
@@ -285,12 +286,10 @@ static const NSUInteger ReadInterval = 8;
 	char* rawSamples = NULL;
     do {
         CMBlockBufferGetDataPointer(audioBlockBuffer, offset, &lengthAtOffset, &totalLength, &rawSamples);
-        if(isNormalizedFloatBuffer)
-        {
+        if(isNormalizedFloatBuffer) {
             [self.channelBuffers[activeChannel] writeNormalizedFloatSamples:(float*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
-        else
-        {
+        else {
             [self.channelBuffers[activeChannel] writeSInt16Samples:(SInt16*)rawSamples count:numSamples timeStamp:timeStamp duration:duration];
         }
         offset += lengthAtOffset;
@@ -299,17 +298,14 @@ static const NSUInteger ReadInterval = 8;
     } while(offset < totalLength);
 
     // Dispatch
-    for(SampleBuffer* oneBuffer in self.channelBuffers)
-    {
-        if(!oneBuffer.hasOutput)
-        {
+    for(SampleBuffer* oneBuffer in self.channelBuffers) {
+        if(!oneBuffer.hasOutput) {
             return;
         }
     }
 
     NSMutableArray* outputs = [[NSMutableArray alloc] init];
-    for(SampleBuffer* oneBuffer in self.channelBuffers)
-    {
+    for(SampleBuffer* oneBuffer in self.channelBuffers) {
         [outputs addObject:[oneBuffer readOutputSamples]];
     }
     dispatch_async(self.notificationQueue, ^{

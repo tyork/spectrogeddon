@@ -17,5 +17,6 @@
 @property (nonatomic) NSUInteger scrollingDirectionIndex;
 @property (nonatomic) BOOL useLogFrequencyScale;
 @property (nonatomic,strong) ColorMap* colorMap;
+@property (nonatomic,copy) NSString* preferredAudioSourceId;
 
 @end

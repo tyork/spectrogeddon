@@ -9,6 +9,8 @@
 #ifndef SpectrogeddonOSX_RendererTypes_h
 #define SpectrogeddonOSX_RendererTypes_h
 
+@import GLKit;
+
 typedef struct
 {
     GLint width;

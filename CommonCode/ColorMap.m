@@ -7,6 +7,11 @@
 //
 
 #import "ColorMap.h"
+#if TARGET_OS_IPHONE
+@import UIKit;
+#else
+@import Cocoa;
+#endif
 
 static NSString* const KeyImageName = @"imageName";
 

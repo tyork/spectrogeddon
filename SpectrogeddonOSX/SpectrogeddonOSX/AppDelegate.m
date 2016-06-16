@@ -42,6 +42,13 @@
         }];
     }
     
+    if(![self.settingsStore displaySettings].preferredAudioSourceId) {
+        [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+            settings.preferredAudioSourceId = [[self.spectrumGenerator class] availableSources].allValues.firstObject;
+            return settings;
+        }];
+    }
+    
     [self updateSourceMenu];
     [self updateSpeedMenu];
     [self updateSharpnessMenu];
@@ -49,6 +56,7 @@
     [self updateScrollingDirectionsMenu];
 
     [self.glView useDisplaySettings:[self.settingsStore displaySettings]];
+    [self.spectrumGenerator useSettings:[self.settingsStore displaySettings]];
     [self resume];
 }
 
@@ -124,14 +132,18 @@
         settings.sharpness = [sharpness integerValue];
         return settings;
     }];
-    self.spectrumGenerator.bufferSizeDivider = [sharpness integerValue];
+    [self.spectrumGenerator useSettings:[self.settingsStore displaySettings]];
     [self updateSharpnessMenu];
 }
 
 - (void)didPickSource:(NSMenuItem*)sender
 {
     NSString* sourceID = [sender representedObject];
-    self.spectrumGenerator.preferredSourceID = sourceID;
+    [self.settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
+        settings.preferredAudioSourceId = sourceID;
+        return settings;
+    }];
+    [self.spectrumGenerator useSettings:[self.settingsStore displaySettings]];
     [self updateSourceMenu];
 }
 
@@ -157,7 +169,7 @@
     [self.sourceMenu removeAllItems];
     
     NSDictionary* sources = [SpectrumGenerator availableSources];
-    NSString* currentSourceID = self.spectrumGenerator.preferredSourceID;
+    NSString* const currentSourceID = [self.settingsStore displaySettings].preferredAudioSourceId;
     [sources enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:key action:@selector(didPickSource:) keyEquivalent:@""];
         [item setState:([currentSourceID isEqualToString:obj] ? NSOnState : NSOffState)];

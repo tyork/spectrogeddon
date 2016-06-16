@@ -15,9 +15,3 @@
     #import <Foundation/Foundation.h>
 #endif
 
-
-#ifdef NDEBUG
-    #define DLOG(...)
-#else
-    #define DLOG(...) NSLog(__VA_ARGS__)
-#endif

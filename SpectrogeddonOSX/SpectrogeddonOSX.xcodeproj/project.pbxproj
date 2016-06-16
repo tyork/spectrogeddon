@@ -42,7 +42,7 @@
 		19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */; };
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
-		EE4996BF1AE584A0003C6116 /* AudioDebugUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4996BE1AE584A0003C6116 /* AudioDebugUtils.m */; };
+		EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972531D12EABB005EE551 /* LoggingUtilities.m */; };
 		EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A731A721E4800F4A232 /* NSArray+Functional.m */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
@@ -120,8 +120,8 @@
 		19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopOpenGLView.m; sourceTree = "<group>"; };
 		19F73F831923C415001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.fsh; path = ../../CommonCode/TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
-		EE4996BD1AE584A0003C6116 /* AudioDebugUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDebugUtils.h; path = ../../CommonCode/AudioDebugUtils.h; sourceTree = "<group>"; };
-		EE4996BE1AE584A0003C6116 /* AudioDebugUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioDebugUtils.m; path = ../../CommonCode/AudioDebugUtils.m; sourceTree = "<group>"; };
+		EE5972521D12EABB005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoggingUtilities.h; path = ../../CommonCode/LoggingUtilities.h; sourceTree = "<group>"; };
+		EE5972531D12EABB005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoggingUtilities.m; path = ../../CommonCode/LoggingUtilities.m; sourceTree = "<group>"; };
 		EE624A721A721E4800F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Functional.h"; path = "../../CommonCode/NSArray+Functional.h"; sourceTree = "<group>"; };
 		EE624A731A721E4800F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Functional.m"; path = "../../CommonCode/NSArray+Functional.m"; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
@@ -285,8 +285,6 @@
 				19F66918190AA86C00D2DE77 /* AudioSource.m */,
 				19F66928190AA86C00D2DE77 /* SampleBuffer.h */,
 				19F66929190AA86C00D2DE77 /* SampleBuffer.m */,
-				EE4996BD1AE584A0003C6116 /* AudioDebugUtils.h */,
-				EE4996BE1AE584A0003C6116 /* AudioDebugUtils.m */,
 			);
 			name = AudioAcquisition;
 			sourceTree = "<group>";
@@ -333,6 +331,8 @@
 		EE624A711A721E0600F4A232 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EE5972521D12EABB005EE551 /* LoggingUtilities.h */,
+				EE5972531D12EABB005EE551 /* LoggingUtilities.m */,
 				EE624A721A721E4800F4A232 /* NSArray+Functional.h */,
 				EE624A731A721E4800F4A232 /* NSArray+Functional.m */,
 			);
@@ -454,6 +454,7 @@
 				19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */,
 				19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */,
 				19F66895190AA3AF00D2DE77 /* main.m in Sources */,
+				EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */,
 				EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */,
 				19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */,
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
@@ -465,7 +466,6 @@
 				19CEAC6219221D3A00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,
 				19F6693F190AA86C00D2DE77 /* SpectrumGenerator.m in Sources */,
-				EE4996BF1AE584A0003C6116 /* AudioDebugUtils.m in Sources */,
 				194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* LinearScrollingRenderer.m in Sources */,
 				194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */,
@@ -603,8 +603,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
 				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -617,8 +615,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
 				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -635,8 +631,6 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -658,8 +652,6 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpectrogeddonOSX/SpectrogeddonOSX-Prefix.pch";
 				INFOPLIST_FILE = "SpectrogeddonOSXTests/SpectrogeddonOSXTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

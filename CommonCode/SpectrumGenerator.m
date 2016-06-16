@@ -10,6 +10,7 @@
 #import "FastFourierTransform.h"
 #import "AudioSource.h"
 #import "TimeSequence.h"
+#import "DisplaySettings.h"
 
 @interface SpectrumGenerator ()
 @property (nonatomic,strong) FastFourierTransform* transformer;
@@ -69,34 +70,13 @@
     [self.audioSource stopCapturing];
 }
 
-- (void)setPreferredSourceID:(NSString *)preferredSourceID
+- (void)useSettings:(DisplaySettings*)settings
 {
-    self.audioSource.preferredAudioSourceID = preferredSourceID;
-}
-
-- (NSString*)preferredSourceID
-{
-    return self.audioSource.preferredAudioSourceID;
-}
-
-+ (NSSet*)keyPathsForValuesAffectingAudioSource
-{
-    return [NSSet setWithObject:@"audioSource.preferredAudioSourceID"];
-}
-
-- (void)setBufferSizeDivider:(NSUInteger)bufferSizeDivider
-{
-    self.audioSource.bufferSizeDivider = bufferSizeDivider;
-}
-
-- (NSUInteger)bufferSizeDivider
-{
-    return self.audioSource.bufferSizeDivider;
-}
-
-+ (NSSet*)keyPathsForValuesAffectingBufferSizeDivider
-{
-    return [NSSet setWithObject:@"audioSource.bufferSizeDivider"];
+    NSString* const audioSourceId = settings.preferredAudioSourceId;
+    if(audioSourceId != nil && [[[self class] availableSources].allValues containsObject:audioSourceId]) {
+        self.audioSource.preferredAudioSourceID = audioSourceId;
+    }
+    self.audioSource.bufferSizeDivider = settings.sharpness;
 }
 
 @end

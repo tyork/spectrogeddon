@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Spectrogeddon. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @class TimeSequence;
 @class DisplaySettings;

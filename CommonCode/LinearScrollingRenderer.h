@@ -6,7 +6,6 @@
 //  
 //
 
-@import GLKit;
 #import "ScrollingRenderer.h"
 
 /**

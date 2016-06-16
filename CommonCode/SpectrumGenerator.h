@@ -6,10 +6,11 @@
 //  
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class SpectrumGenerator;
 @class TimeSequence;
+@class DisplaySettings;
 
 @protocol SpectrumGeneratorDelegate
 - (void)spectrumGenerator:(SpectrumGenerator*)generator didGenerateSpectrums:(NSArray*)spectrumsPerChannel;
@@ -19,12 +20,12 @@
 
 + (NSDictionary*)availableSources;  // Key: localized name, value: unique ID
 
-@property (nonatomic) NSUInteger bufferSizeDivider;
-@property (nonatomic,strong) NSString* preferredSourceID;
 @property (nonatomic,weak) IBOutlet id <SpectrumGeneratorDelegate> delegate;
 
 - (void)startGenerating;
 
 - (void)stopGenerating;
+
+- (void)useSettings:(DisplaySettings*)settings;
 
 @end

@@ -1,12 +1,12 @@
 //
-//  AudioDebugUtils.m
-//  SpectrogeddonOSX
+//  LoggingUtilities.m
+//  Spectrogeddon
 //
-//  Created by Tom York on 20/04/2015.
-//  Copyright (c) 2015 Spectrogeddon. All rights reserved.
+//  Created by Tom York on 16/06/2016.
+//  Copyright © 2016 Random. All rights reserved.
 //
 
-#import "AudioDebugUtils.h"
+#import "LoggingUtilities.h"
 #import <mach/mach_time.h>
 
 void DLOGTime()
@@ -33,4 +33,3 @@ void DLOGEventOnThread(NSString* event)
     
 #endif
 }
-
