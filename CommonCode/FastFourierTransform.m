@@ -59,7 +59,7 @@ static inline NSUInteger LargestPowerOfTwoInValue(NSUInteger value)
     
     // Create a window function.
     _windowFunction = (float*)calloc(_paddedSampleCount, sizeof(float));
-    vDSP_hann_window(_windowFunction, _paddedSampleCount, vDSP_HANN_DENORM);    // We use a denormalized window as we're interested in having the largest bin be 1.0 (not the total power)
+    vDSP_blkman_window(_windowFunction, _paddedSampleCount, vDSP_HANN_DENORM);    // We use a denormalized window as we're interested in having the largest bin be 1.0 (not the total power)
 }
 
 - (void)clearInternalStorage
