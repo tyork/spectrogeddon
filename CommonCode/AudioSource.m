@@ -17,8 +17,8 @@
 static const NSUInteger kMaxBufferSize = 2048;
 static const NSUInteger ReadInterval = 1;
 #else
-static const NSUInteger kMaxBufferSize = 4096;
-static const NSUInteger ReadInterval = 8;
+static const NSUInteger kMaxBufferSize = 2048;
+static const NSUInteger ReadInterval = 1;
 #endif
 
 @interface AudioSource ()  <AVCaptureAudioDataOutputSampleBufferDelegate>
@@ -249,11 +249,12 @@ static const NSUInteger ReadInterval = 8;
     // TODO: very basic format decoding, really the minimum.
     CMFormatDescriptionRef formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer);
     size_t formatListSize = 0;
-    const AudioFormatListItem* bufferFormat = CMAudioFormatDescriptionGetFormatList(formatInfo, &formatListSize);
-    if(formatListSize <= 0 || bufferFormat == NULL) {
+    const AudioFormatListItem* bufferFormats = CMAudioFormatDescriptionGetFormatList(formatInfo, &formatListSize);
+    if(formatListSize <= 0 || bufferFormats == NULL) {
         // Invalid format info.
         return;
     }
+    const AudioFormatListItem bufferFormat = bufferFormats[0];
     
     if(self.pendingBufferSizeChange) {
         [self.channelBuffers removeAllObjects];
@@ -261,8 +262,8 @@ static const NSUInteger ReadInterval = 8;
         self.pendingBufferSizeChange = NO;
     }
     
-    BOOL isNormalizedFloatBuffer = bufferFormat[0].mASBD.mBytesPerFrame == sizeof(float);
-    const NSUInteger channelsInBuffer = bufferFormat[0].mASBD.mChannelsPerFrame;
+    BOOL isNormalizedFloatBuffer = bufferFormat.mASBD.mBytesPerFrame == sizeof(float);
+    const NSUInteger channelsInBuffer = bufferFormat.mASBD.mChannelsPerFrame;
     if(channelsInBuffer != self.channels) {
         for(NSUInteger channelIndex = channelsInBuffer; channelIndex < self.channels; channelIndex++) {
             [self.channelBuffers removeObjectAtIndex:0];
