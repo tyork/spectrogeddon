@@ -28,8 +28,9 @@ NSString* const kSpectroSettingsDidChangeNotification = @"SpectroSettingsDidChan
         _colorMaps = [[ColorMapSet alloc] init];
         _settingsStore = [[SettingsStore alloc] init];
         if([_settingsStore displaySettings].colorMap == nil) {
+            ColorMap *const current = [_colorMaps currentColorMap];
             [_settingsStore applyUpdateToSettings:^DisplaySettings *(DisplaySettings *settings) {
-                settings.colorMap = [_colorMaps currentColorMap];
+                settings.colorMap = current;
                 return settings;
             }];
         }
