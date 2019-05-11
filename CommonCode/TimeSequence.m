@@ -23,10 +23,10 @@
     
     _count = values.count;
     _values = (float*)calloc(values.count, sizeof(float));
-    [values enumerateObjectsUsingBlock:^(NSNumber* oneNumber, NSUInteger idx, BOOL *stop) {
-        _values[idx] = oneNumber.doubleValue;
-    }];
-
+    for (NSInteger idx = 0; idx < values.count; idx++) {
+        _values[idx] = [values[idx] doubleValue];
+    }
+    
     return self;
 }
 

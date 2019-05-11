@@ -14,7 +14,7 @@
 #define DLOG(...) NSLog(__VA_ARGS__)
 #endif
 
-void DLOGTime();
+void DLOGTime(void);
 
 void DLOGEventTime(NSString* event);
 
