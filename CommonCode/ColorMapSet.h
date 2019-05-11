@@ -10,9 +10,13 @@
 
 @class ColorMap;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ColorMapSet : NSObject <NSCoding>
 
 - (ColorMap*)currentColorMap;
 - (ColorMap*)nextColorMap;
 
 @end
+
+NS_ASSUME_NONNULL_END

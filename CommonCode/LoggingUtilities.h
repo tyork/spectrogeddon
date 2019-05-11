@@ -14,8 +14,12 @@
 #define DLOG(...) NSLog(__VA_ARGS__)
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 void DLOGTime(void);
 
-void DLOGEventTime(NSString* event);
+void DLOGEventTime(NSString* _Nullable event);
 
-void DLOGEventOnThread(NSString* event);
+void DLOGEventOnThread(NSString* _Nullable event);
+
+NS_ASSUME_NONNULL_END

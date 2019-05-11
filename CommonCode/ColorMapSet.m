@@ -14,7 +14,7 @@ static NSString* const KeyActiveColorMapName = @"activeColorMapName";
 static NSString* const kContainerDirectory  = @"ColorMaps";
 
 @interface ColorMapSet ()
-@property (nonatomic,strong) NSArray* imageNames;
+@property (nonatomic,strong) NSArray<NSString*>* imageNames;
 @property (nonatomic) NSUInteger colorMapIndex;
 @end
 
@@ -24,7 +24,7 @@ static NSString* const kContainerDirectory  = @"ColorMaps";
 {
     if((self = [super init]))
     {
-        NSArray* paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:kContainerDirectory];
+        NSArray<NSString*>* paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"png" inDirectory:kContainerDirectory];
         _imageNames = [paths spe_arrayByApplyingMap:^NSString*(NSString* onePath) {
             return [kContainerDirectory stringByAppendingPathComponent:[onePath lastPathComponent]];
         }];

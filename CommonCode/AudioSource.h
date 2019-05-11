@@ -8,10 +8,14 @@
 
 @import Foundation;
 
+@class TimeSequence;
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  @param capturedChannels An array of @ref TimeSequence objects.
  */
-typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
+typedef void(^AudioSourceNotificationBlock)(NSArray<TimeSequence*>* capturedChannels);
 
 /**
  A source of audio.
@@ -26,7 +30,7 @@ typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
 
 + (void)requestPermissionToUseAudio:(void(^)(BOOL isAllowed))permissionBlock;
 
-+ (NSDictionary*)availableAudioSources; // Localized name -> audio source ID pairs
++ (NSDictionary<NSString*, NSString*>*)availableAudioSources; // Localized name -> audio source ID pairs
 
 - (instancetype)initWithNotificationQueue:(dispatch_queue_t)queue block:(AudioSourceNotificationBlock)block;
 
@@ -35,3 +39,5 @@ typedef void(^AudioSourceNotificationBlock)(NSArray* capturedChannels);
 - (void)stopCapturing;
 
 @end
+
+NS_ASSUME_NONNULL_END

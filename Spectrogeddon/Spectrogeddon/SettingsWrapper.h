@@ -8,6 +8,8 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString* const kSpectroSettingsDidChangeNotification;
 
 @class DisplaySettings;
@@ -27,3 +29,5 @@ extern NSString* const kSpectroSettingsDidChangeNotification;
 - (void)nextSharpness;
 
 @end
+
+NS_ASSUME_NONNULL_END

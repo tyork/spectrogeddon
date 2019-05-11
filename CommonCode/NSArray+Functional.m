@@ -10,7 +10,7 @@
 
 @implementation NSArray (Functional)
 
-- (NSArray*)spe_arrayByApplyingMap:(id(^)(id obj))map
+- (instancetype)spe_arrayByApplyingMap:(id(^)(id obj))map
 {
     if(map == nil) {
         return self;

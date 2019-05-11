@@ -10,6 +10,8 @@
 
 @class TimeSequence;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Renders a column, a single measurement set.
  */
@@ -24,3 +26,5 @@
 - (void)render;
 
 @end
+
+NS_ASSUME_NONNULL_END

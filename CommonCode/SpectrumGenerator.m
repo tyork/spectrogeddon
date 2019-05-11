@@ -20,7 +20,7 @@
 
 @implementation SpectrumGenerator
 
-+ (NSDictionary*)availableSources
++ (NSDictionary<NSString*, NSString*>*)availableSources
 {
     return [AudioSource availableAudioSources];
 }
@@ -33,14 +33,14 @@
         _transformQueue = dispatch_queue_create("com.spectrogeddon.fft", DISPATCH_QUEUE_SERIAL);
         
         typeof(self) __weak weakSelf = self;
-        _audioSource = [[AudioSource alloc] initWithNotificationQueue:_transformQueue block:^(NSArray* channels) {
+        _audioSource = [[AudioSource alloc] initWithNotificationQueue:_transformQueue block:^(NSArray<TimeSequence*>* channels) {
             SpectrumGenerator* strongSelf = weakSelf;
             if(!strongSelf)
             {
                 return;
             }
 
-            NSMutableArray* spectrums = [[NSMutableArray alloc] init];
+            NSMutableArray<TimeSequence*>* spectrums = [[NSMutableArray alloc] init];
             for(TimeSequence* oneTimeSequence in channels)
             {
                 TimeSequence* fft = [strongSelf.transformer transformSequence:oneTimeSequence];

@@ -11,16 +11,20 @@
 @class TimeSequence;
 @class DisplaySettings;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DesktopOpenGLView : NSOpenGLView
 
 - (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
-- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums;
+- (void)addMeasurementsToDisplayQueue:(NSArray<TimeSequence*>*)spectrums;
 
 - (void)pauseRendering;
 
 - (void)resumeRendering;
 
-- (NSArray*)namesForSupportedScrollingDirections;
+- (NSArray<NSString*>*)namesForSupportedScrollingDirections;
 
 @end
+
+NS_ASSUME_NONNULL_END

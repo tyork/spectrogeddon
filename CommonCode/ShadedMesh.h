@@ -10,6 +10,8 @@
 @import GLKit;
 #import "RendererTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void(^VertexGenerator)(TexturedVertexAttribs* const vertices);
 
 @interface ShadedMesh : NSObject
@@ -26,3 +28,6 @@ typedef void(^VertexGenerator)(TexturedVertexAttribs* const vertices);
 - (void)render;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

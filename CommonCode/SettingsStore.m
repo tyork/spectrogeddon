@@ -19,7 +19,7 @@ static NSString* const StoreFileName = @"Spectrogeddon.settings";
 
 + (NSString*)pathToStore
 {
-    NSArray* directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray<NSString*>* directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [directories.firstObject stringByAppendingPathComponent:StoreFileName];
 }
 

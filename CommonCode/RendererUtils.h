@@ -8,6 +8,8 @@
 
 @import GLKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Just wraps OpenGLES shader programs
  */
@@ -32,3 +34,5 @@
 + (void)destroyVAO:(GLuint)vaoName;
 
 @end
+
+NS_ASSUME_NONNULL_END

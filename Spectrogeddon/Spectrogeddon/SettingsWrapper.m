@@ -77,7 +77,7 @@ NSString* const kSpectroSettingsDidChangeNotification = @"SpectroSettingsDidChan
 - (void)nextScrollingSpeed
 {
     NSInteger nextSpeed = 1;
-    NSArray* availableSpeeds = @[ @1, @2, @4, @8 ];
+    NSArray<NSNumber*>* availableSpeeds = @[ @1, @2, @4, @8 ];
     NSUInteger existingSpeedIndex = [availableSpeeds indexOfObject:@(self.displaySettings.scrollingSpeed)];
     if(existingSpeedIndex != NSNotFound) {
         nextSpeed = [availableSpeeds[(existingSpeedIndex+1)%availableSpeeds.count] integerValue];
@@ -92,7 +92,7 @@ NSString* const kSpectroSettingsDidChangeNotification = @"SpectroSettingsDidChan
 - (void)nextSharpness
 {
     NSInteger nextSharpness = 1;
-    NSArray* availableValues = @[ @1, @2, @4 ];
+    NSArray<NSNumber*>* availableValues = @[ @1, @2, @4 ];
     NSUInteger existingSharpnessIndex = [availableValues indexOfObject:@(self.sharpness)];
     if(existingSharpnessIndex != NSNotFound) {
         nextSharpness = [availableValues[(existingSharpnessIndex+1)%availableValues.count] integerValue];

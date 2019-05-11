@@ -9,6 +9,8 @@
 @import Foundation;
 #import "RendererTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol ScrollingRenderer <NSObject>
 
 @property (nonatomic) float scrollingPosition;
@@ -16,8 +18,10 @@
 
 - (RenderSize)bestRenderSizeFromSize:(RenderSize)size;
 
-- (NSArray*)namesForScrollingDirections;
+- (NSArray<NSString*>*)namesForScrollingDirections;
 
 - (void)render;
 
 @end
+
+NS_ASSUME_NONNULL_END

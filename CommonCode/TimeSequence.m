@@ -13,7 +13,7 @@
     NSUInteger _count;
 }
 
-- (id)initWithValues:(NSArray*)values
+- (id)initWithValues:(NSArray<NSNumber*>*)values
 {
     NSParameterAssert(values);
     if(!(self = [super init]))
@@ -51,9 +51,9 @@
     free(_values);
 }
 
-- (NSArray*)values
+- (NSArray<NSNumber*>*)values
 {
-    NSMutableArray* values = [[NSMutableArray alloc] initWithCapacity:_count];
+    NSMutableArray<NSNumber*>* values = [[NSMutableArray alloc] initWithCapacity:_count];
     for(NSUInteger valueIndex = 0; valueIndex < _count; valueIndex++)
     {
         [values addObject:@(_values[valueIndex])];

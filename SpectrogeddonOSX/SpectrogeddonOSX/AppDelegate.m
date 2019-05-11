@@ -154,7 +154,7 @@
     [self.speedMenu removeAllItems];
     
     NSNumber* currentSpeed = @([self.settingsStore displaySettings].scrollingSpeed);
-    NSArray* speeds = @[ @1, @2, @4, @8 ];
+    NSArray<NSNumber*>* speeds = @[ @1, @2, @4, @8 ];
     [speeds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         // TODO: this conversion of the number directly into a keyEquivalent is hacky and will break beyond 9x (e.g. 16x -> "16" which is not a valid key
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didPickSpeed:) keyEquivalent:[obj stringValue]];
@@ -168,7 +168,7 @@
 {
     [self.sourceMenu removeAllItems];
     
-    NSDictionary* sources = [SpectrumGenerator availableSources];
+    NSDictionary<NSString*, NSString*>* sources = [SpectrumGenerator availableSources];
     NSString* const currentSourceID = [self.settingsStore displaySettings].preferredAudioSourceId;
     [sources enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:key action:@selector(didPickSource:) keyEquivalent:@""];
@@ -182,7 +182,7 @@
 {
     [self.scrollingDirectionsMenu removeAllItems];
     
-    NSArray* names = [self.glView namesForSupportedScrollingDirections];
+    NSArray<NSString*>* names = [self.glView namesForSupportedScrollingDirections];
     [names enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString* charCode = [obj length] > 0 ? [[obj substringToIndex:1] lowercaseString] : @"";
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:obj action:@selector(didPickScrollDirection:) keyEquivalent:charCode];
@@ -203,7 +203,7 @@
     [self.sharpnessMenu removeAllItems];
     
     NSNumber* currentSharpness = @(self.settingsStore.displaySettings.sharpness);
-    NSArray* sharpnessValues = @[ @4, @2, @1 ];
+    NSArray<NSNumber*>* sharpnessValues = @[ @4, @2, @1 ];
     [sharpnessValues enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@x", obj] action:@selector(didPickSharpness:) keyEquivalent:@""];
         [item setState:[obj isEqualToNumber:currentSharpness]];

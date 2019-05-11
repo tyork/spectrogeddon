@@ -11,6 +11,8 @@
 @class TimeSequence;
 @class DisplaySettings;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MobileGLDisplay : NSObject <GLKViewDelegate>
 
 @property (nonatomic,weak) GLKView* glView;
@@ -22,3 +24,5 @@
 - (void)addMeasurementToDisplayQueue:(TimeSequence*)timeSequence;
 
 @end
+
+NS_ASSUME_NONNULL_END

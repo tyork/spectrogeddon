@@ -30,7 +30,7 @@ static NSUInteger const NumberOfBufferVertices = (NumberOfSpokes + 1) * NumberOf
     return size;
 }
 
-- (NSArray*)namesForScrollingDirections
+- (NSArray<NSString*>*)namesForScrollingDirections
 {
     return @[ NSLocalizedString(@"Inwards", @""), NSLocalizedString(@"Outwards", @"") ];
 }

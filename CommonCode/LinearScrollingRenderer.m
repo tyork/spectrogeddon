@@ -22,7 +22,7 @@
 @synthesize scrollingPosition = _scrollingPosition;
 @synthesize activeScrollingDirectionIndex = _activeScrollingDirectionIndex;
 
-- (NSArray*)namesForScrollingDirections;
+- (NSArray<NSString*>*)namesForScrollingDirections;
 {
     return @[ NSLocalizedString(@"Horizontal", @""), NSLocalizedString(@"Vertical", @"") ];
 }

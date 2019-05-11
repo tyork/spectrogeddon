@@ -10,6 +10,8 @@
 
 @class ColorMap;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DisplaySettings : NSObject <NSCoding>
 
 @property (nonatomic) NSUInteger sharpness;
@@ -20,3 +22,5 @@
 @property (nonatomic,copy) NSString* preferredAudioSourceId;
 
 @end
+
+NS_ASSUME_NONNULL_END

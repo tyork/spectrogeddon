@@ -10,6 +10,8 @@
 
 @class TimeSequence;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Stores raw samples so as to retain the newest ones when overfilled.
  Allows easy retrieval of samples as a time sequence.
@@ -34,3 +36,5 @@
 - (TimeSequence*)readOutputSamples; //!< Note that samples are retrieved as a float array wrapped by TimeSequence.
 
 @end
+
+NS_ASSUME_NONNULL_END

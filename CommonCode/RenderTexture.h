@@ -9,6 +9,8 @@
 @import Foundation;
 #import "RendererTypes.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  Allows you to draw into a texture that can then be rendered to a framebuffer elsewhere.
  */
@@ -21,3 +23,5 @@
 - (void)renderTextureWithCommands:(void(^)(void))glCommands; // Binds the texture to TEXTURE2D before executing glCommands.
 
 @end
+
+NS_ASSUME_NONNULL_END

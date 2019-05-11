@@ -12,13 +12,15 @@
 @class TimeSequence;
 @class DisplaySettings;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol SpectrumGeneratorDelegate
-- (void)spectrumGenerator:(SpectrumGenerator*)generator didGenerateSpectrums:(NSArray*)spectrumsPerChannel;
+- (void)spectrumGenerator:(SpectrumGenerator*)generator didGenerateSpectrums:(NSArray<TimeSequence*>*)spectrumsPerChannel;
 @end
 
 @interface SpectrumGenerator : NSObject
 
-+ (NSDictionary*)availableSources;  // Key: localized name, value: unique ID
++ (NSDictionary<NSString*,NSString*>*)availableSources;  // Key: localized name, value: unique ID
 
 @property (nonatomic,weak) IBOutlet id <SpectrumGeneratorDelegate> delegate;
 
@@ -29,3 +31,5 @@
 - (void)useSettings:(DisplaySettings*)settings;
 
 @end
+
+NS_ASSUME_NONNULL_END

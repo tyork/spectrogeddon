@@ -10,6 +10,8 @@
 
 @class DisplaySettings;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SettingsStore : NSObject
 
 - (DisplaySettings*)displaySettings;
@@ -17,3 +19,5 @@
 - (void)applyUpdateToSettings:(DisplaySettings*(^)(DisplaySettings*))updateBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

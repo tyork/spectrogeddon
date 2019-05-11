@@ -10,17 +10,22 @@
 #import "RendererTypes.h"
 
 @class DisplaySettings;
+@class TimeSequence;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface GLRenderer : NSObject
 
 @property (nonatomic) RenderSize renderSize;
 
-- (void)addMeasurementsForDisplay:(NSArray*)channels;
+- (void)addMeasurementsForDisplay:(NSArray<TimeSequence*>*)channels;
 
 - (void)render;
 
 - (void)useDisplaySettings:(DisplaySettings*)displaySettings;
 
-- (NSArray*)namesForScrollingDirections;
+- (NSArray<NSString*>*)namesForScrollingDirections;
 
 @end
+
+NS_ASSUME_NONNULL_END

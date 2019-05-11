@@ -10,6 +10,10 @@
 
 @class SettingsWrapper;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol SettingsModelClient <NSObject>
 @property (nonatomic,strong) SettingsWrapper* settingsModel;
 @end
+
+NS_ASSUME_NONNULL_END

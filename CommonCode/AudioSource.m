@@ -24,7 +24,7 @@ static const NSUInteger ReadInterval = 1;
 @interface AudioSource ()  <AVCaptureAudioDataOutputSampleBufferDelegate>
 @property (nonatomic,strong) dispatch_queue_t sampleQueue;
 @property (nonatomic,strong) AVCaptureSession* captureSession;
-@property (nonatomic,strong) NSMutableArray* channelBuffers;
+@property (nonatomic,strong) NSMutableArray<SampleBuffer*>* channelBuffers;
 @property (nonatomic) NSUInteger channels;
 @property (atomic) BOOL pendingBufferSizeChange;
 
@@ -33,11 +33,11 @@ static const NSUInteger ReadInterval = 1;
 
 @implementation AudioSource
 
-+ (NSDictionary*)availableAudioSources
++ (NSDictionary<NSString*, NSString*>*)availableAudioSources
 {
-    NSArray* devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio];
-    NSArray* localizedNames = [devices valueForKeyPath:@"localizedName"];
-    NSArray* uniqueIDs = [devices valueForKeyPath:@"uniqueID"];
+    NSArray<AVCaptureDevice*>* devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio];
+    NSArray<NSString*>* localizedNames = [devices valueForKeyPath:@"localizedName"];
+    NSArray<NSString*>* uniqueIDs = [devices valueForKeyPath:@"uniqueID"];
     if(!uniqueIDs || !localizedNames || uniqueIDs.count != localizedNames.count)
     {
         return nil;
@@ -181,7 +181,7 @@ static const NSUInteger ReadInterval = 1;
     }
 
     [self.captureSession beginConfiguration];
-    NSArray* existingInputs = self.captureSession.inputs;
+    NSArray<AVCaptureInput*>* existingInputs = self.captureSession.inputs;
     for(AVCaptureInput* oneInput in existingInputs)
     {
         [self.captureSession removeInput:oneInput];
@@ -305,7 +305,7 @@ static const NSUInteger ReadInterval = 1;
         }
     }
 
-    NSMutableArray* outputs = [[NSMutableArray alloc] init];
+    NSMutableArray<TimeSequence*>* outputs = [[NSMutableArray alloc] init];
     for(SampleBuffer* oneBuffer in self.channelBuffers) {
         [outputs addObject:[oneBuffer readOutputSamples]];
     }

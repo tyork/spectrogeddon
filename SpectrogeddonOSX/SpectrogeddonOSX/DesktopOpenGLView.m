@@ -84,7 +84,7 @@
     } flushingBuffer:YES];
 }
 
-- (void)addMeasurementsToDisplayQueue:(NSArray*)spectrums
+- (void)addMeasurementsToDisplayQueue:(NSArray<TimeSequence*>*)spectrums
 {
     [self executeGL:^() {
         [self.renderer addMeasurementsForDisplay:spectrums];
@@ -111,7 +111,7 @@
     [self.renderer useDisplaySettings:displaySettings];
 }
 
-- (NSArray*)namesForSupportedScrollingDirections
+- (NSArray<NSString*>*)namesForSupportedScrollingDirections
 {
     return [self.renderer namesForScrollingDirections];
 }

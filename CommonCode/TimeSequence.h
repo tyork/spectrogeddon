@@ -8,16 +8,18 @@
 
 @import Foundation;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TimeSequence : NSObject
 
 @property (nonatomic) NSTimeInterval timeStamp;
 @property (nonatomic) NSTimeInterval duration;
 
-- (id)initWithValues:(NSArray*)values;
+- (id)initWithValues:(NSArray<NSNumber*>*)values;
 
 - (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values;
 
-- (NSArray*)values;
+- (NSArray<NSNumber*>*)values;
 
 - (NSUInteger)numberOfValues;
 
@@ -28,3 +30,5 @@
 - (void)appendTimeSequence:(TimeSequence*)timeSequence;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -87,7 +87,7 @@
     return position;
 }
 
-- (void)addMeasurementsForDisplay:(NSArray*)spectrums
+- (void)addMeasurementsForDisplay:(NSArray<TimeSequence*>*)spectrums
 {
     const BOOL showStereo = spectrums.count > 1;
     if(showStereo)
@@ -129,7 +129,7 @@
     self.renderTexture.renderSize = [self.scrollingRenderer bestRenderSizeFromSize:self.renderSize];
 }
 
-- (NSArray*)namesForScrollingDirections
+- (NSArray<NSString*>*)namesForScrollingDirections
 {
     return [self.scrollingRenderer namesForScrollingDirections];
 }
