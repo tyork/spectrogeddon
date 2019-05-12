@@ -11,7 +11,6 @@
 		1901B82E18FBFBA7002DE52F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82D18FBFBA7002DE52F /* CoreGraphics.framework */; };
 		1901B83018FBFBA7002DE52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82F18FBFBA7002DE52F /* UIKit.framework */; };
 		1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B83418FBFBA7002DE52F /* InfoPlist.strings */; };
-		1901B84518FBFBA7002DE52F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B84418FBFBA7002DE52F /* ViewController.m */; };
 		1901B84718FBFBA7002DE52F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1901B84618FBFBA7002DE52F /* Images.xcassets */; };
 		1901B84E18FBFBA8002DE52F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B84D18FBFBA8002DE52F /* XCTest.framework */; };
 		1901B84F18FBFBA8002DE52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82B18FBFBA7002DE52F /* Foundation.framework */; };
@@ -46,6 +45,7 @@
 		EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */; };
 		EE03A12C1A82D6DC005BE0DB /* SettingsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */; };
 		EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E52287507B00B99036 /* AppDelegate.swift */; };
+		EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E72287527900B99036 /* SpectrumViewController.swift */; };
 		EE59724A1D08D369005EE551 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5972481D08D369005EE551 /* Launch.storyboard */; };
 		EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972501D12EA44005EE551 /* LoggingUtilities.m */; };
 		EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */; };
@@ -69,8 +69,6 @@
 		1901B82F18FBFBA7002DE52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1901B83318FBFBA7002DE52F /* Spectrogeddon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spectrogeddon-Info.plist"; sourceTree = "<group>"; };
 		1901B83518FBFBA7002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1901B84318FBFBA7002DE52F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1901B84418FBFBA7002DE52F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1901B84618FBFBA7002DE52F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1901B84C18FBFBA8002DE52F /* SpectrogeddonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrogeddonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1901B84D18FBFBA8002DE52F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -127,6 +125,7 @@
 		EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWrapper.m; sourceTree = "<group>"; };
 		EE4D48E22287506800B99036 /* Spectrogeddon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectrogeddon-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE4D48E52287507B00B99036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE4D48E72287527900B99036 /* SpectrumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumViewController.swift; sourceTree = "<group>"; };
 		EE5972491D08D369005EE551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
 		EE59724F1D12EA44005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingUtilities.h; sourceTree = "<group>"; };
 		EE5972501D12EA44005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingUtilities.m; sourceTree = "<group>"; };
@@ -248,13 +247,12 @@
 			children = (
 				EE5972481D08D369005EE551 /* Launch.storyboard */,
 				EE03A1241A82BE15005BE0DB /* Main.storyboard */,
-				1901B84318FBFBA7002DE52F /* ViewController.h */,
-				1901B84418FBFBA7002DE52F /* ViewController.m */,
 				EE03A1271A82D1ED005BE0DB /* SettingsViewController.h */,
 				EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */,
 				EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */,
 				EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */,
 				EEE02F6B1A896C1100F7901D /* SettingsModelClient.h */,
+				EE4D48E72287527900B99036 /* SpectrumViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +411,7 @@
 				ORGANIZATIONNAME = Random;
 				TargetAttributes = {
 					1901B82718FBFBA7002DE52F = {
+						DevelopmentTeam = VBS9CNK6L3;
 						LastSwiftMigration = 1010;
 					};
 					1901B84B18FBFBA8002DE52F = {
@@ -469,7 +468,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1901B84518FBFBA7002DE52F /* ViewController.m in Sources */,
 				19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */,
 				EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */,
 				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
@@ -486,6 +484,7 @@
 				EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */,
 				19F6690D190AA78B00D2DE77 /* FastFourierTransform.m in Sources */,
 				19F66911190AA78B00D2DE77 /* SampleBuffer.m in Sources */,
+				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
@@ -655,6 +654,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VBS9CNK6L3;
 				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -675,6 +675,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VBS9CNK6L3;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
