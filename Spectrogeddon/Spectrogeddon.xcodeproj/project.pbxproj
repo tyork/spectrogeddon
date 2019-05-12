@@ -42,13 +42,13 @@
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
 		EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE03A1241A82BE15005BE0DB /* Main.storyboard */; };
-		EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */; };
 		EE03A12C1A82D6DC005BE0DB /* SettingsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */; };
 		EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E52287507B00B99036 /* AppDelegate.swift */; };
 		EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E72287527900B99036 /* SpectrumViewController.swift */; };
 		EE59724A1D08D369005EE551 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5972481D08D369005EE551 /* Launch.storyboard */; };
 		EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972501D12EA44005EE551 /* LoggingUtilities.m */; };
 		EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */; };
+		EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -119,8 +119,6 @@
 		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F881923C578001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.vsh; sourceTree = "<group>"; };
 		EE03A1251A82BE15005BE0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EE03A1271A82D1ED005BE0DB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWrapper.h; sourceTree = "<group>"; };
 		EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWrapper.m; sourceTree = "<group>"; };
 		EE4D48E22287506800B99036 /* Spectrogeddon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectrogeddon-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -131,6 +129,7 @@
 		EE5972501D12EA44005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingUtilities.m; sourceTree = "<group>"; };
 		EE624A6D1A721DD600F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
 		EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
+		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModelClient.h; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -247,8 +246,7 @@
 			children = (
 				EE5972481D08D369005EE551 /* Launch.storyboard */,
 				EE03A1241A82BE15005BE0DB /* Main.storyboard */,
-				EE03A1271A82D1ED005BE0DB /* SettingsViewController.h */,
-				EE03A1281A82D1ED005BE0DB /* SettingsViewController.m */,
+				EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */,
 				EE03A12A1A82D6DC005BE0DB /* SettingsWrapper.h */,
 				EE03A12B1A82D6DC005BE0DB /* SettingsWrapper.m */,
 				EEE02F6B1A896C1100F7901D /* SettingsModelClient.h */,
@@ -488,9 +486,9 @@
 				19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
-				EE03A1291A82D1ED005BE0DB /* SettingsViewController.m in Sources */,
 				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */,
+				EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
         <!--Spectrum View Controller-->
         <scene sceneID="Cvx-hB-vhn">
             <objects>
-                <viewController id="BTg-ZL-LpV" customClass="SpectrumViewController" customModule="Spectrogeddon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BTg-ZL-LpV" customClass="SpectrumViewController" customModule="Spectrogeddon" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Apu-iK-8yg"/>
                         <viewControllerLayoutGuide type="bottom" id="8JB-EY-ZHc"/>
@@ -54,7 +54,7 @@
         <!--Settings-->
         <scene sceneID="Buk-xq-4g0">
             <objects>
-                <viewController id="dmJ-YK-hGL" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController id="dmJ-YK-hGL" customClass="SettingsViewController" customModule="Spectrogeddon" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JOd-QT-uGg"/>
                         <viewControllerLayoutGuide type="bottom" id="sdh-NO-Ic3"/>
@@ -70,25 +70,25 @@
                     <toolbarItems>
                         <barButtonItem title="Speed" id="nJV-uM-ndP">
                             <connections>
-                                <action selector="changeScrollingSpeed:" destination="dmJ-YK-hGL" id="2xf-6j-Oo7"/>
+                                <action selector="changeScrollingSpeed" destination="dmJ-YK-hGL" id="qdt-Xr-seB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fSb-n1-EaL"/>
-                        <barButtonItem title="Sharpness" id="O0Y-oS-6tv">
+                        <barButtonItem title="Sharpness" id="O0Y-oS-6tv"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IH1-Zo-aYr">
                             <connections>
-                                <action selector="changeSharpness:" destination="dmJ-YK-hGL" id="bXy-Vg-OjV"/>
+                                <action selector="changeSharpness" destination="dmJ-YK-hGL" id="mzh-pE-5g5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IH1-Zo-aYr"/>
                         <barButtonItem title="Stretch" id="qQv-tz-wyD">
                             <connections>
-                                <action selector="toggleFrequencyStretch:" destination="dmJ-YK-hGL" id="dEt-2o-RMC"/>
+                                <action selector="toggleFrequencyStretch" destination="dmJ-YK-hGL" id="8h5-gb-6G5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bc6-vB-wmC"/>
                         <barButtonItem title="Colors" id="9F5-aw-4bw">
                             <connections>
-                                <action selector="changeColors:" destination="dmJ-YK-hGL" id="Bnd-64-As7"/>
+                                <action selector="changeColors" destination="dmJ-YK-hGL" id="rdF-kD-8b8"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
