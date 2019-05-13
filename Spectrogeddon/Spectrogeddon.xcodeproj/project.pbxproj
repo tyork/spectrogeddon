@@ -37,7 +37,6 @@
 		19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66901190AA78B00D2DE77 /* LinearScrollingRenderer.m */; };
 		19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */; };
 		19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66907190AA78B00D2DE77 /* TimeSequence.m */; };
-		19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */; };
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
@@ -50,6 +49,7 @@
 		EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */; };
 		EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */; };
 		EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */; };
+		EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -113,8 +113,6 @@
 		19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumGenerator.m; sourceTree = "<group>"; };
 		19F66906190AA78B00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSequence.h; sourceTree = "<group>"; };
 		19F66907190AA78B00D2DE77 /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSequence.m; sourceTree = "<group>"; };
-		19F6694E190AB09100D2DE77 /* MobileGLDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileGLDisplay.h; sourceTree = "<group>"; };
-		19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileGLDisplay.m; sourceTree = "<group>"; };
 		19F66957190AB26800D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRenderer.m; sourceTree = "<group>"; };
 		19F66958190AB26800D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
 		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
@@ -130,6 +128,7 @@
 		EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
+		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -354,8 +353,7 @@
 		EEF830BD190AE2A400E8B2F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				19F6694E190AB09100D2DE77 /* MobileGLDisplay.h */,
-				19F6694F190AB09100D2DE77 /* MobileGLDisplay.m */,
+				EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -466,12 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */,
+				EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */,
 				EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */,
 				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
 				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
 				19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */,
-				19F66950190AB09100D2DE77 /* MobileGLDisplay.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
 				19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */,
 				EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */,
