@@ -16,7 +16,6 @@
 		1901B84F18FBFBA8002DE52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82B18FBFBA7002DE52F /* Foundation.framework */; };
 		1901B85018FBFBA8002DE52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1901B82F18FBFBA7002DE52F /* UIKit.framework */; };
 		1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1901B85618FBFBA8002DE52F /* InfoPlist.strings */; };
-		1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */; };
 		194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F1191B878400FC152F /* DisplaySettings.m */; };
 		194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F8191B9D4600FC152F /* ColorMap.m */; };
 		19541FAE18FC343300BC94BF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19541FAD18FC343300BC94BF /* Accelerate.framework */; };
@@ -50,6 +49,7 @@
 		EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */; };
 		EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */; };
 		EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */; };
+		EE89046C228A05B000E1E0D5 /* SpectrogeddonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +75,6 @@
 		1901B84D18FBFBA8002DE52F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonTests-Info.plist"; sourceTree = "<group>"; };
 		1901B85718FBFBA8002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonTests.m; sourceTree = "<group>"; };
 		194EA9F1191B878400FC152F /* DisplaySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySettings.m; sourceTree = "<group>"; };
 		194EA9F2191B878400FC152F /* DisplaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySettings.h; sourceTree = "<group>"; };
 		194EA9F7191B9D4600FC152F /* ColorMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMap.h; sourceTree = "<group>"; };
@@ -129,6 +128,8 @@
 		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
 		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
+		EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrogeddonTests.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -225,8 +226,9 @@
 		1901B85318FBFBA8002DE52F /* SpectrogeddonTests */ = {
 			isa = PBXGroup;
 			children = (
-				1901B85918FBFBA8002DE52F /* SpectrogeddonTests.m */,
+				EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */,
 				1901B85418FBFBA8002DE52F /* Supporting Files */,
+				EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */,
 			);
 			path = SpectrogeddonTests;
 			sourceTree = "<group>";
@@ -410,6 +412,7 @@
 						LastSwiftMigration = 1010;
 					};
 					1901B84B18FBFBA8002DE52F = {
+						LastSwiftMigration = 1020;
 						TestTargetID = 1901B82718FBFBA7002DE52F;
 					};
 				};
@@ -494,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1901B85A18FBFBA8002DE52F /* SpectrogeddonTests.m in Sources */,
+				EE89046C228A05B000E1E0D5 /* SpectrogeddonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +663,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectrogeddon/Spectrogeddon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -681,7 +684,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectrogeddon/Spectrogeddon-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -691,18 +694,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpectrogeddonTests/SpectrogeddonTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -713,14 +716,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpectrogeddonTests/SpectrogeddonTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

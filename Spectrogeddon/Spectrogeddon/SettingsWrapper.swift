@@ -99,7 +99,7 @@ extension Array where Element: Equatable {
         }
         
         let nextValue: Element
-        if let currentIndex = index(of: element) {
+        if let currentIndex = lastIndex(of: element) {
             let nextIndex = (currentIndex + 1) % count
             nextValue = self[nextIndex]
         } else {
