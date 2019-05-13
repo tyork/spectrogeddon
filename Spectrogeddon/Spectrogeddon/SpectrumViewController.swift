@@ -36,9 +36,11 @@ class SpectrumViewController: UIViewController {
 
         spectrumGenerator.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(pause), name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(resume), name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeSettings), name: NSNotification.Name.spectroSettingsDidChange, object: nil)
+        let nc = NotificationCenter.default
+        
+        nc.addObserver(self, selector: #selector(pause), name: UIApplication.willResignActiveNotification, object: nil)
+        nc.addObserver(self, selector: #selector(resume), name: UIApplication.didBecomeActiveNotification, object: nil)
+        nc.addObserver(self, selector: #selector(didChangeSettings), name: .spectroSettingsDidUpdate, object: nil)
     }
     
     deinit {
@@ -108,11 +110,11 @@ class SpectrumViewController: UIViewController {
 
             let vc = segue.destination
             vc.modalPresentationCapturesStatusBarAppearance = true
-            if let client = vc as? SettingsModelClient {
+            if var client = vc as? SettingsModelClient {
                 client.settingsModel = settingsModel
             } else {
                 for child in vc.children {
-                    if let client = child as? SettingsModelClient {
+                    if var client = child as? SettingsModelClient {
                         client.settingsModel = settingsModel
                     }
                 }
