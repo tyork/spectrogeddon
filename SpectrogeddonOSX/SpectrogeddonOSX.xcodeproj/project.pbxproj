@@ -37,12 +37,12 @@
 		19F6694D190AA92300D2DE77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694C190AA92300D2DE77 /* QuartzCore.framework */; };
 		19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66954190AB25F00D2DE77 /* GLRenderer.m */; };
 		19F6695E190ABB8000D2DE77 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6695D190ABB8000D2DE77 /* CoreVideo.framework */; };
-		19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */; };
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
 		EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972531D12EABB005EE551 /* LoggingUtilities.m */; };
 		EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A731A721E4800F4A232 /* NSArray+Functional.m */; };
 		EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */; };
+		EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -111,8 +111,6 @@
 		19F66954190AB25F00D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLRenderer.m; path = ../../CommonCode/GLRenderer.m; sourceTree = "<group>"; };
 		19F66955190AB25F00D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLRenderer.h; path = ../../CommonCode/GLRenderer.h; sourceTree = "<group>"; };
 		19F6695D190ABB8000D2DE77 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		19F6695F190AC30400D2DE77 /* DesktopOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesktopOpenGLView.h; sourceTree = "<group>"; };
-		19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesktopOpenGLView.m; sourceTree = "<group>"; };
 		19F73F831923C415001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.fsh; path = ../../CommonCode/TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
 		EE5972521D12EABB005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoggingUtilities.h; path = ../../CommonCode/LoggingUtilities.h; sourceTree = "<group>"; };
@@ -121,6 +119,7 @@
 		EE624A731A721E4800F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Functional.m"; path = "../../CommonCode/NSArray+Functional.m"; sourceTree = "<group>"; };
 		EE89046D228A06EA00E1E0D5 /* SpectrogeddonOSX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonOSX-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopOpenGLView.swift; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -337,8 +336,7 @@
 		EEF830B4190AE20F00E8B2F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				19F6695F190AC30400D2DE77 /* DesktopOpenGLView.h */,
-				19F66960190AC30400D2DE77 /* DesktopOpenGLView.m */,
+				EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -457,6 +455,7 @@
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
+				EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */,
 				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
 				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
@@ -466,7 +465,6 @@
 				194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */,
 				19F6693C190AA86C00D2DE77 /* LinearScrollingRenderer.m in Sources */,
 				194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */,
-				19F66961190AC30400D2DE77 /* DesktopOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -155,7 +155,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <openGLView colorSize="5bit_RGB_8bit_Alpha" useAuxiliaryDepthBufferStencil="NO" useDoubleBufferingEnabled="YES" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-ZW-lve" customClass="DesktopOpenGLView">
+                    <openGLView wantsLayer="YES" colorSize="5bit_RGB_8bit_Alpha" useAuxiliaryDepthBufferStencil="NO" useDoubleBufferingEnabled="YES" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXy-ZW-lve" customClass="DesktopOpenGLView" customModule="SpectrogeddonOSX">
                         <rect key="frame" x="0.0" y="0.0" width="512" height="327"/>
                     </openGLView>
                 </subviews>

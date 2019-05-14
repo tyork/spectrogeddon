@@ -140,8 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let current = settingsStore.displaySettings().scrollingDirectionIndex
         
-        let names = glView.namesForSupportedScrollingDirections() as [String]
-        for (index, name) in names.enumerated() {
+        for (index, name) in glView.namesForScrollingDirections.enumerated() {
             let charCode: String = name.prefix(1).lowercased()
             let item = NSMenuItem(title: name, action: #selector(didPickScrollDirection(_:)), keyEquivalent: charCode)
             item.state = (current == index) ? .on : .off
