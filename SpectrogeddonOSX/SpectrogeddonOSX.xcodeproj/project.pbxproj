@@ -76,7 +76,6 @@
 		19F6688D190AA3AF00D2DE77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19F66890190AA3AF00D2DE77 /* SpectrogeddonOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonOSX-Info.plist"; sourceTree = "<group>"; };
 		19F66892190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		19F66896190AA3AF00D2DE77 /* SpectrogeddonOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonOSX-Prefix.pch"; sourceTree = "<group>"; };
 		19F66898190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		19F6689E190AA3AF00D2DE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		19F668A0190AA3AF00D2DE77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -238,7 +237,6 @@
 				EE89046D228A06EA00E1E0D5 /* SpectrogeddonOSX-Bridging-Header.h */,
 				19F66890190AA3AF00D2DE77 /* SpectrogeddonOSX-Info.plist */,
 				19F66891190AA3AF00D2DE77 /* InfoPlist.strings */,
-				19F66896190AA3AF00D2DE77 /* SpectrogeddonOSX-Prefix.pch */,
 				19F66897190AA3AF00D2DE77 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
