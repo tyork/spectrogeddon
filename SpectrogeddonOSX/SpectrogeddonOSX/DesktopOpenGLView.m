@@ -37,6 +37,7 @@
 
 - (void)prepareOpenGL
 {
+    [super prepareOpenGL];
     // Ensure we sync buffer swapping
     const GLint swapInterval = 1;
     [self.openGLContext setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
