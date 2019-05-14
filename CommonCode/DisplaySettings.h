@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSUInteger scrollingDirectionIndex;
 @property (nonatomic) BOOL useLogFrequencyScale;
 @property (nonatomic,strong,nullable) ColorMap* colorMap;
-@property (nonatomic,copy) NSString* preferredAudioSourceId;
+@property (nonatomic,copy,nullable) NSString* preferredAudioSourceId;
 
 @end
 
