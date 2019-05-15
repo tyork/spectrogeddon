@@ -3,10 +3,13 @@
 //
 
 // Common
-#import "SpectrumGenerator.h"
 #import "DisplaySettings.h"
 #import "TimeSequence.h"
 #import "SettingsStore.h"
 #import "ColorMapSet.h"
 #import "ColorMap.h"
 #import "GLRenderer.h"
+
+// Internal only
+#import "AudioSource.h"
+#import "FastFourierTransform.h"

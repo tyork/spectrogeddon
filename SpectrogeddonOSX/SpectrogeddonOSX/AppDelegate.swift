@@ -74,13 +74,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if settingsStore.displaySettings().preferredAudioSourceId == nil {
             settingsStore.applyUpdate { settings in
-                settings.preferredAudioSourceId = SpectrumGenerator.availableSources().values.first
+                settings.preferredAudioSourceId = SpectrumGenerator.availableSources.values.first
                 return settings
             }
         }
         
         glView.use(settingsStore.displaySettings())
-        spectrumGenerator.use(settingsStore.displaySettings())
+        spectrumGenerator.useSettings(settingsStore.displaySettings())
     }
 
     private func updateAllMenus() {
@@ -94,12 +94,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func pause() {
         glView.pauseRendering()
-        spectrumGenerator.stopGenerating()
+        spectrumGenerator.stop()
     }
 
     private func resume() {
         glView.resumeRendering()
-        spectrumGenerator.startGenerating()
+        spectrumGenerator.start()
     }
     
     // Menu updates
@@ -123,7 +123,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateSourceMenu() {
         sourceMenu.removeAllItems()
         
-        let availableSources = SpectrumGenerator.availableSources()
+        let availableSources = SpectrumGenerator.availableSources
         
         let currentSourceId = settingsStore.displaySettings().preferredAudioSourceId
         
@@ -224,7 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.sharpness = sharpness
             return settings
         }
-        spectrumGenerator.use(settingsStore.displaySettings())
+        spectrumGenerator.useSettings(settingsStore.displaySettings())
         updateSharpnessMenu()
     }
     
@@ -237,14 +237,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.preferredAudioSourceId = sourceID
             return settings
         }
-        spectrumGenerator.use(settingsStore.displaySettings())
+        spectrumGenerator.useSettings(settingsStore.displaySettings())
         updateSourceMenu()
     }
 }
 
 extension AppDelegate: SpectrumGeneratorDelegate {
     
-    func spectrumGenerator(_ generator: SpectrumGenerator, didGenerateSpectrums spectrumsPerChannel: [TimeSequence]) {
+    func spectrumGenerator(_ generator: SpectrumGenerator, didGenerate spectrumsPerChannel: [TimeSequence]) {
         glView.addMeasurements(toDisplayQueue: spectrumsPerChannel)
     }
 }

@@ -34,7 +34,6 @@
 		19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FD190AA78B00D2DE77 /* RendererUtils.m */; };
 		19F66911190AA78B00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FF190AA78B00D2DE77 /* SampleBuffer.m */; };
 		19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66901190AA78B00D2DE77 /* LinearScrollingRenderer.m */; };
-		19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */; };
 		19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66907190AA78B00D2DE77 /* TimeSequence.m */; };
 		19F66959190AB26800D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66957190AB26800D2DE77 /* GLRenderer.m */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
@@ -50,6 +49,7 @@
 		EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */; };
 		EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */; };
 		EE89046C228A05B000E1E0D5 /* SpectrogeddonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */; };
+		EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -108,8 +108,6 @@
 		19F668FF190AA78B00D2DE77 /* SampleBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleBuffer.m; sourceTree = "<group>"; };
 		19F66900190AA78B00D2DE77 /* LinearScrollingRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearScrollingRenderer.h; sourceTree = "<group>"; };
 		19F66901190AA78B00D2DE77 /* LinearScrollingRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearScrollingRenderer.m; sourceTree = "<group>"; };
-		19F66904190AA78B00D2DE77 /* SpectrumGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectrumGenerator.h; sourceTree = "<group>"; };
-		19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumGenerator.m; sourceTree = "<group>"; };
 		19F66906190AA78B00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSequence.h; sourceTree = "<group>"; };
 		19F66907190AA78B00D2DE77 /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSequence.m; sourceTree = "<group>"; };
 		19F66957190AB26800D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRenderer.m; sourceTree = "<group>"; };
@@ -130,6 +128,7 @@
 		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
 		EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrogeddonTests.swift; sourceTree = "<group>"; };
+		EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumGenerator.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -296,8 +295,7 @@
 			children = (
 				19F668F5190AA78B00D2DE77 /* FastFourierTransform.h */,
 				19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */,
-				19F66904190AA78B00D2DE77 /* SpectrumGenerator.h */,
-				19F66905190AA78B00D2DE77 /* SpectrumGenerator.m */,
+				EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */,
 				19F66906190AA78B00D2DE77 /* TimeSequence.h */,
 				19F66907190AA78B00D2DE77 /* TimeSequence.m */,
 			);
@@ -474,7 +472,6 @@
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
 				19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */,
 				19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */,
-				19F66915190AA78B00D2DE77 /* SpectrumGenerator.m in Sources */,
 				EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */,
 				19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */,
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
@@ -489,6 +486,7 @@
 				EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */,
 				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */,
+				EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */,
 				EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,20 +49,20 @@ class SpectrumViewController: UIViewController {
     
     @objc
     func pause() {
-        spectrumGenerator.stopGenerating()
+        spectrumGenerator.stop()
         displayLink?.isPaused = true
     }
     
     @objc
     func resume() {
-        spectrumGenerator.startGenerating()
+        spectrumGenerator.start()
         displayLink?.isPaused = false
     }
     
     @objc
     func didChangeSettings() {
         renderer.use(settingsModel.displaySettings)
-        spectrumGenerator.use(settingsModel.displaySettings)
+        spectrumGenerator.useSettings(settingsModel.displaySettings)
     }
 
     @objc
@@ -126,7 +126,7 @@ class SpectrumViewController: UIViewController {
 
 extension SpectrumViewController: SpectrumGeneratorDelegate {
     
-    func spectrumGenerator(_ generator: SpectrumGenerator, didGenerateSpectrums spectrumsPerChannel: [TimeSequence]) {
+    func spectrumGenerator(_ generator: SpectrumGenerator, didGenerate spectrumsPerChannel: [TimeSequence]) {
 
         if let channel = spectrumsPerChannel.first {
             renderer.addMeasurement(toDisplayQueue: channel)
