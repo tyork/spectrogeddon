@@ -12,4 +12,3 @@
 
 // Internal only
 #import "AudioSource.h"
-#import "FastFourierTransform.h"

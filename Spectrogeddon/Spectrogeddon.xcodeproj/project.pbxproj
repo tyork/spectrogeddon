@@ -30,7 +30,6 @@
 		19F66908190AA78B00D2DE77 /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668EE190AA78B00D2DE77 /* AudioSource.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
 		19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */; };
-		19F6690D190AA78B00D2DE77 /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */; };
 		19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FD190AA78B00D2DE77 /* RendererUtils.m */; };
 		19F66911190AA78B00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FF190AA78B00D2DE77 /* SampleBuffer.m */; };
 		19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66901190AA78B00D2DE77 /* LinearScrollingRenderer.m */; };
@@ -50,6 +49,7 @@
 		EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */; };
 		EE89046C228A05B000E1E0D5 /* SpectrogeddonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */; };
 		EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */; };
+		EE890479228BF6F000E1E0D5 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890478228BF6F000E1E0D5 /* FastFourierTransform.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +99,6 @@
 		19F668F0190AA78B00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapSet.m; sourceTree = "<group>"; };
 		19F668F1190AA78B00D2DE77 /* ColumnRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnRenderer.h; sourceTree = "<group>"; };
 		19F668F2190AA78B00D2DE77 /* ColumnRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnRenderer.m; sourceTree = "<group>"; };
-		19F668F5190AA78B00D2DE77 /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastFourierTransform.h; sourceTree = "<group>"; };
-		19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastFourierTransform.m; sourceTree = "<group>"; };
 		19F668FB190AA78B00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererDefs.h; sourceTree = "<group>"; };
 		19F668FC190AA78B00D2DE77 /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererUtils.h; sourceTree = "<group>"; };
 		19F668FD190AA78B00D2DE77 /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RendererUtils.m; sourceTree = "<group>"; };
@@ -129,6 +127,7 @@
 		EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrogeddonTests.swift; sourceTree = "<group>"; };
 		EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumGenerator.swift; sourceTree = "<group>"; };
+		EE890478228BF6F000E1E0D5 /* FastFourierTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastFourierTransform.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -293,8 +292,7 @@
 		19F668E7190AA61D00D2DE77 /* AudioProcessing */ = {
 			isa = PBXGroup;
 			children = (
-				19F668F5190AA78B00D2DE77 /* FastFourierTransform.h */,
-				19F668F6190AA78B00D2DE77 /* FastFourierTransform.m */,
+				EE890478228BF6F000E1E0D5 /* FastFourierTransform.swift */,
 				EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */,
 				19F66906190AA78B00D2DE77 /* TimeSequence.h */,
 				19F66907190AA78B00D2DE77 /* TimeSequence.m */,
@@ -477,7 +475,6 @@
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
 				EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */,
 				EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */,
-				19F6690D190AA78B00D2DE77 /* FastFourierTransform.m in Sources */,
 				19F66911190AA78B00D2DE77 /* SampleBuffer.m in Sources */,
 				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				19F6690A190AA78B00D2DE77 /* ColumnRenderer.m in Sources */,
@@ -486,6 +483,7 @@
 				EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */,
 				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66912190AA78B00D2DE77 /* LinearScrollingRenderer.m in Sources */,
+				EE890479228BF6F000E1E0D5 /* FastFourierTransform.swift in Sources */,
 				EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */,
 				EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */,
 			);

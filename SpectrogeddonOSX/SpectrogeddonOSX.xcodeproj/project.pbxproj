@@ -24,11 +24,9 @@
 		19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66918190AA86C00D2DE77 /* AudioSource.m */; };
 		19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6691A190AA86C00D2DE77 /* ColorMapSet.m */; };
 		19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */; };
-		19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66920190AA86C00D2DE77 /* FastFourierTransform.m */; };
 		19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66927190AA86C00D2DE77 /* RendererUtils.m */; };
 		19F6693B190AA86C00D2DE77 /* SampleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66929190AA86C00D2DE77 /* SampleBuffer.m */; };
 		19F6693C190AA86C00D2DE77 /* LinearScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6692B190AA86C00D2DE77 /* LinearScrollingRenderer.m */; };
-		19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66931190AA86C00D2DE77 /* TimeSequence.m */; };
 		19F66945190AA8C400D2DE77 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19F66944190AA8C400D2DE77 /* ColorMaps */; };
 		19F66948190AA90000D2DE77 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66946190AA90000D2DE77 /* GLKit.framework */; };
 		19F66949190AA90000D2DE77 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66947190AA90000D2DE77 /* OpenGL.framework */; };
@@ -43,6 +41,8 @@
 		EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */; };
 		EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */; };
 		EE890475228BF65C00E1E0D5 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */; };
+		EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66931190AA86C00D2DE77 /* TimeSequence.m */; };
+		EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -90,8 +90,6 @@
 		19F6691A190AA86C00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorMapSet.m; path = ../../CommonCode/ColorMapSet.m; sourceTree = "<group>"; };
 		19F6691B190AA86C00D2DE77 /* ColumnRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColumnRenderer.h; path = ../../CommonCode/ColumnRenderer.h; sourceTree = "<group>"; };
 		19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColumnRenderer.m; path = ../../CommonCode/ColumnRenderer.m; sourceTree = "<group>"; };
-		19F6691F190AA86C00D2DE77 /* FastFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastFourierTransform.h; path = ../../CommonCode/FastFourierTransform.h; sourceTree = "<group>"; };
-		19F66920190AA86C00D2DE77 /* FastFourierTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastFourierTransform.m; path = ../../CommonCode/FastFourierTransform.m; sourceTree = "<group>"; };
 		19F66925190AA86C00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererDefs.h; path = ../../CommonCode/RendererDefs.h; sourceTree = "<group>"; };
 		19F66926190AA86C00D2DE77 /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererUtils.h; path = ../../CommonCode/RendererUtils.h; sourceTree = "<group>"; };
 		19F66927190AA86C00D2DE77 /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RendererUtils.m; path = ../../CommonCode/RendererUtils.m; sourceTree = "<group>"; };
@@ -119,6 +117,7 @@
 		EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopOpenGLView.swift; sourceTree = "<group>"; };
 		EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpectrumGenerator.swift; path = ../../CommonCode/SpectrumGenerator.swift; sourceTree = "<group>"; };
+		EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastFourierTransform.swift; path = ../../CommonCode/FastFourierTransform.swift; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,8 +284,7 @@
 		19F66942190AA88300D2DE77 /* AudioProcessing */ = {
 			isa = PBXGroup;
 			children = (
-				19F6691F190AA86C00D2DE77 /* FastFourierTransform.h */,
-				19F66920190AA86C00D2DE77 /* FastFourierTransform.m */,
+				EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */,
 				EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */,
 				19F66930190AA86C00D2DE77 /* TimeSequence.h */,
 				19F66931190AA86C00D2DE77 /* TimeSequence.m */,
@@ -450,14 +448,14 @@
 				19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */,
 				EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */,
 				EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */,
-				19F66937190AA86C00D2DE77 /* FastFourierTransform.m in Sources */,
+				EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */,
 				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
+				EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */,
 				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
-				19F66940190AA86C00D2DE77 /* TimeSequence.m in Sources */,
 				19CEAC6219221D3A00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				19F66932190AA86C00D2DE77 /* AudioSource.m in Sources */,
 				194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */,
