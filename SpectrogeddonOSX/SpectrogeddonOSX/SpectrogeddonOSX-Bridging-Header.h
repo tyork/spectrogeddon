@@ -9,6 +9,3 @@
 #import "ColorMapSet.h"
 #import "ColorMap.h"
 #import "GLRenderer.h"
-
-// Internal only
-#import "AudioSource.h"

@@ -18,7 +18,7 @@ public class SpectrumGenerator {
     public typealias SourceID = String
     
     public static var availableSources: [SourceName: SourceID] {
-        return AudioSource.availableAudioSources()
+        return AudioSource.availableAudioSources
     }
 
     public weak var delegate: SpectrumGeneratorDelegate?
@@ -27,10 +27,10 @@ public class SpectrumGenerator {
     private let queue: DispatchQueue
     private var audioSource: AudioSource! // TODO: change API of AudioSource so we don't need force unwrapped
 
-    init() {
+    init() throws {
         transformer = FastFourierTransform()
         queue = DispatchQueue(label: "fft", qos: .default)
-        audioSource = AudioSource(notificationQueue: queue) { [weak self] channels in
+        audioSource = try AudioSource(notificationQueue: queue) { [weak self] channels in
             
             guard let strongSelf = self else {
                 return
@@ -57,7 +57,7 @@ public class SpectrumGenerator {
     public func useSettings(_ settings: DisplaySettings) {
         
         if let sourceId = settings.preferredAudioSourceId, SpectrumGenerator.availableSources.values.contains(sourceId) {
-            audioSource.preferredAudioSourceID = sourceId
+            audioSource.preferredAudioSourceId = sourceId
         }
         audioSource.bufferSizeDivider = settings.sharpness
     }

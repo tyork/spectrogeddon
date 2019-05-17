@@ -14,7 +14,7 @@ class SpectrumViewController: UIViewController {
     private var spectrumView: GLKView!
     private var displayLink: CADisplayLink!
 
-    private var spectrumGenerator: SpectrumGenerator = SpectrumGenerator()
+    private var spectrumGenerator: SpectrumGenerator = try! SpectrumGenerator() // TODO:
     private var renderer: MobileGLDisplay = MobileGLDisplay()
     private let settingsModel: SettingsWrapper = SettingsWrapper()
 

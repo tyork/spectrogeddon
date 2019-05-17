@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         self.colorMaps = ColorMapSet()
         self.settingsStore = SettingsStore()
-        self.spectrumGenerator = SpectrumGenerator()
+        self.spectrumGenerator = try! SpectrumGenerator()// TODO:
 
         super.init()
 
