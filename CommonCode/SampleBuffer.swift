@@ -9,6 +9,12 @@
 import Foundation
 import Accelerate
 
+enum SampleFormat {
+    case normedFloat32
+    case unnormedInt16
+    case unsupported
+}
+
 /// Stores raw samples so as to retain the newest ones when overfilled.
 /// Allows easy retrieval of samples as a time sequence.
 class SampleBuffer {

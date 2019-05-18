@@ -216,15 +216,17 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
             CMBlockBufferGetDataPointer(audioBlockBuffer, atOffset: offset, lengthAtOffsetOut: &lengthAtOffset, totalLengthOut: &totalLength, dataPointerOut: &rawSamplesOrNil)
 
             guard let rawSamples = rawSamplesOrNil else {
-                break
+                continue
             }
             
             if isNormalizedFloat {
-                let asFloats = UnsafeRawPointer(rawSamples).bindMemory(to: Float.self, capacity: numberOfSamples)
-                channelBuffers[activeChannel].writeSamples(asFloats, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
+                rawSamples.withMemoryRebound(to: Float.self, capacity: numberOfSamples) { asFloats in
+                    channelBuffers[activeChannel].writeSamples(asFloats, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
+              }
             } else {
-                let asWords = UnsafeRawPointer(rawSamples).bindMemory(to: Int16.self, capacity: numberOfSamples)
-                channelBuffers[activeChannel].writeSamples(asWords, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
+                rawSamples.withMemoryRebound(to: Int16.self, capacity: numberOfSamples) { asWords in
+                    channelBuffers[activeChannel].writeSamples(asWords, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
+                }
             }
             offset += lengthAtOffset;
             activeChannel += 1
