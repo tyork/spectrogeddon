@@ -12,7 +12,7 @@ import Foundation
 class DesktopOpenGLView: NSOpenGLView {
     
     var namesForScrollingDirections: [String] {
-        return renderer.namesForScrollingDirections()
+        return renderer.namesForScrollingDirections
     }
     
     private var displayTimer: Timer?
@@ -25,7 +25,7 @@ class DesktopOpenGLView: NSOpenGLView {
     func addMeasurements(toDisplayQueue spectrums: [TimeSequence]) {
         
         execute(flushingBuffer: false) {
-            renderer.addMeasurements(forDisplay: spectrums)
+            renderer.addMeasurements(spectrums)
         }
     }
 

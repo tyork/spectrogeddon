@@ -30,7 +30,6 @@
 		19F66949190AA90000D2DE77 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66947190AA90000D2DE77 /* OpenGL.framework */; };
 		19F6694B190AA91000D2DE77 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694A190AA91000D2DE77 /* AVFoundation.framework */; };
 		19F6694D190AA92300D2DE77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6694C190AA92300D2DE77 /* QuartzCore.framework */; };
-		19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66954190AB25F00D2DE77 /* GLRenderer.m */; };
 		19F6695E190ABB8000D2DE77 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6695D190ABB8000D2DE77 /* CoreVideo.framework */; };
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
@@ -43,6 +42,7 @@
 		EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */; };
 		EE890480228E084F00E1E0D5 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89047F228E084E00E1E0D5 /* AudioSource.swift */; };
 		EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890483228F48A400E1E0D5 /* SampleBuffer.swift */; };
+		EE8904882290AA7F00E1E0D5 /* GLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904872290AA7F00E1E0D5 /* GLRenderer.swift */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -100,8 +100,6 @@
 		19F66947190AA90000D2DE77 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		19F6694A190AA91000D2DE77 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19F6694C190AA92300D2DE77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		19F66954190AB25F00D2DE77 /* GLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLRenderer.m; path = ../../CommonCode/GLRenderer.m; sourceTree = "<group>"; };
-		19F66955190AB25F00D2DE77 /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLRenderer.h; path = ../../CommonCode/GLRenderer.h; sourceTree = "<group>"; };
 		19F6695D190ABB8000D2DE77 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		19F73F831923C415001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.fsh; path = ../../CommonCode/TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
@@ -116,6 +114,7 @@
 		EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastFourierTransform.swift; path = ../../CommonCode/FastFourierTransform.swift; sourceTree = "<group>"; };
 		EE89047F228E084E00E1E0D5 /* AudioSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioSource.swift; path = ../../CommonCode/AudioSource.swift; sourceTree = "<group>"; };
 		EE890483228F48A400E1E0D5 /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleBuffer.swift; path = ../../CommonCode/SampleBuffer.swift; sourceTree = "<group>"; };
+		EE8904872290AA7F00E1E0D5 /* GLRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GLRenderer.swift; path = ../../CommonCode/GLRenderer.swift; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,8 +294,8 @@
 				194EA9F5191B9D3900FC152F /* ColorMap.m */,
 				19F6691B190AA86C00D2DE77 /* ColumnRenderer.h */,
 				19F6691C190AA86C00D2DE77 /* ColumnRenderer.m */,
-				19F66955190AB25F00D2DE77 /* GLRenderer.h */,
-				19F66954190AB25F00D2DE77 /* GLRenderer.m */,
+				EE8904872290AA7F00E1E0D5 /* GLRenderer.swift */,
+				19CEAC5B1922009700AEA0AA /* ScrollingRenderer.h */,
 				19F6692A190AA86C00D2DE77 /* LinearScrollingRenderer.h */,
 				19F6692B190AA86C00D2DE77 /* LinearScrollingRenderer.m */,
 				19CEAC6019221D3A00AEA0AA /* RadialScrollingRenderer.h */,
@@ -307,7 +306,6 @@
 				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
 				19CEAC5419212CCD00AEA0AA /* RenderTexture.h */,
 				19CEAC5519212CCD00AEA0AA /* RenderTexture.m */,
-				19CEAC5B1922009700AEA0AA /* ScrollingRenderer.h */,
 				EEF7FE9619251F7A003241DF /* ShadedMesh.h */,
 				EEF7FE9519251F7A003241DF /* ShadedMesh.m */,
 			);
@@ -444,11 +442,11 @@
 				EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */,
 				EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */,
 				EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */,
-				19F66956190AB25F00D2DE77 /* GLRenderer.m in Sources */,
 				EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */,
 				19F66934190AA86C00D2DE77 /* ColumnRenderer.m in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */,
+				EE8904882290AA7F00E1E0D5 /* GLRenderer.swift in Sources */,
 				EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */,
 				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,

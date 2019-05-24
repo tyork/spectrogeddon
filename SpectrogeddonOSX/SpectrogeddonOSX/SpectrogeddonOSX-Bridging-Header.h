@@ -8,4 +8,10 @@
 #import "SettingsStore.h"
 #import "ColorMapSet.h"
 #import "ColorMap.h"
-#import "GLRenderer.h"
+
+// Internal only
+#import "RendererTypes.h"
+#import "ColumnRenderer.h"
+#import "ScrollingRenderer.h"
+#import "LinearScrollingRenderer.h"
+#import "RenderTexture.h"

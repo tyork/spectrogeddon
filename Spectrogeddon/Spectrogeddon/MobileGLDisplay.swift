@@ -45,7 +45,7 @@ class MobileGLDisplay: NSObject {
     }
     
     func addMeasurement(toDisplayQueue timeSequence: TimeSequence) {
-        renderer.addMeasurements(forDisplay: [timeSequence])
+        renderer.addMeasurements([timeSequence])
     }
 }
 
