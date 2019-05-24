@@ -10,7 +10,6 @@
 		194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9EE191B876E00FC152F /* DisplaySettings.m */; };
 		194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9F5191B9D3900FC152F /* ColorMap.m */; };
 		194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 194EA9FC191BA2B200FC152F /* SettingsStore.m */; };
-		19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC5519212CCD00AEA0AA /* RenderTexture.m */; };
 		19F66889190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
 		19F66893190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F66891190AA3AF00D2DE77 /* InfoPlist.strings */; };
 		19F66899190AA3AF00D2DE77 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 19F66897190AA3AF00D2DE77 /* Credits.rtf */; };
@@ -44,6 +43,7 @@
 		EE89048E2298883900E1E0D5 /* LinearScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */; };
 		EE89049622988F8700E1E0D5 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */; };
 		EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */; };
+		EE8904A022989C0300E1E0D5 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049F22989C0300E1E0D5 /* RenderTexture.swift */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +65,6 @@
 		194EA9FB191BA2B200FC152F /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsStore.h; path = ../../CommonCode/SettingsStore.h; sourceTree = "<group>"; };
 		194EA9FC191BA2B200FC152F /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsStore.m; path = ../../CommonCode/SettingsStore.m; sourceTree = "<group>"; };
 		19BEF367191119FF0013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererTypes.h; path = ../../CommonCode/RendererTypes.h; sourceTree = "<group>"; };
-		19CEAC5419212CCD00AEA0AA /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderTexture.h; path = ../../CommonCode/RenderTexture.h; sourceTree = "<group>"; };
-		19CEAC5519212CCD00AEA0AA /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderTexture.m; path = ../../CommonCode/RenderTexture.m; sourceTree = "<group>"; };
 		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		19F6688B190AA3AF00D2DE77 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +111,7 @@
 		EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinearScrollingRenderer.swift; path = ../../CommonCode/LinearScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RadialScrollingRenderer.swift; path = ../../CommonCode/RadialScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollingRenderer.swift; path = ../../CommonCode/ScrollingRenderer.swift; sourceTree = "<group>"; };
+		EE89049F22989C0300E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderTexture.swift; path = ../../CommonCode/RenderTexture.swift; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,8 +298,7 @@
 				19BEF367191119FF0013DD0A /* RendererTypes.h */,
 				19F66926190AA86C00D2DE77 /* RendererUtils.h */,
 				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
-				19CEAC5419212CCD00AEA0AA /* RenderTexture.h */,
-				19CEAC5519212CCD00AEA0AA /* RenderTexture.m */,
+				EE89049F22989C0300E1E0D5 /* RenderTexture.swift */,
 				EEF7FE9619251F7A003241DF /* ShadedMesh.h */,
 				EEF7FE9519251F7A003241DF /* ShadedMesh.m */,
 			);
@@ -439,6 +437,7 @@
 				EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */,
 				EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */,
 				EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */,
+				EE8904A022989C0300E1E0D5 /* RenderTexture.swift in Sources */,
 				EE89048E2298883900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				EE89049622988F8700E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
@@ -446,7 +445,6 @@
 				EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */,
 				EE8904882290AA7F00E1E0D5 /* GLRenderer.swift in Sources */,
 				EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */,
-				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,
 				194EA9FD191BA2B200FC152F /* SettingsStore.m in Sources */,
 				194EA9F0191B876E00FC152F /* DisplaySettings.m in Sources */,
 				194EA9F6191B9D3900FC152F /* ColorMap.m in Sources */,

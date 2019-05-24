@@ -11,5 +11,4 @@
 
 // Internal only
 #import "RendererTypes.h"
-#import "RenderTexture.h"
 #import "ShadedMesh.h"
