@@ -139,7 +139,7 @@ class GLRenderer {
         }
         lastDuration = timeSequence.duration
         let width = widthFromTimeInterval(timeSequence.duration + timeSequence.timeStamp - lastRenderedSampleTime)
-        renderer.updateVertices(for: timeSequence, offset:(2 * baseOffset - 1), width:width)
+        renderer.updateVertices(timeSequence: timeSequence, offset: (2 * baseOffset - 1), width: width)
     }
     
     private func widthFromTimeInterval(_ timeInterval: TimeInterval) -> Float {
