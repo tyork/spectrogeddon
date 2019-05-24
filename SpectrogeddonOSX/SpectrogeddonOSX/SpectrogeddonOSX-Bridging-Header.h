@@ -12,6 +12,5 @@
 // Internal only
 #import "RendererTypes.h"
 #import "ScrollingRenderer.h"
-#import "LinearScrollingRenderer.h"
 #import "RenderTexture.h"
 #import "ShadedMesh.h"
