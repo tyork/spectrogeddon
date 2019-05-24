@@ -26,7 +26,6 @@
 		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
 		19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC51191BADDA00AEA0AA /* SettingsStore.m */; };
 		19CEAC5A19212F7900AEA0AA /* RenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC5819212F7900AEA0AA /* RenderTexture.m */; };
-		19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC67192275CD00AEA0AA /* RadialScrollingRenderer.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
 		19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FD190AA78B00D2DE77 /* RendererUtils.m */; };
 		19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66907190AA78B00D2DE77 /* TimeSequence.m */; };
@@ -50,6 +49,7 @@
 		EE89048A2298741700E1E0D5 /* GLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904892298741700E1E0D5 /* GLRenderer.swift */; };
 		EE89049022988E4800E1E0D5 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89048F22988E4800E1E0D5 /* ColumnRenderer.swift */; };
 		EE89049222988E8900E1E0D5 /* LinearScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */; };
+		EE8904982298999600E1E0D5 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */; };
 		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -91,8 +91,6 @@
 		19CEAC5819212F7900AEA0AA /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTexture.m; sourceTree = "<group>"; };
 		19CEAC5919212F7900AEA0AA /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTexture.h; sourceTree = "<group>"; };
 		19CEAC5C192200A800AEA0AA /* ScrollingRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingRenderer.h; sourceTree = "<group>"; };
-		19CEAC67192275CD00AEA0AA /* RadialScrollingRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialScrollingRenderer.m; sourceTree = "<group>"; };
-		19CEAC68192275CD00AEA0AA /* RadialScrollingRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialScrollingRenderer.h; sourceTree = "<group>"; };
 		19F668EF190AA78B00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
 		19F668F0190AA78B00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapSet.m; sourceTree = "<group>"; };
 		19F668FB190AA78B00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererDefs.h; sourceTree = "<group>"; };
@@ -123,6 +121,7 @@
 		EE8904892298741700E1E0D5 /* GLRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLRenderer.swift; sourceTree = "<group>"; };
 		EE89048F22988E4800E1E0D5 /* ColumnRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnRenderer.swift; sourceTree = "<group>"; };
 		EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearScrollingRenderer.swift; sourceTree = "<group>"; };
+		EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
@@ -307,13 +306,12 @@
 		19F668E9190AA67D00D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */,
 				EE89048F22988E4800E1E0D5 /* ColumnRenderer.swift */,
 				194EA9F7191B9D4600FC152F /* ColorMap.h */,
 				194EA9F8191B9D4600FC152F /* ColorMap.m */,
 				EE8904892298741700E1E0D5 /* GLRenderer.swift */,
 				EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */,
-				19CEAC68192275CD00AEA0AA /* RadialScrollingRenderer.h */,
-				19CEAC67192275CD00AEA0AA /* RadialScrollingRenderer.m */,
 				19F668FB190AA78B00D2DE77 /* RendererDefs.h */,
 				19BEF36819111A140013DD0A /* RendererTypes.h */,
 				19F668FC190AA78B00D2DE77 /* RendererUtils.h */,
@@ -469,9 +467,9 @@
 				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				EE89049222988E8900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
 				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
+				EE8904982298999600E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
 				EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */,
-				19CEAC69192275CD00AEA0AA /* RadialScrollingRenderer.m in Sources */,
 				EE890479228BF6F000E1E0D5 /* FastFourierTransform.swift in Sources */,
 				EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */,
 				EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */,
