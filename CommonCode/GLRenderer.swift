@@ -12,14 +12,14 @@ import GLKit
 class GLRenderer {
     
     var namesForScrollingDirections: [String] {
-        return scrollingRenderer.namesForScrollingDirections()
+        return scrollingRenderer.namesForScrollingDirections
     }
 
     var renderSize: RenderSize {
         didSet {
             if !RenderSizeEqualToSize(renderSize, oldValue) {
                 frameOriginTime = 0
-                renderTexture.renderSize = scrollingRenderer.bestRenderSize(from: renderSize)
+                renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
             }
 
         }
@@ -115,7 +115,7 @@ class GLRenderer {
         channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         scrollingRenderer.activeScrollingDirectionIndex = displaySettings.scrollingDirectionIndex
-        renderTexture.renderSize = scrollingRenderer.bestRenderSize(from: renderSize)
+        renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
     }
     
     private func positionForChannelAtIndex(channelIndex: UInt, totalChannels: UInt) -> GLKMatrix4 {

@@ -12,7 +12,7 @@ private let numberOfSpokes = 48
 private let numberOfVerticesPerSpoke = 4
 private let numberOfBufferVertices = (numberOfSpokes + 1) * numberOfVerticesPerSpoke
 
-class RadialScrollingRenderer: NSObject, ScrollingRenderer {
+class RadialScrollingRenderer: ScrollingRenderer {
 
     var scrollingPosition: Float
     
@@ -22,26 +22,25 @@ class RadialScrollingRenderer: NSObject, ScrollingRenderer {
         }
     }
     
-    private var mesh: ShadedMesh
-    
-    override init() {
-        self.scrollingPosition = 0
-        self.activeScrollingDirectionIndex = 0
-        self.mesh = ShadedMesh(numberOfVertices: UInt(numberOfBufferVertices))
-        super.init()
-        setupVertices()
-    }
-    
-    func bestRenderSize(from size: RenderSize) -> RenderSize {
-        return size
-    }
-    
-    func namesForScrollingDirections() -> [String] {
+    var namesForScrollingDirections: [String] {
         
         return [
             NSLocalizedString("Inwards", comment: ""),
             NSLocalizedString("Outwards", comment: "")
         ]
+    }
+
+    private var mesh: ShadedMesh
+    
+    init() {
+        self.scrollingPosition = 0
+        self.activeScrollingDirectionIndex = 0
+        self.mesh = ShadedMesh(numberOfVertices: UInt(numberOfBufferVertices))
+        setupVertices()
+    }
+    
+    func bestRenderSize(for size: RenderSize) -> RenderSize {
+        return size
     }
     
     func render() {

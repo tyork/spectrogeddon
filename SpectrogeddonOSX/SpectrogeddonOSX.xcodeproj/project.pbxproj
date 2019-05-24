@@ -43,6 +43,7 @@
 		EE89048C2298759500E1E0D5 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89048B2298759500E1E0D5 /* ColumnRenderer.swift */; };
 		EE89048E2298883900E1E0D5 /* LinearScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */; };
 		EE89049622988F8700E1E0D5 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */; };
+		EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */; };
 		EEF7FE9719251F7A003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9519251F7A003241DF /* ShadedMesh.m */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +67,6 @@
 		19BEF367191119FF0013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererTypes.h; path = ../../CommonCode/RendererTypes.h; sourceTree = "<group>"; };
 		19CEAC5419212CCD00AEA0AA /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderTexture.h; path = ../../CommonCode/RenderTexture.h; sourceTree = "<group>"; };
 		19CEAC5519212CCD00AEA0AA /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderTexture.m; path = ../../CommonCode/RenderTexture.m; sourceTree = "<group>"; };
-		19CEAC5B1922009700AEA0AA /* ScrollingRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScrollingRenderer.h; path = ../../CommonCode/ScrollingRenderer.h; sourceTree = "<group>"; };
 		19F66885190AA3AF00D2DE77 /* SpectrogeddonOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectrogeddonOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F66888190AA3AF00D2DE77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		19F6688B190AA3AF00D2DE77 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +112,7 @@
 		EE89048B2298759500E1E0D5 /* ColumnRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColumnRenderer.swift; path = ../../CommonCode/ColumnRenderer.swift; sourceTree = "<group>"; };
 		EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinearScrollingRenderer.swift; path = ../../CommonCode/LinearScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RadialScrollingRenderer.swift; path = ../../CommonCode/RadialScrollingRenderer.swift; sourceTree = "<group>"; };
+		EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollingRenderer.swift; path = ../../CommonCode/ScrollingRenderer.swift; sourceTree = "<group>"; };
 		EEF7FE9519251F7A003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadedMesh.m; path = ../../CommonCode/ShadedMesh.m; sourceTree = "<group>"; };
 		EEF7FE9619251F7A003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadedMesh.h; path = ../../CommonCode/ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -291,7 +292,7 @@
 				194EA9F5191B9D3900FC152F /* ColorMap.m */,
 				EE89048B2298759500E1E0D5 /* ColumnRenderer.swift */,
 				EE8904872290AA7F00E1E0D5 /* GLRenderer.swift */,
-				19CEAC5B1922009700AEA0AA /* ScrollingRenderer.h */,
+				EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */,
 				EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */,
 				EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */,
 				19F66925190AA86C00D2DE77 /* RendererDefs.h */,
@@ -442,6 +443,7 @@
 				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				EE89049622988F8700E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
 				EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */,
+				EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */,
 				EE8904882290AA7F00E1E0D5 /* GLRenderer.swift in Sources */,
 				EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */,
 				19CEAC5619212CCD00AEA0AA /* RenderTexture.m in Sources */,

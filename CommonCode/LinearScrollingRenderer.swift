@@ -9,11 +9,19 @@
 import Foundation
 
 /// Displays a texture on a linear repeating mesh.
-class LinearScrollingRenderer: NSObject, ScrollingRenderer {
+class LinearScrollingRenderer: ScrollingRenderer {
     
     var scrollingPosition: Float
     
     var activeScrollingDirectionIndex: UInt
+    
+    var namesForScrollingDirections: [String] {
+        
+        return [
+            NSLocalizedString("Horizontal", comment: ""),
+            NSLocalizedString("Vertical", comment: "")
+        ]
+    }
     
     private lazy var mesh: ShadedMesh = {
         
@@ -38,27 +46,18 @@ class LinearScrollingRenderer: NSObject, ScrollingRenderer {
         return mesh
     }()
     
-    override init() {
+    init() {
         self.scrollingPosition = 0
         self.activeScrollingDirectionIndex = 0
-        super.init()
     }
 
-    func bestRenderSize(from size: RenderSize) -> RenderSize {
+    func bestRenderSize(for size: RenderSize) -> RenderSize {
 
         if activeScrollingDirectionIndex == 0 {
             return size
         } else {
             return RenderSize(width: size.height, height: size.width)
         }
-    }
-    
-    func namesForScrollingDirections() -> [String] {
-        
-        return [
-            NSLocalizedString("Horizontal", comment: ""),
-            NSLocalizedString("Vertical", comment: "")
-        ]
     }
     
     func render() {
