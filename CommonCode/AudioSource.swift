@@ -70,7 +70,7 @@ public class AudioSource: NSObject {
         self.channelBuffers = []
         self.captureSession = AVCaptureSession()
         self.isPendingBufferSizeChange = false
-        ///self.preferredAudioSourceId = AudioSource.availableAudioSources.values.first
+        self.preferredAudioSourceId = AudioSource.availableAudioSources.values.first
         
         super.init()
         
@@ -174,6 +174,7 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
         
         // Configure buffers
         // TODO: very basic format decoding, really the minimum.
+        // TODO: and actively wrong now, Mac OS X now happily issues 24 bit samples so need to fix this.
         guard let formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer) else {
             return
         }
@@ -185,12 +186,22 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
 
         let firstFormat = bufferFormats[0]
         
+        let format: SampleFormat
+        if firstFormat.mASBD.mBytesPerFrame == MemoryLayout<Float>.size {
+            format = .normedFloat32
+        } else {
+            format = .unnormedInt16
+        }
+        
+        #if os(macOS)
+            guard format == .normedFloat32 else { return }
+        #endif
+        
         if isPendingBufferSizeChange {
             channelBuffers = []
             isPendingBufferSizeChange = false
         }
-    
-        let isNormalizedFloat = firstFormat.mASBD.mBytesPerFrame == MemoryLayout<Float>.size
+        
         let channelsInBuffer = Int(firstFormat.mASBD.mChannelsPerFrame)
         if channelsInBuffer != channelBuffers.count {
             let buffers = (0..<channelsInBuffer).map { _ in
@@ -219,19 +230,11 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
                 continue
             }
             
-            if isNormalizedFloat {
-                rawSamples.withMemoryRebound(to: Float.self, capacity: numberOfSamples) { asFloats in
-                    channelBuffers[activeChannel].writeSamples(asFloats, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
-              }
-            } else {
-                rawSamples.withMemoryRebound(to: Int16.self, capacity: numberOfSamples) { asWords in
-                    channelBuffers[activeChannel].writeSamples(asWords, count: UInt(numberOfSamples), timeStamp: timeStamp, duration: duration)
-                }
-            }
-            offset += lengthAtOffset;
+            channelBuffers[activeChannel].writeBytes(rawSamples, sampleCount: UInt(numberOfSamples), format: format, timeStamp: timeStamp, duration: duration)
+            offset += lengthAtOffset
             activeChannel += 1
 
-        } while(offset < totalLength);
+        } while offset < totalLength
     
         // Dispatch
         guard channelBuffers.allSatisfy({ $0.hasOutput }) else {

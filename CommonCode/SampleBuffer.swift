@@ -12,7 +12,6 @@ import Accelerate
 enum SampleFormat {
     case normedFloat32
     case unnormedInt16
-    case unsupported
 }
 
 /// Stores raw samples so as to retain the newest ones when overfilled.
@@ -72,6 +71,21 @@ class SampleBuffer {
         self.duration = 0
     }
     
+    func writeBytes(_ bytes: UnsafePointer<Int8>, sampleCount: UInt, format: SampleFormat, timeStamp: TimeInterval, duration: TimeInterval) {
+
+        switch format {
+        case .normedFloat32:
+            bytes.withMemoryRebound(to: Float32.self, capacity: Int(sampleCount)) {
+                writeSamples($0, count: sampleCount, timeStamp: timeStamp, duration: duration)
+            }
+            
+        case .unnormedInt16:
+            bytes.withMemoryRebound(to: Int16.self, capacity: Int(sampleCount)) {
+                writeSamples($0, count: sampleCount, timeStamp: timeStamp, duration: duration)
+            }
+        }
+    }
+    
     func writeSamples(_ samples: UnsafePointer<Float32>, count: UInt, timeStamp: TimeInterval, duration: TimeInterval) {
         // Drop samples if necessary
         
@@ -114,6 +128,7 @@ class SampleBuffer {
     }
     
     func writeSamples(_ samples: UnsafePointer<Int16>, count: UInt, timeStamp: TimeInterval, duration: TimeInterval) {
+        
         // Temporary hack to avoid a bounds busting bug.
         // TODO: this should be part of the writeSamples function's circular buffer.
         let lastSamplesOffset = (count > capacity) ? count - capacity : 0
