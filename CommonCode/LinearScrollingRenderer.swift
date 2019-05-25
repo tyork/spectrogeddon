@@ -36,7 +36,7 @@ class LinearScrollingRenderer: ScrollingRenderer {
             .init(x: 1, y: -1, s: 1, t: 0)
         ]
 
-        let mesh = ShadedMesh(numberOfVertices: UInt(bufferMesh.count))
+        let mesh = ShadedMesh(numberOfVertices: bufferMesh.count)
         mesh.updateVertices { storage in
             
             for index in (0..<bufferMesh.count) {

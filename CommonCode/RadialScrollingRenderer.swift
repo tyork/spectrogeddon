@@ -35,7 +35,7 @@ class RadialScrollingRenderer: ScrollingRenderer {
     init() {
         self.scrollingPosition = 0
         self.activeScrollingDirectionIndex = 0
-        self.mesh = ShadedMesh(numberOfVertices: UInt(numberOfBufferVertices))
+        self.mesh = ShadedMesh(numberOfVertices: numberOfBufferVertices)
         setupVertices()
     }
     

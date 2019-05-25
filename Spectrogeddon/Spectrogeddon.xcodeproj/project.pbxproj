@@ -51,7 +51,7 @@
 		EE8904982298999600E1E0D5 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */; };
 		EE89049C22989B5500E1E0D5 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */; };
 		EE8904A22298A16900E1E0D5 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A12298A16800E1E0D5 /* RenderTexture.swift */; };
-		EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FE9819251F85003241DF /* ShadedMesh.m */; };
+		EE8904A82299518300E1E0D5 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A72299518300E1E0D5 /* ShadedMesh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,9 +122,8 @@
 		EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE8904A12298A16800E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTexture.swift; sourceTree = "<group>"; };
+		EE8904A72299518300E1E0D5 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
-		EEF7FE9819251F85003241DF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
-		EEF7FE9919251F85003241DF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +305,7 @@
 		19F668E9190AA67D00D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				EE8904A72299518300E1E0D5 /* ShadedMesh.swift */,
 				EE8904A12298A16800E1E0D5 /* RenderTexture.swift */,
 				EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */,
 				EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */,
@@ -318,8 +318,6 @@
 				19BEF36819111A140013DD0A /* RendererTypes.h */,
 				19F668FC190AA78B00D2DE77 /* RendererUtils.h */,
 				19F668FD190AA78B00D2DE77 /* RendererUtils.m */,
-				EEF7FE9919251F85003241DF /* ShadedMesh.h */,
-				EEF7FE9819251F85003241DF /* ShadedMesh.m */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -457,7 +455,6 @@
 				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				EE89048A2298741700E1E0D5 /* GLRenderer.swift in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
-				EEF7FE9A19251F85003241DF /* ShadedMesh.m in Sources */,
 				19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */,
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
 				EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */,
@@ -471,6 +468,7 @@
 				EE890479228BF6F000E1E0D5 /* FastFourierTransform.swift in Sources */,
 				EE89049C22989B5500E1E0D5 /* ScrollingRenderer.swift in Sources */,
 				EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */,
+				EE8904A82299518300E1E0D5 /* ShadedMesh.swift in Sources */,
 				EE8904A22298A16900E1E0D5 /* RenderTexture.swift in Sources */,
 				EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */,
 				EE89047E228DE56E00E1E0D5 /* AudioSource.swift in Sources */,

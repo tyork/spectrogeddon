@@ -64,7 +64,7 @@ public class ColumnRenderer {
             return
         }
         
-        let vertexCountForSequence = timeSequence.numberOfValues() * 2
+        let vertexCountForSequence = Int(timeSequence.numberOfValues() * 2)
         if mesh == nil {
             mesh = ShadedMesh(numberOfVertices: vertexCountForSequence)
             hasInvalidatedVertices = true
@@ -94,7 +94,7 @@ public class ColumnRenderer {
         mesh?.transform = GLKMatrix4Multiply(GLKMatrix4Scale(translation, width, 1, 1), positioning)
     }
     
-    private func generateVertexPositions(vertices: UnsafeMutablePointer<TexturedVertexAttribs>) {
+    private func generateVertexPositions(vertices: UnsafeMutableBufferPointer<TexturedVertexAttribs>) {
         
         guard let count = mesh?.numberOfVertices else {
             return
