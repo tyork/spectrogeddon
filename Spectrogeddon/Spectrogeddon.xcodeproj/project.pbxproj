@@ -26,7 +26,6 @@
 		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
 		19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CEAC51191BADDA00AEA0AA /* SettingsStore.m */; };
 		19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668F0190AA78B00D2DE77 /* ColorMapSet.m */; };
-		19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668FD190AA78B00D2DE77 /* RendererUtils.m */; };
 		19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66907190AA78B00D2DE77 /* TimeSequence.m */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
@@ -52,6 +51,7 @@
 		EE89049C22989B5500E1E0D5 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */; };
 		EE8904A22298A16900E1E0D5 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A12298A16800E1E0D5 /* RenderTexture.swift */; };
 		EE8904A82299518300E1E0D5 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A72299518300E1E0D5 /* ShadedMesh.swift */; };
+		EE8904AC229A069100E1E0D5 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904AB229A069100E1E0D5 /* RendererUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,9 +91,6 @@
 		19CEAC52191BADDA00AEA0AA /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsStore.h; sourceTree = "<group>"; };
 		19F668EF190AA78B00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
 		19F668F0190AA78B00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapSet.m; sourceTree = "<group>"; };
-		19F668FB190AA78B00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererDefs.h; sourceTree = "<group>"; };
-		19F668FC190AA78B00D2DE77 /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererUtils.h; sourceTree = "<group>"; };
-		19F668FD190AA78B00D2DE77 /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RendererUtils.m; sourceTree = "<group>"; };
 		19F66906190AA78B00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSequence.h; sourceTree = "<group>"; };
 		19F66907190AA78B00D2DE77 /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSequence.m; sourceTree = "<group>"; };
 		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
@@ -123,6 +120,7 @@
 		EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE8904A12298A16800E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTexture.swift; sourceTree = "<group>"; };
 		EE8904A72299518300E1E0D5 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
+		EE8904AB229A069100E1E0D5 /* RendererUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -305,6 +303,7 @@
 		19F668E9190AA67D00D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				EE8904AB229A069100E1E0D5 /* RendererUtils.swift */,
 				EE8904A72299518300E1E0D5 /* ShadedMesh.swift */,
 				EE8904A12298A16800E1E0D5 /* RenderTexture.swift */,
 				EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */,
@@ -314,10 +313,7 @@
 				194EA9F8191B9D4600FC152F /* ColorMap.m */,
 				EE8904892298741700E1E0D5 /* GLRenderer.swift */,
 				EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */,
-				19F668FB190AA78B00D2DE77 /* RendererDefs.h */,
 				19BEF36819111A140013DD0A /* RendererTypes.h */,
-				19F668FC190AA78B00D2DE77 /* RendererUtils.h */,
-				19F668FD190AA78B00D2DE77 /* RendererUtils.m */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -461,11 +457,11 @@
 				EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */,
 				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				EE89049222988E8900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
-				19F66910190AA78B00D2DE77 /* RendererUtils.m in Sources */,
 				EE8904982298999600E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
 				194EA9F3191B878400FC152F /* DisplaySettings.m in Sources */,
 				EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */,
 				EE890479228BF6F000E1E0D5 /* FastFourierTransform.swift in Sources */,
+				EE8904AC229A069100E1E0D5 /* RendererUtils.swift in Sources */,
 				EE89049C22989B5500E1E0D5 /* ScrollingRenderer.swift in Sources */,
 				EE890477228BF66900E1E0D5 /* SpectrumGenerator.swift in Sources */,
 				EE8904A82299518300E1E0D5 /* ShadedMesh.swift in Sources */,

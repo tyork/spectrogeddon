@@ -43,7 +43,7 @@ class ShadedMesh {
     
     deinit {
         
-        RendererUtils.destroyVAO(vao)
+        GLRendererUtils.destroyVAO(vao)
         if mesh > 0 {
             glDeleteBuffers(1, &mesh)
         }
@@ -73,7 +73,7 @@ class ShadedMesh {
     func render() {
         
         if shader <= 0 {
-            shader = RendererUtils.loadShaderProgramNamed("TexturedMeshShader")
+            shader = GLRendererUtils.loadShaderProgram("TexturedMeshShader")
             textureUniform = glGetUniformLocation(shader, "uTextureSampler")
             positionAttribute = glGetAttribLocation(shader, "aPosition")
             texCoordAttribute = glGetAttribLocation(shader, "aTexCoord")
@@ -83,9 +83,9 @@ class ShadedMesh {
         let hasVAO = vao > 0
         
         if hasVAO {
-            RendererUtils.bindVAO(vao)
+            GLRendererUtils.bindVAO(vao)
         } else {
-            vao = RendererUtils.generateVAO()
+            vao = GLRendererUtils.generateVAO()
         }
         
         mesh = generateArrayBuffer(for: mesh)
@@ -110,7 +110,7 @@ class ShadedMesh {
         
         glDrawArrays(GLenum(GL_TRIANGLE_STRIP), 0, GLsizei(numberOfVertices))
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        RendererUtils.bindVAO(0)
+        GLRendererUtils.bindVAO(0)
     }
     
     private func generateArrayBuffer(for name: GLuint) -> GLuint {
@@ -131,19 +131,8 @@ class ShadedMesh {
             hasInvalidatedMeshData = false
         }
     
-        glDebug()
+        GLRendererUtils.glDebug()
     
         return arrayBufferName
     }
-}
-
-func glDebug(function: String = #function, file: String = #file, line: Int = #line) {
-    
-    #if NDEBUG
-        
-    #else
-        let errorCode = glGetError()
-        assert(errorCode == GL_NO_ERROR, "\(file):\(line) \(function) GL error code \(errorCode)")
-    #endif
-    
 }

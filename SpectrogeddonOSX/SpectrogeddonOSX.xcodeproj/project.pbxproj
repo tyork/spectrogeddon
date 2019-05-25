@@ -20,7 +20,6 @@
 		19F668B1190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */; };
 		19F668B3190AA3B000D2DE77 /* SpectrogeddonOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */; };
 		19F66933190AA86C00D2DE77 /* ColorMapSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F6691A190AA86C00D2DE77 /* ColorMapSet.m */; };
-		19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66927190AA86C00D2DE77 /* RendererUtils.m */; };
 		19F66945190AA8C400D2DE77 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19F66944190AA8C400D2DE77 /* ColorMaps */; };
 		19F66948190AA90000D2DE77 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66946190AA90000D2DE77 /* GLKit.framework */; };
 		19F66949190AA90000D2DE77 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66947190AA90000D2DE77 /* OpenGL.framework */; };
@@ -45,6 +44,7 @@
 		EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */; };
 		EE8904A022989C0300E1E0D5 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89049F22989C0300E1E0D5 /* RenderTexture.swift */; };
 		EE8904A62298A26300E1E0D5 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A52298A26300E1E0D5 /* ShadedMesh.swift */; };
+		EE8904AA2299521300E1E0D5 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A92299521300E1E0D5 /* RendererUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,9 +82,6 @@
 		19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonOSXTests.m; sourceTree = "<group>"; };
 		19F66919190AA86C00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorMapSet.h; path = ../../CommonCode/ColorMapSet.h; sourceTree = "<group>"; };
 		19F6691A190AA86C00D2DE77 /* ColorMapSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorMapSet.m; path = ../../CommonCode/ColorMapSet.m; sourceTree = "<group>"; };
-		19F66925190AA86C00D2DE77 /* RendererDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererDefs.h; path = ../../CommonCode/RendererDefs.h; sourceTree = "<group>"; };
-		19F66926190AA86C00D2DE77 /* RendererUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RendererUtils.h; path = ../../CommonCode/RendererUtils.h; sourceTree = "<group>"; };
-		19F66927190AA86C00D2DE77 /* RendererUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RendererUtils.m; path = ../../CommonCode/RendererUtils.m; sourceTree = "<group>"; };
 		19F66930190AA86C00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSequence.h; path = ../../CommonCode/TimeSequence.h; sourceTree = "<group>"; };
 		19F66931190AA86C00D2DE77 /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSequence.m; path = ../../CommonCode/TimeSequence.m; sourceTree = "<group>"; };
 		19F66944190AA8C400D2DE77 /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
@@ -113,6 +110,7 @@
 		EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScrollingRenderer.swift; path = ../../CommonCode/ScrollingRenderer.swift; sourceTree = "<group>"; };
 		EE89049F22989C0300E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RenderTexture.swift; path = ../../CommonCode/RenderTexture.swift; sourceTree = "<group>"; };
 		EE8904A52298A26300E1E0D5 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShadedMesh.swift; path = ../../CommonCode/ShadedMesh.swift; sourceTree = "<group>"; };
+		EE8904A92299521300E1E0D5 /* RendererUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RendererUtils.swift; path = ../../CommonCode/RendererUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,10 +291,8 @@
 				EE890499229899DF00E1E0D5 /* ScrollingRenderer.swift */,
 				EE89048D2298883900E1E0D5 /* LinearScrollingRenderer.swift */,
 				EE89049522988F8700E1E0D5 /* RadialScrollingRenderer.swift */,
-				19F66925190AA86C00D2DE77 /* RendererDefs.h */,
 				19BEF367191119FF0013DD0A /* RendererTypes.h */,
-				19F66926190AA86C00D2DE77 /* RendererUtils.h */,
-				19F66927190AA86C00D2DE77 /* RendererUtils.m */,
+				EE8904A92299521300E1E0D5 /* RendererUtils.swift */,
 				EE89049F22989C0300E1E0D5 /* RenderTexture.swift */,
 				EE8904A52298A26300E1E0D5 /* ShadedMesh.swift */,
 			);
@@ -426,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8904AA2299521300E1E0D5 /* RendererUtils.swift in Sources */,
 				EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */,
 				EE89048C2298759500E1E0D5 /* ColumnRenderer.swift in Sources */,
 				EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */,
@@ -436,7 +433,6 @@
 				EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */,
 				EE8904A022989C0300E1E0D5 /* RenderTexture.swift in Sources */,
 				EE89048E2298883900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
-				19F6693A190AA86C00D2DE77 /* RendererUtils.m in Sources */,
 				EE89049622988F8700E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
 				EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */,
 				EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */,
