@@ -6,7 +6,7 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import Foundation
+import GLKit
 
 ///  Renders a column, a single measurement set.
 public class ColumnRenderer {

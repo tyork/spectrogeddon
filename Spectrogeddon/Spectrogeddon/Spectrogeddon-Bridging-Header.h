@@ -8,6 +8,3 @@
 #import "SettingsStore.h"
 #import "ColorMapSet.h"
 #import "ColorMap.h"
-
-// Internal only
-#import "RendererTypes.h"

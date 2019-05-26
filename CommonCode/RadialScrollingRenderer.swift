@@ -6,7 +6,7 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import Foundation
+import GLKit
 
 private let numberOfSpokes = 48
 private let numberOfVerticesPerSpoke = 4

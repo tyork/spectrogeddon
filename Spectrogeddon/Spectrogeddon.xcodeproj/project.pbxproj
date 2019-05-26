@@ -52,6 +52,8 @@
 		EE8904A22298A16900E1E0D5 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A12298A16800E1E0D5 /* RenderTexture.swift */; };
 		EE8904A82299518300E1E0D5 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904A72299518300E1E0D5 /* ShadedMesh.swift */; };
 		EE8904AC229A069100E1E0D5 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904AB229A069100E1E0D5 /* RendererUtils.swift */; };
+		EE8904AE229A079200E1E0D5 /* RenderSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904AD229A079200E1E0D5 /* RenderSize.swift */; };
+		EE8904BC229AA33800E1E0D5 /* TexturedVertexAttribs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904BB229AA33800E1E0D5 /* TexturedVertexAttribs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +88,6 @@
 		19541FC218FD7AAF00BC94BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		19541FE21906D89900BC94BF /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
-		19BEF36819111A140013DD0A /* RendererTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RendererTypes.h; sourceTree = "<group>"; };
 		19CEAC51191BADDA00AEA0AA /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStore.m; sourceTree = "<group>"; };
 		19CEAC52191BADDA00AEA0AA /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsStore.h; sourceTree = "<group>"; };
 		19F668EF190AA78B00D2DE77 /* ColorMapSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapSet.h; sourceTree = "<group>"; };
@@ -121,6 +122,8 @@
 		EE8904A12298A16800E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTexture.swift; sourceTree = "<group>"; };
 		EE8904A72299518300E1E0D5 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
 		EE8904AB229A069100E1E0D5 /* RendererUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
+		EE8904AD229A079200E1E0D5 /* RenderSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderSize.swift; sourceTree = "<group>"; };
+		EE8904BB229AA33800E1E0D5 /* TexturedVertexAttribs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturedVertexAttribs.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +306,7 @@
 		19F668E9190AA67D00D2DE77 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				EE8904BB229AA33800E1E0D5 /* TexturedVertexAttribs.swift */,
 				EE8904AB229A069100E1E0D5 /* RendererUtils.swift */,
 				EE8904A72299518300E1E0D5 /* ShadedMesh.swift */,
 				EE8904A12298A16800E1E0D5 /* RenderTexture.swift */,
@@ -313,7 +317,7 @@
 				194EA9F8191B9D4600FC152F /* ColorMap.m */,
 				EE8904892298741700E1E0D5 /* GLRenderer.swift */,
 				EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */,
-				19BEF36819111A140013DD0A /* RendererTypes.h */,
+				EE8904AD229A079200E1E0D5 /* RenderSize.swift */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -444,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */,
+				EE8904BC229AA33800E1E0D5 /* TexturedVertexAttribs.swift in Sources */,
 				EE890482228F489400E1E0D5 /* SampleBuffer.swift in Sources */,
 				EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */,
 				19CEAC53191BADDA00AEA0AA /* SettingsStore.m in Sources */,
@@ -451,6 +456,7 @@
 				194EA9F9191B9D4600FC152F /* ColorMap.m in Sources */,
 				EE89048A2298741700E1E0D5 /* GLRenderer.swift in Sources */,
 				19F66909190AA78B00D2DE77 /* ColorMapSet.m in Sources */,
+				EE8904AE229A079200E1E0D5 /* RenderSize.swift in Sources */,
 				19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */,
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
 				EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */,

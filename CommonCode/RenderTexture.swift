@@ -35,7 +35,7 @@ class RenderTexture {
     /// Draw into the texture.
     func draw(commands: () -> Void) {
         
-        guard !RenderSizeIsEmpty(renderSize) else {
+        guard renderSize != .empty else {
             return
         }
         

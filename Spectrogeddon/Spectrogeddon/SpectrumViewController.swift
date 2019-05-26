@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GLKit
 
 class SpectrumViewController: UIViewController {
     

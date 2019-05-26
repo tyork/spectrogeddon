@@ -6,7 +6,7 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import Foundation
+import GLKit
 
 /// Displays a texture on a linear repeating mesh.
 class LinearScrollingRenderer: ScrollingRenderer {

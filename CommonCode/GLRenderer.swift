@@ -17,7 +17,7 @@ class GLRenderer {
 
     var renderSize: RenderSize {
         didSet {
-            if !RenderSizeEqualToSize(renderSize, oldValue) {
+            if renderSize != oldValue {
                 frameOriginTime = 0
                 renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
             }
@@ -94,7 +94,7 @@ class GLRenderer {
     
     func render() {
         
-        guard !RenderSizeIsEmpty(renderSize), displaySettings != nil else {
+        guard renderSize != .empty, displaySettings != nil else {
             return
         }
         

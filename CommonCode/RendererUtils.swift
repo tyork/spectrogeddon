@@ -87,18 +87,16 @@ private func ShadingLanguageVersion() -> Int {
 
     let versionString = String(cString: glGetString(GLenum(GL_SHADING_LANGUAGE_VERSION)))
 
-    let languageVersion: Float
     #if os(iOS)
     let prefix = "OpenGL ES GLSL ES "
-    guard versionString.hasPrefix(prefix) else {
+    guard versionString.hasPrefix(prefix),
+        let languageVersion = Float(versionString.dropFirst(prefix.count)) else {
         return 0
     }
-    languageVersion = Float(versionString.dropFirst(prefix.count))
     #else
-    guard let version = Float(versionString) else {
+    guard let languageVersion = Float(versionString) else {
         return 0
     }
-    languageVersion = version
     #endif
     return Int(languageVersion * 100)
 }
