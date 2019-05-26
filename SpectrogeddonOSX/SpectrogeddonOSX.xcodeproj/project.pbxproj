@@ -28,7 +28,6 @@
 		EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */; };
 		EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */; };
 		EE890475228BF65C00E1E0D5 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */; };
-		EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F66931190AA86C00D2DE77 /* TimeSequence.m */; };
 		EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */; };
 		EE890480228E084F00E1E0D5 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89047F228E084E00E1E0D5 /* AudioSource.swift */; };
 		EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890483228F48A400E1E0D5 /* SampleBuffer.swift */; };
@@ -47,6 +46,7 @@
 		EE8904C2229AA9E100E1E0D5 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904C1229AA9E100E1E0D5 /* ColorMap.swift */; };
 		EE8904C6229AC0AF00E1E0D5 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904C5229AC0AF00E1E0D5 /* ColorMapStore.swift */; };
 		EE8904C8229B2BBD00E1E0D5 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904C7229B2BBD00E1E0D5 /* ColorMap+Image.swift */; };
+		EE8904D4229B336100E1E0D5 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904D3229B336100E1E0D5 /* TimeSequence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +75,6 @@
 		19F668AE190AA3AF00D2DE77 /* SpectrogeddonOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonOSXTests-Info.plist"; sourceTree = "<group>"; };
 		19F668B0190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonOSXTests.m; sourceTree = "<group>"; };
-		19F66930190AA86C00D2DE77 /* TimeSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSequence.h; path = ../../CommonCode/TimeSequence.h; sourceTree = "<group>"; };
-		19F66931190AA86C00D2DE77 /* TimeSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSequence.m; path = ../../CommonCode/TimeSequence.m; sourceTree = "<group>"; };
 		19F66944190AA8C400D2DE77 /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
 		19F66946190AA90000D2DE77 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		19F66947190AA90000D2DE77 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -109,6 +107,7 @@
 		EE8904C1229AA9E100E1E0D5 /* ColorMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorMap.swift; path = ../../CommonCode/ColorMap.swift; sourceTree = "<group>"; };
 		EE8904C5229AC0AF00E1E0D5 /* ColorMapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorMapStore.swift; path = ../../CommonCode/ColorMapStore.swift; sourceTree = "<group>"; };
 		EE8904C7229B2BBD00E1E0D5 /* ColorMap+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ColorMap+Image.swift"; path = "../../CommonCode/ColorMap+Image.swift"; sourceTree = "<group>"; };
+		EE8904D3229B336100E1E0D5 /* TimeSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSequence.swift; path = ../../CommonCode/TimeSequence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,10 +269,9 @@
 		19F66942190AA88300D2DE77 /* AudioProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				EE8904D3229B336100E1E0D5 /* TimeSequence.swift */,
 				EE89047B228D4A6100E1E0D5 /* FastFourierTransform.swift */,
 				EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */,
-				19F66930190AA86C00D2DE77 /* TimeSequence.h */,
-				19F66931190AA86C00D2DE77 /* TimeSequence.m */,
 			);
 			name = AudioProcessing;
 			sourceTree = "<group>";
@@ -425,7 +423,6 @@
 				EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */,
 				EE89047C228D4A6100E1E0D5 /* FastFourierTransform.swift in Sources */,
 				EE8904C6229AC0AF00E1E0D5 /* ColorMapStore.swift in Sources */,
-				EE89047A228D4A1900E1E0D5 /* TimeSequence.m in Sources */,
 				EE8904B2229A088800E1E0D5 /* TexturedVertexAttribs.swift in Sources */,
 				EE8904A022989C0300E1E0D5 /* RenderTexture.swift in Sources */,
 				EE89048E2298883900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
@@ -437,6 +434,7 @@
 				EE89049A229899DF00E1E0D5 /* ScrollingRenderer.swift in Sources */,
 				EE8904882290AA7F00E1E0D5 /* GLRenderer.swift in Sources */,
 				EE890484228F48A400E1E0D5 /* SampleBuffer.swift in Sources */,
+				EE8904D4229B336100E1E0D5 /* TimeSequence.swift in Sources */,
 				EE8904A62298A26300E1E0D5 /* ShadedMesh.swift in Sources */,
 				EE890480228E084F00E1E0D5 /* AudioSource.swift in Sources */,
 			);

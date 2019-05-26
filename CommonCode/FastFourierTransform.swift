@@ -36,7 +36,7 @@ class FastFourierTransform {
 
     func transform(_ timeSequence: TimeSequence) -> TimeSequence {
         
-        let sampleCount = timeSequence.numberOfValues()
+        let sampleCount = timeSequence.values.count
         
         guard sampleCount > 0 else {
             return timeSequence
@@ -48,17 +48,19 @@ class FastFourierTransform {
             return timeSequence // TODO:
         }
         
-        let paddedSampleCount = UInt(windowFunction.count)
+        let paddedSampleCount = windowFunction.count
         
         let paddedSampleCountAsPowerOfTwo = LargestPowerOfTwo(in: paddedSampleCount)
         
         // Apply window
-        vDSP_vmul(timeSequence.rawValues(), 1, &windowFunction, 1, &fftInputR, 1, paddedSampleCount)
+        timeSequence.values.withUnsafeBufferPointer { p in
+            vDSP_vmul(p.baseAddress!, 1, &windowFunction, 1, &fftInputR, 1, UInt(paddedSampleCount))
+        }
 
         // Compute the out-of-place FFT.
         var input = DSPSplitComplex(realp: &fftInputR, imagp: &fftInputI)
         var output = DSPSplitComplex(realp: &fftOutputR, imagp: &fftOutputI)
-        vDSP_fft_zop(fftConfig, &input, 1, &output, 1, paddedSampleCountAsPowerOfTwo, FFTDirection(FFT_FORWARD))
+        vDSP_fft_zop(fftConfig, &input, 1, &output, 1, vDSP_Length(paddedSampleCountAsPowerOfTwo), FFTDirection(FFT_FORWARD))
 
         let outputSampleCount = UInt(realOutput.count)
         
@@ -86,24 +88,21 @@ class FastFourierTransform {
         var contrast = 1/(clipMaxDb - clipMinDb)
         vDSP_vsmsa(&realOutput, 1, UnsafePointer<Float>(&contrast), &brightness, &realOutput, 1, outputSampleCount)
         
-        let transformed = TimeSequence(numberOfValues: outputSampleCount, values: &realOutput)
-        transformed.timeStamp = timeSequence.timeStamp
-        transformed.duration = timeSequence.duration
-        return transformed
+        return TimeSequence(timeStamp: timeSequence.timeStamp, duration: timeSequence.duration, values: realOutput)
     }
     
-    private func updateStorageIfNeeded(for sampleCount: UInt) {
+    private func updateStorageIfNeeded(for sampleCount: Int) {
 
         let sampleCountAsPowerOfTwo = LargestPowerOfTwo(in: sampleCount)
         
-        guard sampleCountAsPowerOfTwo != LargestPowerOfTwo(in: UInt(windowFunction.count)) else {
+        guard sampleCountAsPowerOfTwo != LargestPowerOfTwo(in: windowFunction.count) else {
             return
         }
         
         prepareStorage(for: sampleCountAsPowerOfTwo)
     }
 
-    private func prepareStorage(for sampleCountAsPowerOfTwo: UInt) {
+    private func prepareStorage(for sampleCountAsPowerOfTwo: Int) {
         
         let paddedSampleCount = 1 << sampleCountAsPowerOfTwo
         
@@ -113,7 +112,7 @@ class FastFourierTransform {
         }
 
         // Prepare the FFT configuration ahead of time (equiv FFTW execution plan).
-        config = vDSP_create_fftsetup(sampleCountAsPowerOfTwo, FFTRadix(kFFTRadix2))
+        config = vDSP_create_fftsetup(UInt(sampleCountAsPowerOfTwo), FFTRadix(kFFTRadix2))
         
         // Create storage for a window function.
         windowFunction = [Float](repeating: 0.0, count: paddedSampleCount)
@@ -137,10 +136,9 @@ class FastFourierTransform {
     
 }
 
-
-private func LargestPowerOfTwo(in value: UInt) -> UInt {
+private func LargestPowerOfTwo(in value: Int) -> Int {
     var val = value >> 1
-    var power: UInt = 0
+    var power: Int = 0
     while val > 0 {
         val >>= 1
         power += 1

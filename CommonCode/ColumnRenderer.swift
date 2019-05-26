@@ -60,11 +60,11 @@ public class ColumnRenderer {
     
     func updateVertices(timeSequence: TimeSequence, offset: Float, width: Float) {
         
-        guard timeSequence.numberOfValues() > 0 else {
+        guard !timeSequence.values.isEmpty else {
             return
         }
         
-        let vertexCountForSequence = Int(timeSequence.numberOfValues() * 2)
+        let vertexCountForSequence = Int(timeSequence.values.count * 2)
         if mesh == nil {
             mesh = ShadedMesh(numberOfVertices: vertexCountForSequence)
             hasInvalidatedVertices = true
@@ -82,9 +82,9 @@ public class ColumnRenderer {
 
         mesh?.updateVertices { storage in
             
-            for valueIndex in (0..<timeSequence.numberOfValues()) {
+            for valueIndex in (0..<timeSequence.values.count) {
                 let vertexIndex = Int(valueIndex << 1)
-                let value = timeSequence.value(at: valueIndex)
+                let value = timeSequence.values[valueIndex]
                 storage[vertexIndex].t = value
                 storage[vertexIndex+1].t = value
             }

@@ -28,16 +28,15 @@ class SampleBuffer {
         }
 
         // Extract the (potentially wrapped) data from the circular buffer.
-        let sequence = TimeSequence(numberOfValues: capacity - readerIndex, values: UnsafeMutablePointer<Float>(&sampleBuffer) + Int(readerIndex))
+        let range: Range<Int> = Int(readerIndex)..<sampleBuffer.count
+        var sequence = TimeSequence(timeStamp: timeStamp, duration: duration, values: Array(sampleBuffer[range]))
         
         if readerIndex > 0 {
             // If we had to read from anywhere but zero, then this buffer wrapped and must be extracted in two parts.
-            let second = TimeSequence(numberOfValues: readerIndex, values: &sampleBuffer)
-            sequence.append(second)
+            let secondRange = 0..<Int(readerIndex)
+            sequence.values.append(contentsOf: sampleBuffer[secondRange])
         }
         
-        sequence.timeStamp = timeStamp
-        sequence.duration = duration
         timeStamp = 0.0
         readerIndex = (readerIndex + capacity / readInterval) % capacity
         availableSpace = availableSpace - capacity/readInterval
