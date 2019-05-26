@@ -13,23 +13,6 @@
     NSUInteger _count;
 }
 
-- (id)initWithValues:(NSArray<NSNumber*>*)values
-{
-    NSParameterAssert(values);
-    if(!(self = [super init]))
-    {
-        return nil;
-    }
-    
-    _count = values.count;
-    _values = (float*)calloc(values.count, sizeof(float));
-    for (NSInteger idx = 0; idx < values.count; idx++) {
-        _values[idx] = [values[idx] doubleValue];
-    }
-    
-    return self;
-}
-
 - (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values
 {
     NSParameterAssert(count);
@@ -49,16 +32,6 @@
 - (void)dealloc
 {
     free(_values);
-}
-
-- (NSArray<NSNumber*>*)values
-{
-    NSMutableArray<NSNumber*>* values = [[NSMutableArray alloc] initWithCapacity:_count];
-    for(NSUInteger valueIndex = 0; valueIndex < _count; valueIndex++)
-    {
-        [values addObject:@(_values[valueIndex])];
-    }
-    return values;
 }
 
 - (NSUInteger)numberOfValues

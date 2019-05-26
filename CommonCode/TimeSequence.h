@@ -15,11 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSTimeInterval timeStamp;
 @property (nonatomic) NSTimeInterval duration;
 
-- (id)initWithValues:(NSArray<NSNumber*>*)values;
-
 - (id)initWithNumberOfValues:(NSUInteger)count values:(float*)values;
-
-- (NSArray<NSNumber*>*)values;
 
 - (NSUInteger)numberOfValues;
 
