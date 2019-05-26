@@ -5,6 +5,5 @@
 // Common
 #import "DisplaySettings.h"
 #import "TimeSequence.h"
-#import "SettingsStore.h"
 #import "ColorMapSet.h"
 #import "ColorMap.h"

@@ -65,22 +65,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func applyStoredSettings() {
      
-        if settingsStore.displaySettings().colorMap == nil {
+        if settingsStore.displaySettings.colorMap == nil {
             settingsStore.applyUpdate { settings in
                 settings.colorMap = self.colorMaps.currentColorMap()
                 return settings
             }
         }
         
-        if settingsStore.displaySettings().preferredAudioSourceId == nil {
+        if settingsStore.displaySettings.preferredAudioSourceId == nil {
             settingsStore.applyUpdate { settings in
                 settings.preferredAudioSourceId = SpectrumGenerator.availableSources.values.first
                 return settings
             }
         }
         
-        glView.use(settingsStore.displaySettings())
-        spectrumGenerator.useSettings(settingsStore.displaySettings())
+        glView.use(settingsStore.displaySettings)
+        spectrumGenerator.useSettings(settingsStore.displaySettings)
     }
 
     private func updateAllMenus() {
@@ -107,7 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateSpeedMenu() {
         speedMenu.removeAllItems()
         
-        let currentSpeed = settingsStore.displaySettings().scrollingSpeed
+        let currentSpeed = settingsStore.displaySettings.scrollingSpeed
         
         let speeds = [ 1, 2, 4, 8 ]
         for speed in speeds {
@@ -125,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let availableSources = SpectrumGenerator.availableSources
         
-        let currentSourceId = settingsStore.displaySettings().preferredAudioSourceId
+        let currentSourceId = settingsStore.displaySettings.preferredAudioSourceId
         
         for (name, id) in availableSources {
             let item = NSMenuItem(title: name, action: #selector(didPickSource(_:)), keyEquivalent: "")
@@ -138,7 +138,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateScrollingDirectionsMenu() {
         scrollingDirectionsMenu.removeAllItems()
         
-        let current = settingsStore.displaySettings().scrollingDirectionIndex
+        let current = settingsStore.displaySettings.scrollingDirectionIndex
         
         for (index, name) in glView.namesForScrollingDirections.enumerated() {
             let charCode: String = name.prefix(1).lowercased()
@@ -150,13 +150,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateDisplayMenu() {
-        stretchFrequenciesMenuItem.state = settingsStore.displaySettings().useLogFrequencyScale ? .on : .off
+        stretchFrequenciesMenuItem.state = settingsStore.displaySettings.useLogFrequencyScale ? .on : .off
     }
     
     func updateSharpnessMenu() {
         sharpnessMenu.removeAllItems()
 
-        let currentSharpness = settingsStore.displaySettings().sharpness
+        let currentSharpness = settingsStore.displaySettings.sharpness
         
         let sharpnessValues = [ 4, 2, 1]
         
@@ -176,7 +176,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.colorMap = self.colorMaps.nextColorMap()
             return settings
         }
-        glView.use(settingsStore.displaySettings())
+        glView.use(settingsStore.displaySettings)
     }
     
     @IBAction
@@ -185,7 +185,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.useLogFrequencyScale = !settings.useLogFrequencyScale
             return settings
         }
-        glView.use(settingsStore.displaySettings())
+        glView.use(settingsStore.displaySettings)
         updateDisplayMenu()
     }
 
@@ -198,7 +198,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.scrollingDirectionIndex = scrollingDirection
             return settings
         }
-        glView.use(settingsStore.displaySettings())
+        glView.use(settingsStore.displaySettings)
         updateScrollingDirectionsMenu()
     }
     
@@ -211,7 +211,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.scrollingSpeed = speed
             return settings
         }
-        glView.use(settingsStore.displaySettings())
+        glView.use(settingsStore.displaySettings)
         updateSpeedMenu()
     }
     
@@ -224,7 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.sharpness = sharpness
             return settings
         }
-        spectrumGenerator.useSettings(settingsStore.displaySettings())
+        spectrumGenerator.useSettings(settingsStore.displaySettings)
         updateSharpnessMenu()
     }
     
@@ -237,7 +237,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             settings.preferredAudioSourceId = sourceID
             return settings
         }
-        spectrumGenerator.useSettings(settingsStore.displaySettings())
+        spectrumGenerator.useSettings(settingsStore.displaySettings)
         updateSourceMenu()
     }
 }

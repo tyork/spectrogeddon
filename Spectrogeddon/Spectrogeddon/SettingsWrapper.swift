@@ -17,7 +17,7 @@ extension Notification.Name {
 class SettingsWrapper {
     
     var displaySettings: DisplaySettings {
-        return settingsStore.displaySettings()
+        return settingsStore.displaySettings
     }
     
     private var settingsStore: SettingsStore
@@ -28,7 +28,7 @@ class SettingsWrapper {
         self.settingsStore = SettingsStore()
         self.colorMaps = ColorMapSet()
         self.sharpness = 1
-        if settingsStore.displaySettings().colorMap == nil {
+        if settingsStore.displaySettings.colorMap == nil {
             let currentMap = colorMaps.currentColorMap()
             settingsStore.applyUpdate { settings in
                 settings.colorMap = currentMap
@@ -85,7 +85,7 @@ class SettingsWrapper {
     private func postNote() {
         NotificationCenter.default.post(
             name: .spectroSettingsDidUpdate,
-            object: settingsStore.displaySettings()
+            object: settingsStore.displaySettings
         )
     }
 }
