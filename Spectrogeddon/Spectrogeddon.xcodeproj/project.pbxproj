@@ -28,7 +28,6 @@
 		EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E52287507B00B99036 /* AppDelegate.swift */; };
 		EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E72287527900B99036 /* SpectrumViewController.swift */; };
 		EE59724A1D08D369005EE551 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5972481D08D369005EE551 /* Launch.storyboard */; };
-		EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972501D12EA44005EE551 /* LoggingUtilities.m */; };
 		EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */; };
 		EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */; };
 		EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */; };
@@ -54,6 +53,7 @@
 		EE8904CF229B315800E1E0D5 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904CB229B315800E1E0D5 /* ColorMap+Image.swift */; };
 		EE8904D0229B315800E1E0D5 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904CC229B315800E1E0D5 /* ColorMapStore.swift */; };
 		EE8904D6229B3E2800E1E0D5 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904D5229B3E2800E1E0D5 /* TimeSequence.swift */; };
+		EE8904DA229B409900E1E0D5 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904D9229B409900E1E0D5 /* LoggingUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +91,6 @@
 		EE4D48E52287507B00B99036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE4D48E72287527900B99036 /* SpectrumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumViewController.swift; sourceTree = "<group>"; };
 		EE5972491D08D369005EE551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
-		EE59724F1D12EA44005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingUtilities.h; sourceTree = "<group>"; };
-		EE5972501D12EA44005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingUtilities.m; sourceTree = "<group>"; };
 		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
 		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
@@ -118,6 +116,7 @@
 		EE8904CB229B315800E1E0D5 /* ColorMap+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorMap+Image.swift"; sourceTree = "<group>"; };
 		EE8904CC229B315800E1E0D5 /* ColorMapStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMapStore.swift; sourceTree = "<group>"; };
 		EE8904D5229B3E2800E1E0D5 /* TimeSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSequence.swift; sourceTree = "<group>"; };
+		EE8904D9229B409900E1E0D5 /* LoggingUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingUtilities.swift; sourceTree = "<group>"; };
 		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -315,8 +314,7 @@
 		EE624A701A721DE200F4A232 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				EE59724F1D12EA44005EE551 /* LoggingUtilities.h */,
-				EE5972501D12EA44005EE551 /* LoggingUtilities.m */,
+				EE8904D9229B409900E1E0D5 /* LoggingUtilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -439,12 +437,12 @@
 				EE8904BC229AA33800E1E0D5 /* TexturedVertexAttribs.swift in Sources */,
 				EE8904CF229B315800E1E0D5 /* ColorMap+Image.swift in Sources */,
 				EE890482228F489400E1E0D5 /* SampleBuffer.swift in Sources */,
-				EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */,
 				EE89049022988E4800E1E0D5 /* ColumnRenderer.swift in Sources */,
 				EE89048A2298741700E1E0D5 /* GLRenderer.swift in Sources */,
 				EE8904AE229A079200E1E0D5 /* RenderSize.swift in Sources */,
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
 				EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */,
+				EE8904DA229B409900E1E0D5 /* LoggingUtilities.swift in Sources */,
 				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				EE89049222988E8900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
 				EE8904D6229B3E2800E1E0D5 /* TimeSequence.swift in Sources */,
