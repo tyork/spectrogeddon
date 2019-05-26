@@ -21,65 +21,44 @@ class SettingsWrapper {
     }
     
     private var settingsStore: SettingsStore
-    private var colorMaps: ColorMapSet
+    private var colorMapStore: ColorMapStore
     private var sharpness: UInt
     
     init() {
         self.settingsStore = SettingsStore()
-        self.colorMaps = ColorMapSet()
+        self.colorMapStore = ColorMapStore()
         self.sharpness = 1
         if settingsStore.displaySettings.colorMap == nil {
-            let currentMap = colorMaps.currentColorMap()
-            settingsStore.applyUpdate { settings in
-                settings.colorMap = currentMap
-                return settings
-            }
+            settingsStore.displaySettings.colorMap = colorMapStore.currentMap
         }
     }
     
     func nextColorMap() {
-        let newMap = colorMaps.nextColorMap()
-        settingsStore.applyUpdate { settings in
-            settings.colorMap = newMap
-            return settings
-        }
+        settingsStore.displaySettings.colorMap = colorMapStore.nextMap()
         postNote()
     }
     
     func toggleFrequencyStretch() {
-        settingsStore.applyUpdate { settings in
-            settings.useLogFrequencyScale = !settings.useLogFrequencyScale
-            return settings
-        }
+        settingsStore.displaySettings.useLogFrequencyScale = !settingsStore.displaySettings.useLogFrequencyScale
         postNote()
     }
     
     func nextScrollingSpeed() {
         let speeds = [ 1, 2, 4, 8 ]
-        
         let speed = speeds.nextElementWrapping(after: displaySettings.scrollingSpeed, defaultingIfEmpty: 1)
-        settingsStore.applyUpdate { settings in
-            settings.scrollingSpeed = speed
-            return settings
-        }
+        settingsStore.displaySettings.scrollingSpeed = speed
         postNote()
     }
     
     func nextSharpness() {
         let sharpnessValues: [UInt] = [ 1, 2, 4 ]
-        
         let sharpness = sharpnessValues.nextElementWrapping(after: displaySettings.sharpness, defaultingIfEmpty: 1)
-        settingsStore.applyUpdate { settings in
-            settings.sharpness = sharpness
-            return settings
-        }
+        settingsStore.displaySettings.sharpness = sharpness
         postNote()
     }
     
     private func set(displaySettings: DisplaySettings) {
-        settingsStore.applyUpdate { old in
-            return displaySettings
-        }
+        settingsStore.displaySettings = displaySettings
     }
     
     private func postNote() {

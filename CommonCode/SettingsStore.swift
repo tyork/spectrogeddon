@@ -10,7 +10,11 @@ import Foundation
 
 class SettingsStore {
     
-    private(set) var displaySettings: DisplaySettings
+    var displaySettings: DisplaySettings {
+        didSet {
+            save(settings: displaySettings, to: storeURL)
+        }
+    }
     
     private let storeURL: URL
     
@@ -19,26 +23,31 @@ class SettingsStore {
         let stored = loadSettings(at: storeURL)
         self.displaySettings = stored ?? DisplaySettings()
     }
-
-    func applyUpdate(_ update: (DisplaySettings) -> DisplaySettings) {
-        displaySettings = update(displaySettings)
-        save(settings: displaySettings, to: storeURL)
-    }
 }
 
 private func loadSettings(at url: URL) -> DisplaySettings? {
-    precondition(url.isFileURL)
-    return NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? DisplaySettings
+    
+    do {
+        let data = try Data(contentsOf: url)
+        let object = try JSONDecoder().decode(DisplaySettings.self, from: data)
+        return object
+    } catch {
+        print("Failed to load settings from \(url.path): \(error)")
+        return nil
+    }
 }
 
 private func save(settings: DisplaySettings, to url: URL) {
-    precondition(url.isFileURL)
-    NSKeyedArchiver.archiveRootObject(settings, toFile: url.path)
+    
+    do {
+        let data = try JSONEncoder().encode(settings)
+        try data.write(to: url)
+    } catch {
+        print("Failed to save settings for \(url.path)")
+    }
 }
 
 private let defaultStoreURL: URL = {
-    
-    let storeName = "Spectrogeddon.settings"
     
     let documentsURL = try! FileManager.default.url(
         for: .documentDirectory,
@@ -46,6 +55,5 @@ private let defaultStoreURL: URL = {
         appropriateFor: nil,
         create: true
     )
-    
-    return documentsURL.appendingPathComponent(storeName)
+    return documentsURL.appendingPathComponent("Spectrogeddon.json")
 }()

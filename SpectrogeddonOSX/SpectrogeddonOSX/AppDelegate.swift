@@ -33,11 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var speedMenu: NSMenu!
     
     private var spectrumGenerator: SpectrumGenerator
-    private var colorMaps: ColorMapSet
+    private var colorMapStore: ColorMapStore
     private var settingsStore: SettingsStore
     
     override init() {
-        self.colorMaps = ColorMapSet()
+        self.colorMapStore = ColorMapStore()
         self.settingsStore = SettingsStore()
         self.spectrumGenerator = try! SpectrumGenerator()// TODO:
 
@@ -66,17 +66,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func applyStoredSettings() {
      
         if settingsStore.displaySettings.colorMap == nil {
-            settingsStore.applyUpdate { settings in
-                settings.colorMap = self.colorMaps.currentColorMap()
-                return settings
-            }
+            settingsStore.displaySettings.colorMap = colorMapStore.currentMap
         }
         
         if settingsStore.displaySettings.preferredAudioSourceId == nil {
-            settingsStore.applyUpdate { settings in
-                settings.preferredAudioSourceId = SpectrumGenerator.availableSources.values.first
-                return settings
-            }
+            settingsStore.displaySettings.preferredAudioSourceId = SpectrumGenerator.availableSources.values.first
         }
         
         glView.use(settingsStore.displaySettings)
@@ -172,19 +166,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction
     func nextColorMap(_ sender: NSMenuItem) {
-        settingsStore.applyUpdate { settings in
-            settings.colorMap = self.colorMaps.nextColorMap()
-            return settings
-        }
+        settingsStore.displaySettings.colorMap = colorMapStore.nextMap()
         glView.use(settingsStore.displaySettings)
     }
     
     @IBAction
     func changeFrequencyScale(_ sender: NSMenuItem) {
-        settingsStore.applyUpdate { settings in
-            settings.useLogFrequencyScale = !settings.useLogFrequencyScale
-            return settings
-        }
+        settingsStore.displaySettings.useLogFrequencyScale = !settingsStore.displaySettings.useLogFrequencyScale
         glView.use(settingsStore.displaySettings)
         updateDisplayMenu()
     }
@@ -194,10 +182,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let scrollingDirection = sender.representedObject as? UInt else {
             return
         }
-        settingsStore.applyUpdate { settings in
-            settings.scrollingDirectionIndex = scrollingDirection
-            return settings
-        }
+        settingsStore.displaySettings.scrollingDirectionIndex = scrollingDirection
         glView.use(settingsStore.displaySettings)
         updateScrollingDirectionsMenu()
     }
@@ -207,10 +192,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let speed = sender.representedObject as? Int else {
             return
         }
-        settingsStore.applyUpdate { settings in
-            settings.scrollingSpeed = speed
-            return settings
-        }
+        settingsStore.displaySettings.scrollingSpeed = speed
         glView.use(settingsStore.displaySettings)
         updateSpeedMenu()
     }
@@ -220,10 +202,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let sharpness = sender.representedObject as? UInt else {
             return
         }
-        settingsStore.applyUpdate { settings in
-            settings.sharpness = sharpness
-            return settings
-        }
+        settingsStore.displaySettings.sharpness = sharpness
         spectrumGenerator.useSettings(settingsStore.displaySettings)
         updateSharpnessMenu()
     }
@@ -233,10 +212,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let sourceID = sender.representedObject as? String else {
             return
         }
-        settingsStore.applyUpdate { settings in
-            settings.preferredAudioSourceId = sourceID
-            return settings
-        }
+        settingsStore.displaySettings.preferredAudioSourceId = sourceID
         spectrumGenerator.useSettings(settingsStore.displaySettings)
         updateSourceMenu()
     }

@@ -4,6 +4,3 @@
 
 // Common
 #import "TimeSequence.h"
-#import "DisplaySettings.h"
-#import "ColorMapSet.h"
-#import "ColorMap.h"

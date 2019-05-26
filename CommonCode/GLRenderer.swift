@@ -110,8 +110,8 @@ class GLRenderer {
     func use(_ displaySettings: DisplaySettings) {
         
         self.displaySettings = displaySettings
-        channel1Renderer.colorMapImage = displaySettings.colorMap!.imageRef().takeUnretainedValue() // TODO:
-        channel2Renderer.colorMapImage = displaySettings.colorMap!.imageRef().takeUnretainedValue() // TODO:
+        channel1Renderer.colorMapImage = displaySettings.colorMap!.image
+        channel2Renderer.colorMapImage = displaySettings.colorMap!.image
         channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         scrollingRenderer.activeScrollingDirectionIndex = displaySettings.scrollingDirectionIndex
