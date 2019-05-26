@@ -15,7 +15,6 @@
 		19F668A8190AA3AF00D2DE77 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F668A7190AA3AF00D2DE77 /* XCTest.framework */; };
 		19F668A9190AA3AF00D2DE77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66888190AA3AF00D2DE77 /* Cocoa.framework */; };
 		19F668B1190AA3AF00D2DE77 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F668AF190AA3AF00D2DE77 /* InfoPlist.strings */; };
-		19F668B3190AA3B000D2DE77 /* SpectrogeddonOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */; };
 		19F66945190AA8C400D2DE77 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19F66944190AA8C400D2DE77 /* ColorMaps */; };
 		19F66948190AA90000D2DE77 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66946190AA90000D2DE77 /* GLKit.framework */; };
 		19F66949190AA90000D2DE77 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F66947190AA90000D2DE77 /* OpenGL.framework */; };
@@ -47,6 +46,7 @@
 		EE8904C8229B2BBD00E1E0D5 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904C7229B2BBD00E1E0D5 /* ColorMap+Image.swift */; };
 		EE8904D4229B336100E1E0D5 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904D3229B336100E1E0D5 /* TimeSequence.swift */; };
 		EE8904D8229B3EA200E1E0D5 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904D7229B3EA200E1E0D5 /* LoggingUtilities.swift */; };
+		EE8904E2229B40FD00E1E0D5 /* EmptyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904E1229B40FD00E1E0D5 /* EmptyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		19F668A7190AA3AF00D2DE77 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		19F668AE190AA3AF00D2DE77 /* SpectrogeddonOSXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonOSXTests-Info.plist"; sourceTree = "<group>"; };
 		19F668B0190AA3AF00D2DE77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpectrogeddonOSXTests.m; sourceTree = "<group>"; };
 		19F66944190AA8C400D2DE77 /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
 		19F66946190AA90000D2DE77 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		19F66947190AA90000D2DE77 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -107,6 +106,7 @@
 		EE8904C7229B2BBD00E1E0D5 /* ColorMap+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ColorMap+Image.swift"; path = "../../CommonCode/ColorMap+Image.swift"; sourceTree = "<group>"; };
 		EE8904D3229B336100E1E0D5 /* TimeSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSequence.swift; path = ../../CommonCode/TimeSequence.swift; sourceTree = "<group>"; };
 		EE8904D7229B3EA200E1E0D5 /* LoggingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoggingUtilities.swift; path = ../../CommonCode/LoggingUtilities.swift; sourceTree = "<group>"; };
+		EE8904E1229B40FD00E1E0D5 /* EmptyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +228,7 @@
 		19F668AC190AA3AF00D2DE77 /* SpectrogeddonOSXTests */ = {
 			isa = PBXGroup;
 			children = (
-				19F668B2190AA3B000D2DE77 /* SpectrogeddonOSXTests.m */,
+				EE8904E1229B40FD00E1E0D5 /* EmptyTests.swift */,
 				19F668AD190AA3AF00D2DE77 /* Supporting Files */,
 			);
 			path = SpectrogeddonOSXTests;
@@ -359,6 +359,7 @@
 						LastSwiftMigration = 1020;
 					};
 					19F668A5190AA3AF00D2DE77 = {
+						LastSwiftMigration = 1020;
 						TestTargetID = 19F66884190AA3AF00D2DE77;
 					};
 				};
@@ -442,7 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F668B3190AA3B000D2DE77 /* SpectrogeddonOSXTests.m in Sources */,
+				EE8904E2229B40FD00E1E0D5 /* EmptyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +581,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -597,6 +599,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
@@ -614,6 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "${inherited}";
 				INFOPLIST_FILE = "SpectrogeddonOSX/SpectrogeddonOSX-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
@@ -629,18 +633,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpectrogeddonOSX.app/Contents/MacOS/SpectrogeddonOSX";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "SpectrogeddonOSXTests/SpectrogeddonOSXTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -651,14 +656,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpectrogeddonOSX.app/Contents/MacOS/SpectrogeddonOSX";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "${inherited}";
 				INFOPLIST_FILE = "SpectrogeddonOSXTests/SpectrogeddonOSXTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spectrogeddon.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
