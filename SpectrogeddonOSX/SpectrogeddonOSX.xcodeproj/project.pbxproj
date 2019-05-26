@@ -25,7 +25,6 @@
 		19F73F851923C415001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F831923C415001E746D /* TexturedMeshShader.fsh */; };
 		19F73F861923C415001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F841923C415001E746D /* TexturedMeshShader.vsh */; };
 		EE5972541D12EABB005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972531D12EABB005EE551 /* LoggingUtilities.m */; };
-		EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A731A721E4800F4A232 /* NSArray+Functional.m */; };
 		EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */; };
 		EE890471228B450300E1E0D5 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */; };
 		EE890475228BF65C00E1E0D5 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE890474228BF65B00E1E0D5 /* SpectrumGenerator.swift */; };
@@ -88,8 +87,6 @@
 		19F73F841923C415001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TexturedMeshShader.vsh; path = ../../CommonCode/TexturedMeshShader.vsh; sourceTree = "<group>"; };
 		EE5972521D12EABB005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoggingUtilities.h; path = ../../CommonCode/LoggingUtilities.h; sourceTree = "<group>"; };
 		EE5972531D12EABB005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoggingUtilities.m; path = ../../CommonCode/LoggingUtilities.m; sourceTree = "<group>"; };
-		EE624A721A721E4800F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Functional.h"; path = "../../CommonCode/NSArray+Functional.h"; sourceTree = "<group>"; };
-		EE624A731A721E4800F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Functional.m"; path = "../../CommonCode/NSArray+Functional.m"; sourceTree = "<group>"; };
 		EE89046D228A06EA00E1E0D5 /* SpectrogeddonOSX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonOSX-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE89046E228A06EB00E1E0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE890470228B450300E1E0D5 /* DesktopOpenGLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopOpenGLView.swift; sourceTree = "<group>"; };
@@ -303,8 +300,6 @@
 			children = (
 				EE5972521D12EABB005EE551 /* LoggingUtilities.h */,
 				EE5972531D12EABB005EE551 /* LoggingUtilities.m */,
-				EE624A721A721E4800F4A232 /* NSArray+Functional.h */,
-				EE624A731A721E4800F4A232 /* NSArray+Functional.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -424,7 +419,6 @@
 				EE8904AA2299521300E1E0D5 /* RendererUtils.swift in Sources */,
 				EE89046F228A06EB00E1E0D5 /* AppDelegate.swift in Sources */,
 				EE89048C2298759500E1E0D5 /* ColumnRenderer.swift in Sources */,
-				EE624A741A721E4800F4A232 /* NSArray+Functional.m in Sources */,
 				EE8904BA229A9C8800E1E0D5 /* SettingsStore.swift in Sources */,
 				EE890475228BF65C00E1E0D5 /* SpectrumGenerator.swift in Sources */,
 				EE8904B0229A079E00E1E0D5 /* RenderSize.swift in Sources */,

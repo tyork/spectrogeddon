@@ -30,7 +30,6 @@
 		EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E72287527900B99036 /* SpectrumViewController.swift */; };
 		EE59724A1D08D369005EE551 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE5972481D08D369005EE551 /* Launch.storyboard */; };
 		EE5972511D12EA44005EE551 /* LoggingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5972501D12EA44005EE551 /* LoggingUtilities.m */; };
-		EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */; };
 		EE8904642288A4AB00E1E0D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */; };
 		EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */; };
 		EE8904672288AE2300E1E0D5 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */; };
@@ -96,8 +95,6 @@
 		EE5972491D08D369005EE551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
 		EE59724F1D12EA44005EE551 /* LoggingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingUtilities.h; sourceTree = "<group>"; };
 		EE5972501D12EA44005EE551 /* LoggingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingUtilities.m; sourceTree = "<group>"; };
-		EE624A6D1A721DD600F4A232 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
-		EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
 		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
 		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
@@ -320,8 +317,6 @@
 		EE624A701A721DE200F4A232 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				EE624A6D1A721DD600F4A232 /* NSArray+Functional.h */,
-				EE624A6E1A721DD600F4A232 /* NSArray+Functional.m */,
 				EE59724F1D12EA44005EE551 /* LoggingUtilities.h */,
 				EE5972501D12EA44005EE551 /* LoggingUtilities.m */,
 			);
@@ -453,7 +448,6 @@
 				19F66916190AA78B00D2DE77 /* TimeSequence.m in Sources */,
 				EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */,
 				EE8904652288AD9D00E1E0D5 /* SettingsModelClient.swift in Sources */,
-				EE624A6F1A721DD600F4A232 /* NSArray+Functional.m in Sources */,
 				EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */,
 				EE89049222988E8900E1E0D5 /* LinearScrollingRenderer.swift in Sources */,
 				EE8904982298999600E1E0D5 /* RadialScrollingRenderer.swift in Sources */,
