@@ -40,19 +40,18 @@ class DesktopOpenGLView: NSOpenGLView {
             return
         }
 
-        //let timer = Timer(timeInterval: 0.001, target: self, selector: #selector(redisplay:), userInfo: nil, repeats: true)
         let timer = Timer(timeInterval: 0.001, repeats: true) { [weak self] _ in
-            
-            guard let strongSelf = self else { return }
-            strongSelf.execute(flushingBuffer: true) {
-                strongSelf.renderer.render()
-            }
+            self?.render()
         }
-        RunLoop.main.add(timer, forMode: .common)
-        
-//            [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSEventTrackingRunLoopMode];
-//            [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSDefaultRunLoopMode];
-//            [[NSRunLoop currentRunLoop] addTimer:self.displayTimer forMode:NSModalPanelRunLoopMode];
+
+        RunLoop.main.scheduleTimer(timer, forModes: [.default, .eventTracking, .modalPanel])
+    }
+    
+    private func render() {
+
+        execute(flushingBuffer: true) {
+            renderer.render()
+        }
     }
     
     override func awakeFromNib() {
@@ -104,5 +103,15 @@ class DesktopOpenGLView: NSOpenGLView {
             context.flushBuffer()
         }
         CGLUnlockContext(cgl)
+    }
+}
+
+private extension RunLoop {
+    
+    func scheduleTimer(_ timer: Timer, forModes modes: [Mode]) {
+        
+        modes.forEach {
+            add(timer, forMode: $0)
+        }
     }
 }
