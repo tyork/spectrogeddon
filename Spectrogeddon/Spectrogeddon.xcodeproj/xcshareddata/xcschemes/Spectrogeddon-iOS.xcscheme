@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EEF76D8822DA861D00BA3315"
+               BuildableName = "Spectrogeddon-iOSTests.xctest"
+               BlueprintName = "Spectrogeddon-iOSTests"
+               ReferencedContainer = "container:Spectrogeddon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

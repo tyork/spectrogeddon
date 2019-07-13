@@ -3,7 +3,6 @@
 //  SpectroCore-OSX
 //
 //  Created by Tom York on 13/07/2019.
-//  Copyright © 2019 Random. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

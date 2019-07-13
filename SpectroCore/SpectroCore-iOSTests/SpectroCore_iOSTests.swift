@@ -1,15 +1,14 @@
 //
-//  SpectroCore_OSXTests.swift
-//  SpectroCore-OSXTests
+//  SpectroCore_iOSTests.swift
+//  SpectroCore-iOSTests
 //
 //  Created by Tom York on 13/07/2019.
-//  Copyright © 2019 Random. All rights reserved.
 //
 
 import XCTest
-@testable import SpectroCore_OSX
+@testable import SpectroCore_iOS
 
-class SpectroCore_OSXTests: XCTestCase {
+class SpectroCore_iOSTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -12,74 +12,20 @@
 		EEF76BBD22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BBC22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift */; };
 		EEF76BC722DA783300BA3315 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF76BC522DA783300BA3315 /* MainMenu.xib */; };
 		EEF76BCA22DA78C100BA3315 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BC922DA78C100BA3315 /* DesktopOpenGLView.swift */; };
-		EEF76D0322DA7DC900BA3315 /* SpectroCoreOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */; };
-		EEF76D0A22DA7DC900BA3315 /* SpectroCore_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D0922DA7DC900BA3315 /* SpectroCore_OSXTests.swift */; };
-		EEF76D0C22DA7DC900BA3315 /* SpectroCore_OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF76CFC22DA7DC900BA3315 /* SpectroCore_OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEF76D0F22DA7DC900BA3315 /* SpectroCoreOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */; };
-		EEF76D1022DA7DC900BA3315 /* SpectroCoreOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EEF76D1722DA7DD300BA3315 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9522DA7CF500BA3315 /* DisplaySettings.swift */; };
-		EEF76D1822DA7DD300BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9622DA7CF500BA3315 /* RendererUtils.swift */; };
-		EEF76D1922DA7DD300BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76C9722DA7CF500BA3315 /* TexturedMeshShader.fsh */; };
-		EEF76D1A22DA7DD300BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9822DA7CF500BA3315 /* RadialScrollingRenderer.swift */; };
-		EEF76D1B22DA7DD300BA3315 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9922DA7CF500BA3315 /* SampleBuffer.swift */; };
-		EEF76D1C22DA7DD300BA3315 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9A22DA7CF500BA3315 /* ColorMapStore.swift */; };
-		EEF76D1D22DA7DD300BA3315 /* RenderSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9B22DA7CF500BA3315 /* RenderSize.swift */; };
-		EEF76D1E22DA7DD300BA3315 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9C22DA7CF500BA3315 /* FastFourierTransform.swift */; };
-		EEF76D1F22DA7DD300BA3315 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9D22DA7CF500BA3315 /* SpectrumGenerator.swift */; };
-		EEF76D2022DA7DD300BA3315 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9E22DA7CF500BA3315 /* ScrollingRenderer.swift */; };
-		EEF76D2122DA7DD300BA3315 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9F22DA7CF500BA3315 /* RenderTexture.swift */; };
-		EEF76D2222DA7DD300BA3315 /* GLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA022DA7CF500BA3315 /* GLRenderer.swift */; };
-		EEF76D2322DA7DD300BA3315 /* LinearScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA122DA7CF500BA3315 /* LinearScrollingRenderer.swift */; };
-		EEF76D2422DA7DD300BA3315 /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76CA222DA7CF500BA3315 /* TexturedMeshShader.vsh */; };
-		EEF76D2522DA7DD300BA3315 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA322DA7CF500BA3315 /* ColumnRenderer.swift */; };
-		EEF76D2622DA7DD300BA3315 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA422DA7CF500BA3315 /* LoggingUtilities.swift */; };
-		EEF76D2722DA7DD300BA3315 /* TexturedVertexAttribs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA522DA7CF500BA3315 /* TexturedVertexAttribs.swift */; };
-		EEF76D2822DA7DD300BA3315 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA622DA7CF500BA3315 /* AudioSource.swift */; };
-		EEF76D2922DA7DD300BA3315 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA722DA7CF500BA3315 /* ColorMap+Image.swift */; };
-		EEF76D2A22DA7DD300BA3315 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA822DA7CF500BA3315 /* ColorMap.swift */; };
-		EEF76D2B22DA7DD300BA3315 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA922DA7CF500BA3315 /* TimeSequence.swift */; };
-		EEF76D2C22DA7DD300BA3315 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CAA22DA7CF500BA3315 /* ShadedMesh.swift */; };
-		EEF76D2D22DA7DD300BA3315 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CAB22DA7CF500BA3315 /* SettingsStore.swift */; };
-		EEF76D3622DA816300BA3315 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D3522DA816300BA3315 /* ColorMaps */; };
-		EEF76D4522DA859400BA3315 /* SpectroCoreiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */; };
-		EEF76D4C22DA859400BA3315 /* SpectroCore_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D4B22DA859400BA3315 /* SpectroCore_iOSTests.swift */; };
-		EEF76D4E22DA859400BA3315 /* SpectroCore_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF76D3E22DA859400BA3315 /* SpectroCore_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEF76D5A22DA85D400BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9622DA7CF500BA3315 /* RendererUtils.swift */; };
-		EEF76D5B22DA85D400BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76C9722DA7CF500BA3315 /* TexturedMeshShader.fsh */; };
-		EEF76D5C22DA85D400BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9822DA7CF500BA3315 /* RadialScrollingRenderer.swift */; };
-		EEF76D5D22DA85D400BA3315 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9922DA7CF500BA3315 /* SampleBuffer.swift */; };
-		EEF76D5E22DA85D400BA3315 /* RenderSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9B22DA7CF500BA3315 /* RenderSize.swift */; };
-		EEF76D5F22DA85D400BA3315 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9C22DA7CF500BA3315 /* FastFourierTransform.swift */; };
-		EEF76D6022DA85D400BA3315 /* SpectrumGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9D22DA7CF500BA3315 /* SpectrumGenerator.swift */; };
-		EEF76D6122DA85D400BA3315 /* ScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9E22DA7CF500BA3315 /* ScrollingRenderer.swift */; };
-		EEF76D6222DA85D400BA3315 /* RenderTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9F22DA7CF500BA3315 /* RenderTexture.swift */; };
-		EEF76D6322DA85D400BA3315 /* GLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA022DA7CF500BA3315 /* GLRenderer.swift */; };
-		EEF76D6422DA85D400BA3315 /* LinearScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA122DA7CF500BA3315 /* LinearScrollingRenderer.swift */; };
-		EEF76D6522DA85D400BA3315 /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76CA222DA7CF500BA3315 /* TexturedMeshShader.vsh */; };
-		EEF76D6622DA85D400BA3315 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA322DA7CF500BA3315 /* ColumnRenderer.swift */; };
-		EEF76D6722DA85D400BA3315 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA422DA7CF500BA3315 /* LoggingUtilities.swift */; };
-		EEF76D6822DA85D400BA3315 /* TexturedVertexAttribs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA522DA7CF500BA3315 /* TexturedVertexAttribs.swift */; };
-		EEF76D6922DA85D400BA3315 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA622DA7CF500BA3315 /* AudioSource.swift */; };
-		EEF76D6A22DA85D400BA3315 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9A22DA7CF500BA3315 /* ColorMapStore.swift */; };
-		EEF76D6B22DA85D400BA3315 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA722DA7CF500BA3315 /* ColorMap+Image.swift */; };
-		EEF76D6C22DA85D400BA3315 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA822DA7CF500BA3315 /* ColorMap.swift */; };
-		EEF76D6D22DA85D400BA3315 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CA922DA7CF500BA3315 /* TimeSequence.swift */; };
-		EEF76D6E22DA85D400BA3315 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CAA22DA7CF500BA3315 /* ShadedMesh.swift */; };
-		EEF76D6F22DA85D400BA3315 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76C9522DA7CF500BA3315 /* DisplaySettings.swift */; };
-		EEF76D7022DA85D400BA3315 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76CAB22DA7CF500BA3315 /* SettingsStore.swift */; };
-		EEF76D7122DA85DC00BA3315 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D3522DA816300BA3315 /* ColorMaps */; };
 		EEF76D7922DA861B00BA3315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D7822DA861B00BA3315 /* AppDelegate.swift */; };
 		EEF76D7E22DA861B00BA3315 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D7C22DA861B00BA3315 /* Main.storyboard */; };
 		EEF76D8022DA861D00BA3315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D7F22DA861D00BA3315 /* Assets.xcassets */; };
 		EEF76D8322DA861D00BA3315 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D8122DA861D00BA3315 /* LaunchScreen.storyboard */; };
 		EEF76D8E22DA861D00BA3315 /* Spectrogeddon_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D8D22DA861D00BA3315 /* Spectrogeddon_iOSTests.swift */; };
-		EEF76D9722DA864300BA3315 /* SpectroCoreiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */; };
-		EEF76D9822DA864300BA3315 /* SpectroCoreiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEF76DA022DA888F00BA3315 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9D22DA888F00BA3315 /* SettingsViewController.swift */; };
 		EEF76DA122DA888F00BA3315 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9E22DA888F00BA3315 /* SpectrumViewController.swift */; };
 		EEF76DA222DA888F00BA3315 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9F22DA888F00BA3315 /* MobileGLDisplay.swift */; };
 		EEF76DA622DA88AC00BA3315 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DA422DA88AC00BA3315 /* SettingsModelClient.swift */; };
 		EEF76DA722DA88AC00BA3315 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DA522DA88AC00BA3315 /* SettingsWrapper.swift */; };
+		EEF76E0A22DA8C4400BA3315 /* SpectroCoreiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */; };
+		EEF76E0B22DA8C4400BA3315 /* SpectroCoreiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EEF76E7522DA8D8000BA3315 /* SpectroCoreOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */; };
+		EEF76E7622DA8D8000BA3315 /* SpectroCoreOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,47 +36,12 @@
 			remoteGlobalIDString = EEF76BA822DA761700BA3315;
 			remoteInfo = "Spectrogeddon-OSX";
 		};
-		EEF76D0422DA7DC900BA3315 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF76CF922DA7DC900BA3315;
-			remoteInfo = "SpectroCore-OSX";
-		};
-		EEF76D0622DA7DC900BA3315 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF76BA822DA761700BA3315;
-			remoteInfo = "Spectrogeddon-OSX";
-		};
-		EEF76D0D22DA7DC900BA3315 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF76CF922DA7DC900BA3315;
-			remoteInfo = "SpectroCore-OSX";
-		};
-		EEF76D4622DA859400BA3315 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF76D3B22DA859400BA3315;
-			remoteInfo = "SpectroCore-iOS";
-		};
 		EEF76D8A22DA861D00BA3315 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EEF76D7522DA861B00BA3315;
 			remoteInfo = "Spectrogeddon-iOS";
-		};
-		EEF76D9922DA864300BA3315 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1901B82018FBFBA7002DE52F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EEF76D3B22DA859400BA3315;
-			remoteInfo = "SpectroCore-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -141,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EEF76D1022DA7DC900BA3315 /* SpectroCoreOSX.framework in Embed Frameworks */,
+				EEF76E7622DA8D8000BA3315 /* SpectroCoreOSX.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EEF76D9822DA864300BA3315 /* SpectroCoreiOS.framework in Embed Frameworks */,
+				EEF76E0B22DA8C4400BA3315 /* SpectroCoreiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,52 +74,12 @@
 		1901B82B18FBFBA7002DE52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1901B82D18FBFBA7002DE52F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1901B82F18FBFBA7002DE52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		1901B83318FBFBA7002DE52F /* Spectrogeddon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Spectrogeddon-Info.plist"; sourceTree = "<group>"; };
-		1901B83518FBFBA7002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1901B84618FBFBA7002DE52F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1901B84D18FBFBA8002DE52F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpectrogeddonTests-Info.plist"; sourceTree = "<group>"; };
-		1901B85718FBFBA8002DE52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19541FAD18FC343300BC94BF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		19541FB318FC37A600BC94BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19541FC018FD7A2E00BC94BF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		19541FC218FD7AAF00BC94BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		19541FE21906D89900BC94BF /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ColorMaps; path = ../../CommonAssets/ColorMaps; sourceTree = "<group>"; };
-		19F73F871923C578001E746D /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
-		19F73F881923C578001E746D /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.vsh; sourceTree = "<group>"; };
-		EE03A1251A82BE15005BE0DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EE4D48E22287506800B99036 /* Spectrogeddon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spectrogeddon-Bridging-Header.h"; sourceTree = "<group>"; };
-		EE4D48E52287507B00B99036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE4D48E72287527900B99036 /* SpectrumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumViewController.swift; sourceTree = "<group>"; };
-		EE5972491D08D369005EE551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launch.storyboard; sourceTree = "<group>"; };
-		EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
-		EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
-		EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpectrogeddonTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrogeddonTests.swift; sourceTree = "<group>"; };
-		EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumGenerator.swift; sourceTree = "<group>"; };
-		EE890478228BF6F000E1E0D5 /* FastFourierTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastFourierTransform.swift; sourceTree = "<group>"; };
-		EE89047D228DE56E00E1E0D5 /* AudioSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSource.swift; sourceTree = "<group>"; };
-		EE890481228F489400E1E0D5 /* SampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
-		EE8904892298741700E1E0D5 /* GLRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLRenderer.swift; sourceTree = "<group>"; };
-		EE89048F22988E4800E1E0D5 /* ColumnRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnRenderer.swift; sourceTree = "<group>"; };
-		EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearScrollingRenderer.swift; sourceTree = "<group>"; };
-		EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
-		EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingRenderer.swift; sourceTree = "<group>"; };
-		EE8904A12298A16800E1E0D5 /* RenderTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTexture.swift; sourceTree = "<group>"; };
-		EE8904A72299518300E1E0D5 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
-		EE8904AB229A069100E1E0D5 /* RendererUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
-		EE8904AD229A079200E1E0D5 /* RenderSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderSize.swift; sourceTree = "<group>"; };
-		EE8904BB229AA33800E1E0D5 /* TexturedVertexAttribs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturedVertexAttribs.swift; sourceTree = "<group>"; };
-		EE8904BD229AA42800E1E0D5 /* SettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
-		EE8904C9229B315800E1E0D5 /* DisplaySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySettings.swift; sourceTree = "<group>"; };
-		EE8904CA229B315800E1E0D5 /* ColorMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMap.swift; sourceTree = "<group>"; };
-		EE8904CB229B315800E1E0D5 /* ColorMap+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorMap+Image.swift"; sourceTree = "<group>"; };
-		EE8904CC229B315800E1E0D5 /* ColorMapStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMapStore.swift; sourceTree = "<group>"; };
-		EE8904D5229B3E2800E1E0D5 /* TimeSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSequence.swift; sourceTree = "<group>"; };
-		EE8904D9229B409900E1E0D5 /* LoggingUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingUtilities.swift; sourceTree = "<group>"; };
-		EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF76BA922DA761700BA3315 /* Spectrogeddon-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spectrogeddon-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76BAB22DA761700BA3315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF76BAD22DA761A00BA3315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,42 +90,6 @@
 		EEF76BBE22DA761B00BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF76BC622DA783300BA3315 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		EEF76BC922DA78C100BA3315 /* DesktopOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopOpenGLView.swift; sourceTree = "<group>"; };
-		EEF76C9522DA7CF500BA3315 /* DisplaySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplaySettings.swift; sourceTree = "<group>"; };
-		EEF76C9622DA7CF500BA3315 /* RendererUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
-		EEF76C9722DA7CF500BA3315 /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
-		EEF76C9822DA7CF500BA3315 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
-		EEF76C9922DA7CF500BA3315 /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
-		EEF76C9A22DA7CF500BA3315 /* ColorMapStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMapStore.swift; sourceTree = "<group>"; };
-		EEF76C9B22DA7CF500BA3315 /* RenderSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderSize.swift; sourceTree = "<group>"; };
-		EEF76C9C22DA7CF500BA3315 /* FastFourierTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastFourierTransform.swift; sourceTree = "<group>"; };
-		EEF76C9D22DA7CF500BA3315 /* SpectrumGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumGenerator.swift; sourceTree = "<group>"; };
-		EEF76C9E22DA7CF500BA3315 /* ScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingRenderer.swift; sourceTree = "<group>"; };
-		EEF76C9F22DA7CF500BA3315 /* RenderTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderTexture.swift; sourceTree = "<group>"; };
-		EEF76CA022DA7CF500BA3315 /* GLRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLRenderer.swift; sourceTree = "<group>"; };
-		EEF76CA122DA7CF500BA3315 /* LinearScrollingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearScrollingRenderer.swift; sourceTree = "<group>"; };
-		EEF76CA222DA7CF500BA3315 /* TexturedMeshShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.vsh; sourceTree = "<group>"; };
-		EEF76CA322DA7CF500BA3315 /* ColumnRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnRenderer.swift; sourceTree = "<group>"; };
-		EEF76CA422DA7CF500BA3315 /* LoggingUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingUtilities.swift; sourceTree = "<group>"; };
-		EEF76CA522DA7CF500BA3315 /* TexturedVertexAttribs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TexturedVertexAttribs.swift; sourceTree = "<group>"; };
-		EEF76CA622DA7CF500BA3315 /* AudioSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSource.swift; sourceTree = "<group>"; };
-		EEF76CA722DA7CF500BA3315 /* ColorMap+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorMap+Image.swift"; sourceTree = "<group>"; };
-		EEF76CA822DA7CF500BA3315 /* ColorMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMap.swift; sourceTree = "<group>"; };
-		EEF76CA922DA7CF500BA3315 /* TimeSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSequence.swift; sourceTree = "<group>"; };
-		EEF76CAA22DA7CF500BA3315 /* ShadedMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
-		EEF76CAB22DA7CF500BA3315 /* SettingsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
-		EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpectroCoreOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEF76CFC22DA7DC900BA3315 /* SpectroCore_OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectroCore_OSX.h; sourceTree = "<group>"; };
-		EEF76CFD22DA7DC900BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEF76D0222DA7DC900BA3315 /* SpectroCore-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SpectroCore-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEF76D0922DA7DC900BA3315 /* SpectroCore_OSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectroCore_OSXTests.swift; sourceTree = "<group>"; };
-		EEF76D0B22DA7DC900BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEF76D3522DA816300BA3315 /* ColorMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ColorMaps; sourceTree = "<group>"; };
-		EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpectroCoreiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEF76D3E22DA859400BA3315 /* SpectroCore_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpectroCore_iOS.h; sourceTree = "<group>"; };
-		EEF76D3F22DA859400BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEF76D4422DA859400BA3315 /* SpectroCore-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SpectroCore-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEF76D4B22DA859400BA3315 /* SpectroCore_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectroCore_iOSTests.swift; sourceTree = "<group>"; };
-		EEF76D4D22DA859400BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF76D7622DA861B00BA3315 /* Spectrogeddon-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spectrogeddon-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76D7822DA861B00BA3315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF76D7D22DA861B00BA3315 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,6 +104,8 @@
 		EEF76D9F22DA888F00BA3315 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
 		EEF76DA422DA88AC00BA3315 /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
 		EEF76DA522DA88AC00BA3315 /* SettingsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
+		EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpectroCoreiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpectroCoreOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF76D0F22DA7DC900BA3315 /* SpectroCoreOSX.framework in Frameworks */,
+				EEF76E7522DA8D8000BA3315 /* SpectroCoreOSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,41 +124,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EEF76CF722DA7DC900BA3315 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76CFF22DA7DC900BA3315 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D0322DA7DC900BA3315 /* SpectroCoreOSX.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D3922DA859400BA3315 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D4122DA859400BA3315 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D4522DA859400BA3315 /* SpectroCoreiOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EEF76D7322DA861B00BA3315 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF76D9722DA864300BA3315 /* SpectroCoreiOS.framework in Frameworks */,
+				EEF76E0A22DA8C4400BA3315 /* SpectroCoreiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,15 +145,10 @@
 		1901B81F18FBFBA7002DE52F = {
 			isa = PBXGroup;
 			children = (
-				EEF76C9322DA7CF500BA3315 /* Core */,
-				1901B83118FBFBA7002DE52F /* Spectrogeddon */,
-				1901B85318FBFBA8002DE52F /* SpectrogeddonTests */,
+				EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */,
+				EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */,
 				EEF76BAA22DA761700BA3315 /* Spectrogeddon-OSX */,
 				EEF76BBB22DA761B00BA3315 /* Spectrogeddon-OSXTests */,
-				EEF76CFB22DA7DC900BA3315 /* SpectroCore-OSX */,
-				EEF76D0822DA7DC900BA3315 /* SpectroCore-OSXTests */,
-				EEF76D3D22DA859400BA3315 /* SpectroCore-iOS */,
-				EEF76D4A22DA859400BA3315 /* SpectroCore-iOSTests */,
 				EEF76D7722DA861B00BA3315 /* Spectrogeddon-iOS */,
 				EEF76D8C22DA861D00BA3315 /* Spectrogeddon-iOSTests */,
 				1901B82A18FBFBA7002DE52F /* Frameworks */,
@@ -359,10 +161,6 @@
 			children = (
 				EEF76BA922DA761700BA3315 /* Spectrogeddon-OSX.app */,
 				EEF76BB822DA761B00BA3315 /* Spectrogeddon-OSXTests.xctest */,
-				EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */,
-				EEF76D0222DA7DC900BA3315 /* SpectroCore-OSXTests.xctest */,
-				EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */,
-				EEF76D4422DA859400BA3315 /* SpectroCore-iOSTests.xctest */,
 				EEF76D7622DA861B00BA3315 /* Spectrogeddon-iOS.app */,
 				EEF76D8922DA861D00BA3315 /* Spectrogeddon-iOSTests.xctest */,
 			);
@@ -383,141 +181,6 @@
 				1901B84D18FBFBA8002DE52F /* XCTest.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1901B83118FBFBA7002DE52F /* Spectrogeddon */ = {
-			isa = PBXGroup;
-			children = (
-				EE4D48E52287507B00B99036 /* AppDelegate.swift */,
-				19541FE21906D89900BC94BF /* ColorMaps */,
-				19F668E6190AA61100D2DE77 /* CommonModel */,
-				19541F9F18FC2BA400BC94BF /* Controllers */,
-				1901B84618FBFBA7002DE52F /* Images.xcassets */,
-				1901B83218FBFBA7002DE52F /* Supporting Files */,
-				EEF830BD190AE2A400E8B2F2 /* View */,
-			);
-			path = Spectrogeddon;
-			sourceTree = "<group>";
-		};
-		1901B83218FBFBA7002DE52F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1901B83318FBFBA7002DE52F /* Spectrogeddon-Info.plist */,
-				1901B83418FBFBA7002DE52F /* InfoPlist.strings */,
-				EE4D48E22287506800B99036 /* Spectrogeddon-Bridging-Header.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1901B85318FBFBA8002DE52F /* SpectrogeddonTests */ = {
-			isa = PBXGroup;
-			children = (
-				EE89046B228A05B000E1E0D5 /* SpectrogeddonTests.swift */,
-				1901B85418FBFBA8002DE52F /* Supporting Files */,
-				EE89046A228A05B000E1E0D5 /* SpectrogeddonTests-Bridging-Header.h */,
-			);
-			path = SpectrogeddonTests;
-			sourceTree = "<group>";
-		};
-		1901B85418FBFBA8002DE52F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1901B85518FBFBA8002DE52F /* SpectrogeddonTests-Info.plist */,
-				1901B85618FBFBA8002DE52F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		19541F9F18FC2BA400BC94BF /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				EE5972481D08D369005EE551 /* Launch.storyboard */,
-				EE03A1241A82BE15005BE0DB /* Main.storyboard */,
-				EE8904632288A4AB00E1E0D5 /* SettingsViewController.swift */,
-				EE8904662288AE2300E1E0D5 /* SettingsWrapper.swift */,
-				EEE02F6B1A896C1100F7901D /* SettingsModelClient.swift */,
-				EE4D48E72287527900B99036 /* SpectrumViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		19CEAC50191BAD9600AEA0AA /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				EE8904CA229B315800E1E0D5 /* ColorMap.swift */,
-				EE8904CB229B315800E1E0D5 /* ColorMap+Image.swift */,
-				EE8904CC229B315800E1E0D5 /* ColorMapStore.swift */,
-				EE8904C9229B315800E1E0D5 /* DisplaySettings.swift */,
-				EE8904BD229AA42800E1E0D5 /* SettingsStore.swift */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
-		19CEAC7C19227D9300AEA0AA /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				19F73F871923C578001E746D /* TexturedMeshShader.fsh */,
-				19F73F881923C578001E746D /* TexturedMeshShader.vsh */,
-			);
-			name = Shaders;
-			sourceTree = "<group>";
-		};
-		19F668E6190AA61100D2DE77 /* CommonModel */ = {
-			isa = PBXGroup;
-			children = (
-				19F668E8190AA63900D2DE77 /* AudioAcquisition */,
-				19F668E7190AA61D00D2DE77 /* AudioProcessing */,
-				19F668E9190AA67D00D2DE77 /* Display */,
-				19CEAC50191BAD9600AEA0AA /* Settings */,
-				19CEAC7C19227D9300AEA0AA /* Shaders */,
-				EE624A701A721DE200F4A232 /* Utilities */,
-			);
-			name = CommonModel;
-			path = ../../CommonCode;
-			sourceTree = "<group>";
-		};
-		19F668E7190AA61D00D2DE77 /* AudioProcessing */ = {
-			isa = PBXGroup;
-			children = (
-				EE8904D5229B3E2800E1E0D5 /* TimeSequence.swift */,
-				EE890478228BF6F000E1E0D5 /* FastFourierTransform.swift */,
-				EE890476228BF66900E1E0D5 /* SpectrumGenerator.swift */,
-			);
-			name = AudioProcessing;
-			sourceTree = "<group>";
-		};
-		19F668E8190AA63900D2DE77 /* AudioAcquisition */ = {
-			isa = PBXGroup;
-			children = (
-				EE89047D228DE56E00E1E0D5 /* AudioSource.swift */,
-				EE890481228F489400E1E0D5 /* SampleBuffer.swift */,
-			);
-			name = AudioAcquisition;
-			sourceTree = "<group>";
-		};
-		19F668E9190AA67D00D2DE77 /* Display */ = {
-			isa = PBXGroup;
-			children = (
-				EE8904BB229AA33800E1E0D5 /* TexturedVertexAttribs.swift */,
-				EE8904AB229A069100E1E0D5 /* RendererUtils.swift */,
-				EE8904A72299518300E1E0D5 /* ShadedMesh.swift */,
-				EE8904A12298A16800E1E0D5 /* RenderTexture.swift */,
-				EE89049B22989B5500E1E0D5 /* ScrollingRenderer.swift */,
-				EE8904972298999500E1E0D5 /* RadialScrollingRenderer.swift */,
-				EE89048F22988E4800E1E0D5 /* ColumnRenderer.swift */,
-				EE8904892298741700E1E0D5 /* GLRenderer.swift */,
-				EE89049122988E8900E1E0D5 /* LinearScrollingRenderer.swift */,
-				EE8904AD229A079200E1E0D5 /* RenderSize.swift */,
-			);
-			name = Display;
-			sourceTree = "<group>";
-		};
-		EE624A701A721DE200F4A232 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				EE8904D9229B409900E1E0D5 /* LoggingUtilities.swift */,
-			);
-			name = Utilities;
 			sourceTree = "<group>";
 		};
 		EEF76BAA22DA761700BA3315 /* Spectrogeddon-OSX */ = {
@@ -556,89 +219,6 @@
 				EEF76BC522DA783300BA3315 /* MainMenu.xib */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		EEF76C9322DA7CF500BA3315 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76C9422DA7CF500BA3315 /* Source */,
-				EEF76CAC22DA7CF500BA3315 /* Assets */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		EEF76C9422DA7CF500BA3315 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76C9622DA7CF500BA3315 /* RendererUtils.swift */,
-				EEF76C9722DA7CF500BA3315 /* TexturedMeshShader.fsh */,
-				EEF76C9822DA7CF500BA3315 /* RadialScrollingRenderer.swift */,
-				EEF76C9922DA7CF500BA3315 /* SampleBuffer.swift */,
-				EEF76C9B22DA7CF500BA3315 /* RenderSize.swift */,
-				EEF76C9C22DA7CF500BA3315 /* FastFourierTransform.swift */,
-				EEF76C9D22DA7CF500BA3315 /* SpectrumGenerator.swift */,
-				EEF76C9E22DA7CF500BA3315 /* ScrollingRenderer.swift */,
-				EEF76C9F22DA7CF500BA3315 /* RenderTexture.swift */,
-				EEF76CA022DA7CF500BA3315 /* GLRenderer.swift */,
-				EEF76CA122DA7CF500BA3315 /* LinearScrollingRenderer.swift */,
-				EEF76CA222DA7CF500BA3315 /* TexturedMeshShader.vsh */,
-				EEF76CA322DA7CF500BA3315 /* ColumnRenderer.swift */,
-				EEF76CA422DA7CF500BA3315 /* LoggingUtilities.swift */,
-				EEF76CA522DA7CF500BA3315 /* TexturedVertexAttribs.swift */,
-				EEF76CA622DA7CF500BA3315 /* AudioSource.swift */,
-				EEF76C9A22DA7CF500BA3315 /* ColorMapStore.swift */,
-				EEF76CA722DA7CF500BA3315 /* ColorMap+Image.swift */,
-				EEF76CA822DA7CF500BA3315 /* ColorMap.swift */,
-				EEF76CA922DA7CF500BA3315 /* TimeSequence.swift */,
-				EEF76CAA22DA7CF500BA3315 /* ShadedMesh.swift */,
-				EEF76C9522DA7CF500BA3315 /* DisplaySettings.swift */,
-				EEF76CAB22DA7CF500BA3315 /* SettingsStore.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		EEF76CAC22DA7CF500BA3315 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76D3522DA816300BA3315 /* ColorMaps */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		EEF76CFB22DA7DC900BA3315 /* SpectroCore-OSX */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76CFC22DA7DC900BA3315 /* SpectroCore_OSX.h */,
-				EEF76CFD22DA7DC900BA3315 /* Info.plist */,
-			);
-			path = "SpectroCore-OSX";
-			sourceTree = "<group>";
-		};
-		EEF76D0822DA7DC900BA3315 /* SpectroCore-OSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76D0922DA7DC900BA3315 /* SpectroCore_OSXTests.swift */,
-				EEF76D0B22DA7DC900BA3315 /* Info.plist */,
-			);
-			path = "SpectroCore-OSXTests";
-			sourceTree = "<group>";
-		};
-		EEF76D3D22DA859400BA3315 /* SpectroCore-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76D3E22DA859400BA3315 /* SpectroCore_iOS.h */,
-				EEF76D3F22DA859400BA3315 /* Info.plist */,
-			);
-			path = "SpectroCore-iOS";
-			sourceTree = "<group>";
-		};
-		EEF76D4A22DA859400BA3315 /* SpectroCore-iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76D4B22DA859400BA3315 /* SpectroCore_iOSTests.swift */,
-				EEF76D4D22DA859400BA3315 /* Info.plist */,
-			);
-			path = "SpectroCore-iOSTests";
 			sourceTree = "<group>";
 		};
 		EEF76D7722DA861B00BA3315 /* Spectrogeddon-iOS */ = {
@@ -683,34 +263,7 @@
 			name = SettingsModel;
 			sourceTree = "<group>";
 		};
-		EEF830BD190AE2A400E8B2F2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EE8904682289F3D500E1E0D5 /* MobileGLDisplay.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		EEF76CF522DA7DC900BA3315 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D0C22DA7DC900BA3315 /* SpectroCore_OSX.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D3722DA859400BA3315 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D4E22DA859400BA3315 /* SpectroCore_iOS.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		EEF76BA822DA761700BA3315 /* Spectrogeddon-OSX */ = {
@@ -725,7 +278,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EEF76D0E22DA7DC900BA3315 /* PBXTargetDependency */,
 			);
 			name = "Spectrogeddon-OSX";
 			productName = "Spectrogeddon-OSX";
@@ -750,79 +302,6 @@
 			productReference = EEF76BB822DA761B00BA3315 /* Spectrogeddon-OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EEF76CF922DA7DC900BA3315 /* SpectroCore-OSX */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EEF76D1122DA7DC900BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-OSX" */;
-			buildPhases = (
-				EEF76CF522DA7DC900BA3315 /* Headers */,
-				EEF76CF622DA7DC900BA3315 /* Sources */,
-				EEF76CF722DA7DC900BA3315 /* Frameworks */,
-				EEF76CF822DA7DC900BA3315 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SpectroCore-OSX";
-			productName = "SpectroCore-OSX";
-			productReference = EEF76CFA22DA7DC900BA3315 /* SpectroCoreOSX.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EEF76D0122DA7DC900BA3315 /* SpectroCore-OSXTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EEF76D1422DA7DC900BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-OSXTests" */;
-			buildPhases = (
-				EEF76CFE22DA7DC900BA3315 /* Sources */,
-				EEF76CFF22DA7DC900BA3315 /* Frameworks */,
-				EEF76D0022DA7DC900BA3315 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EEF76D0522DA7DC900BA3315 /* PBXTargetDependency */,
-				EEF76D0722DA7DC900BA3315 /* PBXTargetDependency */,
-			);
-			name = "SpectroCore-OSXTests";
-			productName = "SpectroCore-OSXTests";
-			productReference = EEF76D0222DA7DC900BA3315 /* SpectroCore-OSXTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EEF76D3B22DA859400BA3315 /* SpectroCore-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EEF76D5322DA859400BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-iOS" */;
-			buildPhases = (
-				EEF76D3722DA859400BA3315 /* Headers */,
-				EEF76D3822DA859400BA3315 /* Sources */,
-				EEF76D3922DA859400BA3315 /* Frameworks */,
-				EEF76D3A22DA859400BA3315 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SpectroCore-iOS";
-			productName = "SpectroCore-iOS";
-			productReference = EEF76D3C22DA859400BA3315 /* SpectroCoreiOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EEF76D4322DA859400BA3315 /* SpectroCore-iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EEF76D5722DA859400BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-iOSTests" */;
-			buildPhases = (
-				EEF76D4022DA859400BA3315 /* Sources */,
-				EEF76D4122DA859400BA3315 /* Frameworks */,
-				EEF76D4222DA859400BA3315 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EEF76D4722DA859400BA3315 /* PBXTargetDependency */,
-			);
-			name = "SpectroCore-iOSTests";
-			productName = "SpectroCore-iOSTests";
-			productReference = EEF76D4422DA859400BA3315 /* SpectroCore-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		EEF76D7522DA861B00BA3315 /* Spectrogeddon-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEF76D9022DA861D00BA3315 /* Build configuration list for PBXNativeTarget "Spectrogeddon-iOS" */;
@@ -835,7 +314,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EEF76D9A22DA864300BA3315 /* PBXTargetDependency */,
 			);
 			name = "Spectrogeddon-iOS";
 			productName = "Spectrogeddon-iOS";
@@ -879,24 +357,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = EEF76BA822DA761700BA3315;
 					};
-					EEF76CF922DA7DC900BA3315 = {
-						CreatedOnToolsVersion = 10.2.1;
-						ProvisioningStyle = Automatic;
-					};
-					EEF76D0122DA7DC900BA3315 = {
-						CreatedOnToolsVersion = 10.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = EEF76BA822DA761700BA3315;
-					};
-					EEF76D3B22DA859400BA3315 = {
-						CreatedOnToolsVersion = 10.2.1;
-						ProvisioningStyle = Automatic;
-					};
-					EEF76D4322DA859400BA3315 = {
-						CreatedOnToolsVersion = 10.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1901B82718FBFBA7002DE52F;
-					};
 					EEF76D7522DA861B00BA3315 = {
 						CreatedOnToolsVersion = 10.2.1;
 						ProvisioningStyle = Automatic;
@@ -925,10 +385,6 @@
 				EEF76BB722DA761B00BA3315 /* Spectrogeddon-OSXTests */,
 				EEF76D7522DA861B00BA3315 /* Spectrogeddon-iOS */,
 				EEF76D8822DA861D00BA3315 /* Spectrogeddon-iOSTests */,
-				EEF76CF922DA7DC900BA3315 /* SpectroCore-OSX */,
-				EEF76D0122DA7DC900BA3315 /* SpectroCore-OSXTests */,
-				EEF76D3B22DA859400BA3315 /* SpectroCore-iOS */,
-				EEF76D4322DA859400BA3315 /* SpectroCore-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -944,40 +400,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EEF76BB622DA761B00BA3315 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76CF822DA7DC900BA3315 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D2422DA7DD300BA3315 /* TexturedMeshShader.vsh in Resources */,
-				EEF76D3622DA816300BA3315 /* ColorMaps in Resources */,
-				EEF76D1922DA7DD300BA3315 /* TexturedMeshShader.fsh in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D0022DA7DC900BA3315 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D3A22DA859400BA3315 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D6522DA85D400BA3315 /* TexturedMeshShader.vsh in Resources */,
-				EEF76D7122DA85DC00BA3315 /* ColorMaps in Resources */,
-				EEF76D5B22DA85D400BA3315 /* TexturedMeshShader.fsh in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D4222DA859400BA3315 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1021,78 +443,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EEF76CF622DA7DC900BA3315 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D2622DA7DD300BA3315 /* LoggingUtilities.swift in Sources */,
-				EEF76D2C22DA7DD300BA3315 /* ShadedMesh.swift in Sources */,
-				EEF76D2522DA7DD300BA3315 /* ColumnRenderer.swift in Sources */,
-				EEF76D1822DA7DD300BA3315 /* RendererUtils.swift in Sources */,
-				EEF76D2222DA7DD300BA3315 /* GLRenderer.swift in Sources */,
-				EEF76D2022DA7DD300BA3315 /* ScrollingRenderer.swift in Sources */,
-				EEF76D2322DA7DD300BA3315 /* LinearScrollingRenderer.swift in Sources */,
-				EEF76D1C22DA7DD300BA3315 /* ColorMapStore.swift in Sources */,
-				EEF76D2722DA7DD300BA3315 /* TexturedVertexAttribs.swift in Sources */,
-				EEF76D2A22DA7DD300BA3315 /* ColorMap.swift in Sources */,
-				EEF76D2D22DA7DD300BA3315 /* SettingsStore.swift in Sources */,
-				EEF76D2B22DA7DD300BA3315 /* TimeSequence.swift in Sources */,
-				EEF76D2922DA7DD300BA3315 /* ColorMap+Image.swift in Sources */,
-				EEF76D1D22DA7DD300BA3315 /* RenderSize.swift in Sources */,
-				EEF76D1B22DA7DD300BA3315 /* SampleBuffer.swift in Sources */,
-				EEF76D1F22DA7DD300BA3315 /* SpectrumGenerator.swift in Sources */,
-				EEF76D1E22DA7DD300BA3315 /* FastFourierTransform.swift in Sources */,
-				EEF76D2122DA7DD300BA3315 /* RenderTexture.swift in Sources */,
-				EEF76D1722DA7DD300BA3315 /* DisplaySettings.swift in Sources */,
-				EEF76D1A22DA7DD300BA3315 /* RadialScrollingRenderer.swift in Sources */,
-				EEF76D2822DA7DD300BA3315 /* AudioSource.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76CFE22DA7DC900BA3315 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D0A22DA7DC900BA3315 /* SpectroCore_OSXTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D3822DA859400BA3315 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D6722DA85D400BA3315 /* LoggingUtilities.swift in Sources */,
-				EEF76D6E22DA85D400BA3315 /* ShadedMesh.swift in Sources */,
-				EEF76D6022DA85D400BA3315 /* SpectrumGenerator.swift in Sources */,
-				EEF76D6F22DA85D400BA3315 /* DisplaySettings.swift in Sources */,
-				EEF76D5A22DA85D400BA3315 /* RendererUtils.swift in Sources */,
-				EEF76D6D22DA85D400BA3315 /* TimeSequence.swift in Sources */,
-				EEF76D5D22DA85D400BA3315 /* SampleBuffer.swift in Sources */,
-				EEF76D6422DA85D400BA3315 /* LinearScrollingRenderer.swift in Sources */,
-				EEF76D5F22DA85D400BA3315 /* FastFourierTransform.swift in Sources */,
-				EEF76D6A22DA85D400BA3315 /* ColorMapStore.swift in Sources */,
-				EEF76D7022DA85D400BA3315 /* SettingsStore.swift in Sources */,
-				EEF76D5E22DA85D400BA3315 /* RenderSize.swift in Sources */,
-				EEF76D5C22DA85D400BA3315 /* RadialScrollingRenderer.swift in Sources */,
-				EEF76D6322DA85D400BA3315 /* GLRenderer.swift in Sources */,
-				EEF76D6C22DA85D400BA3315 /* ColorMap.swift in Sources */,
-				EEF76D6B22DA85D400BA3315 /* ColorMap+Image.swift in Sources */,
-				EEF76D6122DA85D400BA3315 /* ScrollingRenderer.swift in Sources */,
-				EEF76D6222DA85D400BA3315 /* RenderTexture.swift in Sources */,
-				EEF76D6622DA85D400BA3315 /* ColumnRenderer.swift in Sources */,
-				EEF76D6822DA85D400BA3315 /* TexturedVertexAttribs.swift in Sources */,
-				EEF76D6922DA85D400BA3315 /* AudioSource.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEF76D4022DA859400BA3315 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EEF76D4C22DA859400BA3315 /* SpectroCore_iOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EEF76D7222DA861B00BA3315 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1122,71 +472,14 @@
 			target = EEF76BA822DA761700BA3315 /* Spectrogeddon-OSX */;
 			targetProxy = EEF76BB922DA761B00BA3315 /* PBXContainerItemProxy */;
 		};
-		EEF76D0522DA7DC900BA3315 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF76CF922DA7DC900BA3315 /* SpectroCore-OSX */;
-			targetProxy = EEF76D0422DA7DC900BA3315 /* PBXContainerItemProxy */;
-		};
-		EEF76D0722DA7DC900BA3315 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF76BA822DA761700BA3315 /* Spectrogeddon-OSX */;
-			targetProxy = EEF76D0622DA7DC900BA3315 /* PBXContainerItemProxy */;
-		};
-		EEF76D0E22DA7DC900BA3315 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF76CF922DA7DC900BA3315 /* SpectroCore-OSX */;
-			targetProxy = EEF76D0D22DA7DC900BA3315 /* PBXContainerItemProxy */;
-		};
-		EEF76D4722DA859400BA3315 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF76D3B22DA859400BA3315 /* SpectroCore-iOS */;
-			targetProxy = EEF76D4622DA859400BA3315 /* PBXContainerItemProxy */;
-		};
 		EEF76D8B22DA861D00BA3315 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EEF76D7522DA861B00BA3315 /* Spectrogeddon-iOS */;
 			targetProxy = EEF76D8A22DA861D00BA3315 /* PBXContainerItemProxy */;
 		};
-		EEF76D9A22DA864300BA3315 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EEF76D3B22DA859400BA3315 /* SpectroCore-iOS */;
-			targetProxy = EEF76D9922DA864300BA3315 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1901B83418FBFBA7002DE52F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1901B83518FBFBA7002DE52F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1901B85618FBFBA8002DE52F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1901B85718FBFBA8002DE52F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		EE03A1241A82BE15005BE0DB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE03A1251A82BE15005BE0DB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EE5972481D08D369005EE551 /* Launch.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE5972491D08D369005EE551 /* Base */,
-			);
-			name = Launch.storyboard;
-			sourceTree = "<group>";
-		};
 		EEF76BC522DA783300BA3315 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1443,290 +736,6 @@
 			};
 			name = Release;
 		};
-		EEF76D1222DA7DC900BA3315 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SpectroCore-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-OSX";
-				PRODUCT_NAME = SpectroCoreOSX;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EEF76D1322DA7DC900BA3315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SpectroCore-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-OSX";
-				PRODUCT_NAME = SpectroCoreOSX;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EEF76D1522DA7DC900BA3315 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SpectroCore-OSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-OSXTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon-OSX.app/Contents/MacOS/Spectrogeddon-OSX";
-			};
-			name = Debug;
-		};
-		EEF76D1622DA7DC900BA3315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SpectroCore-OSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-OSXTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon-OSX.app/Contents/MacOS/Spectrogeddon-OSX";
-			};
-			name = Release;
-		};
-		EEF76D5422DA859400BA3315 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SpectroCore-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-iOS";
-				PRODUCT_NAME = SpectroCoreiOS;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EEF76D5522DA859400BA3315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SpectroCore-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-iOS";
-				PRODUCT_NAME = SpectroCoreiOS;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EEF76D5822DA859400BA3315 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SpectroCore-iOSTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
-			};
-			name = Debug;
-		};
-		EEF76D5922DA859400BA3315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "SpectroCore-iOSTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tomyork.SpectroCore-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
-			};
-			name = Release;
-		};
 		EEF76D9122DA861D00BA3315 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1879,42 +888,6 @@
 			buildConfigurations = (
 				EEF76BC122DA761B00BA3315 /* Debug */,
 				EEF76BC222DA761B00BA3315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EEF76D1122DA7DC900BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-OSX" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EEF76D1222DA7DC900BA3315 /* Debug */,
-				EEF76D1322DA7DC900BA3315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EEF76D1422DA7DC900BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-OSXTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EEF76D1522DA7DC900BA3315 /* Debug */,
-				EEF76D1622DA7DC900BA3315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EEF76D5322DA859400BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EEF76D5422DA859400BA3315 /* Debug */,
-				EEF76D5522DA859400BA3315 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EEF76D5722DA859400BA3315 /* Build configuration list for PBXNativeTarget "SpectroCore-iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EEF76D5822DA859400BA3315 /* Debug */,
-				EEF76D5922DA859400BA3315 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
