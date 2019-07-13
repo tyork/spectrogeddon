@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SpectrogeddonOSX/SpectrogeddonOSX.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Spectrogeddon/Spectrogeddon.xcodeproj">
    </FileRef>
 </Workspace>

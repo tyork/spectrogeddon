@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1901B82718FBFBA7002DE52F"
-               BuildableName = "Spectrogeddon.app"
-               BlueprintName = "Spectrogeddon"
+               BlueprintIdentifier = "EEF76D7522DA861B00BA3315"
+               BuildableName = "Spectrogeddon-iOS.app"
+               BlueprintName = "Spectrogeddon-iOS"
                ReferencedContainer = "container:Spectrogeddon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1901B84B18FBFBA8002DE52F"
-               BuildableName = "SpectrogeddonTests.xctest"
-               BlueprintName = "SpectrogeddonTests"
-               ReferencedContainer = "container:Spectrogeddon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EEF76D4322DA859400BA3315"
-               BuildableName = "SpectroCore-iOSTests.xctest"
-               BlueprintName = "SpectroCore-iOSTests"
-               ReferencedContainer = "container:Spectrogeddon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1901B82718FBFBA7002DE52F"
-            BuildableName = "Spectrogeddon.app"
-            BlueprintName = "Spectrogeddon"
+            BlueprintIdentifier = "EEF76D7522DA861B00BA3315"
+            BuildableName = "Spectrogeddon-iOS.app"
+            BlueprintName = "Spectrogeddon-iOS"
             ReferencedContainer = "container:Spectrogeddon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1901B82718FBFBA7002DE52F"
-            BuildableName = "Spectrogeddon.app"
-            BlueprintName = "Spectrogeddon"
+            BlueprintIdentifier = "EEF76D7522DA861B00BA3315"
+            BuildableName = "Spectrogeddon-iOS.app"
+            BlueprintName = "Spectrogeddon-iOS"
             ReferencedContainer = "container:Spectrogeddon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -94,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1901B82718FBFBA7002DE52F"
-            BuildableName = "Spectrogeddon.app"
-            BlueprintName = "Spectrogeddon"
+            BlueprintIdentifier = "EEF76D7522DA861B00BA3315"
+            BuildableName = "Spectrogeddon-iOS.app"
+            BlueprintName = "Spectrogeddon-iOS"
             ReferencedContainer = "container:Spectrogeddon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
