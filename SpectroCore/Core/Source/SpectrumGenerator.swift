@@ -18,19 +18,25 @@ public class SpectrumGenerator {
     public typealias SourceID = String
     
     public static var availableSources: [SourceName: SourceID] {
-        return AudioSource.availableAudioSources
+        return AudioSourceFinder.availableSources
     }
 
     public weak var delegate: SpectrumGeneratorDelegate?
     
     private let transformer: FastFourierTransform
     private let queue: DispatchQueue
-    private var audioSource: AudioSource! // TODO: change API of AudioSource so we don't need force unwrapped
+    private var sampler: AudioSampler
 
     public init() throws {
+        
         transformer = FastFourierTransform()
         queue = DispatchQueue(label: "fft", qos: .default)
-        audioSource = try AudioSource(notificationQueue: queue) { [weak self] channels in
+        sampler = try AudioSampler(
+            preferredSource: AudioSourceFinder.availableSources.values.first,
+            notificationQueue: queue
+        )
+        
+        sampler.sampleHandler = { [weak self] channels in
             
             guard let strongSelf = self else {
                 return
@@ -47,18 +53,18 @@ public class SpectrumGenerator {
     }
     
     public func start() {
-        audioSource.startCapturing()
+        sampler.startCapturing()
     }
     
     public func stop() {
-        audioSource.stopCapturing()
+        sampler.stopCapturing()
     }
     
     public func useSettings(_ settings: DisplaySettings) {
         
         if let sourceId = settings.preferredAudioSourceId, SpectrumGenerator.availableSources.values.contains(sourceId) {
-            audioSource.preferredAudioSourceId = sourceId
+            sampler.preferredSource = sourceId
         }
-        audioSource.bufferSizeDivider = settings.sharpness
+        sampler.bufferSizeDivider = settings.sharpness
     }
 }

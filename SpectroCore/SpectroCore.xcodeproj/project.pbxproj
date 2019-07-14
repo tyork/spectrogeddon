@@ -27,7 +27,7 @@
 		EEF76DFF22DA8C0100BA3315 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCA22DA8B3100BA3315 /* ColumnRenderer.swift */; };
 		EEF76E0022DA8C0100BA3315 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCB22DA8B3100BA3315 /* LoggingUtilities.swift */; };
 		EEF76E0122DA8C0100BA3315 /* TexturedVertexAttribs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCC22DA8B3100BA3315 /* TexturedVertexAttribs.swift */; };
-		EEF76E0222DA8C0100BA3315 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */; };
+		EEF76E0222DA8C0100BA3315 /* AudioSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */; };
 		EEF76E0422DA8C0100BA3315 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */; };
 		EEF76E0522DA8C0100BA3315 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */; };
 		EEF76E0622DA8C0100BA3315 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DD122DA8B3100BA3315 /* ShadedMesh.swift */; };
@@ -54,7 +54,7 @@
 		EEF76E6B22DA8D5100BA3315 /* ColumnRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCA22DA8B3100BA3315 /* ColumnRenderer.swift */; };
 		EEF76E6C22DA8D5100BA3315 /* LoggingUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCB22DA8B3100BA3315 /* LoggingUtilities.swift */; };
 		EEF76E6D22DA8D5100BA3315 /* TexturedVertexAttribs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCC22DA8B3100BA3315 /* TexturedVertexAttribs.swift */; };
-		EEF76E6E22DA8D5100BA3315 /* AudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */; };
+		EEF76E6E22DA8D5100BA3315 /* AudioSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */; };
 		EEF76E7022DA8D5100BA3315 /* ColorMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */; };
 		EEF76E7122DA8D5100BA3315 /* TimeSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */; };
 		EEF76E7222DA8D5100BA3315 /* ShadedMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DD122DA8B3100BA3315 /* ShadedMesh.swift */; };
@@ -65,6 +65,12 @@
 		EEF76E8722DB388D00BA3315 /* RendererUtils+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */; };
 		EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */; };
 		EEF76E8B22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */; };
+		EEF76E8D22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */; };
+		EEF76E8E22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */; };
+		EEF76E9022DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8F22DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift */; };
+		EEF76E9422DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */; };
+		EEF76E9622DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */; };
+		EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +108,7 @@
 		EEF76DCA22DA8B3100BA3315 /* ColumnRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnRenderer.swift; sourceTree = "<group>"; };
 		EEF76DCB22DA8B3100BA3315 /* LoggingUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingUtilities.swift; sourceTree = "<group>"; };
 		EEF76DCC22DA8B3100BA3315 /* TexturedVertexAttribs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexturedVertexAttribs.swift; sourceTree = "<group>"; };
-		EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSource.swift; sourceTree = "<group>"; };
+		EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSampler.swift; sourceTree = "<group>"; };
 		EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMap.swift; sourceTree = "<group>"; };
 		EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSequence.swift; sourceTree = "<group>"; };
 		EEF76DD122DA8B3100BA3315 /* ShadedMesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedMesh.swift; sourceTree = "<group>"; };
@@ -125,6 +131,11 @@
 		EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RendererUtils+OSX.swift"; sourceTree = "<group>"; };
 		EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RendererUtils+iOS.swift"; sourceTree = "<group>"; };
 		EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSet.swift"; sourceTree = "<group>"; };
+		EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSourceFinder.swift; sourceTree = "<group>"; };
+		EEF76E8F22DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+AudioDevices.swift"; sourceTree = "<group>"; };
+		EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+AudioDevices.swift"; sourceTree = "<group>"; };
+		EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
+		EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +252,8 @@
 			children = (
 				EEF76E7A22DA8F8300BA3315 /* ColorMap+Image.swift */,
 				EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */,
+				EEF76E8F22DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift */,
+				EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -250,6 +263,8 @@
 			children = (
 				EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */,
 				EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */,
+				EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */,
+				EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -268,7 +283,8 @@
 		EEF76E8022DB367D00BA3315 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */,
+				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
+				EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */,
 				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
 				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
 				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
@@ -502,11 +518,13 @@
 				EEF76E0022DA8C0100BA3315 /* LoggingUtilities.swift in Sources */,
 				EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E0622DA8C0100BA3315 /* ShadedMesh.swift in Sources */,
+				EEF76E9622DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
 				EEF76DFF22DA8C0100BA3315 /* ColumnRenderer.swift in Sources */,
 				EEF76DF222DA8C0100BA3315 /* RendererUtils.swift in Sources */,
 				EEF76DFC22DA8C0100BA3315 /* GLRenderer.swift in Sources */,
 				EEF76DFA22DA8C0100BA3315 /* ScrollingRenderer.swift in Sources */,
 				EEF76E8722DB388D00BA3315 /* RendererUtils+iOS.swift in Sources */,
+				EEF76E8D22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */,
 				EEF76DFD22DA8C0100BA3315 /* LinearScrollingRenderer.swift in Sources */,
 				EEF76DF622DA8C0100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E0122DA8C0100BA3315 /* TexturedVertexAttribs.swift in Sources */,
@@ -521,7 +539,8 @@
 				EEF76DFB22DA8C0100BA3315 /* RenderTexture.swift in Sources */,
 				EEF76DF122DA8C0100BA3315 /* DisplaySettings.swift in Sources */,
 				EEF76DF422DA8C0100BA3315 /* RadialScrollingRenderer.swift in Sources */,
-				EEF76E0222DA8C0100BA3315 /* AudioSource.swift in Sources */,
+				EEF76E0222DA8C0100BA3315 /* AudioSampler.swift in Sources */,
+				EEF76E9022DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,8 +564,11 @@
 				EEF76E6822DA8D5100BA3315 /* GLRenderer.swift in Sources */,
 				EEF76E6622DA8D5100BA3315 /* ScrollingRenderer.swift in Sources */,
 				EEF76E8522DB388400BA3315 /* RendererUtils+OSX.swift in Sources */,
+				EEF76E8E22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */,
 				EEF76E6922DA8D5100BA3315 /* LinearScrollingRenderer.swift in Sources */,
+				EEF76E9422DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
 				EEF76E6222DA8D5100BA3315 /* ColorMapStore.swift in Sources */,
+				EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
 				EEF76E6D22DA8D5100BA3315 /* TexturedVertexAttribs.swift in Sources */,
 				EEF76E7022DA8D5100BA3315 /* ColorMap.swift in Sources */,
 				EEF76E7322DA8D5100BA3315 /* SettingsStore.swift in Sources */,
@@ -559,7 +581,7 @@
 				EEF76E6722DA8D5100BA3315 /* RenderTexture.swift in Sources */,
 				EEF76E5D22DA8D5100BA3315 /* DisplaySettings.swift in Sources */,
 				EEF76E6022DA8D5100BA3315 /* RadialScrollingRenderer.swift in Sources */,
-				EEF76E6E22DA8D5100BA3315 /* AudioSource.swift in Sources */,
+				EEF76E6E22DA8D5100BA3315 /* AudioSampler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

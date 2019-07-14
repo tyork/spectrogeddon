@@ -12,29 +12,13 @@ import AVFoundation
 private let MaxBufferSize: UInt = 2048
 private let ReadInterval: UInt = 1
 
-class AudioSource: NSObject {
+class AudioSampler: NSObject {
     
-    typealias Name = String
-    typealias Identifier = String
+    typealias SampleHandler = ([TimeSequence]) -> Void
     
-    /// Localized name -> audio source ID pairs
-    static var availableAudioSources: [Name: Identifier] {
-        #if os(iOS)
-        let devices = AVCaptureDevice.DiscoverySession(
-            deviceTypes: [.builtInMicrophone],
-            mediaType: .audio,
-            position: .unspecified
-            ).devices
-        #else
-        let devices = AVCaptureDevice.devices(for: .audio)
-        #endif
-        let namesAndIds = devices.map { ($0.localizedName, $0.uniqueID) }
-        return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
-    }
+    var sampleHandler: SampleHandler
     
-    private(set) var notificationHandler: ([TimeSequence]) -> Void
-    
-    var preferredAudioSourceId: String? {
+    var preferredSource: AudioSourceFinder.Identifier? {
         didSet {
             try? prepareCaptureSession() // TODO:
         }
@@ -56,27 +40,20 @@ class AudioSource: NSObject {
     private var channelBuffers: [SampleBuffer]
     private var isPendingBufferSizeChange: Bool
     
-    init(notificationQueue: DispatchQueue = .main, handler: @escaping ([TimeSequence]) -> Void) throws {
+    init(preferredSource: AudioSourceFinder.Identifier?, notificationQueue: DispatchQueue) throws {
         
+        self.bufferSizeDivider = 1
         self.notificationQueue = notificationQueue
-        self.notificationHandler = handler
-        
-        self.bufferSizeDivider = 1;
-        self.notificationQueue = notificationQueue
-        self.notificationHandler = handler
+        self.sampleHandler = { _ in }
 
         self.sampleQueue = DispatchQueue(label: "audio.samples", qos: .default)
         self.channelBuffers = []
         self.captureSession = AVCaptureSession()
         self.isPendingBufferSizeChange = false
-        self.preferredAudioSourceId = AudioSource.availableAudioSources.values.first
+        self.preferredSource = preferredSource
         
         super.init()
         
-        #if os(iOS)
-        try prepareAudioSession()
-        #endif
-
         try prepareCaptureSession()
     }
     
@@ -87,27 +64,14 @@ class AudioSource: NSObject {
     func stopCapturing() {
         captureSession.stopRunning()
     }
-
-    #if os(iOS)
-    
-    private func prepareAudioSession() throws {
-        let session = AVAudioSession.sharedInstance()
-        try session.setCategory(.playAndRecord, options: [.mixWithOthers])
-        try session.setMode(.measurement)
-        try session.setActive(true, options: [])
-    }
-
-    #endif
     
     private func prepareCaptureSession() throws {
         
-        guard let sourceId = preferredAudioSourceId else {
+        guard let sourceId = preferredSource else {
             return
         }
         
-        #if os(iOS)
-            captureSession.automaticallyConfiguresApplicationAudioSession = false
-        #endif
+        try captureSession.prepareForUseWithAudioSession()
         
         captureSession.beginConfiguration()
         
@@ -142,7 +106,7 @@ class AudioSource: NSObject {
     }
 }
 
-extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
+extension AudioSampler: AVCaptureAudioDataOutputSampleBufferDelegate {
  
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
@@ -226,7 +190,7 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
         }
 
         notificationQueue.async {
-            self.notificationHandler(outputs)
+            self.sampleHandler(outputs)
         }
     }
 
