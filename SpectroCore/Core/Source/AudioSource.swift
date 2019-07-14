@@ -9,17 +9,16 @@
 import Foundation
 import AVFoundation
 
-
 private let MaxBufferSize: UInt = 2048
 private let ReadInterval: UInt = 1
 
-public class AudioSource: NSObject {
+class AudioSource: NSObject {
     
-    public typealias Name = String
-    public typealias Identifier = String
+    typealias Name = String
+    typealias Identifier = String
     
     /// Localized name -> audio source ID pairs
-    public static var availableAudioSources: [Name: Identifier] {
+    static var availableAudioSources: [Name: Identifier] {
         #if os(iOS)
         let devices = AVCaptureDevice.DiscoverySession(
             deviceTypes: [.builtInMicrophone],
@@ -33,15 +32,15 @@ public class AudioSource: NSObject {
         return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
     }
     
-    public private(set) var notificationHandler: ([TimeSequence]) -> Void
+    private(set) var notificationHandler: ([TimeSequence]) -> Void
     
-    public var preferredAudioSourceId: String? {
+    var preferredAudioSourceId: String? {
         didSet {
             try? prepareCaptureSession() // TODO:
         }
     }
     
-    public var bufferSizeDivider: UInt {
+    var bufferSizeDivider: UInt {
         didSet {
             isPendingBufferSizeChange = true
         }
@@ -81,11 +80,11 @@ public class AudioSource: NSObject {
         try prepareCaptureSession()
     }
     
-    public func startCapturing() {
+    func startCapturing() {
         captureSession.startRunning()
     }
     
-    public func stopCapturing() {
+    func stopCapturing() {
         captureSession.stopRunning()
     }
 
@@ -145,7 +144,7 @@ public class AudioSource: NSObject {
 
 extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
  
-    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
         let numberOfSamples = CMSampleBufferGetNumSamples(sampleBuffer)
         guard numberOfSamples > 0 else {
