@@ -20,17 +20,17 @@ public class AudioSource: NSObject {
     
     /// Localized name -> audio source ID pairs
     public static var availableAudioSources: [Name: Identifier] {
+        #if os(iOS)
+        let devices = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInMicrophone],
+            mediaType: .audio,
+            position: .unspecified
+            ).devices
+        #else
         let devices = AVCaptureDevice.devices(for: .audio)
+        #endif
         let namesAndIds = devices.map { ($0.localizedName, $0.uniqueID) }
         return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
-    }
-    
-    public static func requestMicrophoneAccess(_ completion: @escaping (Bool) -> Void) {
-        #if os(iOS)
-            AVAudioSession.sharedInstance().requestRecordPermission(completion)
-        #else
-            completion(true)
-        #endif
     }
     
     public private(set) var notificationHandler: ([TimeSequence]) -> Void
@@ -96,25 +96,6 @@ public class AudioSource: NSObject {
         try session.setCategory(.playAndRecord, options: [.mixWithOthers])
         try session.setMode(.measurement)
         try session.setActive(true, options: [])
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveAudioInterruption(_:)), name: AVAudioSession.interruptionNotification, object: session)
-        NotificationCenter.default.addObserver(self, selector: #selector(audioServicesDidReset(_:)), name: AVAudioSession.mediaServicesWereResetNotification, object: session)
-        NotificationCenter.default.addObserver(self, selector: #selector(audioRouteDidChange(_:)), name: AVAudioSession.routeChangeNotification, object: session)
-    }
-    
-    @objc
-    private func didReceiveAudioInterruption(_ note: Notification) {
-        print("%@", note);
-    }
-
-    @objc
-    private func audioServicesDidReset(_ note: Notification) {
-        print("%@", note);
-    }
-
-    @objc
-    private func audioRouteDidChange(_ note: Notification) {
-        print("%@", note);
     }
 
     #endif
