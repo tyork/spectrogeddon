@@ -61,6 +61,10 @@
 		EEF76E7322DA8D5100BA3315 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DD222DA8B3100BA3315 /* SettingsStore.swift */; };
 		EEF76E7B22DA8F8300BA3315 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E7A22DA8F8300BA3315 /* ColorMap+Image.swift */; };
 		EEF76E7E22DA8FD000BA3315 /* ColorMap+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */; };
+		EEF76E8522DB388400BA3315 /* RendererUtils+OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */; };
+		EEF76E8722DB388D00BA3315 /* RendererUtils+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */; };
+		EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */; };
+		EEF76E8B22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,9 @@
 		EEF76E5422DA8D2000BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF76E7A22DA8F8300BA3315 /* ColorMap+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorMap+Image.swift"; sourceTree = "<group>"; };
 		EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorMap+Image.swift"; sourceTree = "<group>"; };
+		EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RendererUtils+OSX.swift"; sourceTree = "<group>"; };
+		EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RendererUtils+iOS.swift"; sourceTree = "<group>"; };
+		EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterSet.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +177,7 @@
 		EEF76DBB22DA8B3100BA3315 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				EEF76E8822DBCE6A00BA3315 /* SystemExtensions */,
 				EEF76E8222DB36BC00BA3315 /* Logging */,
 				EEF76E8122DB368300BA3315 /* Render */,
 				EEF76E8022DB367D00BA3315 /* Audio */,
@@ -232,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF76E7A22DA8F8300BA3315 /* ColorMap+Image.swift */,
+				EEF76E8622DB388D00BA3315 /* RendererUtils+iOS.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -240,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */,
+				EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -300,6 +310,14 @@
 				EEF76DC922DA8B3100BA3315 /* TexturedMeshShader.vsh */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		EEF76E8822DBCE6A00BA3315 /* SystemExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76E8922DBCE9700BA3315 /* String+CharacterSet.swift */,
+			);
+			name = SystemExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,11 +500,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF76E0022DA8C0100BA3315 /* LoggingUtilities.swift in Sources */,
+				EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E0622DA8C0100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76DFF22DA8C0100BA3315 /* ColumnRenderer.swift in Sources */,
 				EEF76DF222DA8C0100BA3315 /* RendererUtils.swift in Sources */,
 				EEF76DFC22DA8C0100BA3315 /* GLRenderer.swift in Sources */,
 				EEF76DFA22DA8C0100BA3315 /* ScrollingRenderer.swift in Sources */,
+				EEF76E8722DB388D00BA3315 /* RendererUtils+iOS.swift in Sources */,
 				EEF76DFD22DA8C0100BA3315 /* LinearScrollingRenderer.swift in Sources */,
 				EEF76DF622DA8C0100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E0122DA8C0100BA3315 /* TexturedVertexAttribs.swift in Sources */,
@@ -518,11 +538,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF76E6C22DA8D5100BA3315 /* LoggingUtilities.swift in Sources */,
+				EEF76E8B22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E7222DA8D5100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76E6B22DA8D5100BA3315 /* ColumnRenderer.swift in Sources */,
 				EEF76E5E22DA8D5100BA3315 /* RendererUtils.swift in Sources */,
 				EEF76E6822DA8D5100BA3315 /* GLRenderer.swift in Sources */,
 				EEF76E6622DA8D5100BA3315 /* ScrollingRenderer.swift in Sources */,
+				EEF76E8522DB388400BA3315 /* RendererUtils+OSX.swift in Sources */,
 				EEF76E6922DA8D5100BA3315 /* LinearScrollingRenderer.swift in Sources */,
 				EEF76E6222DA8D5100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E6D22DA8D5100BA3315 /* TexturedVertexAttribs.swift in Sources */,

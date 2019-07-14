@@ -36,44 +36,7 @@ enum GLRendererUtils {
         
         return programName
     }
-    
-    static func generateVAO() -> GLuint {
-        
-        var vaoName: GLuint = 0
-        #if os(iOS)
-        glGenVertexArraysOES(1, &vaoName)
-        glBindVertexArrayOES(vaoName)
-        #else
-        glGenVertexArrays(1, &vaoName)
-        glBindVertexArray(vaoName)
-        #endif
-        return vaoName
-    }
-
-    static func bindVAO(_ vaoName: GLuint) {
-        
-        #if os(iOS)
-        glBindVertexArrayOES(vaoName)
-        #else
-        glBindVertexArray(vaoName)
-        #endif
-    }
-    
-    static func destroyVAO(_ vaoName: GLuint) {
-        
-        guard vaoName <= 0 else {
-            return
-        }
-        
-        var name = vaoName
-        #if os(iOS)
-        glDeleteVertexArraysOES(1, &name)
-        #else
-        glDeleteVertexArrays(1, &name)
-        #endif
-
-    }
-    
+   
     static func glDebug(function: String = #function, file: String = #file, line: Int = #line) {
             
         #if !NDEBUG
@@ -86,18 +49,13 @@ enum GLRendererUtils {
 private func ShadingLanguageVersion() -> Int {
 
     let versionString = String(cString: glGetString(GLenum(GL_SHADING_LANGUAGE_VERSION)))
-
-    #if os(iOS)
-    let prefix = "OpenGL ES GLSL ES "
-    guard versionString.hasPrefix(prefix),
-        let languageVersion = Float(versionString.dropFirst(prefix.count)) else {
+    
+    let cleanVersionString = versionString.removing(
+        charactersInSet: CharacterSet(charactersIn: "01234567890-.").inverted
+    )
+    guard let languageVersion = Float(cleanVersionString) else {
         return 0
     }
-    #else
-    guard let languageVersion = Float(versionString) else {
-        return 0
-    }
-    #endif
     return Int(languageVersion * 100)
 }
 
