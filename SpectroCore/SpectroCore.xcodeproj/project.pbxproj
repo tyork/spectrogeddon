@@ -170,28 +170,10 @@
 		EEF76DBB22DA8B3100BA3315 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */,
-				EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */,
-				EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */,
-				EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */,
-				EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */,
-				EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */,
-				EEF76DC222DA8B3100BA3315 /* RenderSize.swift */,
-				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
-				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
-				EEF76DC522DA8B3100BA3315 /* ScrollingRenderer.swift */,
-				EEF76DC622DA8B3100BA3315 /* RenderTexture.swift */,
-				EEF76DC722DA8B3100BA3315 /* GLRenderer.swift */,
-				EEF76DC822DA8B3100BA3315 /* LinearScrollingRenderer.swift */,
-				EEF76DC922DA8B3100BA3315 /* TexturedMeshShader.vsh */,
-				EEF76DCA22DA8B3100BA3315 /* ColumnRenderer.swift */,
-				EEF76DCB22DA8B3100BA3315 /* LoggingUtilities.swift */,
-				EEF76DCC22DA8B3100BA3315 /* TexturedVertexAttribs.swift */,
-				EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */,
-				EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */,
-				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
-				EEF76DD122DA8B3100BA3315 /* ShadedMesh.swift */,
-				EEF76DD222DA8B3100BA3315 /* SettingsStore.swift */,
+				EEF76E8222DB36BC00BA3315 /* Logging */,
+				EEF76E8122DB368300BA3315 /* Render */,
+				EEF76E8022DB367D00BA3315 /* Audio */,
+				EEF76E7F22DB366100BA3315 /* Settings */,
 			);
 			name = Source;
 			path = Core/Source;
@@ -260,6 +242,64 @@
 				EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		EEF76E7F22DB366100BA3315 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */,
+				EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */,
+				EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */,
+				EEF76DD222DA8B3100BA3315 /* SettingsStore.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		EEF76E8022DB367D00BA3315 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76DCD22DA8B3100BA3315 /* AudioSource.swift */,
+				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
+				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
+				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
+				EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		EEF76E8122DB368300BA3315 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76E8322DB371600BA3315 /* Shaders */,
+				EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */,
+				EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */,
+				EEF76DC822DA8B3100BA3315 /* LinearScrollingRenderer.swift */,
+				EEF76DC722DA8B3100BA3315 /* GLRenderer.swift */,
+				EEF76DC622DA8B3100BA3315 /* RenderTexture.swift */,
+				EEF76DCA22DA8B3100BA3315 /* ColumnRenderer.swift */,
+				EEF76DC522DA8B3100BA3315 /* ScrollingRenderer.swift */,
+				EEF76DCC22DA8B3100BA3315 /* TexturedVertexAttribs.swift */,
+				EEF76DD122DA8B3100BA3315 /* ShadedMesh.swift */,
+				EEF76DC222DA8B3100BA3315 /* RenderSize.swift */,
+			);
+			name = Render;
+			sourceTree = "<group>";
+		};
+		EEF76E8222DB36BC00BA3315 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76DCB22DA8B3100BA3315 /* LoggingUtilities.swift */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		EEF76E8322DB371600BA3315 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */,
+				EEF76DC922DA8B3100BA3315 /* TexturedMeshShader.vsh */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
