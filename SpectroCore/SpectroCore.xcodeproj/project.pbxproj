@@ -14,7 +14,7 @@
 		EEF76DF222DA8C0100BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */; };
 		EEF76DF322DA8C0100BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */; };
 		EEF76DF422DA8C0100BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */; };
-		EEF76DF522DA8C0100BA3315 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */; };
+		EEF76DF522DA8C0100BA3315 /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */; };
 		EEF76DF622DA8C0100BA3315 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */; };
 		EEF76DF722DA8C0100BA3315 /* RenderSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC222DA8B3100BA3315 /* RenderSize.swift */; };
 		EEF76DF822DA8C0100BA3315 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */; };
@@ -41,7 +41,7 @@
 		EEF76E5E22DA8D5100BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */; };
 		EEF76E5F22DA8D5100BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */; };
 		EEF76E6022DA8D5100BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */; };
-		EEF76E6122DA8D5100BA3315 /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */; };
+		EEF76E6122DA8D5100BA3315 /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */; };
 		EEF76E6222DA8D5100BA3315 /* ColorMapStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */; };
 		EEF76E6322DA8D5100BA3315 /* RenderSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC222DA8B3100BA3315 /* RenderSize.swift */; };
 		EEF76E6422DA8D5100BA3315 /* FastFourierTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */; };
@@ -71,6 +71,8 @@
 		EEF76E9422DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */; };
 		EEF76E9622DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */; };
 		EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */; };
+		EEF76E9C22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */; };
+		EEF76E9D22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +97,7 @@
 		EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
 		EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
-		EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
+		EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBuffer.swift; sourceTree = "<group>"; };
 		EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMapStore.swift; sourceTree = "<group>"; };
 		EEF76DC222DA8B3100BA3315 /* RenderSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderSize.swift; sourceTree = "<group>"; };
 		EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastFourierTransform.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+AudioDevices.swift"; sourceTree = "<group>"; };
 		EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
 		EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
+		EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Configure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,12 +286,13 @@
 		EEF76E8022DB367D00BA3315 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */,
 				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
 				EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */,
 				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
 				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
 				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
-				EEF76DC022DA8B3100BA3315 /* SampleBuffer.swift */,
+				EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -532,8 +536,9 @@
 				EEF76E0722DA8C0100BA3315 /* SettingsStore.swift in Sources */,
 				EEF76E0522DA8C0100BA3315 /* TimeSequence.swift in Sources */,
 				EEF76E7B22DA8F8300BA3315 /* ColorMap+Image.swift in Sources */,
+				EEF76E9C22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */,
 				EEF76DF722DA8C0100BA3315 /* RenderSize.swift in Sources */,
-				EEF76DF522DA8C0100BA3315 /* SampleBuffer.swift in Sources */,
+				EEF76DF522DA8C0100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76DF922DA8C0100BA3315 /* SpectrumGenerator.swift in Sources */,
 				EEF76DF822DA8C0100BA3315 /* FastFourierTransform.swift in Sources */,
 				EEF76DFB22DA8C0100BA3315 /* RenderTexture.swift in Sources */,
@@ -573,9 +578,10 @@
 				EEF76E7022DA8D5100BA3315 /* ColorMap.swift in Sources */,
 				EEF76E7322DA8D5100BA3315 /* SettingsStore.swift in Sources */,
 				EEF76E7122DA8D5100BA3315 /* TimeSequence.swift in Sources */,
+				EEF76E9D22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */,
 				EEF76E7E22DA8FD000BA3315 /* ColorMap+Image.swift in Sources */,
 				EEF76E6322DA8D5100BA3315 /* RenderSize.swift in Sources */,
-				EEF76E6122DA8D5100BA3315 /* SampleBuffer.swift in Sources */,
+				EEF76E6122DA8D5100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76E6522DA8D5100BA3315 /* SpectrumGenerator.swift in Sources */,
 				EEF76E6422DA8D5100BA3315 /* FastFourierTransform.swift in Sources */,
 				EEF76E6722DA8D5100BA3315 /* RenderTexture.swift in Sources */,

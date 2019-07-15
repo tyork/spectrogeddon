@@ -37,7 +37,7 @@ class AudioSampler: NSObject {
     private var notificationQueue: DispatchQueue
     private var sampleQueue: DispatchQueue
     private var captureSession: AVCaptureSession
-    private var channelBuffers: [SampleBuffer]
+    private var channelBuffers: [CircularBuffer]
     private var isPendingBufferSizeChange: Bool
     
     init(preferredSource: AudioSourceFinder.Identifier?, notificationQueue: DispatchQueue) throws {
@@ -71,38 +71,11 @@ class AudioSampler: NSObject {
             return
         }
         
-        try captureSession.prepareForUseWithAudioSession()
-        
-        captureSession.beginConfiguration()
-        
-        captureSession.inputs.forEach {
-            captureSession.removeInput($0)
-        }
-        
-        guard
-            let preferredDevice = AVCaptureDevice(uniqueID: sourceId) ?? AVCaptureDevice.default(for: .audio) else {
-            return // TODO: throw
-        }
-        
-        let micInput = try AVCaptureDeviceInput(device: preferredDevice)
-        
-        guard captureSession.canAddInput(micInput) else {
-            return // TODO: throw
-        }
-        captureSession.addInput(micInput)
-        
-        if captureSession.outputs.isEmpty {
+        try captureSession.configureForAudioCapture(preferredSource: sourceId) { [weak self] in
             let dataOutput = AVCaptureAudioDataOutput()
             dataOutput.setSampleBufferDelegate(self, queue: sampleQueue)
-            
-            guard captureSession.canAddOutput(dataOutput) else {
-                return // TODO: throw
-            }
-            
-            captureSession.addOutput(dataOutput)
+            return dataOutput
         }
-        
-        captureSession.commitConfiguration()
     }
 }
 
@@ -131,7 +104,7 @@ extension AudioSampler: AVCaptureAudioDataOutputSampleBufferDelegate {
         let firstFormat = bufferFormats[0]
         
         let format: SampleFormat
-        if firstFormat.mASBD.mBytesPerFrame == MemoryLayout<Float>.size {
+        if firstFormat.mASBD.mBytesPerFrame == MemoryLayout<Float32>.size {
             format = .normedFloat32
         } else {
             format = .unnormedInt16
@@ -149,7 +122,7 @@ extension AudioSampler: AVCaptureAudioDataOutputSampleBufferDelegate {
         let channelsInBuffer = Int(firstFormat.mASBD.mChannelsPerFrame)
         if channelsInBuffer != channelBuffers.count {
             let buffers = (0..<channelsInBuffer).map { _ in
-                SampleBuffer(capacity: bufferSize, readInterval: ReadInterval)
+                CircularBuffer(capacity: bufferSize, readInterval: ReadInterval)
             }
             channelBuffers = buffers
         }

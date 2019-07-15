@@ -16,7 +16,7 @@ enum SampleFormat {
 
 /// Stores raw samples so as to retain the newest ones when overfilled.
 /// Allows easy retrieval of samples as a time sequence.
-class SampleBuffer {
+class CircularBuffer {
 
     var hasOutput: Bool {
         return availableSpace >= capacity / readInterval
@@ -52,8 +52,8 @@ class SampleBuffer {
     private var writerIndex: UInt
     private var readerIndex: UInt
     private var availableSpace: UInt
-    private var normalizationBuffer: [Float]
-    private var sampleBuffer: [Float]
+    private var normalizationBuffer: [Float32]
+    private var sampleBuffer: [Float32]
     private var timeStamp: TimeInterval
     private var duration: TimeInterval
 
@@ -61,8 +61,8 @@ class SampleBuffer {
         precondition(capacity > 0)
         precondition(readInterval > 0)
         self.readInterval = readInterval
-        self.sampleBuffer = [Float](repeating: 0.0, count: Int(capacity))
-        self.normalizationBuffer = [Float](repeating: 0.0, count: Int(capacity))
+        self.sampleBuffer = .init(repeating: 0.0, count: Int(capacity))
+        self.normalizationBuffer = .init(repeating: 0.0, count: Int(capacity))
         self.writerIndex = 0
         self.readerIndex = 0
         self.availableSpace = capacity
@@ -103,11 +103,9 @@ class SampleBuffer {
         // We need to store our new samples by wrapping them into the circular buffer.
         precondition(countToProcess <= capacity)
         let headroom = capacity - writerIndex
+        memcpy(&sampleBuffer + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float32>.size)
         if countToProcess > headroom {
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer) + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float>.size)
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer), samplesToProcess + Int(headroom), Int((capacity - headroom))*MemoryLayout<Float>.size)
-        } else {
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer) + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float>.size)
+            memcpy(&sampleBuffer, samplesToProcess + Int(headroom), Int((capacity - headroom))*MemoryLayout<Float32>.size)
         }
         
         // Increment the writer index to show where to store next.
