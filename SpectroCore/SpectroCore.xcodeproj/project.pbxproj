@@ -73,6 +73,18 @@
 		EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */; };
 		EEF76E9C22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */; };
 		EEF76E9D22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */; };
+		EEF76E9F22DD1BA800BA3315 /* AudioSampleBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9E22DD1BA800BA3315 /* AudioSampleBufferInfo.swift */; };
+		EEF76EA022DD1BA800BA3315 /* AudioSampleBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E9E22DD1BA800BA3315 /* AudioSampleBufferInfo.swift */; };
+		EEF76EA222DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA122DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift */; };
+		EEF76EA322DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA122DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift */; };
+		EEF76EA822DD609100BA3315 /* AudioSampleBufferPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA722DD609100BA3315 /* AudioSampleBufferPool.swift */; };
+		EEF76EAA22DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA922DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift */; };
+		EEF76EAB22DD630D00BA3315 /* AudioSampleBufferPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA722DD609100BA3315 /* AudioSampleBufferPool.swift */; };
+		EEF76EAC22DD631200BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76EA922DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift */; };
+		EEF76ED322E5A9B700BA3315 /* ChannelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76ED222E5A9B700BA3315 /* ChannelBuffer.swift */; };
+		EEF76ED422E633A100BA3315 /* ChannelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76ED222E5A9B700BA3315 /* ChannelBuffer.swift */; };
+		EEF76ED622E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76ED522E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift */; };
+		EEF76ED722E633F900BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76ED522E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +151,12 @@
 		EEF76E9522DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
 		EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+AudioSession.swift"; sourceTree = "<group>"; };
 		EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Configure.swift"; sourceTree = "<group>"; };
+		EEF76E9E22DD1BA800BA3315 /* AudioSampleBufferInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSampleBufferInfo.swift; sourceTree = "<group>"; };
+		EEF76EA122DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioSampleBufferInfo+CoreMedia.swift"; sourceTree = "<group>"; };
+		EEF76EA722DD609100BA3315 /* AudioSampleBufferPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSampleBufferPool.swift; sourceTree = "<group>"; };
+		EEF76EA922DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioSampleBufferPool+CoreMedia.swift"; sourceTree = "<group>"; };
+		EEF76ED222E5A9B700BA3315 /* ChannelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBuffer.swift; sourceTree = "<group>"; };
+		EEF76ED522E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelBuffer+CoreMedia.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,12 +305,18 @@
 			isa = PBXGroup;
 			children = (
 				EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */,
-				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
 				EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */,
 				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
 				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
 				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
+				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
 				EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */,
+				EEF76ED222E5A9B700BA3315 /* ChannelBuffer.swift */,
+				EEF76ED522E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift */,
+				EEF76EA722DD609100BA3315 /* AudioSampleBufferPool.swift */,
+				EEF76EA922DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift */,
+				EEF76E9E22DD1BA800BA3315 /* AudioSampleBufferInfo.swift */,
+				EEF76EA122DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -520,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF76E0022DA8C0100BA3315 /* LoggingUtilities.swift in Sources */,
+				EEF76EAA22DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */,
 				EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E0622DA8C0100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76E9622DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
@@ -530,20 +555,25 @@
 				EEF76E8722DB388D00BA3315 /* RendererUtils+iOS.swift in Sources */,
 				EEF76E8D22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */,
 				EEF76DFD22DA8C0100BA3315 /* LinearScrollingRenderer.swift in Sources */,
+				EEF76ED622E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */,
 				EEF76DF622DA8C0100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E0122DA8C0100BA3315 /* TexturedVertexAttribs.swift in Sources */,
 				EEF76E0422DA8C0100BA3315 /* ColorMap.swift in Sources */,
 				EEF76E0722DA8C0100BA3315 /* SettingsStore.swift in Sources */,
 				EEF76E0522DA8C0100BA3315 /* TimeSequence.swift in Sources */,
+				EEF76E9F22DD1BA800BA3315 /* AudioSampleBufferInfo.swift in Sources */,
 				EEF76E7B22DA8F8300BA3315 /* ColorMap+Image.swift in Sources */,
 				EEF76E9C22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */,
 				EEF76DF722DA8C0100BA3315 /* RenderSize.swift in Sources */,
+				EEF76EA822DD609100BA3315 /* AudioSampleBufferPool.swift in Sources */,
 				EEF76DF522DA8C0100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76DF922DA8C0100BA3315 /* SpectrumGenerator.swift in Sources */,
 				EEF76DF822DA8C0100BA3315 /* FastFourierTransform.swift in Sources */,
 				EEF76DFB22DA8C0100BA3315 /* RenderTexture.swift in Sources */,
+				EEF76EA222DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */,
 				EEF76DF122DA8C0100BA3315 /* DisplaySettings.swift in Sources */,
 				EEF76DF422DA8C0100BA3315 /* RadialScrollingRenderer.swift in Sources */,
+				EEF76ED322E5A9B700BA3315 /* ChannelBuffer.swift in Sources */,
 				EEF76E0222DA8C0100BA3315 /* AudioSampler.swift in Sources */,
 				EEF76E9022DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
 			);
@@ -562,6 +592,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF76E6C22DA8D5100BA3315 /* LoggingUtilities.swift in Sources */,
+				EEF76ED422E633A100BA3315 /* ChannelBuffer.swift in Sources */,
+				EEF76EAC22DD631200BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */,
 				EEF76E8B22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E7222DA8D5100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76E6B22DA8D5100BA3315 /* ColumnRenderer.swift in Sources */,
@@ -571,19 +603,23 @@
 				EEF76E8522DB388400BA3315 /* RendererUtils+OSX.swift in Sources */,
 				EEF76E8E22DBD2D600BA3315 /* AudioSourceFinder.swift in Sources */,
 				EEF76E6922DA8D5100BA3315 /* LinearScrollingRenderer.swift in Sources */,
+				EEF76ED722E633F900BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */,
 				EEF76E9422DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
 				EEF76E6222DA8D5100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
 				EEF76E6D22DA8D5100BA3315 /* TexturedVertexAttribs.swift in Sources */,
 				EEF76E7022DA8D5100BA3315 /* ColorMap.swift in Sources */,
 				EEF76E7322DA8D5100BA3315 /* SettingsStore.swift in Sources */,
+				EEF76EA022DD1BA800BA3315 /* AudioSampleBufferInfo.swift in Sources */,
 				EEF76E7122DA8D5100BA3315 /* TimeSequence.swift in Sources */,
 				EEF76E9D22DBDFE400BA3315 /* AVCaptureSession+Configure.swift in Sources */,
 				EEF76E7E22DA8FD000BA3315 /* ColorMap+Image.swift in Sources */,
+				EEF76EAB22DD630D00BA3315 /* AudioSampleBufferPool.swift in Sources */,
 				EEF76E6322DA8D5100BA3315 /* RenderSize.swift in Sources */,
 				EEF76E6122DA8D5100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76E6522DA8D5100BA3315 /* SpectrumGenerator.swift in Sources */,
 				EEF76E6422DA8D5100BA3315 /* FastFourierTransform.swift in Sources */,
+				EEF76EA322DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */,
 				EEF76E6722DA8D5100BA3315 /* RenderTexture.swift in Sources */,
 				EEF76E5D22DA8D5100BA3315 /* DisplaySettings.swift in Sources */,
 				EEF76E6022DA8D5100BA3315 /* RadialScrollingRenderer.swift in Sources */,

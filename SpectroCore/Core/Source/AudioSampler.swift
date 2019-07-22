@@ -9,8 +9,8 @@
 import Foundation
 import AVFoundation
 
-private let MaxBufferSize: UInt = 2048
-private let ReadInterval: UInt = 1
+private let MaxBufferSize: Int = 2048
+private let ReadInterval: Int = 1
 
 class AudioSampler: NSObject {
     
@@ -20,25 +20,25 @@ class AudioSampler: NSObject {
     
     var preferredSource: AudioSourceFinder.Identifier? {
         didSet {
-            try? prepareCaptureSession() // TODO:
+            try? prepareCaptureSession() // TODO: sort out path to error reporting from here
         }
     }
     
-    var bufferSizeDivider: UInt {
+    var bufferSizeDivider: Int {
         didSet {
-            isPendingBufferSizeChange = true
+            needsBufferResize = true
         }
     }
 
-    private var bufferSize: UInt {
+    private var bufferSize: Int {
         return MaxBufferSize / bufferSizeDivider;
     }
 
     private var notificationQueue: DispatchQueue
     private var sampleQueue: DispatchQueue
     private var captureSession: AVCaptureSession
-    private var channelBuffers: [CircularBuffer]
-    private var isPendingBufferSizeChange: Bool
+    private var needsBufferResize: Bool
+    private let bufferPool: AudioSampleBufferPool
     
     init(preferredSource: AudioSourceFinder.Identifier?, notificationQueue: DispatchQueue) throws {
         
@@ -47,10 +47,10 @@ class AudioSampler: NSObject {
         self.sampleHandler = { _ in }
 
         self.sampleQueue = DispatchQueue(label: "audio.samples", qos: .default)
-        self.channelBuffers = []
         self.captureSession = AVCaptureSession()
-        self.isPendingBufferSizeChange = false
+        self.needsBufferResize = false
         self.preferredSource = preferredSource
+        self.bufferPool = AudioSampleBufferPool()
         
         super.init()
         
@@ -82,88 +82,18 @@ class AudioSampler: NSObject {
 extension AudioSampler: AVCaptureAudioDataOutputSampleBufferDelegate {
  
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-
-        let numberOfSamples = CMSampleBufferGetNumSamples(sampleBuffer)
-        guard numberOfSamples > 0 else {
-            // No samples, no processing.
-            return
-        }
         
-        // Configure buffers
-        // TODO: very basic format decoding, really the minimum.
-        // TODO: and actively wrong now, Mac OS X now happily issues 24 bit samples so need to fix this.
-        guard let formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer) else {
-            return
-        }
-        var formatListSize = 0
-        guard let bufferFormats = CMAudioFormatDescriptionGetFormatList(formatInfo, sizeOut: &formatListSize), formatListSize > 0 else {
-            // Invalid format info.
-            return
-        }
-
-        let firstFormat = bufferFormats[0]
+        bufferPool.accept(cmBuffer: sampleBuffer)
         
-        let format: SampleFormat
-        if firstFormat.mASBD.mBytesPerFrame == MemoryLayout<Float32>.size {
-            format = .normedFloat32
-        } else {
-            format = .unnormedInt16
-        }
-        
-        #if os(macOS)
-            guard format == .normedFloat32 else { return }
-        #endif
-        
-        if isPendingBufferSizeChange {
-            channelBuffers = []
-            isPendingBufferSizeChange = false
-        }
-        
-        let channelsInBuffer = Int(firstFormat.mASBD.mChannelsPerFrame)
-        if channelsInBuffer != channelBuffers.count {
-            let buffers = (0..<channelsInBuffer).map { _ in
-                CircularBuffer(capacity: bufferSize, readInterval: ReadInterval)
-            }
-            channelBuffers = buffers
-        }
-        
-        // Extract data
-        guard let audioBlockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else {
-            return
-        }
-        let duration = CMTimeGetSeconds(CMSampleBufferGetOutputDuration(sampleBuffer)) // Duration
-        let timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer))
-        
-        var activeChannel = 0
-        var offset = 0
-        var totalLength = 0
-        var lengthAtOffset = 0
-
-        repeat {
-            var rawSamplesOrNil: UnsafeMutablePointer<Int8>? = nil
-            CMBlockBufferGetDataPointer(audioBlockBuffer, atOffset: offset, lengthAtOffsetOut: &lengthAtOffset, totalLengthOut: &totalLength, dataPointerOut: &rawSamplesOrNil)
-
-            guard let rawSamples = rawSamplesOrNil else {
-                continue
-            }
-            
-            channelBuffers[activeChannel].writeBytes(rawSamples, sampleCount: UInt(numberOfSamples), format: format, timeStamp: timeStamp, duration: duration)
-            offset += lengthAtOffset
-            activeChannel += 1
-
-        } while offset < totalLength
-    
         // Dispatch
-        guard channelBuffers.allSatisfy({ $0.hasOutput }) else {
+        guard bufferPool.hasOutput else {
             return
         }
 
-        let outputs: [TimeSequence] = channelBuffers.compactMap {
-            $0.outputSamples
-        }
+        let output = bufferPool.output
 
         notificationQueue.async {
-            self.sampleHandler(outputs)
+            self.sampleHandler(output)
         }
     }
 

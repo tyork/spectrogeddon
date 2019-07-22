@@ -24,16 +24,16 @@ public class SpectrumGenerator {
     public weak var delegate: SpectrumGeneratorDelegate?
     
     private let transformer: FastFourierTransform
-    private let queue: DispatchQueue
+    private let fftQueue: DispatchQueue
     private var sampler: AudioSampler
 
     public init() throws {
         
         transformer = FastFourierTransform()
-        queue = DispatchQueue(label: "fft", qos: .default)
+        fftQueue = DispatchQueue(label: "fft", qos: .default)
         sampler = try AudioSampler(
             preferredSource: AudioSourceFinder.availableSources.values.first,
-            notificationQueue: queue
+            notificationQueue: fftQueue
         )
         
         sampler.sampleHandler = { [weak self] channels in
@@ -65,6 +65,6 @@ public class SpectrumGenerator {
         if let sourceId = settings.preferredAudioSourceId, SpectrumGenerator.availableSources.values.contains(sourceId) {
             sampler.preferredSource = sourceId
         }
-        sampler.bufferSizeDivider = settings.sharpness
+        sampler.bufferSizeDivider = Int(settings.sharpness)
     }
 }
