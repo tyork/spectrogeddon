@@ -23,7 +23,7 @@ extension AudioSampleBufferInfo {
             return nil
         }
         
-        guard let sampleFormat = SampleFormat(streamDescription: streamDescription) else {
+        guard let sampleFormat = SampleFormat(bitsPerSample: Int(streamDescription.mBitsPerChannel)) else {
             // No sample format we can support
             return nil
         }
@@ -41,32 +41,6 @@ extension AudioSampleBufferInfo {
         )
     }
     
-}
-
-private extension SampleFormat {
-    
-    init?(streamDescription: AudioStreamBasicDescription) {
-        
-        switch streamDescription.mBitsPerChannel {
-        case 16:
-            // TODO: hack, fix
-            #if os(macOS)
-            return nil
-            #else
-            self = .int16
-            #endif
-            
-        case 8, 24:
-            // TODO: hack, fix
-            return nil
-            
-        case 32:
-            self = .float32
-            
-        default:
-            return nil
-        }
-    }
 }
 
 private extension CMSampleBuffer {

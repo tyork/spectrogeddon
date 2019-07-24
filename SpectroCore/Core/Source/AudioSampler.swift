@@ -25,32 +25,28 @@ class AudioSampler: NSObject {
     }
     
     var bufferSizeDivider: Int {
-        didSet {
-            needsBufferResize = true
+        set {
+            bufferPool.readInterval = newValue
+        }
+        get {
+            return bufferPool.readInterval
         }
     }
 
-    private var bufferSize: Int {
-        return MaxBufferSize / bufferSizeDivider;
-    }
-
-    private var notificationQueue: DispatchQueue
-    private var sampleQueue: DispatchQueue
-    private var captureSession: AVCaptureSession
-    private var needsBufferResize: Bool
+    private var captureQueue: DispatchQueue
+    private let captureSession: AVCaptureSession
     private let bufferPool: AudioSampleBufferPool
-    
+    private var outputQueue: DispatchQueue
+
     init(preferredSource: AudioSourceFinder.Identifier?, notificationQueue: DispatchQueue) throws {
         
-        self.bufferSizeDivider = 1
-        self.notificationQueue = notificationQueue
+        self.outputQueue = notificationQueue
         self.sampleHandler = { _ in }
 
-        self.sampleQueue = DispatchQueue(label: "audio.samples", qos: .default)
+        self.captureQueue = DispatchQueue(label: "audio.samples", qos: .default)
         self.captureSession = AVCaptureSession()
-        self.needsBufferResize = false
         self.preferredSource = preferredSource
-        self.bufferPool = AudioSampleBufferPool()
+        self.bufferPool = AudioSampleBufferPool(outputSampleCount: MaxBufferSize, readInterval: ReadInterval)
         
         super.init()
         
@@ -73,7 +69,7 @@ class AudioSampler: NSObject {
         
         try captureSession.configureForAudioCapture(preferredSource: sourceId) { [weak self] in
             let dataOutput = AVCaptureAudioDataOutput()
-            dataOutput.setSampleBufferDelegate(self, queue: sampleQueue)
+            dataOutput.setSampleBufferDelegate(self, queue: captureQueue)
             return dataOutput
         }
     }
@@ -92,7 +88,7 @@ extension AudioSampler: AVCaptureAudioDataOutputSampleBufferDelegate {
 
         let output = bufferPool.output
 
-        notificationQueue.async {
+        outputQueue.async {
             self.sampleHandler(output)
         }
     }

@@ -12,6 +12,18 @@ enum SampleFormat {
     case float32
     case int16
     
+    init?(bitsPerSample: Int) {
+        
+        switch bitsPerSample {
+        case 16:
+            self = .int16
+        case 32:
+            self = .float32
+        default:
+            return nil
+        }
+    }
+    
     var sizeInBytes: Int {
         switch self {
         case .float32:

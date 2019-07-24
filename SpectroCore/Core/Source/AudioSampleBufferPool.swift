@@ -19,7 +19,26 @@ class AudioSampleBufferPool {
         return buffers.compactMap { $0.outputSamples }
     }
     
-    init() {
+    var readInterval: Int {
+        didSet {
+            if oldValue != readInterval {
+                emptyThePool()
+            }
+        }
+    }
+    
+    var outputSampleCount: Int {
+        didSet {
+            if oldValue != outputSampleCount {
+                emptyThePool()
+            }
+        }
+    }
+    
+    init(outputSampleCount: Int, readInterval: Int) {
+
+        self.outputSampleCount = outputSampleCount
+        self.readInterval = readInterval
         buffers = []
     }
     
@@ -28,10 +47,18 @@ class AudioSampleBufferPool {
         if info.numberOfChannels != buffers.count {
             
             buffers = (0..<info.numberOfChannels).map { _ in
-                return ChannelBuffer(outputSizeInSamples: 2048, readInterval: 1) // tODO:
+                
+                return ChannelBuffer(
+                    outputSizeInSamples: outputSampleCount,
+                    readInterval: readInterval
+                )
             }
         }
         
         assert(info.numberOfChannels == buffers.count)
+    }
+    
+    private func emptyThePool() {
+        buffers = []
     }
 }

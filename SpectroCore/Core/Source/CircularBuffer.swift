@@ -82,13 +82,6 @@ class CircularBuffer {
         if sourceRange.count > headroom {
             input.copy(range: headroom..<sourceRange.endIndex, to: &sampleBuffer, at: 0)
         }
-        
-    
-        //memcpy(&sampleBuffer + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float32>.size)
-//        if countToProcess > headroom {
-            
-//            memcpy(&sampleBuffer, samplesToProcess + Int(headroom), Int((capacity - headroom))*MemoryLayout<Float32>.size)
-//        }
     
         // Increment the writer index to show where to store next.
         writerIndex += sourceRange.count
@@ -107,14 +100,15 @@ class CircularBuffer {
     }
 }
 
-extension Array where Element == Float32 {
+private extension Array where Element == Float32 {
 
     func copy(range: Range<Int>, to target: inout [Float32], at offsetInTarget: Int) {
 
         precondition(range.count <= count)
         precondition(range.count <= (target.count - offsetInTarget))
         
-        target.replaceSubrange(offsetInTarget..<(offsetInTarget+range.count), with: self[range])
+        // TODO: avoid replace subrange, use a direct copy
+        target.replaceSubrange(offsetInTarget..<(offsetInTarget+range.count), with: self[range])        
         
 //        let elementSize = MemoryLayout<Float32>.size
 
