@@ -359,6 +359,7 @@
 					};
 					EEF76D7522DA861B00BA3315 = {
 						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = VBS9CNK6L3;
 						ProvisioningStyle = Automatic;
 					};
 					EEF76D8822DA861D00BA3315 = {
@@ -750,6 +751,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VBS9CNK6L3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -784,6 +786,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = VBS9CNK6L3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Spectrogeddon-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
