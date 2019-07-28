@@ -55,13 +55,11 @@ class ChannelBuffer {
             }
             
         case .int16:
-            source.withUnsafeBufferPointer { byteBuffer in
+            source.withUnsafeBytes { byteBuffer in
                 
-                byteBuffer.withMemoryRebound(to: Int16.self) { wordBuffer in
-                    
-                    if let base = wordBuffer.baseAddress {
-                        vDSP_vflt16(base, 1, &target, 1, vDSP_Length(info.numberOfSamples))
-                    }
+                let wordBuffer = byteBuffer.bindMemory(to: Int16.self)
+                if let base = wordBuffer.baseAddress {
+                    vDSP_vflt16(base, 1, &target, 1, vDSP_Length(info.numberOfSamples))
                 }
             }
         }
