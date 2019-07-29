@@ -54,7 +54,7 @@ class FastFourierTransform {
         
         // Apply window
         timeSequence.values.withUnsafeBufferPointer { p in
-            vDSP_vmul(p.baseAddress!, 1, &windowFunction, 1, &fftInputR, 1, UInt(paddedSampleCount))
+            vDSP_vmul(p.baseAddress!, 1, &windowFunction, 1, &fftInputR, 1, vDSP_Length(paddedSampleCount))
         }
 
         // Compute the out-of-place FFT.
@@ -69,7 +69,7 @@ class FastFourierTransform {
         vDSP_zvmags(&output, 1, &realOutput, 1, outputSampleCount)
 
         // Normalize according to Parseval's theorem. After this, the biggest possible power spectrum bin value is 1.0.
-        var norm = powf(1 / Float(realOutput.count), 2)
+        var norm = powf(1 / Float32(realOutput.count), 2)
         vDSP_vsmul(realOutput, 1, &norm, &realOutput, 1, outputSampleCount)
 
         // Convert to a decibel scale using 1.0f (no offset), so we range from -inf to 0.0.
