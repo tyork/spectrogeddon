@@ -17,10 +17,10 @@ class DesktopOpenGLView: NSOpenGLView {
     }
     
     private var displayTimer: Timer?
-    private var renderer: GLRenderer = GLRenderer()
+    private var renderer: GLRenderer = GLRenderer(colorMapProvider: ColorMapStore()) // TODO:
         
-    func use(_ displaySettings: DisplaySettings) {
-        renderer.use(displaySettings)
+    func use(_ settings: ApplicationSettings) {
+        renderer.use(settings)
     }
     
     func addMeasurements(toDisplayQueue spectrums: [TimeSequence]) {

@@ -9,7 +9,7 @@ import AVFoundation
 
 extension AVCaptureSession {
     
-    func configureForAudioCapture(preferredSource sourceId: AudioSourceFinder.Identifier, outputProvider: () -> AVCaptureOutput) throws {
+    func configureForAudioCapture(preferredSource sourceId: AudioSourceID, outputProvider: () -> AVCaptureOutput) throws {
         
         try prepareForUseWithAudioSession()
         
@@ -19,9 +19,8 @@ extension AVCaptureSession {
             removeInput($0)
         }
         
-        guard
-            let preferredDevice = AVCaptureDevice(uniqueID: sourceId) ?? AVCaptureDevice.default(for: .audio) else {
-                return // TODO: throw
+        guard let preferredDevice = AVCaptureDevice(uniqueID: sourceId) ?? AVCaptureDevice.default(for: .audio) else {
+            return // TODO: throw
         }
         
         let micInput = try AVCaptureDeviceInput(device: preferredDevice)

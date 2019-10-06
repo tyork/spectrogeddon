@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EEA5A97122FA305E009181D6 /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5A97022FA305E009181D6 /* ApplicationSettings.swift */; };
+		EEA5A97222FA32ED009181D6 /* ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5A97022FA305E009181D6 /* ApplicationSettings.swift */; };
+		EEA5A97422FB7763009181D6 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5A97322FB7763009181D6 /* Setting.swift */; };
+		EEA5A97522FB7763009181D6 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5A97322FB7763009181D6 /* Setting.swift */; };
+		EEF6CA7D22F0DBB7005476D0 /* ColorMapProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6CA7C22F0DBB7005476D0 /* ColorMapProvider.swift */; };
+		EEF6CA7E22F0DBB7005476D0 /* ColorMapProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6CA7C22F0DBB7005476D0 /* ColorMapProvider.swift */; };
+		EEF6CA8022F0DFAF005476D0 /* AudioSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6CA7F22F0DFAF005476D0 /* AudioSourceProvider.swift */; };
+		EEF6CA8122F0DFAF005476D0 /* AudioSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF6CA7F22F0DFAF005476D0 /* AudioSourceProvider.swift */; };
 		EEF76DE322DA8B5B00BA3315 /* SpectroCoreiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76DD922DA8B5B00BA3315 /* SpectroCoreiOS.framework */; };
 		EEF76DE822DA8B5B00BA3315 /* SpectroCore_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DE722DA8B5B00BA3315 /* SpectroCore_iOSTests.swift */; };
 		EEF76DEA22DA8B5B00BA3315 /* SpectroCore_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF76DDC22DA8B5B00BA3315 /* SpectroCore_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEF76DF122DA8C0100BA3315 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */; };
+		EEF76DF122DA8C0100BA3315 /* StoredSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBC22DA8B3100BA3315 /* StoredSettings.swift */; };
 		EEF76DF222DA8C0100BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */; };
 		EEF76DF322DA8C0100BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */; };
 		EEF76DF422DA8C0100BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */; };
@@ -37,7 +45,7 @@
 		EEF76E5322DA8D2000BA3315 /* SpectroCore_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76E5222DA8D2000BA3315 /* SpectroCore_OSXTests.swift */; };
 		EEF76E5522DA8D2000BA3315 /* SpectroCore_OSX.h in Headers */ = {isa = PBXBuildFile; fileRef = EEF76E4722DA8D2000BA3315 /* SpectroCore_OSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEF76E5C22DA8D4A00BA3315 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = EEF76DD322DA8B4000BA3315 /* ColorMaps */; };
-		EEF76E5D22DA8D5100BA3315 /* DisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */; };
+		EEF76E5D22DA8D5100BA3315 /* StoredSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBC22DA8B3100BA3315 /* StoredSettings.swift */; };
 		EEF76E5E22DA8D5100BA3315 /* RendererUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */; };
 		EEF76E5F22DA8D5100BA3315 /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */; };
 		EEF76E6022DA8D5100BA3315 /* RadialScrollingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */; };
@@ -105,7 +113,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettings.swift; sourceTree = "<group>"; };
+		EEA5A97022FA305E009181D6 /* ApplicationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSettings.swift; sourceTree = "<group>"; };
+		EEA5A97322FB7763009181D6 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		EEF6CA7C22F0DBB7005476D0 /* ColorMapProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMapProvider.swift; sourceTree = "<group>"; };
+		EEF6CA7F22F0DFAF005476D0 /* AudioSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSourceProvider.swift; sourceTree = "<group>"; };
+		EEF76DBC22DA8B3100BA3315 /* StoredSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredSettings.swift; sourceTree = "<group>"; };
 		EEF76DBD22DA8B3100BA3315 /* RendererUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererUtils.swift; sourceTree = "<group>"; };
 		EEF76DBE22DA8B3100BA3315 /* TexturedMeshShader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TexturedMeshShader.fsh; sourceTree = "<group>"; };
 		EEF76DBF22DA8B3100BA3315 /* RadialScrollingRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialScrollingRenderer.swift; sourceTree = "<group>"; };
@@ -293,10 +305,13 @@
 		EEF76E7F22DB366100BA3315 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				EEA5A97022FA305E009181D6 /* ApplicationSettings.swift */,
 				EEF76DCF22DA8B3100BA3315 /* ColorMap.swift */,
+				EEF6CA7C22F0DBB7005476D0 /* ColorMapProvider.swift */,
 				EEF76DC122DA8B3100BA3315 /* ColorMapStore.swift */,
-				EEF76DBC22DA8B3100BA3315 /* DisplaySettings.swift */,
+				EEA5A97322FB7763009181D6 /* Setting.swift */,
 				EEF76DD222DA8B3100BA3315 /* SettingsStore.swift */,
+				EEF76DBC22DA8B3100BA3315 /* StoredSettings.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -304,12 +319,13 @@
 		EEF76E8022DB367D00BA3315 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */,
+				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
 				EEF76E8C22DBD2D600BA3315 /* AudioSourceFinder.swift */,
+				EEF6CA7F22F0DFAF005476D0 /* AudioSourceProvider.swift */,
+				EEF76E9B22DBDFE400BA3315 /* AVCaptureSession+Configure.swift */,
 				EEF76DD022DA8B3100BA3315 /* TimeSequence.swift */,
 				EEF76DC322DA8B3100BA3315 /* FastFourierTransform.swift */,
 				EEF76DC422DA8B3100BA3315 /* SpectrumGenerator.swift */,
-				EEF76DCD22DA8B3100BA3315 /* AudioSampler.swift */,
 				EEF76DC022DA8B3100BA3315 /* CircularBuffer.swift */,
 				EEF76ED222E5A9B700BA3315 /* ChannelBuffer.swift */,
 				EEF76ED522E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift */,
@@ -465,7 +481,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1030;
 				TargetAttributes = {
 					EEF76DD822DA8B5B00BA3315 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -546,6 +562,7 @@
 				EEF76E0022DA8C0100BA3315 /* LoggingUtilities.swift in Sources */,
 				EEF76EAA22DD629900BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */,
 				EEF76E8A22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
+				EEF6CA8022F0DFAF005476D0 /* AudioSourceProvider.swift in Sources */,
 				EEF76E0622DA8C0100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76E9622DBDC0500BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
 				EEF76DFF22DA8C0100BA3315 /* ColumnRenderer.swift in Sources */,
@@ -557,6 +574,7 @@
 				EEF76DFD22DA8C0100BA3315 /* LinearScrollingRenderer.swift in Sources */,
 				EEF76ED622E633EC00BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */,
 				EEF76DF622DA8C0100BA3315 /* ColorMapStore.swift in Sources */,
+				EEA5A97422FB7763009181D6 /* Setting.swift in Sources */,
 				EEF76E0122DA8C0100BA3315 /* TexturedVertexAttribs.swift in Sources */,
 				EEF76E0422DA8C0100BA3315 /* ColorMap.swift in Sources */,
 				EEF76E0722DA8C0100BA3315 /* SettingsStore.swift in Sources */,
@@ -568,14 +586,16 @@
 				EEF76EA822DD609100BA3315 /* AudioSampleBufferPool.swift in Sources */,
 				EEF76DF522DA8C0100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76DF922DA8C0100BA3315 /* SpectrumGenerator.swift in Sources */,
+				EEF6CA7D22F0DBB7005476D0 /* ColorMapProvider.swift in Sources */,
 				EEF76DF822DA8C0100BA3315 /* FastFourierTransform.swift in Sources */,
 				EEF76DFB22DA8C0100BA3315 /* RenderTexture.swift in Sources */,
 				EEF76EA222DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */,
-				EEF76DF122DA8C0100BA3315 /* DisplaySettings.swift in Sources */,
+				EEF76DF122DA8C0100BA3315 /* StoredSettings.swift in Sources */,
 				EEF76DF422DA8C0100BA3315 /* RadialScrollingRenderer.swift in Sources */,
 				EEF76ED322E5A9B700BA3315 /* ChannelBuffer.swift in Sources */,
 				EEF76E0222DA8C0100BA3315 /* AudioSampler.swift in Sources */,
 				EEF76E9022DBD99300BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
+				EEA5A97122FA305E009181D6 /* ApplicationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +614,7 @@
 				EEF76E6C22DA8D5100BA3315 /* LoggingUtilities.swift in Sources */,
 				EEF76ED422E633A100BA3315 /* ChannelBuffer.swift in Sources */,
 				EEF76EAC22DD631200BA3315 /* AudioSampleBufferPool+CoreMedia.swift in Sources */,
+				EEF6CA8122F0DFAF005476D0 /* AudioSourceProvider.swift in Sources */,
 				EEF76E8B22DBCE9700BA3315 /* String+CharacterSet.swift in Sources */,
 				EEF76E7222DA8D5100BA3315 /* ShadedMesh.swift in Sources */,
 				EEF76E6B22DA8D5100BA3315 /* ColumnRenderer.swift in Sources */,
@@ -605,6 +626,7 @@
 				EEF76E6922DA8D5100BA3315 /* LinearScrollingRenderer.swift in Sources */,
 				EEF76ED722E633F900BA3315 /* ChannelBuffer+CoreMedia.swift in Sources */,
 				EEF76E9422DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift in Sources */,
+				EEA5A97522FB7763009181D6 /* Setting.swift in Sources */,
 				EEF76E6222DA8D5100BA3315 /* ColorMapStore.swift in Sources */,
 				EEF76E9A22DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift in Sources */,
 				EEF76E6D22DA8D5100BA3315 /* TexturedVertexAttribs.swift in Sources */,
@@ -616,14 +638,16 @@
 				EEF76E7E22DA8FD000BA3315 /* ColorMap+Image.swift in Sources */,
 				EEF76EAB22DD630D00BA3315 /* AudioSampleBufferPool.swift in Sources */,
 				EEF76E6322DA8D5100BA3315 /* RenderSize.swift in Sources */,
+				EEF6CA7E22F0DBB7005476D0 /* ColorMapProvider.swift in Sources */,
 				EEF76E6122DA8D5100BA3315 /* CircularBuffer.swift in Sources */,
 				EEF76E6522DA8D5100BA3315 /* SpectrumGenerator.swift in Sources */,
 				EEF76E6422DA8D5100BA3315 /* FastFourierTransform.swift in Sources */,
 				EEF76EA322DD1D4C00BA3315 /* AudioSampleBufferInfo+CoreMedia.swift in Sources */,
 				EEF76E6722DA8D5100BA3315 /* RenderTexture.swift in Sources */,
-				EEF76E5D22DA8D5100BA3315 /* DisplaySettings.swift in Sources */,
+				EEF76E5D22DA8D5100BA3315 /* StoredSettings.swift in Sources */,
 				EEF76E6022DA8D5100BA3315 /* RadialScrollingRenderer.swift in Sources */,
 				EEF76E6E22DA8D5100BA3315 /* AudioSampler.swift in Sources */,
+				EEA5A97222FA32ED009181D6 /* ApplicationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,9 +678,36 @@
 		EEF76DB722DA8AB400BA3315 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -664,7 +715,32 @@
 		EEF76DB822DA8AB400BA3315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -702,8 +778,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -780,8 +854,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -986,8 +1058,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1066,8 +1136,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;

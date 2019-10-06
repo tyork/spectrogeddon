@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EED30FF0234A445D00857A1B /* NSMenu+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED30FEF234A445D00857A1B /* NSMenu+Setting.swift */; };
 		EEF76BAC22DA761700BA3315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BAB22DA761700BA3315 /* AppDelegate.swift */; };
 		EEF76BAE22DA761A00BA3315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF76BAD22DA761A00BA3315 /* Assets.xcassets */; };
 		EEF76BBD22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BBC22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift */; };
@@ -80,6 +81,7 @@
 		19541FC018FD7A2E00BC94BF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		19541FC218FD7AAF00BC94BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		EED30FEF234A445D00857A1B /* NSMenu+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Setting.swift"; sourceTree = "<group>"; };
 		EEF76BA922DA761700BA3315 /* Spectrogeddon-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spectrogeddon-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76BAB22DA761700BA3315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF76BAD22DA761A00BA3315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				EEF76BC922DA78C100BA3315 /* DesktopOpenGLView.swift */,
 				EEF76BC522DA783300BA3315 /* MainMenu.xib */,
+				EED30FEF234A445D00857A1B /* NSMenu+Setting.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EED30FF0234A445D00857A1B /* NSMenu+Setting.swift in Sources */,
 				EEF76BCA22DA78C100BA3315 /* DesktopOpenGLView.swift in Sources */,
 				EEF76BAC22DA761700BA3315 /* AppDelegate.swift in Sources */,
 			);

@@ -8,14 +8,35 @@
 
 import Foundation
 
-public class ColorMapStore {
+public class ColorMapStore: ColorMapProvider {
     
-    public var currentMap: ColorMap {
-        return ColorMap(url: urls[currentIndex])
+    public var names: [ColorMapName] {
+        
+        return urls.map {
+            $0.lastPathComponent
+        }
+    }
+    
+    public func nextColorMapNameAfter(name: ColorMapName) -> ColorMapName? {
+        
+        guard let indexOfCurrent = urls.firstIndex(where: {
+            $0.lastPathComponent == name
+        }) else {
+            return nil
+        }
+        
+        let indexOfNext = (indexOfCurrent + 1) % urls.count
+        return urls[indexOfNext].lastPathComponent
+    }
+    
+    public func colorMap(name: ColorMapName) -> ColorMap? {
+        
+        return urls
+            .first { $0.lastPathComponent == name }
+            .map { ColorMap(url: $0) }
     }
     
     private var urls: [URL]
-    private var currentIndex: Int
 
     public init(bundle: Bundle = Bundle(for: ColorMapStore.self)) {
 
@@ -23,11 +44,5 @@ public class ColorMapStore {
             fatalError("No colormaps found in \(bundle.bundleIdentifier ?? "<unknown>") at \(bundle.bundlePath)")
         }
         self.urls = urls
-        self.currentIndex = 0
-    }
-    
-    public func nextMap() -> ColorMap {
-        currentIndex = (currentIndex + 1) % urls.count
-        return currentMap
     }
 }

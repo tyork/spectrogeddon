@@ -16,12 +16,12 @@ public class GLRenderer {
     }
 
     public var renderSize: RenderSize {
+        
         didSet {
             if renderSize != oldValue {
                 frameOriginTime = 0
                 renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
             }
-
         }
     }
     
@@ -29,11 +29,12 @@ public class GLRenderer {
     private var channel2Renderer: ColumnRenderer
     private var scrollingRenderer: ScrollingRenderer
     private var renderTexture: RenderTexture
-    private var displaySettings: DisplaySettings?
+    private var displaySettings: ApplicationSettings?
 
     private var lastDuration: TimeInterval
     private var frameOriginTime: TimeInterval
     private var lastRenderedSampleTime: TimeInterval
+    private let colorMapProvider: ColorMapProvider
     
     private var scrollingPositionNow: Float {
         let nowTime = CACurrentMediaTime()
@@ -49,7 +50,9 @@ public class GLRenderer {
         return position
     }
 
-    public init() {
+    public init(colorMapProvider: ColorMapProvider) {
+        
+        self.colorMapProvider = colorMapProvider
         self.renderSize = .init(width: 0, height: 0)
         self.scrollingRenderer = LinearScrollingRenderer()
         self.renderTexture = RenderTexture()
@@ -106,14 +109,22 @@ public class GLRenderer {
         }
     }
     
-    public func use(_ displaySettings: DisplaySettings) {
+    public func use(_ settings: ApplicationSettings) {
         
-        self.displaySettings = displaySettings
-        channel1Renderer.colorMapImage = displaySettings.colorMap!.image
-        channel2Renderer.colorMapImage = displaySettings.colorMap!.image
-        channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
-        channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
-        scrollingRenderer.activeScrollingDirectionIndex = displaySettings.scrollingDirectionIndex
+        guard
+            let colorMapName = settings.colorMapName.value,
+            let colorMap = colorMapProvider.colorMap(name: colorMapName) else {
+            return
+        }
+        
+        let image = colorMap.image
+        
+        self.displaySettings = settings
+        channel1Renderer.colorMapImage = image
+        channel2Renderer.colorMapImage = image
+        channel1Renderer.useLogFrequencyScale = settings.useLogFrequencyScale.value
+        channel2Renderer.useLogFrequencyScale = settings.useLogFrequencyScale.value
+        scrollingRenderer.activeScrollingDirectionIndex = settings.scrollingDirectionIndex.value
         renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
     }
     
@@ -143,7 +154,7 @@ public class GLRenderer {
     
     private func widthFromTimeInterval(_ timeInterval: TimeInterval) -> Float {
         
-        let screenFractionPerSecond = Float(displaySettings?.scrollingSpeed ?? 0)/(Float(lastDuration) * Float(renderTexture.renderSize.width))
+        let screenFractionPerSecond = Float(displaySettings?.scrollingSpeed.value ?? 0)/(Float(lastDuration) * Float(renderTexture.renderSize.width))
         return screenFractionPerSecond * Float(timeInterval)
     }
 }

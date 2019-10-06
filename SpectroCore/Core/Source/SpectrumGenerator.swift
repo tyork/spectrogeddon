@@ -14,25 +14,18 @@ public protocol SpectrumGeneratorDelegate: class {
 
 public class SpectrumGenerator {
     
-    public typealias SourceName = String
-    public typealias SourceID = String
-    
-    public static var availableSources: [SourceName: SourceID] {
-        return AudioSourceFinder.availableSources
-    }
-
     public weak var delegate: SpectrumGeneratorDelegate?
     
     private let transformer: FastFourierTransform
     private let fftQueue: DispatchQueue
     private var sampler: AudioSampler
 
-    public init() throws {
+    public init(initialAudioSourceID: AudioSourceID?) throws {
         
         transformer = FastFourierTransform()
         fftQueue = DispatchQueue(label: "fft", qos: .default)
         sampler = try AudioSampler(
-            preferredSource: AudioSourceFinder.availableSources.values.first,
+            preferredSource: initialAudioSourceID,
             notificationQueue: fftQueue
         )
         
@@ -60,11 +53,11 @@ public class SpectrumGenerator {
         sampler.stopCapturing()
     }
     
-    public func useSettings(_ settings: DisplaySettings) {
+    public func useSettings(_ settings: ApplicationSettings) {
         
-        if let sourceId = settings.preferredAudioSourceId, SpectrumGenerator.availableSources.values.contains(sourceId) {
+        if let sourceId = settings.preferredAudioSourceId.value {
             sampler.preferredSource = sourceId
         }
-        sampler.bufferSizeDivider = Int(settings.sharpness)
+        sampler.bufferSizeDivider = Int(settings.sharpness.value)
     }
 }

@@ -7,15 +7,12 @@
 
 import AVFoundation
 
-class AudioSourceFinder {
+class AudioSourceFinder: AudioSourceProvider {
     
-    typealias Name = String
-    typealias Identifier = String
- 
     /// Localized name -> audio source ID pairs
-    static var availableSources: [Name: Identifier] {
+    var availableSources: [AudioSourceName: AudioSourceID] {
         let devices = AVCaptureDevice.audioDevices
         let namesAndIds = devices.map { ($0.localizedName, $0.uniqueID) }
-        return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
+        return [AudioSourceName: AudioSourceID](uniqueKeysWithValues: namesAndIds)
     }
 }

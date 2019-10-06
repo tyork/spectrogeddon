@@ -18,7 +18,7 @@ class AudioSampler: NSObject {
     
     var sampleHandler: SampleHandler
     
-    var preferredSource: AudioSourceFinder.Identifier? {
+    var preferredSource: AudioSourceID? {
         didSet {
             try? prepareCaptureSession() // TODO: sort out path to error reporting from here
         }
@@ -38,7 +38,7 @@ class AudioSampler: NSObject {
     private let bufferPool: AudioSampleBufferPool
     private var outputQueue: DispatchQueue
 
-    init(preferredSource: AudioSourceFinder.Identifier?, notificationQueue: DispatchQueue) throws {
+    init(preferredSource: AudioSourceID?, notificationQueue: DispatchQueue) throws {
         
         self.outputQueue = notificationQueue
         self.sampleHandler = { _ in }
