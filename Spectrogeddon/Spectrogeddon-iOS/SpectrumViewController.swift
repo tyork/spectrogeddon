@@ -10,89 +10,109 @@ import UIKit
 import GLKit
 import SpectroCoreiOS
 
+protocol SpectrumViewControllerDelegate: class {
+    func didTapBackground()
+}
+
 class SpectrumViewController: UIViewController {
     
-    @IBOutlet
-    private var spectrumView: GLKView!
+    weak var delegate: SpectrumViewControllerDelegate?
+    
+    private var glView: GLKView! = {
+        
+        let view = GLKView().usingAutolayout()
+        if let context = EAGLContext(api: .openGLES2) {
+            view.context = context
+        }
+        view.drawableColorFormat = .RGBA8888
+        return view
+    }()
+    
     private var displayLink: CADisplayLink!
+    private let presenter: SpectrumPresenter
 
-    private var spectrumGenerator: SpectrumGenerator = try! SpectrumGenerator() // TODO:
-    private var renderer: MobileGLDisplay = MobileGLDisplay()
-    private let settingsModel: SettingsWrapper = SettingsWrapper()
+    init(store: SettingsStore) {
+        
+        presenter = SpectrumPresenter(store: store)
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        commonInit()
+        super.init(nibName: nil, bundle: nil)
+        
+        presenter.client = self
+
+        displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
+        displayLink.add(to: .main, forMode: .common)
+        displayLink.isPaused = true
+
+        let nc = NotificationCenter.default
+        
+        nc.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        nc.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    func commonInit() {
-
-        displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
-        displayLink?.add(to: .main, forMode: .common)
-        displayLink?.isPaused = true
-
-        spectrumGenerator.delegate = self
-        
-        let nc = NotificationCenter.default
-        
-        nc.addObserver(self, selector: #selector(pause), name: UIApplication.willResignActiveNotification, object: nil)
-        nc.addObserver(self, selector: #selector(resume), name: UIApplication.didBecomeActiveNotification, object: nil)
-        nc.addObserver(self, selector: #selector(didChangeSettings), name: .spectroSettingsDidUpdate, object: nil)
+        fatalError("Not supported for use with Storyboards")
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc
-    func pause() {
-        spectrumGenerator.stop()
-        displayLink?.isPaused = true
+    func reloadSettings() {
+        presenter.accept(.load)
     }
     
-    @objc
-    func resume() {
-        spectrumGenerator.start()
-        displayLink?.isPaused = false
+    @objc private func willResignActive() {
+        presenter.accept(.willResignActive)
     }
     
-    @objc
-    func didChangeSettings() {
-        renderer.use(settingsModel.displaySettings)
-        spectrumGenerator.useSettings(settingsModel.displaySettings)
+    @objc private func didBecomeActive() {
+        presenter.accept(.didBecomeActive)
     }
-
-    @objc
-    func updateDisplay() {
-        renderer.redisplay()
+    
+    @objc private func updateDisplay() {
+        
+        guard isViewLoaded else { return }
+        
+        let renderSize = RenderSize(
+            width: GLint(glView.bounds.width * glView.contentScaleFactor),
+            height: GLint(glView.bounds.height * glView.contentScaleFactor)
+        )
+        
+        presenter.accept(.newFrameNeeded(renderSize))
+    }
+    
+    @objc private func didTapBackground() {
+        delegate?.didTapBackground()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        renderer.use(settingsModel.displaySettings)
+        view.addSubview(glView)
+        glView.pinToSuperviewEdges()
+        glView.delegate = self
         
-        renderer.glView = spectrumView
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(didTapBackground))
+        view.addGestureRecognizer(tapper)
+        
+        presenter.accept(.load)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        resume()
+        presenter.accept(.didAppear)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        pause()
+        presenter.accept(.willDisappear)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        spectrumView.subviews.forEach {
+        // Why did we need this ??
+        glView.subviews.forEach {
             $0.removeFromSuperview()
         }
     }
@@ -100,38 +120,25 @@ class SpectrumViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
-    @IBAction
-    func unwindSegue(sender: UIStoryboardSegue) {
-        
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "showControls" {
-
-            let vc = segue.destination
-            vc.modalPresentationCapturesStatusBarAppearance = true
-            if var client = vc as? SettingsModelClient {
-                client.settingsModel = settingsModel
-            } else {
-                for child in vc.children {
-                    if var client = child as? SettingsModelClient {
-                        client.settingsModel = settingsModel
-                    }
-                }
-            }
-        }
-    }
-
 }
 
-extension SpectrumViewController: SpectrumGeneratorDelegate {
+extension SpectrumViewController: SpectrumPresenterClient {
     
-    func spectrumGenerator(_ generator: SpectrumGenerator, didGenerate spectrumsPerChannel: [TimeSequence]) {
-
-        if let channel = spectrumsPerChannel.first {
-            renderer.addMeasurement(toDisplayQueue: channel)
+    func presenterDidUpdate(_ update: SpectrumPresenter.Update) {
+        
+        switch update {
+        case .pausedStateChange(let isPaused):
+            displayLink.isPaused = isPaused
+            
+        case .redisplay:
+            glView.display()
         }
+    }
+}
+
+extension SpectrumViewController: GLKViewDelegate {
+    
+    func glkView(_ view: GLKView, drawIn rect: CGRect) {
+        presenter.accept(.drawNow)
     }
 }

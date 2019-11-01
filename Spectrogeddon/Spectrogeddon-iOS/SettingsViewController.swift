@@ -7,65 +7,112 @@
 //
 
 import UIKit
+import SpectroCoreiOS
+
+protocol SettingsViewControllerDelegate: class {
+    func didTapBackground()
+    func didChangeSetting()
+}
 
 class SettingsViewController : UIViewController {
     
-    private var dismissalTimer: Timer?
+    weak var delegate: SettingsViewControllerDelegate?
     
-    private var model: SettingsWrapper = SettingsWrapper()
+    private var barView: UIVisualEffectView! = {
+        
+        let bar = UIVisualEffectView(effect: UIBlurEffect(style: .dark)).usingAutolayout()
+        
+//        let bar = UIView().usingAutolayout()
+//        bar.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        return bar
+    }()
     
-    deinit {
-        dismissalTimer?.invalidate()
+    private var stackView: UIStackView! = {
+        let stack = UIStackView().usingAutolayout()
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.alignment = .fill
+        return stack
+    }()
+    
+    private let presenter: SettingsPresenter
+    
+    init(store: SettingsStore) {
+        self.presenter = SettingsPresenter(store: store)
+        super.init(nibName: nil, bundle: nil)
+        title = NSLocalizedString("Settings", comment: "Title of the settings screen")
+        presenter.client = self
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("Not supported for use in Storyboards")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createUI()
+        updateUI()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        scheduleAutomaticDismissal()
-    }
-
-    @IBAction
-    func changeColors() {
-        settingsModel.nextColorMap()
-        scheduleAutomaticDismissal()
-    }
-
-    @IBAction
-    func toggleFrequencyStretch() {
-        settingsModel.toggleFrequencyStretch()
-        scheduleAutomaticDismissal()
-    }
-
-    @IBAction
-    func changeScrollingSpeed() {
-        settingsModel.nextScrollingSpeed()
-        scheduleAutomaticDismissal()
+        presenter.accept(action: .didAppear)
     }
     
-    @IBAction
-    func changeSharpness() {
-        settingsModel.nextSharpness()
-        scheduleAutomaticDismissal()
-    }
-    
-    func scheduleAutomaticDismissal() {
-        dismissalTimer?.invalidate()
-        dismissalTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] _ in
-            
-            if let strongSelf = self {
-                strongSelf.performSegue(withIdentifier: "dismissSettings", sender: strongSelf)
-            }
+    private func createUI() {
+        
+        guard barView.superview != view, stackView.arrangedSubviews.isEmpty else { return }
+        
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(didTapOnBackground))
+        view.addGestureRecognizer(tapper)
+
+        barView.contentView.addSubview(stackView)
+        view.addSubview(barView)
+        
+        stackView.pinToSuperviewEdges()
+        barView.pinToSuperviewEdges(edges: [.bottom, .left, .right])
+        barView.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        let settings = presenter.settings
+        
+        let barItems = [
+            makeSettingButton(for: settings.scrollingSpeed, action: .nextScrollingSpeed, title: NSLocalizedString("Speed", comment: "")),
+            makeSettingButton(for: settings.sharpness, action: .nextSharpness, title: NSLocalizedString("Clarity", comment: "")),
+            makeSettingButton(for: settings.useLogFrequencyScale, action: .toggleLogFrequencyScale, title: NSLocalizedString("Scale", comment: "")),
+            makeSettingButton(for: settings.colorMapName, action: .nextColorMap, title: NSLocalizedString("Colors", comment: ""))
+        ]
+        
+        barItems.forEach {
+            stackView.addArrangedSubview($0)
         }
+    }
+    
+    private func updateUI() {
+        guard isViewLoaded else { return }
+        // Nothing to do
+    }
+    
+    private func makeSettingButton<T>(for setting: Setting<T>, action: SettingsPresenter.Action, title: String) -> SettingButton {
+        
+        return SettingButton(title: title, handler: { [weak self] in
+            self?.presenter.accept(action: action)
+        })
+    }
+    
+    @objc
+    private func didTapOnBackground() {
+        delegate?.didTapBackground()
     }
 }
 
-extension SettingsViewController: SettingsModelClient {
-    
-    var settingsModel: SettingsWrapper {
-        get {
-            return model
-        }
-        set(settingsModel) {
-            model = settingsModel
+extension SettingsViewController: SettingsPresenterClient {
+
+    func settingsPresenterDidUpdate(_ update: SettingsPresenter.Update) {
+
+        switch update {
+        case .settingsUpdate:
+            updateUI()
+            delegate?.didChangeSetting()
         }
     }
 }

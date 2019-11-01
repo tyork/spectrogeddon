@@ -8,21 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		EED30FF0234A445D00857A1B /* NSMenu+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED30FEF234A445D00857A1B /* NSMenu+Setting.swift */; };
+		EED30FF7234A7E8200857A1B /* RunLoop+Scheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED30FF6234A7E8200857A1B /* RunLoop+Scheduling.swift */; };
+		EED30FF9236A4D1400857A1B /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED30FF8236A4D1400857A1B /* SettingsPresenter.swift */; };
+		EED30FFD236B7BA000857A1B /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED30FFC236B7BA000857A1B /* UIView+Autolayout.swift */; };
+		EED31001236B871F00857A1B /* SpectrumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED31000236B871F00857A1B /* SpectrumPresenter.swift */; };
+		EED31003236B873F00857A1B /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED31002236B873F00857A1B /* SettingButton.swift */; };
+		EED31005236CD67100857A1B /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED31004236CD67100857A1B /* MainFlowCoordinator.swift */; };
+		EED31007236CD81600857A1B /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED31006236CD81600857A1B /* SettingsFlowCoordinator.swift */; };
 		EEF76BAC22DA761700BA3315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BAB22DA761700BA3315 /* AppDelegate.swift */; };
 		EEF76BAE22DA761A00BA3315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF76BAD22DA761A00BA3315 /* Assets.xcassets */; };
 		EEF76BBD22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BBC22DA761B00BA3315 /* Spectrogeddon_OSXTests.swift */; };
 		EEF76BC722DA783300BA3315 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF76BC522DA783300BA3315 /* MainMenu.xib */; };
 		EEF76BCA22DA78C100BA3315 /* DesktopOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76BC922DA78C100BA3315 /* DesktopOpenGLView.swift */; };
 		EEF76D7922DA861B00BA3315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D7822DA861B00BA3315 /* AppDelegate.swift */; };
-		EEF76D7E22DA861B00BA3315 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D7C22DA861B00BA3315 /* Main.storyboard */; };
 		EEF76D8022DA861D00BA3315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D7F22DA861D00BA3315 /* Assets.xcassets */; };
 		EEF76D8322DA861D00BA3315 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF76D8122DA861D00BA3315 /* LaunchScreen.storyboard */; };
 		EEF76D8E22DA861D00BA3315 /* Spectrogeddon_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D8D22DA861D00BA3315 /* Spectrogeddon_iOSTests.swift */; };
 		EEF76DA022DA888F00BA3315 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9D22DA888F00BA3315 /* SettingsViewController.swift */; };
 		EEF76DA122DA888F00BA3315 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9E22DA888F00BA3315 /* SpectrumViewController.swift */; };
-		EEF76DA222DA888F00BA3315 /* MobileGLDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76D9F22DA888F00BA3315 /* MobileGLDisplay.swift */; };
-		EEF76DA622DA88AC00BA3315 /* SettingsModelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DA422DA88AC00BA3315 /* SettingsModelClient.swift */; };
-		EEF76DA722DA88AC00BA3315 /* SettingsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF76DA522DA88AC00BA3315 /* SettingsWrapper.swift */; };
 		EEF76E0A22DA8C4400BA3315 /* SpectroCoreiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */; };
 		EEF76E0B22DA8C4400BA3315 /* SpectroCoreiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEF76E7522DA8D8000BA3315 /* SpectroCoreOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */; };
@@ -82,6 +85,13 @@
 		19541FC218FD7AAF00BC94BF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		19541FCA18FD8BEB00BC94BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		EED30FEF234A445D00857A1B /* NSMenu+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenu+Setting.swift"; sourceTree = "<group>"; };
+		EED30FF6234A7E8200857A1B /* RunLoop+Scheduling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RunLoop+Scheduling.swift"; sourceTree = "<group>"; };
+		EED30FF8236A4D1400857A1B /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		EED30FFC236B7BA000857A1B /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
+		EED31000236B871F00857A1B /* SpectrumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumPresenter.swift; sourceTree = "<group>"; };
+		EED31002236B873F00857A1B /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
+		EED31004236CD67100857A1B /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		EED31006236CD81600857A1B /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
 		EEF76BA922DA761700BA3315 /* Spectrogeddon-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spectrogeddon-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76BAB22DA761700BA3315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF76BAD22DA761A00BA3315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,7 +104,6 @@
 		EEF76BC922DA78C100BA3315 /* DesktopOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesktopOpenGLView.swift; sourceTree = "<group>"; };
 		EEF76D7622DA861B00BA3315 /* Spectrogeddon-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spectrogeddon-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76D7822DA861B00BA3315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEF76D7D22DA861B00BA3315 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEF76D7F22DA861D00BA3315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEF76D8222DA861D00BA3315 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEF76D8422DA861D00BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,9 +112,6 @@
 		EEF76D8F22DA861D00BA3315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF76D9D22DA888F00BA3315 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEF76D9E22DA888F00BA3315 /* SpectrumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumViewController.swift; sourceTree = "<group>"; };
-		EEF76D9F22DA888F00BA3315 /* MobileGLDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileGLDisplay.swift; sourceTree = "<group>"; };
-		EEF76DA422DA88AC00BA3315 /* SettingsModelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModelClient.swift; sourceTree = "<group>"; };
-		EEF76DA522DA88AC00BA3315 /* SettingsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWrapper.swift; sourceTree = "<group>"; };
 		EEF76E0922DA8C4400BA3315 /* SpectroCoreiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpectroCoreiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF76E7422DA8D8000BA3315 /* SpectroCoreOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SpectroCoreOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,10 +191,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EED30FFE236B866900857A1B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EED30FF8236A4D1400857A1B /* SettingsPresenter.swift */,
+				EEF76D9D22DA888F00BA3315 /* SettingsViewController.swift */,
+				EED31006236CD81600857A1B /* SettingsFlowCoordinator.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		EED30FFF236B868100857A1B /* Spectrum */ = {
+			isa = PBXGroup;
+			children = (
+				EED31004236CD67100857A1B /* MainFlowCoordinator.swift */,
+				EEF76D9E22DA888F00BA3315 /* SpectrumViewController.swift */,
+				EED31000236B871F00857A1B /* SpectrumPresenter.swift */,
+			);
+			name = Spectrum;
+			sourceTree = "<group>";
+		};
 		EEF76BAA22DA761700BA3315 /* Spectrogeddon-OSX */ = {
 			isa = PBXGroup;
 			children = (
 				EEF76BAB22DA761700BA3315 /* AppDelegate.swift */,
+				EED30FF6234A7E8200857A1B /* RunLoop+Scheduling.swift */,
 				EEF76BC822DA786900BA3315 /* SupportingFiles */,
 				EEF76BCB22DA78CD00BA3315 /* Views */,
 			);
@@ -227,10 +254,10 @@
 		EEF76D7722DA861B00BA3315 /* Spectrogeddon-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EEF76DA322DA88A100BA3315 /* SettingsModel */,
+				EED30FFF236B868100857A1B /* Spectrum */,
+				EED30FFE236B866900857A1B /* Settings */,
 				EEF76D9C22DA887800BA3315 /* View */,
 				EEF76D7822DA861B00BA3315 /* AppDelegate.swift */,
-				EEF76D7C22DA861B00BA3315 /* Main.storyboard */,
 				EEF76D7F22DA861D00BA3315 /* Assets.xcassets */,
 				EEF76D8122DA861D00BA3315 /* LaunchScreen.storyboard */,
 				EEF76D8422DA861D00BA3315 /* Info.plist */,
@@ -250,20 +277,10 @@
 		EEF76D9C22DA887800BA3315 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EEF76D9F22DA888F00BA3315 /* MobileGLDisplay.swift */,
-				EEF76D9D22DA888F00BA3315 /* SettingsViewController.swift */,
-				EEF76D9E22DA888F00BA3315 /* SpectrumViewController.swift */,
+				EED30FFC236B7BA000857A1B /* UIView+Autolayout.swift */,
+				EED31002236B873F00857A1B /* SettingButton.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		EEF76DA322DA88A100BA3315 /* SettingsModel */ = {
-			isa = PBXGroup;
-			children = (
-				EEF76DA422DA88AC00BA3315 /* SettingsModelClient.swift */,
-				EEF76DA522DA88AC00BA3315 /* SettingsWrapper.swift */,
-			);
-			name = SettingsModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,7 +433,6 @@
 			files = (
 				EEF76D8322DA861D00BA3315 /* LaunchScreen.storyboard in Resources */,
 				EEF76D8022DA861D00BA3315 /* Assets.xcassets in Resources */,
-				EEF76D7E22DA861B00BA3315 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +453,7 @@
 				EED30FF0234A445D00857A1B /* NSMenu+Setting.swift in Sources */,
 				EEF76BCA22DA78C100BA3315 /* DesktopOpenGLView.swift in Sources */,
 				EEF76BAC22DA761700BA3315 /* AppDelegate.swift in Sources */,
+				EED30FF7234A7E8200857A1B /* RunLoop+Scheduling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,12 +469,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EED31003236B873F00857A1B /* SettingButton.swift in Sources */,
 				EEF76D7922DA861B00BA3315 /* AppDelegate.swift in Sources */,
-				EEF76DA622DA88AC00BA3315 /* SettingsModelClient.swift in Sources */,
-				EEF76DA222DA888F00BA3315 /* MobileGLDisplay.swift in Sources */,
+				EED30FFD236B7BA000857A1B /* UIView+Autolayout.swift in Sources */,
+				EED31001236B871F00857A1B /* SpectrumPresenter.swift in Sources */,
 				EEF76DA022DA888F00BA3315 /* SettingsViewController.swift in Sources */,
-				EEF76DA722DA88AC00BA3315 /* SettingsWrapper.swift in Sources */,
+				EED31007236CD81600857A1B /* SettingsFlowCoordinator.swift in Sources */,
 				EEF76DA122DA888F00BA3315 /* SpectrumViewController.swift in Sources */,
+				EED30FF9236A4D1400857A1B /* SettingsPresenter.swift in Sources */,
+				EED31005236CD67100857A1B /* MainFlowCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,14 +511,6 @@
 				EEF76BC622DA783300BA3315 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		EEF76D7C22DA861B00BA3315 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EEF76D7D22DA861B00BA3315 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		EEF76D8122DA861D00BA3315 /* LaunchScreen.storyboard */ = {

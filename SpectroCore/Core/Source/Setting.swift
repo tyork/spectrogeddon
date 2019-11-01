@@ -15,7 +15,7 @@ public struct Setting<T: Equatable> {
     
     public init(_ initial: T? = nil, default: T, permitted: [T]) {
         
-        precondition(permitted.contains(where: { $0 == `default` }))
+        precondition(permitted.isEmpty || permitted.contains(where: { $0 == `default` }))
         
         defaultValue = `default`
         permittedValues = permitted

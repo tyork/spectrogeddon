@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         
         self.settingsStore = SettingsStore()
-        self.spectrumGenerator = try! SpectrumGenerator(initialAudioSourceID: settingsStore.settings.preferredAudioSourceId.value) // TODO:
+        self.spectrumGenerator = try! SpectrumGenerator(initialAudioSourceID: settingsStore.settings.preferredAudioSourceId.value)
         
         super.init()
         

@@ -205,6 +205,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EED30FF5234A7DFE00857A1B /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */,
+				EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */,
+				EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		EEF76DB222DA8AB400BA3315 = {
 			isa = PBXGroup;
 			children = (
@@ -294,10 +304,8 @@
 		EEF76E7C22DA8FC400BA3315 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				EED30FF5234A7DFE00857A1B /* Internal */,
 				EEF76E7D22DA8FD000BA3315 /* ColorMap+Image.swift */,
-				EEF76E8422DB388400BA3315 /* RendererUtils+OSX.swift */,
-				EEF76E9222DBDA0C00BA3315 /* AVCaptureDevice+AudioDevices.swift */,
-				EEF76E9822DBDD0A00BA3315 /* AVCaptureSession+AudioSession.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

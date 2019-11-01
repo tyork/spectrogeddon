@@ -17,7 +17,7 @@ class DesktopOpenGLView: NSOpenGLView {
     }
     
     private var displayTimer: Timer?
-    private var renderer: GLRenderer = GLRenderer(colorMapProvider: ColorMapStore()) // TODO:
+    private var renderer: GLRenderer = GLRenderer(colorMapProvider: ColorMapStore())
         
     func use(_ settings: ApplicationSettings) {
         renderer.use(settings)
@@ -41,7 +41,7 @@ class DesktopOpenGLView: NSOpenGLView {
             return
         }
 
-        let timer = Timer(timeInterval: 0.001, repeats: true) { [weak self] _ in
+        let timer = Timer(timeInterval: 0.01, repeats: true) { [weak self] _ in
             self?.render()
         }
 
@@ -82,37 +82,37 @@ class DesktopOpenGLView: NSOpenGLView {
     
     override func update() {
         super.update()
-        let renderSize = convertToBacking(bounds).size
-        renderer.renderSize = RenderSize(width: GLint(renderSize.width), height: GLint(renderSize.height))
+        renderer.renderSize = RenderSize(convertToBacking(bounds).size)
     }
 
     private func execute(flushingBuffer flush: Bool, _ glCommands: () -> Void) {
 
-        guard let context = openGLContext else {
-            return
-        }
-        context.makeCurrentContext()
+        openGLContext?.performCommands(flushingBuffer: flush, glCommands)
+    }
+}
+
+private extension NSOpenGLContext {
+    
+    func performCommands(flushingBuffer flush: Bool, _ glCommands: () -> Void) {
         
-        guard let cgl = context.cglContextObj else {
+        makeCurrentContext()
+        
+        guard let cgl = cglContextObj else {
             return
         }
         
         CGLLockContext(cgl)
         glCommands()
         if flush {
-            //    glSwapAPPLE(); // Consider swap instead.
-            context.flushBuffer()
+            flushBuffer()
         }
         CGLUnlockContext(cgl)
     }
 }
 
-private extension RunLoop {
+private extension RenderSize {
     
-    func scheduleTimer(_ timer: Timer, forModes modes: [Mode]) {
-        
-        modes.forEach {
-            add(timer, forMode: $0)
-        }
+    init(_ size: CGSize) {
+        self.init(width: GLint(size.width), height: GLint(size.height))
     }
 }
