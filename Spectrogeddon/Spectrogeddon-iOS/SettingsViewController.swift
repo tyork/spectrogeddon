@@ -19,12 +19,7 @@ class SettingsViewController : UIViewController {
     weak var delegate: SettingsViewControllerDelegate?
     
     private var barView: UIVisualEffectView! = {
-        
-        let bar = UIVisualEffectView(effect: UIBlurEffect(style: .dark)).usingAutolayout()
-        
-//        let bar = UIView().usingAutolayout()
-//        bar.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        return bar
+        return UIVisualEffectView(effect: UIBlurEffect(style: .dark)).usingAutolayout()
     }()
     
     private var stackView: UIStackView! = {
@@ -73,13 +68,11 @@ class SettingsViewController : UIViewController {
         barView.pinToSuperviewEdges(edges: [.bottom, .left, .right])
         barView.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        let settings = presenter.settings
-        
         let barItems = [
-            makeSettingButton(for: settings.scrollingSpeed, action: .nextScrollingSpeed, title: NSLocalizedString("Speed", comment: "")),
-            makeSettingButton(for: settings.sharpness, action: .nextSharpness, title: NSLocalizedString("Clarity", comment: "")),
-            makeSettingButton(for: settings.useLogFrequencyScale, action: .toggleLogFrequencyScale, title: NSLocalizedString("Scale", comment: "")),
-            makeSettingButton(for: settings.colorMapName, action: .nextColorMap, title: NSLocalizedString("Colors", comment: ""))
+            makeSettingButton(action: .nextScrollingSpeed, title: NSLocalizedString("Speed", comment: "")),
+            makeSettingButton(action: .nextSharpness, title: NSLocalizedString("Clarity", comment: "")),
+            makeSettingButton(action: .toggleLogFrequencyScale, title: NSLocalizedString("Scale", comment: "")),
+            makeSettingButton(action: .nextColorMap, title: NSLocalizedString("Colors", comment: ""))
         ]
         
         barItems.forEach {
@@ -92,7 +85,7 @@ class SettingsViewController : UIViewController {
         // Nothing to do
     }
     
-    private func makeSettingButton<T>(for setting: Setting<T>, action: SettingsPresenter.Action, title: String) -> SettingButton {
+    private func makeSettingButton(action: SettingsPresenter.Action, title: String) -> SettingButton {
         
         return SettingButton(title: title, handler: { [weak self] in
             self?.presenter.accept(action: action)
