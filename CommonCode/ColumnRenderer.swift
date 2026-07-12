@@ -6,9 +6,8 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
 ///  Renders a column, a single measurement set.
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 public class ColumnRenderer {
     
     public var useLogFrequencyScale: Bool {

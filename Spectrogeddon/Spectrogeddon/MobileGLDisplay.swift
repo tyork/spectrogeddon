@@ -8,20 +8,19 @@
 //  Copyright © 2019 Random. All rights reserved.
 //
 
-import GLKit
-
 // TODO: Use Metal
+@MainActor
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class MobileGLDisplay: NSObject {
 
     weak var glView: GLKView? {
-        didSet {
-            glView?.delegate = self
-            if let context = context {
-                glView?.context = context
+            didSet {
+                glView?.delegate = self
+                if let context = context {
+                    glView?.context = context
+                }
             }
         }
-    }
-    
     private var context: EAGLContext?
     private var renderer: GLRenderer
     
@@ -66,7 +65,8 @@ class MobileGLDisplay: NSObject {
     }
 }
 
-extension MobileGLDisplay: GLKViewDelegate {
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
+extension MobileGLDisplay: @preconcurrency GLKViewDelegate {
     
     func glkView(_ view: GLKView, drawIn rect: CGRect) {
         execute {

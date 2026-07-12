@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import GLKit
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class GLRenderer {
     
     var namesForScrollingDirections: [String] {

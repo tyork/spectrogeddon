@@ -6,12 +6,11 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
 private let numberOfSpokes = 48
 private let numberOfVerticesPerSpoke = 4
 private let numberOfBufferVertices = (numberOfSpokes + 1) * numberOfVerticesPerSpoke
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class RadialScrollingRenderer: ScrollingRenderer {
 
     var scrollingPosition: Float

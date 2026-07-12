@@ -6,9 +6,8 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
 /// Allows you to draw into a texture that can then be rendered to a framebuffer elsewhere.
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class RenderTexture {
 
     var renderSize: RenderSize {

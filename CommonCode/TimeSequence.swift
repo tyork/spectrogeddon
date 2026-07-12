@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TimeSequence {
+public struct TimeSequence: Sendable {
 
     public let timeStamp: TimeInterval
     public let duration: TimeInterval

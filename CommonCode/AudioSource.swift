@@ -5,29 +5,39 @@
 //  Created by Tom York on 16/05/2019.
 //  Copyright © 2019 Random. All rights reserved.
 //
-
 import Foundation
+import AVFAudio
 import AVFoundation
-
 
 private let MaxBufferSize: UInt = 2048
 private let ReadInterval: UInt = 1
 
-public class AudioSource: NSObject {
+// FIX 1: Marked as @unchecked Sendable to allow safe cross-queue capture
+public class AudioSource: NSObject, @unchecked Sendable {
     
     public typealias Name = String
     public typealias Identifier = String
     
     /// Localized name -> audio source ID pairs
     public static var availableAudioSources: [Name: Identifier] {
+        #if os(iOS)
+        let discoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.microphone],
+            mediaType: .audio,
+            position: .unspecified
+        )
+        let devices = discoverySession.devices
+        #else
         let devices = AVCaptureDevice.devices(for: .audio)
+        #endif
         let namesAndIds = devices.map { ($0.localizedName, $0.uniqueID) }
         return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
     }
     
-    public static func requestMicrophoneAccess(_ completion: @escaping (Bool) -> Void) {
+    // FIX 2: Added @Sendable to match the modern AVFoundation system requirement
+    public static func requestMicrophoneAccess(_ completion: @escaping @Sendable (Bool) -> Void) {
         #if os(iOS)
-            AVAudioSession.sharedInstance().requestRecordPermission(completion)
+            AVAudioApplication.requestRecordPermission(completionHandler: completion)
         #else
             completion(true)
         #endif
@@ -117,7 +127,7 @@ public class AudioSource: NSObject {
         print("%@", note);
     }
 
-    #endif
+    #endif // os(iOS)
     
     private func prepareCaptureSession() throws {
         
@@ -174,7 +184,7 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
         
         // Configure buffers
         // TODO: very basic format decoding, really the minimum.
-        // TODO: and actively wrong now, Mac OS X now happily issues 24 bit samples so need to fix this.
+        // TODO: and actively wrong now, Mac OS X now happily issues 24 bit samples so need to fix this
         guard let formatInfo = CMSampleBufferGetFormatDescription(sampleBuffer) else {
             return
         }
@@ -210,11 +220,10 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
             channelBuffers = buffers
         }
         
-        // Extract data
         guard let audioBlockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else {
             return
         }
-        let duration = CMTimeGetSeconds(CMSampleBufferGetOutputDuration(sampleBuffer)) // Duration
+        let duration = CMTimeGetSeconds(CMSampleBufferGetOutputDuration(sampleBuffer))
         let timeStamp = CMTimeGetSeconds(CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer))
         
         var activeChannel = 0
@@ -236,7 +245,6 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
 
         } while offset < totalLength
     
-        // Dispatch
         guard channelBuffers.allSatisfy({ $0.hasOutput }) else {
             return
         }
@@ -245,9 +253,9 @@ extension AudioSource: AVCaptureAudioDataOutputSampleBufferDelegate {
             $0.outputSamples
         }
 
+        // This call is now safe because AudioSource is marked @unchecked Sendable
         notificationQueue.async {
             self.notificationHandler(outputs)
         }
     }
-
 }

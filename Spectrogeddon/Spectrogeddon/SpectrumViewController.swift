@@ -8,8 +8,8 @@
 //
 
 import UIKit
-import GLKit
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class SpectrumViewController: UIViewController {
     
     @IBOutlet
@@ -112,11 +112,11 @@ class SpectrumViewController: UIViewController {
 
             let vc = segue.destination
             vc.modalPresentationCapturesStatusBarAppearance = true
-            if var client = vc as? SettingsModelClient {
+            if let client = vc as? SettingsModelClient {
                 client.settingsModel = settingsModel
             } else {
                 for child in vc.children {
-                    if var client = child as? SettingsModelClient {
+                    if let client = child as? SettingsModelClient {
                         client.settingsModel = settingsModel
                     }
                 }
@@ -126,6 +126,7 @@ class SpectrumViewController: UIViewController {
 
 }
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 extension SpectrumViewController: SpectrumGeneratorDelegate {
     
     func spectrumGenerator(_ generator: SpectrumGenerator, didGenerate spectrumsPerChannel: [TimeSequence]) {

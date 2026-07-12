@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol SettingsModelClient {
+@MainActor
+protocol SettingsModelClient: AnyObject {
     var settingsModel: SettingsWrapper { get set }
 }

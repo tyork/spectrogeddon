@@ -6,9 +6,8 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
 /// Displays a texture on a linear repeating mesh.
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class LinearScrollingRenderer: ScrollingRenderer {
     
     var scrollingPosition: Float

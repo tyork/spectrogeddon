@@ -6,8 +6,7 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 class ShadedMesh {
     
     var transform: GLKMatrix4

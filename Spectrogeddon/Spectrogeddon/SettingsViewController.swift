@@ -14,7 +14,8 @@ class SettingsViewController : UIViewController {
     
     private var model: SettingsWrapper = SettingsWrapper()
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         dismissalTimer?.invalidate()
     }
 
@@ -51,12 +52,16 @@ class SettingsViewController : UIViewController {
         dismissalTimer?.invalidate()
         dismissalTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] _ in
             
-            if let strongSelf = self {
-                strongSelf.performSegue(withIdentifier: "dismissSettings", sender: strongSelf)
+
+            Task { @MainActor in
+                if let strongSelf = self {
+                    strongSelf.performSegue(withIdentifier: "dismissSettings", sender: strongSelf)
+                }
             }
         }
     }
 }
+
 
 extension SettingsViewController: SettingsModelClient {
     

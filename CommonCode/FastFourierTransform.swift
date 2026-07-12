@@ -8,7 +8,7 @@
 
 import Accelerate
 
-class FastFourierTransform {
+class FastFourierTransform: @unchecked Sendable {
     
     private var config: FFTSetup?
     private var windowFunction: [Float]
@@ -57,16 +57,33 @@ class FastFourierTransform {
             vDSP_vmul(p.baseAddress!, 1, &windowFunction, 1, &fftInputR, 1, UInt(paddedSampleCount))
         }
 
-        // Compute the out-of-place FFT.
-        var input = DSPSplitComplex(realp: &fftInputR, imagp: &fftInputI)
-        var output = DSPSplitComplex(realp: &fftOutputR, imagp: &fftOutputI)
-        vDSP_fft_zop(fftConfig, &input, 1, &output, 1, vDSP_Length(paddedSampleCountAsPowerOfTwo), FFTDirection(FFT_FORWARD))
-
         let outputSampleCount = UInt(realOutput.count)
         
-        // Compute squares of the absolute values of the FFT frequency bins. This gets us a power spectrum.
-        // Note that as the input is real we ignore the upper half of the output from the FFT because it's the complex conjugate of the lower half and so carries the same magnitude.
-        vDSP_zvmags(&output, 1, &realOutput, 1, outputSampleCount)
+        // Compute the out-of-place FFT.
+        fftInputR.withUnsafeMutableBufferPointer { inputReal in
+            fftInputI.withUnsafeMutableBufferPointer { inputImaginary in
+                fftOutputR.withUnsafeMutableBufferPointer { outputReal in
+                    fftOutputI.withUnsafeMutableBufferPointer { outputImaginary in
+                        guard
+                            let inputRealBase = inputReal.baseAddress,
+                            let inputImaginaryBase = inputImaginary.baseAddress,
+                            let outputRealBase = outputReal.baseAddress,
+                            let outputImaginaryBase = outputImaginary.baseAddress
+                        else {
+                            return
+                        }
+
+                        var input = DSPSplitComplex(realp: inputRealBase, imagp: inputImaginaryBase)
+                        var output = DSPSplitComplex(realp: outputRealBase, imagp: outputImaginaryBase)
+                        vDSP_fft_zop(fftConfig, &input, 1, &output, 1, vDSP_Length(paddedSampleCountAsPowerOfTwo), FFTDirection(FFT_FORWARD))
+
+                        // Compute squares of the absolute values of the FFT frequency bins. This gets us a power spectrum.
+                        // Note that as the input is real we ignore the upper half of the output from the FFT because it's the complex conjugate of the lower half and so carries the same magnitude.
+                        vDSP_zvmags(&output, 1, &realOutput, 1, outputSampleCount)
+                    }
+                }
+            }
+        }
 
         // Normalize according to Parseval's theorem. After this, the biggest possible power spectrum bin value is 1.0.
         var norm = powf(1 / Float(realOutput.count), 2)
@@ -86,7 +103,7 @@ class FastFourierTransform {
         // We could get rid of this as a separate stage by manipulating earlier stages, but this is clearer.
         var brightness: Float = 1
         var contrast = 1/(clipMaxDb - clipMinDb)
-        vDSP_vsmsa(&realOutput, 1, UnsafePointer<Float>(&contrast), &brightness, &realOutput, 1, outputSampleCount)
+        vDSP_vsmsa(&realOutput, 1, &contrast, &brightness, &realOutput, 1, outputSampleCount)
         
         return TimeSequence(timeStamp: timeSequence.timeStamp, duration: timeSequence.duration, values: realOutput)
     }

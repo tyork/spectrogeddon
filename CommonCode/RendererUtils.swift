@@ -6,10 +6,8 @@
 //  Copyright © 2019 Spectrogeddon. All rights reserved.
 //
 
-import GLKit
-
-
 /// Namespace for some OpenGLES utility methods
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 enum GLRendererUtils {
     
     /// Loads and returns a GL shader program.
@@ -83,6 +81,7 @@ enum GLRendererUtils {
     }
 }
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 private func ShadingLanguageVersion() -> Int {
 
     let versionString = String(cString: glGetString(GLenum(GL_SHADING_LANGUAGE_VERSION)))
@@ -101,6 +100,7 @@ private func ShadingLanguageVersion() -> Int {
     return Int(languageVersion * 100)
 }
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 private func compiledShader(type: GLenum, sourceName: String) -> GLuint {
     
     let fileExtension = (type == GL_VERTEX_SHADER) ? "vsh" : "fsh"
@@ -129,6 +129,7 @@ private func compiledShader(type: GLenum, sourceName: String) -> GLuint {
     return shaderName
 }
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 private func assertIfShaderError(shaderName: GLuint, url: URL) {
     
     var logLen: GLint = 0
@@ -143,6 +144,7 @@ private func assertIfShaderError(shaderName: GLuint, url: URL) {
     assertionFailure("\(url.lastPathComponent): \(logMessage)")
 }
 
+@available(iOS, deprecated: 12.0, message: "Uses the legacy OpenGL ES renderer.")
 private func assertIfProgramError(programName: GLuint, sourceName: String) {
     
     var logLen: GLint = 0
