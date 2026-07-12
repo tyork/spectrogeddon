@@ -103,7 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let currentSpeed = settingsStore.displaySettings.scrollingSpeed
         
-        let speeds = [ 1, 2, 4, 8 ]
+        let speeds = [ 1, 2, 4, 8, 16, 32]
         for speed in speeds {
             let title = "\(speed)"
             let charCode: String = title.count == 1 ? title.prefix(1).lowercased() : ""

@@ -44,7 +44,7 @@ class SettingsWrapper {
     }
     
     func nextScrollingSpeed() {
-        let speeds = [ 1, 2, 4, 8 ]
+        let speeds = [ 1, 2, 4, 8, 16, 32 ]
         let speed = speeds.nextElementWrapping(after: displaySettings.scrollingSpeed, defaultingIfEmpty: 1)
         settingsStore.displaySettings.scrollingSpeed = speed
         postNote()

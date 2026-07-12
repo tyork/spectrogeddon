@@ -103,11 +103,14 @@ class SampleBuffer {
         // We need to store our new samples by wrapping them into the circular buffer.
         precondition(countToProcess <= capacity)
         let headroom = capacity - writerIndex
-        if countToProcess > headroom {
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer) + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float>.size)
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer), samplesToProcess + Int(headroom), Int((capacity - headroom))*MemoryLayout<Float>.size)
-        } else {
-            memcpy(UnsafeMutablePointer<Float>(&sampleBuffer) + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float>.size)
+        sampleBuffer.withUnsafeMutableBufferPointer { dest in
+            guard let base = dest.baseAddress else { return }
+            if countToProcess > headroom {
+                memcpy(base + Int(writerIndex), samplesToProcess, Int(headroom) * MemoryLayout<Float>.size)
+                memcpy(base, samplesToProcess + Int(headroom), Int((countToProcess - headroom)) * MemoryLayout<Float>.size)
+            } else {
+                memcpy(base + Int(writerIndex), samplesToProcess, Int(countToProcess) * MemoryLayout<Float>.size)
+            }
         }
         
         // Increment the writer index to show where to store next.
@@ -143,3 +146,4 @@ class SampleBuffer {
         writeSamples(&normalizationBuffer, count: min(capacity, count), timeStamp: timeStamp, duration: duration)
     }    
 }
+

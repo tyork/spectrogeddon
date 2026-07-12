@@ -29,7 +29,7 @@
                                 </connections>
                             </glkView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qOt-vV-AsR" firstAttribute="leading" secondItem="Zc2-6l-EzH" secondAttribute="leading" id="BXz-LQ-Sm1"/>
@@ -68,6 +68,7 @@
                         </connections>
                     </view>
                     <toolbarItems>
+                        <barButtonItem style="plain" systemItem="fixedSpace" width="16" id="YVY-0c-B8A"/>
                         <barButtonItem title="Speed" id="nJV-uM-ndP">
                             <connections>
                                 <action selector="changeScrollingSpeed" destination="dmJ-YK-hGL" id="qdt-Xr-seB"/>
@@ -91,6 +92,7 @@
                                 <action selector="changeColors" destination="dmJ-YK-hGL" id="rdF-kD-8b8"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="fixedSpace" width="16" id="DN6-f0-Cnb"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Settings" id="gfN-bj-Bde"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

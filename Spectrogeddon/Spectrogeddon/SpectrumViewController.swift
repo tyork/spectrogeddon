@@ -1,3 +1,4 @@
+#if canImport(GLKit)
 //
 //  SpectrumViewController.swift
 //  Spectrogeddon
@@ -134,3 +135,5 @@ extension SpectrumViewController: SpectrumGeneratorDelegate {
         }
     }
 }
+
+#endif

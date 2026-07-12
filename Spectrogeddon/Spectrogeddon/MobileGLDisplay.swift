@@ -1,3 +1,5 @@
+#if canImport(GLKit)
+
 //
 //  MobileGLDisplay.swift
 //  Spectrogeddon
@@ -35,23 +37,42 @@ class MobileGLDisplay: NSObject {
     }
     
     func redisplay() {
-        if let view = glView {
+        guard let view = glView else {
+            return
+        }
+
+        execute {
             renderer.renderSize = RenderSize(
-                width: GLint(view.bounds.width * view.contentScaleFactor),
-                height: GLint(view.bounds.height * view.contentScaleFactor)
+                width: GLint(view.drawableWidth),
+                height: GLint(view.drawableHeight)
             )
             view.display()
         }
     }
     
     func addMeasurement(toDisplayQueue timeSequence: TimeSequence) {
-        renderer.addMeasurements([timeSequence])
+        execute {
+            renderer.addMeasurements([timeSequence])
+        }
+    }
+
+    private func execute(_ commands: () -> Void) {
+        guard let context = context else {
+            return
+        }
+
+        EAGLContext.setCurrent(context)
+        commands()
     }
 }
 
 extension MobileGLDisplay: GLKViewDelegate {
     
     func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        renderer.render()
+        execute {
+            renderer.render()
+        }
     }
 }
+
+#endif

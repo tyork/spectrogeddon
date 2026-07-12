@@ -18,7 +18,7 @@ class GLRenderer {
     var renderSize: RenderSize {
         didSet {
             if renderSize != oldValue {
-                frameOriginTime = 0
+                resetTimeline()
                 renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
             }
 
@@ -32,21 +32,17 @@ class GLRenderer {
     private var displaySettings: DisplaySettings?
 
     private var lastDuration: TimeInterval
-    private var frameOriginTime: TimeInterval
-    private var lastRenderedSampleTime: TimeInterval
+    private var lastMeasurementTime: TimeInterval
+    private var lastMeasurementPosition: Float
     
     private var scrollingPositionNow: Float {
-        let nowTime = CACurrentMediaTime()
-        if frameOriginTime <= 0 {
-            frameOriginTime = nowTime
+        guard lastMeasurementTime > 0 else {
+            return 0
         }
-        
-        var position = widthFromTimeInterval(nowTime - frameOriginTime)
-        if position > 1 {
-            frameOriginTime = nowTime
-            position = 0
-        }
-        return position
+
+        return normalizedFraction(
+            TimeInterval(lastMeasurementPosition) + TimeInterval(widthFromTimeInterval(CACurrentMediaTime() - lastMeasurementTime))
+        )
     }
 
     
@@ -56,9 +52,9 @@ class GLRenderer {
         self.renderTexture = RenderTexture()
         self.channel1Renderer = ColumnRenderer()
         self.channel2Renderer = ColumnRenderer()
-        frameOriginTime = 0
         lastDuration = 0
-        lastRenderedSampleTime = 0
+        lastMeasurementTime = 0
+        lastMeasurementPosition = 0
     }
 
     func addMeasurements(_ channels: [TimeSequence]) {
@@ -69,14 +65,19 @@ class GLRenderer {
         
         // TODO: model this better
         let showStereo = channels.count > 1
+        let currentMeasurementTime = CACurrentMediaTime()
+        let measuredDuration = max(channels[0].duration, 0)
+        let elapsedMeasurementTime = lastMeasurementTime > 0 ? currentMeasurementTime - lastMeasurementTime : measuredDuration
+        let previousMeasurementPosition = lastMeasurementPosition
+        lastDuration = measuredDuration
+        let measuredWidth = widthFromTimeInterval(elapsedMeasurementTime)
+        let renderSegments = splitRenderSegment(offset: previousMeasurementPosition, width: measuredWidth)
+
         if showStereo {
             channel1Renderer.positioning = positionForChannelAtIndex(channelIndex: 0, totalChannels: 2)
             channel2Renderer.positioning = positionForChannelAtIndex(channelIndex: 1, totalChannels: 2)
-            updateChannelRenderer(renderer: channel1Renderer, withSequence: channels[0])
-            updateChannelRenderer(renderer: channel2Renderer, withSequence: channels[1])
         } else {
             channel1Renderer.positioning = positionForChannelAtIndex(channelIndex: 0, totalChannels: 1)
-            updateChannelRenderer(renderer: channel1Renderer, withSequence: channels[0])
         }
 
         renderTexture.draw { [weak self] in
@@ -84,11 +85,12 @@ class GLRenderer {
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.channel1Renderer.render()
+            strongSelf.renderChannel(renderer: strongSelf.channel1Renderer, withSequence: channels[0], segments: renderSegments)
             if showStereo {
-                strongSelf.channel2Renderer.render()
+                strongSelf.renderChannel(renderer: strongSelf.channel2Renderer, withSequence: channels[1], segments: renderSegments)
             }
-            strongSelf.lastRenderedSampleTime = channels[0].timeStamp
+            strongSelf.lastMeasurementPosition = strongSelf.normalizedFraction(TimeInterval(previousMeasurementPosition + measuredWidth))
+            strongSelf.lastMeasurementTime = currentMeasurementTime
         }
     }
     
@@ -115,7 +117,11 @@ class GLRenderer {
         channel1Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         channel2Renderer.useLogFrequencyScale = displaySettings.useLogFrequencyScale
         scrollingRenderer.activeScrollingDirectionIndex = displaySettings.scrollingDirectionIndex
-        renderTexture.renderSize = scrollingRenderer.bestRenderSize(for: renderSize)
+        let bestRenderSize = scrollingRenderer.bestRenderSize(for: renderSize)
+        if renderTexture.renderSize != bestRenderSize {
+            resetTimeline()
+        }
+        renderTexture.renderSize = bestRenderSize
     }
     
     private func positionForChannelAtIndex(channelIndex: UInt, totalChannels: UInt) -> GLKMatrix4 {
@@ -131,20 +137,65 @@ class GLRenderer {
         return GLKMatrix4Scale(positioning, 1, channelHeight*(flipChannel ? -1 : 1), 1)
     }
     
-    private func updateChannelRenderer(renderer: ColumnRenderer, withSequence timeSequence: TimeSequence) {
-    
-        var baseOffset = widthFromTimeInterval(timeSequence.timeStamp - frameOriginTime)
-        if baseOffset > 1 {
-            baseOffset = 0
+    private func renderChannel(renderer: ColumnRenderer, withSequence timeSequence: TimeSequence, segments: [(offset: Float, width: Float)]) {
+
+        for segment in segments {
+            renderer.updateVertices(timeSequence: timeSequence, offset: (2 * segment.offset - 1), width: 2 * segment.width)
+            renderer.render()
         }
-        lastDuration = timeSequence.duration
-        let width = widthFromTimeInterval(timeSequence.duration + timeSequence.timeStamp - lastRenderedSampleTime)
-        renderer.updateVertices(timeSequence: timeSequence, offset: (2 * baseOffset - 1), width: width)
     }
     
     private func widthFromTimeInterval(_ timeInterval: TimeInterval) -> Float {
-        
-        let screenFractionPerSecond = Float(displaySettings?.scrollingSpeed ?? 0)/(Float(lastDuration) * Float(renderTexture.renderSize.width))
-        return screenFractionPerSecond * Float(timeInterval)
+
+        guard let textureCycleDuration = textureCycleDuration else {
+            return 0
+        }
+        return Float(timeInterval / textureCycleDuration)
+    }
+
+    private var textureCycleDuration: TimeInterval? {
+
+        guard
+            let displaySettings = displaySettings,
+            displaySettings.scrollingSpeed > 0,
+            lastDuration > 0,
+            renderTexture.renderSize.width > 0 else {
+            return nil
+        }
+
+        return lastDuration * TimeInterval(renderTexture.renderSize.width) / TimeInterval(displaySettings.scrollingSpeed)
+    }
+
+    private func splitRenderSegment(offset: Float, width: Float) -> [(offset: Float, width: Float)] {
+
+        guard width > 0 else {
+            return []
+        }
+
+        if width >= 1 {
+            return [(offset: 0, width: 1)]
+        }
+
+        let firstSegmentWidth = min(width, 1 - offset)
+        var segments = [(offset: offset, width: firstSegmentWidth)]
+        let remainingWidth = width - firstSegmentWidth
+        if remainingWidth > 0 {
+            segments.append((offset: 0, width: remainingWidth))
+        }
+        return segments
+    }
+
+    private func resetTimeline() {
+
+        lastMeasurementTime = 0
+        lastMeasurementPosition = 0
+    }
+
+    private func normalizedFraction(_ value: TimeInterval) -> Float {
+
+        guard value.isFinite else {
+            return 0
+        }
+        return Float(value - floor(value))
     }
 }

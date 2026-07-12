@@ -3,7 +3,8 @@
     out vec4 color;
 #else
     #ifdef GL_ES
-        varying mediump vec2 vTexCoord;
+        precision highp float;
+        varying highp vec2 vTexCoord;
     #else
         varying vec2 vTexCoord;
     #endif

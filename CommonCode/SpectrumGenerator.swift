@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SpectrumGeneratorDelegate: class {
+public protocol SpectrumGeneratorDelegate: AnyObject {
     func spectrumGenerator(_ generator: SpectrumGenerator, didGenerate spectrums: [TimeSequence])
 }
 
@@ -62,3 +62,4 @@ public class SpectrumGenerator {
         audioSource.bufferSizeDivider = settings.sharpness
     }
 }
+

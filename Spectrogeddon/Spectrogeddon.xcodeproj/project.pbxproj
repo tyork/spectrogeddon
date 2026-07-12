@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		19541FE31906D89900BC94BF /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
 		19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F871923C578001E746D /* TexturedMeshShader.fsh */; };
 		19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 19F73F881923C578001E746D /* TexturedMeshShader.vsh */; };
+		CF72E9112FAF86BE0088BD52 /* ColorMaps in Resources */ = {isa = PBXBuildFile; fileRef = 19541FE21906D89900BC94BF /* ColorMaps */; };
 		EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE03A1241A82BE15005BE0DB /* Main.storyboard */; };
 		EE4D48E62287507B00B99036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E52287507B00B99036 /* AppDelegate.swift */; };
 		EE4D48E82287527900B99036 /* SpectrumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D48E72287527900B99036 /* SpectrumViewController.swift */; };
@@ -123,7 +124,6 @@
 /* Begin PBXFrameworksBuildPhase section */
 		1901B82518FBFBA7002DE52F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				19541FCB18FD8BEB00BC94BF /* GLKit.framework in Frameworks */,
 				19541FC318FD7AAF00BC94BF /* QuartzCore.framework in Frameworks */,
@@ -134,17 +134,14 @@
 				1901B83018FBFBA7002DE52F /* UIKit.framework in Frameworks */,
 				1901B82C18FBFBA7002DE52F /* Foundation.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1901B84918FBFBA8002DE52F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				1901B84E18FBFBA8002DE52F /* XCTest.framework in Frameworks */,
 				1901B85018FBFBA8002DE52F /* UIKit.framework in Frameworks */,
 				1901B84F18FBFBA8002DE52F /* Foundation.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -340,8 +337,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = Spectrogeddon;
 			productName = Spectrogeddon;
 			productReference = 1901B82818FBFBA7002DE52F /* Spectrogeddon.app */;
@@ -371,11 +366,11 @@
 		1901B82018FBFBA7002DE52F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = Random;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+				ORGANIZATIONNAME = Spectrogeddon;
 				TargetAttributes = {
 					1901B82718FBFBA7002DE52F = {
-						DevelopmentTeam = VBS9CNK6L3;
 						LastSwiftMigration = 1010;
 					};
 					1901B84B18FBFBA8002DE52F = {
@@ -385,7 +380,6 @@
 				};
 			};
 			buildConfigurationList = 1901B82318FBFBA7002DE52F /* Build configuration list for PBXProject "Spectrogeddon" */;
-			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -393,6 +387,7 @@
 				Base,
 			);
 			mainGroup = 1901B81F18FBFBA7002DE52F;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = 1901B82918FBFBA7002DE52F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -406,7 +401,6 @@
 /* Begin PBXResourcesBuildPhase section */
 		1901B82618FBFBA7002DE52F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				19F73F8A1923C578001E746D /* TexturedMeshShader.vsh in Resources */,
 				19F73F891923C578001E746D /* TexturedMeshShader.fsh in Resources */,
@@ -416,22 +410,19 @@
 				EE03A1261A82BE15005BE0DB /* Main.storyboard in Resources */,
 				1901B83618FBFBA7002DE52F /* InfoPlist.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1901B84A18FBFBA8002DE52F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
+				CF72E9112FAF86BE0088BD52 /* ColorMaps in Resources */,
 				1901B85818FBFBA8002DE52F /* InfoPlist.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1901B82418FBFBA7002DE52F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				EE8904692289F3D500E1E0D5 /* MobileGLDisplay.swift in Sources */,
 				EE8904BC229AA33800E1E0D5 /* TexturedVertexAttribs.swift in Sources */,
@@ -461,15 +452,12 @@
 				EE89047E228DE56E00E1E0D5 /* AudioSource.swift in Sources */,
 				EE8904CD229B315800E1E0D5 /* DisplaySettings.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1901B84818FBFBA8002DE52F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				EE89046C228A05B000E1E0D5 /* SpectrogeddonTests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -517,10 +505,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1901B85B18FBFBA8002DE52F /* Debug */ = {
+		1901B85B18FBFBA8002DE52F /* Debug configuration for PBXProject "Spectrogeddon" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -539,6 +528,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -548,6 +538,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -563,17 +554,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1901B85C18FBFBA8002DE52F /* Release */ = {
+		1901B85C18FBFBA8002DE52F /* Release configuration for PBXProject "Spectrogeddon" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -592,6 +585,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -601,6 +595,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -610,27 +605,31 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		1901B85E18FBFBA8002DE52F /* Debug */ = {
+		1901B85E18FBFBA8002DE52F /* Debug configuration for PBXNativeTarget "Spectrogeddon" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VBS9CNK6L3;
+				DEVELOPMENT_TEAM = 6MPTQP8T3Y;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.logicterm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectrogeddon/Spectrogeddon-Bridging-Header.h";
@@ -640,19 +639,22 @@
 			};
 			name = Debug;
 		};
-		1901B85F18FBFBA8002DE52F /* Release */ = {
+		1901B85F18FBFBA8002DE52F /* Release configuration for PBXNativeTarget "Spectrogeddon" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VBS9CNK6L3;
+				DEVELOPMENT_TEAM = 6MPTQP8T3Y;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
 				INFOPLIST_FILE = "Spectrogeddon/Spectrogeddon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.logicterm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spectrogeddon/Spectrogeddon-Bridging-Header.h";
@@ -661,19 +663,23 @@
 			};
 			name = Release;
 		};
-		1901B86118FBFBA8002DE52F /* Debug */ = {
+		1901B86118FBFBA8002DE52F /* Debug configuration for PBXNativeTarget "SpectrogeddonTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 6MPTQP8T3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.logicterm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpectrogeddonTests/SpectrogeddonTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -683,19 +689,23 @@
 			};
 			name = Debug;
 		};
-		1901B86218FBFBA8002DE52F /* Release */ = {
+		1901B86218FBFBA8002DE52F /* Release configuration for PBXNativeTarget "SpectrogeddonTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectrogeddon.app/Spectrogeddon";
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 6MPTQP8T3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = "SpectrogeddonTests/SpectrogeddonTests-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.random.${PRODUCT_NAME:rfc1034identifier}";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.logicterm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpectrogeddonTests/SpectrogeddonTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -710,28 +720,25 @@
 		1901B82318FBFBA7002DE52F /* Build configuration list for PBXProject "Spectrogeddon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1901B85B18FBFBA8002DE52F /* Debug */,
-				1901B85C18FBFBA8002DE52F /* Release */,
+				1901B85B18FBFBA8002DE52F /* Debug configuration for PBXProject "Spectrogeddon" */,
+				1901B85C18FBFBA8002DE52F /* Release configuration for PBXProject "Spectrogeddon" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		1901B85D18FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "Spectrogeddon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1901B85E18FBFBA8002DE52F /* Debug */,
-				1901B85F18FBFBA8002DE52F /* Release */,
+				1901B85E18FBFBA8002DE52F /* Debug configuration for PBXNativeTarget "Spectrogeddon" */,
+				1901B85F18FBFBA8002DE52F /* Release configuration for PBXNativeTarget "Spectrogeddon" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		1901B86018FBFBA8002DE52F /* Build configuration list for PBXNativeTarget "SpectrogeddonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1901B86118FBFBA8002DE52F /* Debug */,
-				1901B86218FBFBA8002DE52F /* Release */,
+				1901B86118FBFBA8002DE52F /* Debug configuration for PBXNativeTarget "SpectrogeddonTests" */,
+				1901B86218FBFBA8002DE52F /* Release configuration for PBXNativeTarget "SpectrogeddonTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
