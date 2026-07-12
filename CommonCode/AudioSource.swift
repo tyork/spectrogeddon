@@ -12,7 +12,7 @@ import AVFoundation
 private let MaxBufferSize: UInt = 2048
 private let ReadInterval: UInt = 1
 
-// FIX 1: Marked as @unchecked Sendable to allow safe cross-queue capture
+// Marked as @unchecked Sendable to allow safe cross-queue capture
 public class AudioSource: NSObject, @unchecked Sendable {
     
     public typealias Name = String
@@ -34,7 +34,7 @@ public class AudioSource: NSObject, @unchecked Sendable {
         return [Name: Identifier](uniqueKeysWithValues: namesAndIds)
     }
     
-    // FIX 2: Added @Sendable to match the modern AVFoundation system requirement
+    // Added @Sendable to match the modern AVFoundation system requirement
     public static func requestMicrophoneAccess(_ completion: @escaping @Sendable (Bool) -> Void) {
         #if os(iOS)
             AVAudioApplication.requestRecordPermission(completionHandler: completion)
